@@ -1,1 +1,0 @@
-/home/juwon/D2FS_Artifact/kernel/scripts/gdb/vmlinux-gdb.py
