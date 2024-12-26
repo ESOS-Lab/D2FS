@@ -477,74 +477,6 @@ static int do_read_inode(struct inode *inode)
 	return 0;
 }
 
-#ifdef LM_NO_INODE_READ
-struct inode *f2fs_try_iget(struct super_block *sb, unsigned long ino)
-{
-	struct f2fs_sb_info *sbi = F2FS_SB(sb);
-	struct inode *inode;
-	int ret = 0;
-
-	inode = ilookup(sb, ino);
-	if (!inode){
-		return NULL;
-	}
-
-	if (!(inode->i_state & I_NEW)) {
-		trace_f2fs_iget(inode);
-		return inode;
-	}
-	if (ino == F2FS_NODE_INO(sbi) || ino == F2FS_META_INO(sbi))
-		goto make_now;
-
-	ret = do_read_inode(inode);
-	if (ret)
-		goto bad_inode;
-make_now:
-	if (ino == F2FS_NODE_INO(sbi)) {
-		inode->i_mapping->a_ops = &f2fs_node_aops;
-		mapping_set_gfp_mask(inode->i_mapping, GFP_NOFS);
-	} else if (ino == F2FS_META_INO(sbi)) {
-		inode->i_mapping->a_ops = &f2fs_meta_aops;
-		mapping_set_gfp_mask(inode->i_mapping, GFP_NOFS);
-	} else if (S_ISREG(inode->i_mode)) {
-		inode->i_op = &f2fs_file_inode_operations;
-		inode->i_fop = &f2fs_file_operations;
-		inode->i_mapping->a_ops = &f2fs_dblock_aops;
-	} else if (S_ISDIR(inode->i_mode)) {
-		inode->i_op = &f2fs_dir_inode_operations;
-		inode->i_fop = &f2fs_dir_operations;
-		inode->i_mapping->a_ops = &f2fs_dblock_aops;
-		inode_nohighmem(inode);
-	} else if (S_ISLNK(inode->i_mode)) {
-		if (file_is_encrypt(inode))
-			inode->i_op = &f2fs_encrypted_symlink_inode_operations;
-		else
-			inode->i_op = &f2fs_symlink_inode_operations;
-		inode_nohighmem(inode);
-		inode->i_mapping->a_ops = &f2fs_dblock_aops;
-	} else if (S_ISCHR(inode->i_mode) || S_ISBLK(inode->i_mode) ||
-			S_ISFIFO(inode->i_mode) || S_ISSOCK(inode->i_mode)) {
-		inode->i_op = &f2fs_special_inode_operations;
-		init_special_inode(inode, inode->i_mode, inode->i_rdev);
-	} else {
-		ret = -EIO;
-		goto bad_inode;
-	}
-	f2fs_set_inode_flags(inode);
-	unlock_new_inode(inode);
-	trace_f2fs_iget(inode);
-	return inode;
-
-bad_inode:
-	printk("%s: bad_inode ino: %lu", __func__, ino);
-	f2fs_inode_synced(inode);
-	iget_failed(inode);
-	trace_f2fs_iget_exit(inode, ret);
-	return ERR_PTR(ret);
-}
-#endif
-
-
 struct inode *f2fs_iget(struct super_block *sb, unsigned long ino)
 {
 	struct f2fs_sb_info *sbi = F2FS_SB(sb);
@@ -552,10 +484,8 @@ struct inode *f2fs_iget(struct super_block *sb, unsigned long ino)
 	int ret = 0;
 
 	inode = iget_locked(sb, ino);
-	if (!inode){
-		printk("%s: 1 ino: %lu", __func__, ino);
+	if (!inode)
 		return ERR_PTR(-ENOMEM);
-	}
 
 	if (!(inode->i_state & I_NEW)) {
 		trace_f2fs_iget(inode);
@@ -604,7 +534,6 @@ make_now:
 	return inode;
 
 bad_inode:
-	printk("%s: bad_inode ino: %lu", __func__, ino);
 	f2fs_inode_synced(inode);
 	iget_failed(inode);
 	trace_f2fs_iget_exit(inode, ret);

@@ -435,118 +435,114 @@ static void destroy_fsync_dnodes(struct list_head *head, int drop)
 		del_fsync_inode(entry, drop);
 }
 
-//static int check_index_in_prev_nodes(struct f2fs_sb_info *sbi,
-//			block_t blkaddr, struct dnode_of_data *dn)
-//{
-//	//struct seg_entry *sentry;
-//	unsigned int segno = GET_SEGNO(sbi, blkaddr);
-//	unsigned short blkoff = GET_BLKOFF_FROM_SEG0(sbi, blkaddr);
-//	struct f2fs_summary_block *sum_node;
-//	struct f2fs_summary sum;
-//	struct page *sum_page, *node_page;
-//	struct dnode_of_data tdn = *dn;
-//	nid_t ino, nid;
-//	struct inode *inode;
-//	unsigned int offset;
-//	block_t bidx;
-//	int i;
-//
-//	/* TODO: Reading bitmap is not essential. Just take the block as valid and
-//	 refer to SSA and previous direct node block. If block index is the blkaddr, 
-//	 then just make it NULL. So make like this in the future */
-//	//sentry = get_seg_entry(sbi, segno);
-//	//if (!f2fs_test_bit(blkoff, sentry->cur_valid_map))
-//	if (true)
-//		return 0;
-//
-//	/* Get the previous summary */
-//	for (i = CURSEG_HOT_DATA; i <= CURSEG_COLD_DATA; i++) {
-//		struct curseg_info *curseg = CURSEG_I(sbi, i);
-//		if (curseg->segno == segno) {
-//			sum = curseg->sum_blk->entries[blkoff];
-//			goto got_it;
-//		}
-//	}
-//
-//	sum_page = f2fs_get_sum_page(sbi, segno);
-//	if (IS_ERR(sum_page))
-//		return PTR_ERR(sum_page);
-//	sum_node = (struct f2fs_summary_block *)page_address(sum_page);
-//	sum = sum_node->entries[blkoff];
-//	f2fs_put_page(sum_page, 1);
-//got_it:
-//	/* Use the locked dnode page and inode */
-//	nid = le32_to_cpu(sum.nid);
-//	if (dn->inode->i_ino == nid) {
-//		tdn.nid = nid;
-//		if (!dn->inode_page_locked)
-//			lock_page(dn->inode_page);
-//		tdn.node_page = dn->inode_page;
-//		tdn.ofs_in_node = le16_to_cpu(sum.ofs_in_node);
-//		goto truncate_out;
-//	} else if (dn->nid == nid) {
-//		tdn.ofs_in_node = le16_to_cpu(sum.ofs_in_node);
-//		goto truncate_out;
-//	}
-//
-//	/* Get the node page */
-//	node_page = f2fs_get_node_page(sbi, nid);
-//	if (IS_ERR(node_page))
-//		return PTR_ERR(node_page);
-//
-//	offset = ofs_of_node(node_page);
-//	ino = ino_of_node(node_page);
-//	f2fs_put_page(node_page, 1);
-//
-//	if (ino != dn->inode->i_ino) {
-//		int ret;
-//
-//		/* Deallocate previous index in the node page */
-//		inode = f2fs_iget_retry(sbi->sb, ino);
-//		if (IS_ERR(inode))
-//			return PTR_ERR(inode);
-//
-//		ret = dquot_initialize(inode);
-//		if (ret) {
-//			iput(inode);
-//			return ret;
-//		}
-//	} else {
-//		inode = dn->inode;
-//	}
-//
-//	bidx = f2fs_start_bidx_of_node(offset, inode) +
-//				le16_to_cpu(sum.ofs_in_node);
-//
-//	/*
-//	 * if inode page is locked, unlock temporarily, but its reference
-//	 * count keeps alive.
-//	 */
-//	if (ino == dn->inode->i_ino && dn->inode_page_locked)
-//		unlock_page(dn->inode_page);
-//
-//	set_new_dnode(&tdn, inode, NULL, NULL, 0);
-//	if (f2fs_get_dnode_of_data(&tdn, bidx, LOOKUP_NODE))
-//		goto out;
-//
-//	if (tdn.data_blkaddr == blkaddr)
-//		f2fs_truncate_data_blocks_range(&tdn, 1);
-//
-//	f2fs_put_dnode(&tdn);
-//out:
-//	if (ino != dn->inode->i_ino)
-//		iput(inode);
-//	else if (dn->inode_page_locked)
-//		lock_page(dn->inode_page);
-//	return 0;
-//
-//truncate_out:
-//	if (f2fs_data_blkaddr(&tdn) == blkaddr)
-//		f2fs_truncate_data_blocks_range(&tdn, 1);
-//	if (dn->inode->i_ino == nid && !dn->inode_page_locked)
-//		unlock_page(dn->inode_page);
-//	return 0;
-//}
+static int check_index_in_prev_nodes(struct f2fs_sb_info *sbi,
+			block_t blkaddr, struct dnode_of_data *dn)
+{
+	struct seg_entry *sentry;
+	unsigned int segno = GET_SEGNO(sbi, blkaddr);
+	unsigned short blkoff = GET_BLKOFF_FROM_SEG0(sbi, blkaddr);
+	struct f2fs_summary_block *sum_node;
+	struct f2fs_summary sum;
+	struct page *sum_page, *node_page;
+	struct dnode_of_data tdn = *dn;
+	nid_t ino, nid;
+	struct inode *inode;
+	unsigned int offset;
+	block_t bidx;
+	int i;
+
+	sentry = get_seg_entry(sbi, segno);
+	if (!f2fs_test_bit(blkoff, sentry->cur_valid_map))
+		return 0;
+
+	/* Get the previous summary */
+	for (i = CURSEG_HOT_DATA; i <= CURSEG_COLD_DATA; i++) {
+		struct curseg_info *curseg = CURSEG_I(sbi, i);
+		if (curseg->segno == segno) {
+			sum = curseg->sum_blk->entries[blkoff];
+			goto got_it;
+		}
+	}
+
+	sum_page = f2fs_get_sum_page(sbi, segno);
+	if (IS_ERR(sum_page))
+		return PTR_ERR(sum_page);
+	sum_node = (struct f2fs_summary_block *)page_address(sum_page);
+	sum = sum_node->entries[blkoff];
+	f2fs_put_page(sum_page, 1);
+got_it:
+	/* Use the locked dnode page and inode */
+	nid = le32_to_cpu(sum.nid);
+	if (dn->inode->i_ino == nid) {
+		tdn.nid = nid;
+		if (!dn->inode_page_locked)
+			lock_page(dn->inode_page);
+		tdn.node_page = dn->inode_page;
+		tdn.ofs_in_node = le16_to_cpu(sum.ofs_in_node);
+		goto truncate_out;
+	} else if (dn->nid == nid) {
+		tdn.ofs_in_node = le16_to_cpu(sum.ofs_in_node);
+		goto truncate_out;
+	}
+
+	/* Get the node page */
+	node_page = f2fs_get_node_page(sbi, nid);
+	if (IS_ERR(node_page))
+		return PTR_ERR(node_page);
+
+	offset = ofs_of_node(node_page);
+	ino = ino_of_node(node_page);
+	f2fs_put_page(node_page, 1);
+
+	if (ino != dn->inode->i_ino) {
+		int ret;
+
+		/* Deallocate previous index in the node page */
+		inode = f2fs_iget_retry(sbi->sb, ino);
+		if (IS_ERR(inode))
+			return PTR_ERR(inode);
+
+		ret = dquot_initialize(inode);
+		if (ret) {
+			iput(inode);
+			return ret;
+		}
+	} else {
+		inode = dn->inode;
+	}
+
+	bidx = f2fs_start_bidx_of_node(offset, inode) +
+				le16_to_cpu(sum.ofs_in_node);
+
+	/*
+	 * if inode page is locked, unlock temporarily, but its reference
+	 * count keeps alive.
+	 */
+	if (ino == dn->inode->i_ino && dn->inode_page_locked)
+		unlock_page(dn->inode_page);
+
+	set_new_dnode(&tdn, inode, NULL, NULL, 0);
+	if (f2fs_get_dnode_of_data(&tdn, bidx, LOOKUP_NODE))
+		goto out;
+
+	if (tdn.data_blkaddr == blkaddr)
+		f2fs_truncate_data_blocks_range(&tdn, 1);
+
+	f2fs_put_dnode(&tdn);
+out:
+	if (ino != dn->inode->i_ino)
+		iput(inode);
+	else if (dn->inode_page_locked)
+		lock_page(dn->inode_page);
+	return 0;
+
+truncate_out:
+	if (f2fs_data_blkaddr(&tdn) == blkaddr)
+		f2fs_truncate_data_blocks_range(&tdn, 1);
+	if (dn->inode->i_ino == nid && !dn->inode_page_locked)
+		unlock_page(dn->inode_page);
+	return 0;
+}
 
 static int do_recover_data(struct f2fs_sb_info *sbi, struct inode *inode,
 					struct page *page)

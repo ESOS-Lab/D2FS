@@ -361,16 +361,11 @@ struct f2fs_nat_block {
 #define GET_SIT_TYPE(raw_sit)					\
 	((le16_to_cpu((raw_sit)->vblocks) & ~SIT_VBLOCKS_MASK)	\
 	 >> SIT_VBLOCKS_SHIFT)
-/* for IPLFS */
-#define GET_SIT_SEGNO(raw_sit)				\
-	(le64_to_cpu((raw_sit)->segno))
 
-/* slot entry */
 struct f2fs_sit_entry {
 	__le16 vblocks;				/* reference above */
-	//__u8 valid_map[SIT_VBLOCK_MAP_SIZE];	/* bitmap for valid blocks */
-	//__le64 mtime;				/* segment age for cleaning */
-	__le64 segno;				/* segno number owning this slot */
+	__u8 valid_map[SIT_VBLOCK_MAP_SIZE];	/* bitmap for valid blocks */
+	__le64 mtime;				/* segment age for cleaning */
 } __packed;
 
 struct f2fs_sit_block {
@@ -454,7 +449,7 @@ struct nat_journal {
 } __packed;
 
 struct sit_journal_entry {
-	__le32 segno; /* Note that this is used as slot idx except f2fs mkfs format */
+	__le32 segno;
 	struct f2fs_sit_entry se;
 } __packed;
 

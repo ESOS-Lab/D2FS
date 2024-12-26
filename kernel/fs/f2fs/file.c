@@ -309,14 +309,12 @@ go_write:
 	cp_reason = need_do_checkpoint(inode);
 	up_read(&F2FS_I(inode)->i_sem);
 
+	//if (cp_reason && (cp_reason != CP_NON_REGULAR)) {
+	//if (cp_reason && (cp_reason != CP_WRONG_PINO)) {	
 	//if (cp_reason && (cp_reason != CP_NON_REGULAR) && (cp_reason != CP_WRONG_PINO)) {
 	if (cp_reason) {
 		/* all the dirty node pages should be flushed for POR */
-		//struct dentry *dentry = hlist_entry(inode->i_dentry.first, struct dentry, d_u.d_alias);
-		//printk("%s: cp_reason: %u file: %s size: %lld imode: %u i_advise: %u", __func__, cp_reason, 
-		//		dentry->d_name.name, inode->i_size, 
-		//		inode->i_mode, F2FS_I(inode)->i_advise);
-		ret = f2fs_sync_fs(inode->i_sb, 1, false, false);
+		ret = f2fs_sync_fs(inode->i_sb, 1, false);
 
 		/*
 		 * We've secured consistency through sync_fs. Following pino
@@ -2257,7 +2255,7 @@ static int f2fs_ioc_shutdown(struct file *filp, unsigned long arg)
 		break;
 	case F2FS_GOING_DOWN_METASYNC:
 		/* do checkpoint only */
-		ret = f2fs_sync_fs(sb, 1, false, false);
+		ret = f2fs_sync_fs(sb, 1, false);
 		if (ret)
 			goto out;
 		f2fs_stop_checkpoint(sbi, false);
@@ -2277,14 +2275,14 @@ static int f2fs_ioc_shutdown(struct file *filp, unsigned long arg)
 		set_sbi_flag(sbi, SBI_CP_DISABLED_QUICK);
 		set_sbi_flag(sbi, SBI_IS_DIRTY);
 		/* do checkpoint only */
-		ret = f2fs_sync_fs(sb, 1, false, false);
+		ret = f2fs_sync_fs(sb, 1, false);
 		goto out;
 	default:
 		ret = -EINVAL;
 		goto out;
 	}
 
-	//f2fs_stop_gc_thread(sbi);
+	f2fs_stop_gc_thread(sbi);
 	f2fs_stop_discard_thread(sbi);
 
 	f2fs_drop_discard_cmd(sbi);
@@ -2569,7 +2567,7 @@ static int f2fs_ioc_write_checkpoint(struct file *filp, unsigned long arg)
 	if (ret)
 		return ret;
 
-	ret = f2fs_sync_fs(sbi->sb, 1, false, false);
+	ret = f2fs_sync_fs(sbi->sb, 1, false);
 
 	mnt_drop_write_file(filp);
 	return ret;

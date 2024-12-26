@@ -33,14 +33,6 @@
 #define SQ_SIZE(q)	((q)->q_depth << (q)->sqes)
 #define CQ_SIZE(q)	((q)->q_depth * sizeof(struct nvme_completion))
 
-#ifdef IPLFS_CALLBACK_IO
-//#define REV_CQ_SIZE(q)	((q)->q_depth << (q)->cqes) /**/
-#define REV_QID(dev, qid)	(qid - dev->max_qid - 1)
-#define REV_CQ_SIZE(q)	((q)->q_depth * sizeof(struct nvme_rev_completion))
-#define REV_SQ_SIZE(q)	((q)->q_depth * sizeof(struct nvme_mg_cmd))
-#define NR_PAGES_REV_SQ_DMA_POOL	2048
-#endif
-
 #define SGES_PER_PAGE	(PAGE_SIZE / sizeof(struct nvme_sgl_desc))
 
 /*
@@ -161,12 +153,6 @@ struct nvme_dev {
 	unsigned int nr_allocated_queues;
 	unsigned int nr_write_queues;
 	unsigned int nr_poll_queues;
-#ifdef IPLFS_CALLBACK_IO
-	struct nvme_rev_queue *rev_queue;
-	wait_queue_head_t rev_queue_wait_queue;
-	struct task_struct *rev_queue_handler;	/* discard thread */
-	atomic_t rev_q_handler_wakeup;
-#endif
 };
 
 static int io_queue_depth_set(const char *val, const struct kernel_param *kp)
@@ -230,46 +216,6 @@ struct nvme_queue {
 	struct completion delete_done;
 };
 
-#ifdef IPLFS_CALLBACK_IO
-struct nvme_rev_queue {
-	struct nvme_dev *dev;
-	spinlock_t cq_lock;
-	void *cq_cmds;	
-	struct nvme_mg_cmd *sqes;
-	dma_addr_t sq_dma_addr;
-	dma_addr_t cq_dma_addr;
-	u32 __iomem *q_db;
-	u32 q_depth;
-	u16 sq_vector;
-	/* TODO: need to reimplement for sq_tail, cq_head and sq_head. */
-	u16 cq_tail;
-	u16 last_cq_tail;
-	u16 sq_head;
-	u16 qid;
-	u8 sq_phase;
-	u8 cqe_sz; 
-	unsigned long flags;
-#define NVMEQ_ENABLED		0
-#define NVMEQ_SQ_CMB		1
-#define NVMEQ_DELETE_ERROR	2
-#define NVMEQ_POLLED		3
-	u32 *dbbuf_sq_db;
-	u32 *dbbuf_cq_db;
-	u32 *dbbuf_sq_ei;
-	u32 *dbbuf_cq_ei;
-//	struct completion delete_done;
-	/* For Migration Handler in IPLFS */
-	void *fs_info;
-	void (*wakeup_migration_handler) (void *data);
-	void (*insert_migration_cmd) (void *data, void *cmd);
-	
-	/* sq dma pool for device to convey migration pairs */
-	struct mg_pair *sq_pair_pool;	/* TODO: may need to change struct */
-	dma_addr_t sq_dma_pool_addr;
-	u64	sq_dma_pool_size;
-};
-#endif
-
 /*
  * The nvme_iod describes the data in an I/O.
  *
@@ -291,11 +237,7 @@ struct nvme_iod {
 
 static inline unsigned int nvme_dbbuf_size(struct nvme_dev *dev)
 {
-#ifdef IPLFS_CALLBACK_IO
-	return (dev->nr_allocated_queues + 1) * 8 * dev->db_stride;
-#else
 	return dev->nr_allocated_queues * 8 * dev->db_stride;
-#endif
 }
 
 static int nvme_dbbuf_dma_alloc(struct nvme_dev *dev)
@@ -350,20 +292,6 @@ static void nvme_dbbuf_init(struct nvme_dev *dev,
 	nvmeq->dbbuf_sq_ei = &dev->dbbuf_eis[sq_idx(qid, dev->db_stride)];
 	nvmeq->dbbuf_cq_ei = &dev->dbbuf_eis[cq_idx(qid, dev->db_stride)];
 }
-
-#ifdef IPLFS_CALLBACK_IO
-static void nvme_rev_dbbuf_init(struct nvme_dev *dev,
-			    struct nvme_rev_queue *nvmeq, int qid)
-{
-	if (!dev->dbbuf_dbs || !qid)
-		return;
-
-	nvmeq->dbbuf_sq_db = &dev->dbbuf_dbs[sq_idx(qid, dev->db_stride)];
-	nvmeq->dbbuf_cq_db = &dev->dbbuf_dbs[cq_idx(qid, dev->db_stride)];
-	nvmeq->dbbuf_sq_ei = &dev->dbbuf_eis[sq_idx(qid, dev->db_stride)];
-	nvmeq->dbbuf_cq_ei = &dev->dbbuf_eis[cq_idx(qid, dev->db_stride)];
-}
-#endif
 
 static void nvme_dbbuf_free(struct nvme_queue *nvmeq)
 {
@@ -1109,21 +1037,10 @@ static inline void nvme_update_cq_head(struct nvme_queue *nvmeq)
 	}
 }
 
-#ifdef IPLFS_CALLBACK_IO
-static inline int should_wakeup_migration_thread(struct nvme_queue *nvmeq, u16 idx)
-{
-	struct nvme_completion *cqe = &nvmeq->cqes[idx];
-
-	return le32_to_cpu(READ_ONCE(cqe->result.rev_queue_hint.result1));
-}
-#endif
-
 static inline int nvme_process_cq(struct nvme_queue *nvmeq)
 {
 	int found = 0;
-#ifdef IPLFS_CALLBACK_IO
-	int wakeup_migration_thread = 0;
-#endif
+
 	while (nvme_cqe_pending(nvmeq)) {
 		found++;
 		/*
@@ -1131,19 +1048,8 @@ static inline int nvme_process_cq(struct nvme_queue *nvmeq)
 		 * the cqe requires a full read memory barrier
 		 */
 		dma_rmb();
-#ifdef IPLFS_CALLBACK_IO
-		wakeup_migration_thread = should_wakeup_migration_thread(nvmeq, nvmeq->cq_head);
-#endif
 		nvme_handle_cqe(nvmeq, nvmeq->cq_head);
 		nvme_update_cq_head(nvmeq);
-#ifdef IPLFS_CALLBACK_IO
-		if (wakeup_migration_thread && nvmeq->dev->rev_queue_handler != NULL) {
-			//nvmeq->dev->migration_wake = 1;
-			//printk("%s: wake up rev queue handler", __func__);
-			atomic_set(&nvmeq->dev->rev_q_handler_wakeup, 1);
-			wake_up_interruptible_all(&nvmeq->dev->rev_queue_wait_queue);
-		}
-#endif
 	}
 
 	if (found)
@@ -1176,135 +1082,6 @@ static irqreturn_t nvme_irq_check(int irq, void *data)
 		return IRQ_WAKE_THREAD;
 	return IRQ_NONE;
 }
-
-#ifdef IPLFS_CALLBACK_IO
-
-static inline bool nvme_rev_sqe_pending(struct nvme_rev_queue *nvmeq)
-{
-	struct nvme_mg_cmd *hsqe = &nvmeq->sqes[nvmeq->sq_head];
-
-	return (le16_to_cpu(READ_ONCE(hsqe->phase)) & 1) == nvmeq->sq_phase;
-}
-
-static inline void nvme_ring_rev_sq_doorbell(struct nvme_rev_queue *nvmeq)
-{
-	u16 head = nvmeq->sq_head;
-
-	if (nvme_dbbuf_update_and_check_event(head, nvmeq->dbbuf_sq_db,
-					      nvmeq->dbbuf_sq_ei))
-		writel(head, nvmeq->q_db + nvmeq->dev->db_stride);
-}
-
-static inline void nvme_handle_rev_sqe(struct nvme_rev_queue *nvmeq, u16 idx)
-{
-	struct nvme_mg_cmd *sqe = &nvmeq->sqes[idx];
-
-	//trace_nvme_sq(req, cqe->sq_head, nvmeq->cq_tail);
-	void *fs_info = nvmeq->fs_info;
-	unsigned int mg_batch_idx = le64_to_cpu(sqe->dptr.prp1);
-
-	struct mg_pair_batch *mgbp;
-
-	mgbp = (struct mg_pair_batch *) nvmeq->sq_pair_pool;
-
-	sqe->mg_batch_ptr = &mgbp[mg_batch_idx];
-	
-	nvmeq->insert_migration_cmd(fs_info, sqe);
-	nvmeq->wakeup_migration_handler(fs_info);
-}
-
-
-static inline void nvme_update_rev_sq_head(struct nvme_rev_queue *nvmeq)
-{
-	u16 tmp = nvmeq->sq_head + 1;
-
-	if (tmp == nvmeq->q_depth) {
-		nvmeq->sq_head = 0;
-		nvmeq->sq_phase ^= 1;
-	} else {
-		nvmeq->sq_head = tmp;
-	}
-}
-
-static inline int nvme_process_rev_sq(struct nvme_rev_queue *nvmeq)
-{
-	int found = 0;
-
-	while (nvme_rev_sqe_pending(nvmeq)) {
-		found++;
-		/*
-		 * load-load control dependency between phase and the rest of
-		 * the cqe requires a full read memory barrier
-		 */
-		dma_rmb();
-		nvme_handle_rev_sqe(nvmeq, nvmeq->sq_head);
-		nvme_update_rev_sq_head(nvmeq);
-	}
-
-	/* TODO: may not need to ring db */
-//	if (found)
-//		nvme_ring_rev_sq_doorbell(nvmeq);
-	return found;
-}
-
-#define REV_Q_HANDLER_WAIT_TIME	50	/* msec */
-static int nvme_rev_queue_handler(void *data)
-{
-	struct nvme_rev_queue *nvmeq = data;
-	int ret;
-	wait_queue_head_t *q = &nvmeq->dev->rev_queue_wait_queue;
-	unsigned int wait_ms = REV_Q_HANDLER_WAIT_TIME;
-
-	do {
-		ret = 0;
-		wait_event_interruptible_timeout(*q,
-				kthread_should_stop() || atomic_read(&nvmeq->dev->rev_q_handler_wakeup), 
-				msecs_to_jiffies(wait_ms));
-
-		atomic_set(&nvmeq->dev->rev_q_handler_wakeup, 0);
-		/*
-		 * The rmb/wmb pair ensures we see all updates from a previous run of
-		 * the irq handler, even if that was on another CPU.
-		 */
-		rmb();
-		if ((ret = nvme_process_rev_sq(nvmeq))) {
-			//printk("%s: handled. ret: %d ", __func__, ret);
-		} else {
-			//printk("%s: no sq handled.", __func__);
-		}
-		wmb();
-
-	} while (!kthread_should_stop());
-
-	return 0;
-}
-
-//static irqreturn_t nvme_rev_irq(int irq, void *data)
-//{
-//	struct nvme_rev_queue *nvmeq = data;
-//	irqreturn_t ret = IRQ_NONE;
-//
-//	/*
-//	 * The rmb/wmb pair ensures we see all updates from a previous run of
-//	 * the irq handler, even if that was on another CPU.
-//	 */
-//	rmb();
-//	if (nvme_process_rev_sq(nvmeq))
-//		ret = IRQ_HANDLED;
-//	wmb();
-//
-//	return ret;
-//}
-//
-//static irqreturn_t nvme_rev_irq_check(int irq, void *data)
-//{
-//	struct nvme_rev_queue *nvmeq = data;
-//
-//	if (nvme_rev_sqe_pending(nvmeq))
-//		return IRQ_WAKE_THREAD;
-//	return IRQ_NONE;
-//}
-#endif
 
 /*
  * Poll for completions for any interrupt driven queue
@@ -1773,22 +1550,6 @@ static int queue_request_irq(struct nvme_queue *nvmeq)
 	}
 }
 
-#ifdef IPLFS_CALLBACK_IO
-//static int rev_queue_request_irq(struct nvme_rev_queue *nvmeq)
-//{
-//	struct pci_dev *pdev = to_pci_dev(nvmeq->dev->dev);
-//	int nr = nvmeq->dev->ctrl.instance;
-//
-//	if (use_threaded_interrupts) {
-//		return pci_request_irq(pdev, nvmeq->sq_vector, nvme_rev_irq_check,
-//				nvme_rev_irq, nvmeq, "nvme%drev_q%d", nr, nvmeq->qid);
-//	} else {
-//		return pci_request_irq(pdev, nvmeq->sq_vector, nvme_rev_irq,
-//				NULL, nvmeq, "nvme%drev_q%d", nr, nvmeq->qid);
-//	}
-//}
-#endif
-
 static void nvme_init_queue(struct nvme_queue *nvmeq, u16 qid)
 {
 	struct nvme_dev *dev = nvmeq->dev;
@@ -1851,300 +1612,6 @@ release_cq:
 	return result;
 }
 
-#ifdef IPLFS_CALLBACK_IO
-
-static int nvme_alloc_rev_cq_cmds(struct nvme_dev *dev, struct nvme_rev_queue *nvmeq)
-{
-	struct pci_dev *pdev = to_pci_dev(dev->dev);
-
-	if (dev->cmb_use_sqes && (dev->cmbsz & NVME_CMBSZ_SQS)) {
-		nvmeq->cq_cmds = pci_alloc_p2pmem(pdev, REV_CQ_SIZE(nvmeq));
-		if (nvmeq->cq_cmds) {
-			nvmeq->cq_dma_addr = pci_p2pmem_virt_to_bus(pdev,
-							nvmeq->cq_cmds);
-			if (nvmeq->cq_dma_addr) {
-				set_bit(NVMEQ_SQ_CMB, &nvmeq->flags);
-				return 0;
-			}
-
-			pci_free_p2pmem(pdev, nvmeq->cq_cmds, REV_CQ_SIZE(nvmeq));
-		}
-	}
-
-	nvmeq->cq_cmds = dma_alloc_coherent(dev->dev, REV_CQ_SIZE(nvmeq),
-				&nvmeq->cq_dma_addr, GFP_KERNEL);
-	if (!nvmeq->cq_cmds)
-		return -ENOMEM;
-	return 0;
-}
-
-static int nvme_alloc_rev_queue(struct nvme_dev *dev, int qid, int depth)
-{
-	struct nvme_rev_queue *nvmeq = dev->rev_queue;
-
-	nvmeq->cqe_sz = sizeof(struct nvme_rev_completion);		/* sqes = cqes in reverse queue. */
-	//nvmeq->q_depth = depth;
-	nvmeq->q_depth = NR_PAGES_REV_SQ_DMA_POOL;
-	nvmeq->sqes = dma_alloc_coherent(dev->dev, REV_SQ_SIZE(nvmeq),
-					 &nvmeq->sq_dma_addr, GFP_KERNEL);
-	if (!nvmeq->sqes)
-		goto free_nvmeq;
-	
-	/* sq dma pool to let device convey mg pairs */
-	nvmeq->sq_dma_pool_size = PAGE_SIZE * NR_PAGES_REV_SQ_DMA_POOL;	
-	nvmeq->sq_pair_pool = dma_alloc_coherent(dev->dev, nvmeq->sq_dma_pool_size,
-					 &nvmeq->sq_dma_pool_addr, GFP_KERNEL);
-	if (!nvmeq->sq_pair_pool)
-		goto free_sqdma;
-
-	if (nvme_alloc_rev_cq_cmds(dev, nvmeq))
-		goto free_sqdma_pool;
-
-	nvmeq->dev = dev;
-	spin_lock_init(&nvmeq->cq_lock);
-	nvmeq->sq_head = 0;
-	nvmeq->sq_phase = 1;
-	nvmeq->q_db = &dev->dbs[qid * 2 * dev->db_stride];
-	nvmeq->qid = qid;
-	//dev->ctrl.queue_count++;
-
-	return 0;
-
- free_sqdma_pool:
-	dma_free_coherent(dev->dev, nvmeq->sq_dma_pool_size, (void *)nvmeq->sq_pair_pool,
-			  nvmeq->sq_dma_pool_addr);
- free_sqdma:
-	dma_free_coherent(dev->dev, REV_SQ_SIZE(nvmeq), (void *)nvmeq->sqes,
-			  nvmeq->sq_dma_addr);
- free_nvmeq:
-	return -ENOMEM;
-}
-
-static int adapter_alloc_rev_sq(struct nvme_dev *dev, u16 qid,
-		struct nvme_rev_queue *nvmeq, s16 vector)
-{
-	struct nvme_command c;
-	int flags = NVME_QUEUE_PHYS_CONTIG;
-
-	if (!test_bit(NVMEQ_POLLED, &nvmeq->flags))
-		flags |= NVME_CQ_IRQ_ENABLED;
-
-	/*
-	 * Note: we (ab)use the fact that the prp fields survive if no data
-	 * is attached to the request.
-	 */
-	memset(&c, 0, sizeof(c));
-	c.create_rev_sq.opcode = nvme_admin_create_rev_sq;
-	c.create_rev_sq.prp1 = cpu_to_le64(nvmeq->sq_dma_addr);
-	c.create_rev_sq.sqid = cpu_to_le16(qid);
-	c.create_rev_sq.qsize = cpu_to_le16(nvmeq->q_depth - 1);
-	c.create_rev_sq.sq_flags = cpu_to_le16(flags);
-	c.create_rev_sq.irq_vector = cpu_to_le16(vector);
-
-	c.create_rev_sq.dma_pool_addr = cpu_to_le64(nvmeq->sq_dma_pool_addr);
-	//c.create_rev_sq.dma_pool_addr2 = cpu_to_le64(nvmeq->sq_dma_pool_addr2);
-	c.create_rev_sq.dma_pool_size = cpu_to_le64(nvmeq->sq_dma_pool_size);
-
-	return nvme_submit_sync_cmd(dev->ctrl.admin_q, &c, NULL, 0);
-}
-
-static int adapter_alloc_rev_cq(struct nvme_dev *dev, u16 qid,
-						struct nvme_rev_queue *nvmeq)
-{
-	struct nvme_ctrl *ctrl = &dev->ctrl;
-	struct nvme_command c;
-	int flags = NVME_QUEUE_PHYS_CONTIG;
-
-	/*
-	 * Some drives have a bug that auto-enables WRRU if MEDIUM isn't
-	 * set. Since URGENT priority is zeroes, it makes all queues
-	 * URGENT.
-	 */
-	if (ctrl->quirks & NVME_QUIRK_MEDIUM_PRIO_SQ)
-		flags |= NVME_SQ_PRIO_MEDIUM;
-
-	/*
-	 * Note: we (ab)use the fact that the prp fields survive if no data
-	 * is attached to the request.
-	 */
-	memset(&c, 0, sizeof(c));
-	c.create_rev_cq.opcode = nvme_admin_create_rev_cq;
-	c.create_rev_cq.prp1 = cpu_to_le64(nvmeq->cq_dma_addr);
-	c.create_rev_cq.cqid = cpu_to_le16(qid);
-	c.create_rev_cq.qsize = cpu_to_le16(nvmeq->q_depth - 1);
-	c.create_rev_cq.cq_flags = cpu_to_le16(flags);
-	c.create_rev_cq.sqid = cpu_to_le16(qid);
-
-	return nvme_submit_sync_cmd(dev->ctrl.admin_q, &c, NULL, 0);
-}
-
-static void nvme_init_rev_queue(struct nvme_rev_queue *nvmeq, u16 qid)
-{
-	struct nvme_dev *dev = nvmeq->dev;
-
-	nvmeq->cq_tail = 0;
-	nvmeq->last_cq_tail = 0;
-	nvmeq->sq_head = 0;
-	nvmeq->sq_phase = 1;
-	nvmeq->q_db = &dev->dbs[qid * 2 * dev->db_stride];
-	memset((void *)nvmeq->sqes, 0, REV_SQ_SIZE(nvmeq)); 
-	nvme_rev_dbbuf_init(dev, nvmeq, qid); 
-	//dev->online_queues++;
-	wmb(); /* ensure the first interrupt sees the initialization */
-}
-
-static int nvme_create_rev_queue(struct nvme_rev_queue *nvmeq, int qid)
-{
-	struct nvme_dev *dev = nvmeq->dev;
-	int result;
-	u16 vector = 0;
-
-	clear_bit(NVMEQ_DELETE_ERROR, &nvmeq->flags);
-
-	/*
-	 * A queue's vector matches the queue identifier unless the controller
-	 * has only one vector available.
-	 */
-	vector = dev->num_vecs == 1 ? 0 : qid;
-
-	result = adapter_alloc_rev_sq(dev, qid, nvmeq, vector);
-	if (result)
-		return result;
-	
-	result = adapter_alloc_rev_cq(dev, qid, nvmeq);
-	if (result < 0)
-		return result;
-	if (result)
-		goto release_rev_sq;
-
-	nvmeq->sq_vector = vector;
-	nvme_init_rev_queue(nvmeq, qid);
-
-	//result = rev_queue_request_irq(nvmeq);
-	//if (result < 0)
-	//	goto release_rev_cq;
-	//
-	//printk("%s: end rev_queue_request_irq res: %d", __func__, result);
-
-	set_bit(NVMEQ_ENABLED, &nvmeq->flags);
-	return result;
-
-release_rev_cq:
-	//dev->online_queues--;
-	//adapter_delete_sq(dev, qid);
-release_rev_sq:
-	//adapter_delete_cq(dev, qid);
-	return result;
-}
-
-static inline int init_rev_queue_handler(struct nvme_dev *dev)
-{
-	init_waitqueue_head(&dev->rev_queue_wait_queue);
-	
-	dev->rev_queue_handler = kthread_run(nvme_rev_queue_handler, dev->rev_queue,
-				"nvme_rev_queue_handler");
-	if (IS_ERR(dev->rev_queue_handler)) {
-		return PTR_ERR(dev->rev_queue_handler);
-	}
-	return 0;
-}
-
-/* register functions related to migration handler in IPLFS */
-static inline void init_migration_handler_info(struct nvme_rev_queue *nvme_rev_q, void *data,
-		void (*wakeup_fn) (void *_data), void (*insert_fn) (void *__data, void *cmd))
-{
-	nvme_rev_q->fs_info = data;
-	nvme_rev_q->wakeup_migration_handler = wakeup_fn;
-	nvme_rev_q->insert_migration_cmd = insert_fn;
-}
-
-int nvme_setup_rev_queue(struct request_queue *q, void *data, void (*wakeup_fn) (void *_data), void (*insert_fn) (void *__data, void *cmd))
-{
-	//struct nvme_ns *ns = q->queuedata;
-	struct nvme_dev *dev = q->tag_set->driver_data;
-	int qid = dev->max_qid + 1;
-	struct nvme_rev_queue *nvme_rev_q;
-	int ret;
-	
-	nvme_rev_q = dev->rev_queue;
-
-	if (!dev->rev_queue) {
-		printk("%s: kmalloc rev_queue failed", __func__);
-		return -1;
-	}
-
-	ret = nvme_alloc_rev_queue(dev, qid, dev->q_depth);
-	if (ret) {
-		printk("%s: nvme_alloc_rev_queue failed ret: %d", __func__, ret);
-		return ret;
-	}
-
-	if ((ret = init_rev_queue_handler(dev)) != 0) {
-		printk("%s: failed on init_rev_queue_handler", __func__);
-		return ret;
-	}
-
-	init_migration_handler_info(nvme_rev_q, data, wakeup_fn, insert_fn);
-
-	ret = nvme_create_rev_queue(nvme_rev_q, qid);
-	if (ret < 0)
-		printk("%s: nvme_create_rev_queue seems failed. ret: %d", __func__, ret);
-
-	return (ret >= 0)? 0 : ret;
-}
-
-void static inline nvme_setup_rev_cmd(struct nvme_rev_completion *cmnd, __u16 command_id, unsigned int nsid)
-{
-	cmnd->command_id = command_id;
-	cmnd->nsid = cpu_to_le32(nsid);
-}
-
-/* TODO: might cause error. need to recheck */
-static inline void nvme_write_rev_cq_db(struct nvme_rev_queue *nvmeq)
-{
-//	if (!write_cq) {
-//		u16 next_tail = nvmeq->cq_tail + 1;
-//
-//		if (next_tail == nvmeq->q_depth)
-//			next_tail = 0;
-//		if (next_tail != nvmeq->last_cq_tail)
-//			return;
-//	}
-
-	if (nvme_dbbuf_update_and_check_event(nvmeq->cq_tail,
-			nvmeq->dbbuf_cq_db, nvmeq->dbbuf_cq_ei))
-		writel(nvmeq->cq_tail, nvmeq->q_db + nvmeq->dev->db_stride);
-	nvmeq->last_cq_tail = nvmeq->cq_tail;
-}
-
-/* TODO: only using cqe_size done. need to modify others. */
-static void nvme_submit_rev_cmd(struct nvme_rev_queue *nvmeq, struct nvme_rev_completion *cmd)
-{
-//	printk("%s: start", __func__);
-	spin_lock(&nvmeq->cq_lock);
-	memcpy(nvmeq->cq_cmds + (nvmeq->cq_tail * nvmeq->cqe_sz),
-	       cmd, sizeof(*cmd));
-	if (++nvmeq->cq_tail == nvmeq->q_depth)
-		nvmeq->cq_tail = 0;
-	nvme_write_rev_cq_db(nvmeq);
-	spin_unlock(&nvmeq->cq_lock);
-//	printk("%s: end", __func__);
-}
-
-void nvme_rev_queue_crq(struct request_queue *q, __u16 command_id, unsigned int nsid)
-{
-	struct nvme_dev *dev = q->tag_set->driver_data;
-	struct nvme_rev_queue *rev_q = dev->rev_queue;
-	struct nvme_rev_completion cmnd;
-	
-//	printk("%s: start", __func__);
-	nvme_setup_rev_cmd(&cmnd, command_id, nsid);
-	nvme_submit_rev_cmd(rev_q, &cmnd);
-//	printk("%s: end", __func__);
-
-}
-#endif
-
 static const struct blk_mq_ops nvme_mq_admin_ops = {
 	.queue_rq	= nvme_queue_rq,
 	.complete	= nvme_pci_complete_rq,
@@ -2162,10 +1629,6 @@ static const struct blk_mq_ops nvme_mq_ops = {
 	.map_queues	= nvme_pci_map_queues,
 	.timeout	= nvme_timeout,
 	.poll		= nvme_poll,
-#ifdef IPLFS_CALLBACK_IO
-	.setup_rev_queue = nvme_setup_rev_queue,
-	.rev_queue_crq = nvme_rev_queue_crq,
-#endif
 };
 
 static void nvme_dev_remove_admin(struct nvme_dev *dev)
@@ -2728,19 +2191,12 @@ static int nvme_setup_io_queues(struct nvme_dev *dev)
 	}
 
 	do {
-#ifdef IPLFS_CALLBACK_IO
-		size = db_bar_size(dev, nr_io_queues + 1);
-#else
 		size = db_bar_size(dev, nr_io_queues);
-#endif
 		result = nvme_remap_bar(dev, size);
 		if (!result)
 			break;
 		if (!--nr_io_queues)
 			return -ENOMEM;
-#ifdef IPLFS_CALLBACK_IO
-		printk("%s: unexpected", __func__);
-#endif
 	} while (1);
 	adminq->q_db = dev->dbs;
 
@@ -2753,11 +2209,8 @@ static int nvme_setup_io_queues(struct nvme_dev *dev)
 	 * setting up the full range we need.
 	 */
 	pci_free_irq_vectors(pdev);
-//#ifdef IPLFS_CALLBACK_IO
-//	result = nvme_setup_irqs(dev, nr_io_queues + 1); /* add 1 for reverse queue */
-//#else
+
 	result = nvme_setup_irqs(dev, nr_io_queues);
-//#endif
 	if (result <= 0)
 		return -EIO;
 
@@ -3465,14 +2918,6 @@ static int nvme_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 			sizeof(struct nvme_queue), GFP_KERNEL, node);
 	if (!dev->queues)
 		goto free;
-
-#ifdef IPLFS_CALLBACK_IO
-	//dev->rev_queue = NULL;
-	dev->rev_queue = kcalloc_node(1,
-			sizeof(struct nvme_rev_queue), GFP_KERNEL, node);
-	dev->rev_queue_handler = NULL;
-	atomic_set(&dev->rev_q_handler_wakeup, 0);
-#endif
 
 	dev->dev = get_device(&pdev->dev);
 	pci_set_drvdata(pdev, dev);

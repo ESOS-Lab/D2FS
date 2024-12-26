@@ -393,7 +393,6 @@ static inline int blkdev_zone_mgmt_ioctl(struct block_device *bdev,
 
 #endif /* CONFIG_BLK_DEV_ZONED */
 
-#define IPLFS_CALLBACK_IO
 struct request_queue {
 	struct request		*last_merge;
 	struct elevator_queue	*elevator;
@@ -914,12 +913,6 @@ static inline void rq_flush_dcache_pages(struct request *rq)
 extern int blk_register_queue(struct gendisk *disk);
 extern void blk_unregister_queue(struct gendisk *disk);
 blk_qc_t submit_bio_noacct(struct bio *bio);
-#ifdef IPLFS_CALLBACK_IO
-int submit_bio_setup_rev_queue(struct request_queue *q, void *data,
-		        void (*wakeup_fn) (void *_data),
-				        void (*insert_fn) (void *__data, void *cmd));
-void complete_migration_cmd(struct request_queue *q, __u16 command_id, unsigned int nsid);
-#endif
 extern void blk_rq_init(struct request_queue *q, struct request *rq);
 extern void blk_put_request(struct request *);
 extern struct request *blk_get_request(struct request_queue *, unsigned int op,

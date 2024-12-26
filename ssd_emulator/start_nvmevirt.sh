@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 dmesg -C
 make clean
 make

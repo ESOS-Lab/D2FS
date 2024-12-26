@@ -34,9 +34,8 @@ int f2fs_check_nid_range(struct f2fs_sb_info *sbi, nid_t nid)
 {
 	if (unlikely(nid < F2FS_ROOT_INO(sbi) || nid >= NM_I(sbi)->max_nid)) {
 		set_sbi_flag(sbi, SBI_NEED_FSCK);
-		f2fs_warn(sbi, "%s: out-of-range nid=%x, run fsck to fix. max nid: %x",
-			  __func__, nid, NM_I(sbi)->max_nid);
-		dump_stack();
+		f2fs_warn(sbi, "%s: out-of-range nid=%x, run fsck to fix.",
+			  __func__, nid);
 		return -EFSCORRUPTED;
 	}
 	return 0;
@@ -426,7 +425,7 @@ static void cache_nat_entry(struct f2fs_sb_info *sbi, nid_t nid,
 		__free_nat_entry(new);
 }
 
-void set_node_addr(struct f2fs_sb_info *sbi, struct node_info *ni,
+static void set_node_addr(struct f2fs_sb_info *sbi, struct node_info *ni,
 			block_t new_blkaddr, bool fsync_done)
 {
 	struct f2fs_nm_info *nm_i = NM_I(sbi);
@@ -467,62 +466,8 @@ void set_node_addr(struct f2fs_sb_info *sbi, struct node_info *ni,
 		nat_set_version(e, inc_node_version(version));
 	}
 
-//#define BUF_CNT_	10
-//	static int glb_cnt = 0;
-//	static uint32_t glb_cid_stack[BUF_CNT_];
-//	static uint32_t glb_old_stack[BUF_CNT_];
-//	static uint32_t glb_new_stack[BUF_CNT_];
-//
-//    if ((nat_get_blkaddr(e) & 0xe0000000) == 0xe0000000 ||
-//        (new_blkaddr & 0xe0000000) == 0xe0000000 ) {
-////	if (true) {
-//		f2fs_bug_on(sbi, e->ni.nid != ni->nid);
-//        glb_cid_stack[glb_cnt] = ni->nid;
-//        glb_old_stack[glb_cnt] = nat_get_blkaddr(e);
-//        glb_new_stack[glb_cnt] = new_blkaddr;
-//        glb_cnt ++;
-//        if (glb_cnt == BUF_CNT_) {
-//            printk("%s \n \
-//                    nid: %u old_lpn: 0x%llx new_lpn: 0x%llx \n \
-//                    nid: %u old_lpn: 0x%llx new_lpn: 0x%llx \n \
-//                    nid: %u old_lpn: 0x%llx new_lpn: 0x%llx \n \
-//                    nid: %u old_lpn: 0x%llx new_lpn: 0x%llx \n \
-//                    nid: %u old_lpn: 0x%llx new_lpn: 0x%llx \n \
-//                    nid: %u old_lpn: 0x%llx new_lpn: 0x%llx \n \
-//                    nid: %u old_lpn: 0x%llx new_lpn: 0x%llx \n \
-//                    nid: %u old_lpn: 0x%llx new_lpn: 0x%llx \n \
-//                    nid: %u old_lpn: 0x%llx new_lpn: 0x%llx \n \
-//                    nid: %u old_lpn: 0x%llx new_lpn: 0x%llx \
-//                    ", __func__,
-//                    glb_cid_stack[0], glb_old_stack[0], glb_new_stack[0],
-//                    glb_cid_stack[1], glb_old_stack[1], glb_new_stack[1],
-//                    glb_cid_stack[2], glb_old_stack[2], glb_new_stack[2],
-//                    glb_cid_stack[3], glb_old_stack[3], glb_new_stack[3],
-//                    glb_cid_stack[4], glb_old_stack[4], glb_new_stack[4],
-//                    glb_cid_stack[5], glb_old_stack[5], glb_new_stack[5],
-//                    glb_cid_stack[6], glb_old_stack[6], glb_new_stack[6],
-//                    glb_cid_stack[7], glb_old_stack[7], glb_new_stack[7],
-//                    glb_cid_stack[8], glb_old_stack[8], glb_new_stack[8],
-//                    glb_cid_stack[9], glb_old_stack[9], glb_new_stack[9]
-//                    //old_stack[10], new_stack[10],
-//                    //old_stack[11], new_stack[11],
-//                    //old_stack[12], new_stack[12],
-//                    //old_stack[13], new_stack[13],
-//                    //old_stack[14], new_stack[14],
-//                    //old_stack[15], new_stack[15],
-//                    //old_stack[16], new_stack[16],
-//                    //old_stack[17], new_stack[17],
-//                    //old_stack[18], new_stack[18],
-//                    //old_stack[19], new_stack[19]
-//            );
-//            glb_cnt = 0;
-//        }
-//    }
 	/* change address */
 	nat_set_blkaddr(e, new_blkaddr);
-	//if (new_blkaddr != 0xffffffff) // && (new_blkaddr & 0xe0000000) == 0xe0000000) 
-	//	printk("nat_set_blkaddr: nid: %u new_blkaddr: 0x%lx", ni->nid, new_blkaddr);
-
 	if (!__is_valid_data_blkaddr(new_blkaddr))
 		set_nat_flag(e, IS_CHECKPOINTED, false);
 	__set_nat_cache_dirty(nm_i, e);
@@ -1352,16 +1297,12 @@ static int read_node_page(struct page *page, int op_flags)
 	}
 
 	err = f2fs_get_node_info(sbi, page->index, &ni);
-	if (err){
-		//printk("%s: 1. err: %d", __func__, err);
+	if (err)
 		return err;
-	}
 
 	if (unlikely(ni.blk_addr == NULL_ADDR) ||
 			is_sbi_flag_set(sbi, SBI_IS_SHUTDOWN)) {
 		ClearPageUptodate(page);
-			//printk("%s: 2. %d %d", __func__, ni.blk_addr == NULL_ADDR, 
-		//		is_sbi_flag_set(sbi, SBI_IS_SHUTDOWN));
 		return -ENOENT;
 	}
 
@@ -1670,117 +1611,12 @@ static int __write_node_page(struct page *page, bool atomic, bool *submitted,
 
 	if (do_balance)
 		f2fs_balance_fs(sbi, false);
-#ifdef MG_HANDLER_WRITE_NODE
-		atomic_inc(&sbi->written_node);
-#endif
 	return 0;
 
 redirty_out:
 	redirty_page_for_writepage(wbc, page);
 	return AOP_WRITEPAGE_ACTIVATE;
 }
-
-#ifdef MG_HANDLER_WRITE_NODE
-
-static int __mg_write_node_page(struct page *page, bool atomic, bool *submitted,
-				struct writeback_control *wbc, bool do_balance,
-				enum iostat_type io_type, unsigned int *seq_id, 
-				nid_t nid, struct node_info *ni)
-{
-	struct f2fs_sb_info *sbi = F2FS_P_SB(page);
-	struct f2fs_io_info fio = {
-		.sbi = sbi,
-		.ino = ino_of_node(page),
-		.type = NODE,
-		.op = REQ_OP_WRITE,
-		.op_flags = wbc_to_write_flags(wbc),
-		.page = page,
-		.encrypted_page = NULL,
-		.submitted = false,
-		.io_type = io_type,
-		.io_wbc = wbc,
-	};
-	unsigned int seq;
-
-	trace_f2fs_writepage(page, NODE);
-
-	/* get old block addr of this node page */
-	f2fs_bug_on(sbi, page->index != nid);
-
-	down_read(&sbi->node_write);
-
-	/* This page is already truncated */
-	if (unlikely(ni->blk_addr == NULL_ADDR)) {
-		ClearPageUptodate(page);
-		dec_page_count(sbi, F2FS_DIRTY_NODES);
-		up_read(&sbi->node_write);
-		unlock_page(page);
-		return 0;
-	}
-
-	if (__is_valid_data_blkaddr(ni->blk_addr) &&
-		!f2fs_is_valid_blkaddr(sbi, ni->blk_addr,
-					DATA_GENERIC_ENHANCE)) {
-		up_read(&sbi->node_write);
-		goto redirty_out;
-	}
-
-	if (atomic && !test_opt(sbi, NOBARRIER))
-		fio.op_flags |= REQ_PREFLUSH | REQ_FUA;
-
-	/* should add to global list before clearing PAGECACHE status */
-	if (f2fs_in_warm_node_list(sbi, page)) {
-		seq = f2fs_add_fsync_node_entry(sbi, page);
-		if (seq_id)
-			*seq_id = seq;
-	}
-
-	set_page_writeback(page);
-	ClearPageError(page);
-
-	fio.old_blkaddr = ni->blk_addr;
-	f2fs_do_write_node_page(nid, &fio);
-	set_node_addr(sbi, ni, fio.new_blkaddr, is_fsync_dnode(page));
-	dec_page_count(sbi, F2FS_DIRTY_NODES);
-	up_read(&sbi->node_write);
-
-	//if (wbc->for_reclaim) {
-	//	f2fs_submit_merged_write_cond(sbi, NULL, page, 0, NODE);
-	//	submitted = NULL;
-	//}
-	if (PageDirty(page)) {
-		printk("%s: page is still dirty", __func__);
-		f2fs_bug_on(sbi, 1);
-	}
-
-	unlock_page(page);
-
-	if (unlikely(f2fs_cp_error(sbi))) {
-		f2fs_submit_merged_write(sbi, NODE);
-		submitted = NULL;
-	}
-	if (submitted)
-		*submitted = fio.submitted;
-
-	if (do_balance)
-		f2fs_balance_fs(sbi, false);
-	return 0;
-
-redirty_out:
-	redirty_page_for_writepage(wbc, page);
-	return AOP_WRITEPAGE_ACTIVATE;
-}
-
-int mg_write_node_page(struct page *page, bool *submitted, struct writeback_control *wbc,
-		nid_t nid, struct node_info *ni)
-{
-	//if (is_cold_node(page))
-	//	printk("%s: unexpected!!!!!!! cold node!", __func__);
-	return __mg_write_node_page(page, false, submitted, wbc, false,
-						FS_NODE_IO, NULL, nid, ni);
-
-}
-#endif
 
 int f2fs_move_node_page(struct page *node_page, int gc_type)
 {
@@ -1840,9 +1676,7 @@ int f2fs_fsync_node_pages(struct f2fs_sb_info *sbi, struct inode *inode,
 	int nr_pages;
 	int nwritten = 0;
 	//nid_t nid;
-#ifdef FSYNC_LAT
-	unsigned long long tstart, tend;
-#endif
+
 	if (atomic) {
 		last_page = last_fsync_dnode(sbi, ino);
 		if (IS_ERR_OR_NULL(last_page))
@@ -1886,17 +1720,8 @@ continue_unlock:
 				/* someone wrote it for us */
 				goto continue_unlock;
 			}
-#ifdef FSYNC_LAT
-			tstart = OS_TimeGetNS();
-#endif
+
 			f2fs_wait_on_page_writeback(page, NODE, true, true);
-#ifdef FSYNC_LAT
-			tend = OS_TimeGetNS();
-			spin_lock(&sbi->lat_lock);
-			sbi->fsync_node_wrt_cnt ++;
-			sbi->fsync_node_wrt_lat += (tend - tstart);
-			spin_unlock(&sbi->lat_lock);
-#endif
 
 			set_fsync_mark(page, 0);
 			set_dentry_mark(page, 0);
@@ -1933,9 +1758,6 @@ continue_unlock:
 				break;
 			} else if (submitted) {
 				nwritten++;
-#ifdef MG_HANDLER_WRITE_NODE
-				atomic_inc(&sbi->synced_node);
-#endif
 			}
 
 			if (page == last_page) {

@@ -156,15 +156,9 @@ static void update_general_status(struct f2fs_sb_info *sbi)
 	si->other_skip_bggc = sbi->other_skip_bggc;
 	si->skipped_atomic_files[BG_GC] = sbi->skipped_atomic_files[BG_GC];
 	si->skipped_atomic_files[FG_GC] = sbi->skipped_atomic_files[FG_GC];
-#ifdef IPLFS_CALLBACK_IO
-	si->util_free = (int)(0 >> sbi->log_blocks_per_seg)
-		* 100 / (int)(sbi->user_block_count >> sbi->log_blocks_per_seg)
-		/ 2;
-#else
 	si->util_free = (int)(free_user_blocks(sbi) >> sbi->log_blocks_per_seg)
 		* 100 / (int)(sbi->user_block_count >> sbi->log_blocks_per_seg)
 		/ 2;
-#endif
 	si->util_valid = (int)(written_block_count(sbi) >>
 						sbi->log_blocks_per_seg)
 		* 100 / (int)(sbi->user_block_count >> sbi->log_blocks_per_seg)
@@ -237,8 +231,8 @@ static void update_mem_info(struct f2fs_sb_info *sbi)
 	si->base_mem += 2 * SIT_VBLOCK_MAP_SIZE * MAIN_SEGS(sbi);
 	si->base_mem += SIT_VBLOCK_MAP_SIZE * MAIN_SEGS(sbi);
 	si->base_mem += SIT_VBLOCK_MAP_SIZE;
-	//if (__is_large_section(sbi))
-	//	si->base_mem += MAIN_SECS(sbi) * sizeof(struct sec_entry);
+	if (__is_large_section(sbi))
+		si->base_mem += MAIN_SECS(sbi) * sizeof(struct sec_entry);
 	si->base_mem += __bitmap_size(sbi, SIT_BITMAP);
 
 	/* build free segmap */
@@ -268,8 +262,8 @@ get_cache:
 	si->cache_mem = 0;
 
 	/* build gc */
-	//if (sbi->gc_thread)
-	//	si->cache_mem += sizeof(struct f2fs_gc_kthread);
+	if (sbi->gc_thread)
+		si->cache_mem += sizeof(struct f2fs_gc_kthread);
 
 	/* build merge flush thread */
 	if (SM_I(sbi)->fcc_info)

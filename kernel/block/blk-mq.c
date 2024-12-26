@@ -2289,20 +2289,6 @@ void blk_mq_free_rqs(struct blk_mq_tag_set *set, struct blk_mq_tags *tags,
 	}
 }
 
-#ifdef IPLFS_CALLBACK_IO
-int blk_mq_setup_rev_queue(struct request_queue *q, void *data, void (*wakeup_fn)(void *_data), void (*insert_fn)(void *__data, void *cmd))
-{
-	return q->mq_ops->setup_rev_queue(q, data, wakeup_fn, insert_fn);
-}
-
-void blk_mq_complete_migration_cmd(struct request_queue *q, __u16 command_id, unsigned int nsid)
-{
-	q->mq_ops->rev_queue_crq(q, command_id, nsid);
-}
-
-#endif
-
-
 void blk_mq_free_rq_map(struct blk_mq_tags *tags, unsigned int flags)
 {
 	kfree(tags->rqs);

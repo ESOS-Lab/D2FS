@@ -254,11 +254,7 @@ static int f2fs_prepare_super_block(void)
 	set_sb(sit_blkaddr, get_sb(segment0_blkaddr) +
 			get_sb(segment_count_ckpt) * c.blks_per_seg);
 
-#ifdef IPLFS_MIGRATION_IO
-	blocks_for_sit = ALIGN(get_sb(segment_count) * RESERVE_RATIO, SIT_ENTRY_PER_BLOCK);
-#else
 	blocks_for_sit = ALIGN(get_sb(segment_count), SIT_ENTRY_PER_BLOCK);
-#endif
 
 	sit_segments = SEG_ALIGN(blocks_for_sit);
 
@@ -322,13 +318,9 @@ static int f2fs_prepare_super_block(void)
 			get_sb(segment_count_nat))) *
 			c.blks_per_seg;
 
-#ifdef IPLFS_MIGRATION_IO
-	blocks_for_ssa = total_valid_blks_available /
-				c.blks_per_seg * RESERVE_RATIO + 1;
-#else
 	blocks_for_ssa = total_valid_blks_available /
 				c.blks_per_seg + 1;
-#endif
+
 	set_sb(segment_count_ssa, SEG_ALIGN(blocks_for_ssa));
 
 	total_meta_segments = get_sb(segment_count_ckpt) +
@@ -464,7 +456,7 @@ static int f2fs_init_sit_area(void)
 
 	sit_seg_addr = get_sb(sit_blkaddr);
 	sit_seg_addr *= blk_size;
-	MSG(0, "%s: start sit addr: 0x%llx\n", __func__, sit_seg_addr);
+
 	DBG(1, "\tFilling sit area at offset 0x%08"PRIx64"\n", sit_seg_addr);
 	for (index = 0; index < (get_sb(segment_count_sit) / 2); index++) {
 		if (dev_fill(zero_buf, sit_seg_addr, seg_size)) {
@@ -475,7 +467,6 @@ static int f2fs_init_sit_area(void)
 		}
 		sit_seg_addr += seg_size;
 	}
-	MSG(0, "%s: end sit addr: 0x%llx\n", __func__, sit_seg_addr + seg_size);
 
 	free(zero_buf);
 	return 0 ;
@@ -683,22 +674,10 @@ static int f2fs_write_check_point_pack(void)
 	memset(sum, 0, sizeof(struct f2fs_summary_block));
 	/* inode sit for root */
 	journal->n_sits = cpu_to_le16(6);
-
-#ifdef IPLFS_MIGRATION_IO	
-	journal->sit_j.entries[0].segno = cpu_to_le32(0); /* This is slot idx. */
-	journal->sit_j.entries[0].se.segno =
-				cpu_to_le64((uint64_t) le32_to_cpu(cp->cur_node_segno[0]));
-	MSG(0, "%s: 0 segno: %u se segno: %llu %lu\n", __func__, 
-			le32_to_cpu(journal->sit_j.entries[0].segno), 
-			le64_to_cpu(journal->sit_j.entries[0].se.segno), 
-			le32_to_cpu(cp->cur_node_segno[0])
-			);
-#else
 	journal->sit_j.entries[0].segno = cp->cur_node_segno[0];
-#endif
 	journal->sit_j.entries[0].se.vblocks =
 				cpu_to_le16((CURSEG_HOT_NODE << 10) | 1);
-	//f2fs_set_bit(0, (char *)journal->sit_j.entries[0].se.valid_map);
+	f2fs_set_bit(0, (char *)journal->sit_j.entries[0].se.valid_map);
 	journal->sit_j.entries[1].segno = cp->cur_node_segno[1];
 	journal->sit_j.entries[1].se.vblocks =
 				cpu_to_le16((CURSEG_WARM_NODE << 10));
@@ -707,21 +686,10 @@ static int f2fs_write_check_point_pack(void)
 				cpu_to_le16((CURSEG_COLD_NODE << 10));
 
 	/* data sit for root */
-#ifdef IPLFS_MIGRATION_IO	
-	journal->sit_j.entries[3].segno = cpu_to_le32(1); /* This is slot idx. */
-	journal->sit_j.entries[3].se.segno =
-				cpu_to_le64((uint64_t) le32_to_cpu(cp->cur_data_segno[0]));
-	MSG(0, "%s: 3 segno: %u se segno: %llu %lu\n", __func__, 
-			le32_to_cpu(journal->sit_j.entries[3].segno), 
-			le64_to_cpu(journal->sit_j.entries[3].se.segno), 
-			le32_to_cpu(cp->cur_node_segno[3])
-			);
-#else
 	journal->sit_j.entries[3].segno = cp->cur_data_segno[0];
-#endif
 	journal->sit_j.entries[3].se.vblocks =
 				cpu_to_le16((CURSEG_HOT_DATA << 10) | 1);
-	//f2fs_set_bit(0, (char *)journal->sit_j.entries[3].se.valid_map);
+	f2fs_set_bit(0, (char *)journal->sit_j.entries[3].se.valid_map);
 	journal->sit_j.entries[4].segno = cp->cur_data_segno[1];
 	journal->sit_j.entries[4].se.vblocks =
 				cpu_to_le16((CURSEG_WARM_DATA << 10));

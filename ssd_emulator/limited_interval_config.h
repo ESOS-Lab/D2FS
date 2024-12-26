@@ -15,39 +15,48 @@
 #define PCNT 10000
 #define MULTI_PARTITION_MTL
 #define MULTI_PARTITION_FTL
+#undef MULTI_WP
+#undef MULTI_GC_WP
 #define JWDBG_CONV_FTL
 #undef JWDBG_IO
 #undef GURANTEE_SEQ_WRITE
 #define DISCARD_ENABLED
+#undef GC_TEST
 
-#define GC_LATENCY
-
-#define EQUAL_IM_MEM
-#define CHIP_UTIL
 #undef ZERO_OP_AREA
 
+#define COMPACTION_OVERHEAD
+#undef PARTIAL_COMPACTION
 /* multi partition */
 #ifdef MULTI_PARTITION_FTL  
 
+#define WAF
+
+#define MEM_CALC
+#define MEM_CALC_32BIT
+
+#define COMPACTION_DIRTY_ONLY
+
+#define REFLECT_COMP_OVERHEAD
+
+#undef MEASURE_TAIL
 /* zone mapping */
-#define ZONE_MAPPING
+#undef ZONE_MAPPING
 #ifdef ZONE_MAPPING
 
 /* coupled gc */
-#define COUPLED_GC
-#define COUPLED_GC_MTL
+#undef COUPLED_GC
+#undef COUPLED_GC_MTL
 
-#define WAF
-#define MG_CMD_CNT
-#define CMD_CNT
-#define GC_LOG_MEM
+#undef MG_CMD_CNT
+#undef GC_LOG_MEM
 
-#define PRINT_PART_UTIL
+#undef GC_LOG_MERGE
+#undef SHIVAL
+#undef SHIVAL2
+#undef SHIVAL3
 
-#define GC_LOG_MERGE
-#define SEPARATE_GC_LOG
-
-#define TWO_GC_PARTITION
+#undef TWO_GC_PARTITION
 
 #define DEACTIVATE_SLIDING_WINDOW
 
@@ -63,12 +72,9 @@
 #undef GC_LOG_PRINT
 #undef GC_LOG_PRINT2
 #undef LINE_PRINT
-#undef GC_PRINT
 
 /* migration io */
-#define MIGRATION_IO
-
-#undef MG_HANDLER_DISABLED
+#undef MIGRATION_IO
 
 #endif
 /* ------ zone mapping end -------*/

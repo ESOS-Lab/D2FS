@@ -18,7 +18,7 @@
 #include "nvmev.h"
 #include "ssd.h"
 
-inline uint64_t __get_ioclock(struct ssd *ssd)
+static inline uint64_t __get_ioclock(struct ssd *ssd)
 {
 	return cpu_clock(ssd->cpu_nr_dispatcher);
 }
@@ -293,154 +293,7 @@ uint64_t ssd_advance_write_buffer(struct ssd *ssd, uint64_t request_time, uint64
     return nsecs_latest;
 }
 
-#ifdef GC_LATENCY
-#ifdef CHIP_UTIL
-uint64_t ssd_advance_nand_measure_latency(struct ssd *ssd, struct nand_cmd *ncmd, 
-		uint64_t *transfer_latency, uint64_t *op_latency,
-	   	uint64_t *nand_idle_t_sum, uint64_t *nand_active_t_sum)
-#else
-uint64_t ssd_advance_nand_measure_latency(struct ssd *ssd, struct nand_cmd *ncmd, 
-		uint64_t *transfer_latency, uint64_t *op_latency)
-#endif
-{
-    int c = ncmd->cmd;
-    uint64_t cmd_stime = (ncmd->stime == 0) ? __get_ioclock(ssd) : ncmd->stime;
-    uint64_t nand_stime, nand_etime;
-    uint64_t chnl_stime, chnl_etime;
-    uint64_t remaining, xfer_size, completed_time;
-    struct ssdparams *spp;
-    struct nand_lun *lun;
-    struct ssd_channel * ch;
-    struct ppa *ppa = ncmd->ppa;
-    uint32_t cell;
-	NVMEV_DEBUG("SSD: %p, Enter stime: %lld, ch %lu lun %lu blk %lu page %lu command %d ppa 0x%llx\n",
-                            ssd, ncmd->stime, ppa->g.ch, ppa->g.lun, ppa->g.blk, ppa->g.pg, c, ppa->ppa);
-
-    if (ppa->ppa == UNMAPPED_PPA) {
-		NVMEV_ERROR("Error ppa 0x%llx\n", ppa->ppa);
-		return cmd_stime;
-	}
-
-    spp = &ssd->sp;
-    lun = get_lun(ssd, ppa);
-    ch = get_ch(ssd, ppa);
-    cell = get_cell(ssd, ppa);
-    remaining = ncmd->xfer_size;
-
-    switch (c) {
-    case NAND_READ:
-        /* read: perform NAND cmd first */
-#ifdef CHIP_UTIL
-		if (lun->next_lun_avail_time < cmd_stime){
-			*nand_idle_t_sum += cmd_stime - lun->next_lun_avail_time;
-		}
-		//	printk("%s: read, hallaluya idle: %llu ns", __func__, cmd_stime - lun->next_lun_avail_time);
-#endif
-        nand_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : \
-                    lun->next_lun_avail_time;
-
-        if (ncmd->xfer_size == 4096) {
-            nand_etime = nand_stime + spp->pg_4kb_rd_lat[cell];
-		} else {
-            nand_etime = nand_stime + spp->pg_rd_lat[cell];
-		}
-
-		*op_latency = nand_etime - nand_stime;
-
-        /* read: then data transfer through channel */
-        chnl_stime = nand_etime;
-
-        while (remaining) {
-            xfer_size = min(remaining, (uint64_t)spp->max_ch_xfer_size);
-            chnl_etime = chmodel_request(ch->perf_model, chnl_stime, xfer_size);
-
-            if (ncmd->interleave_pci_dma) { /* overlap pci transfer with nand ch transfer*/
-                completed_time = ssd_advance_pcie(ssd, chnl_etime, xfer_size);
-			} else {
-                completed_time = chnl_etime;
-			}
-
-            remaining -= xfer_size;
-            chnl_stime = chnl_etime;
-        }
-
-		*transfer_latency = chnl_etime - nand_etime;
-
-        lun->next_lun_avail_time = chnl_etime;
-#ifdef CHIP_UTIL
-		*nand_active_t_sum += lun->next_lun_avail_time - nand_stime;
-#endif
-
-        break;
-
-    case NAND_WRITE:
-        /* write: transfer data through channel first */
-#ifdef CHIP_UTIL
-		if (lun->next_lun_avail_time < cmd_stime){
-			*nand_idle_t_sum += cmd_stime - lun->next_lun_avail_time;
-		}
-		//printk("%s: write, hallaluya idle: %llu ns", __func__, cmd_stime - lun->next_lun_avail_time);
-#endif
-        chnl_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : \
-                     lun->next_lun_avail_time;
-
-        chnl_etime = chmodel_request(ch->perf_model, chnl_stime, ncmd->xfer_size);
-		
-		*transfer_latency = chnl_etime - chnl_stime;
-
-        /* write: then do NAND program */
-        nand_stime = chnl_etime;
-        nand_etime = nand_stime + spp->pg_wr_lat;
-		
-		*op_latency = nand_etime - nand_stime;
-        
-		lun->next_lun_avail_time = nand_etime;
-        completed_time = nand_etime;
-#ifdef CHIP_UTIL
-		*nand_active_t_sum += lun->next_lun_avail_time - chnl_stime;
-#endif
-        break;
-
-    case NAND_ERASE:
-#ifdef CHIP_UTIL
-		if (lun->next_lun_avail_time < cmd_stime){
-			*nand_idle_t_sum += cmd_stime - lun->next_lun_avail_time;
-		}
-		//printk("%s: erase, hallaluya idle: %llu ns", __func__, cmd_stime - lun->next_lun_avail_time);
-#endif
-        /* erase: only need to advance NAND status */
-        nand_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : \
-                     lun->next_lun_avail_time;
-        nand_etime = nand_stime + spp->blk_er_lat;
-        lun->next_lun_avail_time = nand_etime;
-        completed_time = nand_etime;
-#ifdef CHIP_UTIL
-		*nand_active_t_sum += lun->next_lun_avail_time - nand_stime;
-#endif
-        break;
-
-    case NAND_NOP:
-        /* no operation: just return last completed time of lun */
-        nand_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : \
-                     lun->next_lun_avail_time;
-        lun->next_lun_avail_time = nand_stime;
-        completed_time = nand_stime;
-        break;
-
-    default:
-        NVMEV_ERROR("unsupported NAND command: 0x%x\n", c);
-    }
-
-    return completed_time;
-}
-#endif
-
-#ifdef CHIP_UTIL
-uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd, 
-		uint64_t *nand_idle_t_sum, uint64_t *nand_active_t_sum)
-#else
 uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd)
-#endif
 {
     int c = ncmd->cmd;
     uint64_t cmd_stime = (ncmd->stime == 0) ? __get_ioclock(ssd) : ncmd->stime;
@@ -452,7 +305,7 @@ uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd)
     struct ssd_channel * ch;
     struct ppa *ppa = ncmd->ppa;
     uint32_t cell;
-	NVMEV_DEBUG("SSD: %p, Enter stime: %lld, ch %lu lun %lu blk %lu page %lu command %d ppa 0x%llx\n",
+    NVMEV_DEBUG("SSD: %p, Enter stime: %lld, ch %lu lun %lu blk %lu page %lu command %d ppa 0x%llx\n",
                             ssd, ncmd->stime, ppa->g.ch, ppa->g.lun, ppa->g.blk, ppa->g.pg, c, ppa->ppa);
 
     if (ppa->ppa == UNMAPPED_PPA) {
@@ -469,12 +322,6 @@ uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd)
     switch (c) {
     case NAND_READ:
         /* read: perform NAND cmd first */
-#ifdef CHIP_UTIL
-		if (lun->next_lun_avail_time < cmd_stime){
-			*nand_idle_t_sum += cmd_stime - lun->next_lun_avail_time;
-		}
-		//printk("%s: read, hallaluya idle: %llu ns", __func__, cmd_stime - lun->next_lun_avail_time);
-#endif
         nand_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : \
                     lun->next_lun_avail_time;
 
@@ -502,18 +349,9 @@ uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd)
         }
 
         lun->next_lun_avail_time = chnl_etime;
-#ifdef CHIP_UTIL
-		*nand_active_t_sum += lun->next_lun_avail_time - nand_stime;
-#endif
         break;
 
     case NAND_WRITE:
-#ifdef CHIP_UTIL
-		if (lun->next_lun_avail_time < cmd_stime){
-			*nand_idle_t_sum += cmd_stime - lun->next_lun_avail_time;
-		}
-		//printk("%s: write, hallaluya idle: %llu ns", __func__, cmd_stime - lun->next_lun_avail_time);
-#endif
         /* write: transfer data through channel first */
         chnl_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : \
                      lun->next_lun_avail_time;
@@ -525,27 +363,15 @@ uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd)
         nand_etime = nand_stime + spp->pg_wr_lat;
         lun->next_lun_avail_time = nand_etime;
         completed_time = nand_etime;
-#ifdef CHIP_UTIL
-		*nand_active_t_sum += lun->next_lun_avail_time - chnl_stime;
-#endif
         break;
 
     case NAND_ERASE:
-#ifdef CHIP_UTIL
-		if (lun->next_lun_avail_time < cmd_stime){
-			*nand_idle_t_sum += cmd_stime - lun->next_lun_avail_time;
-		}
-		//printk("%s: erase, hallaluya idle: %llu ns", __func__, cmd_stime - lun->next_lun_avail_time);
-#endif
         /* erase: only need to advance NAND status */
         nand_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : \
                      lun->next_lun_avail_time;
         nand_etime = nand_stime + spp->blk_er_lat;
         lun->next_lun_avail_time = nand_etime;
         completed_time = nand_etime;
-#ifdef CHIP_UTIL
-		*nand_active_t_sum += lun->next_lun_avail_time - nand_stime;
-#endif
         break;
 
     case NAND_NOP:
@@ -557,7 +383,7 @@ uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd)
         break;
 
     default:
-        NVMEV_ERROR("unsupported NAND command: 0x%x\n", c);
+        NVMEV_ERROR("Unsupported NAND command: 0x%x\n", c);
     }
 
     return completed_time;

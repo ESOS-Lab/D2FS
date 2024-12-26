@@ -387,14 +387,6 @@ struct blk_mq_ops {
 	 */
 	void (*show_rq)(struct seq_file *m, struct request *rq);
 #endif
-
-#ifdef IPLFS_CALLBACK_IO
-	int (*setup_rev_queue)(struct request_queue *q, void *data, 
-			void (*wakeup_fn)(void *_data), 
-			void (*insert_fn)(void * __data, void *cmd));
-	void (*rev_queue_crq) (struct request_queue *q, __u16 command_id, unsigned int nsid);
-#endif
-
 };
 
 enum {
@@ -617,11 +609,5 @@ static inline void blk_rq_bio_prep(struct request *rq, struct bio *bio,
 blk_qc_t blk_mq_submit_bio(struct bio *bio);
 void blk_mq_hctx_set_fq_lock_class(struct blk_mq_hw_ctx *hctx,
 		struct lock_class_key *key);
-#ifdef IPLFS_CALLBACK_IO
-int blk_mq_setup_rev_queue(struct request_queue *q, void *data, 
-		void (*wakeup_fn)(void *_data), 
-		void (*insert_fn) (void *__data, void *cmd));
-void blk_mq_complete_migration_cmd(struct request_queue *q, __u16 command_id, unsigned int nsid);
-#endif
 
 #endif

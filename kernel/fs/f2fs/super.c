@@ -1332,10 +1332,10 @@ static void f2fs_put_super(struct super_block *sb)
 
 int f2fs_sync_fs_op(struct super_block *sb, int sync)
 {
-	return f2fs_sync_fs(sb, sync, false, false);
+	return f2fs_sync_fs(sb, sync, false);
 }
 
-int f2fs_sync_fs(struct super_block *sb, int sync, bool excess_prefree, bool excess_node)
+int f2fs_sync_fs(struct super_block *sb, int sync, bool excess_prefree)
 {
 	struct f2fs_sb_info *sbi = F2FS_SB(sb);
 	int err = 0;
@@ -1359,10 +1359,6 @@ int f2fs_sync_fs(struct super_block *sb, int sync, bool excess_prefree, bool exc
 			cpc.excess_prefree = true;
 		else
 			cpc.excess_prefree = false;
-		if (excess_node)
-			cpc.excess_nodes = true;
-		else
-			cpc.excess_nodes = false;
 
 		down_write(&sbi->gc_lock);
 		err = f2fs_write_checkpoint(sbi, &cpc);
@@ -1814,13 +1810,13 @@ restore_flag:
 static void f2fs_enable_checkpoint(struct f2fs_sb_info *sbi)
 {
 	down_write(&sbi->gc_lock);
-	f2fs_dirty_to_prefree(sbi);
+	//f2fs_dirty_to_prefree(sbi);
 
 	clear_sbi_flag(sbi, SBI_CP_DISABLED);
 	set_sbi_flag(sbi, SBI_IS_DIRTY);
 	up_write(&sbi->gc_lock);
 
-	f2fs_sync_fs(sbi->sb, 1, false, false);
+	f2fs_sync_fs(sbi->sb, 1, false);
 }
 
 static int f2fs_remount(struct super_block *sb, int *flags, char *data)
@@ -1941,13 +1937,13 @@ static int f2fs_remount(struct super_block *sb, int *flags, char *data)
 	if ((*flags & SB_RDONLY) ||
 			F2FS_OPTION(sbi).bggc_mode == BGGC_MODE_OFF) {
 		if (sbi->gc_thread) {
-			//f2fs_stop_gc_thread(sbi);
+			f2fs_stop_gc_thread(sbi);
 			need_restart_gc = true;
 		}
 	} else if (!sbi->gc_thread) {
-		//err = f2fs_start_gc_thread(sbi);
-		//if (err)
-		//	goto restore_opts;
+		err = f2fs_start_gc_thread(sbi);
+		if (err)
+			goto restore_opts;
 		need_stop_gc = true;
 	}
 
@@ -1957,7 +1953,7 @@ static int f2fs_remount(struct super_block *sb, int *flags, char *data)
 
 		set_sbi_flag(sbi, SBI_IS_DIRTY);
 		set_sbi_flag(sbi, SBI_IS_CLOSE);
-		f2fs_sync_fs(sb, 1, false, false);
+		f2fs_sync_fs(sb, 1, false);
 		clear_sbi_flag(sbi, SBI_IS_CLOSE);
 	}
 
@@ -1999,10 +1995,10 @@ skip:
 	return 0;
 restore_gc:
 	if (need_restart_gc) {
-		//if (f2fs_start_gc_thread(sbi))
-		//	f2fs_warn(sbi, "background gc thread has stopped");
+		if (f2fs_start_gc_thread(sbi))
+			f2fs_warn(sbi, "background gc thread has stopped");
 	} else if (need_stop_gc) {
-		//f2fs_stop_gc_thread(sbi);
+		f2fs_stop_gc_thread(sbi);
 	}
 restore_opts:
 #ifdef CONFIG_QUOTA
@@ -3106,7 +3102,6 @@ static void init_sb_info(struct f2fs_sb_info *sbi)
 	sbi->log_blocks_per_seg = le32_to_cpu(raw_super->log_blocks_per_seg);
 	sbi->blocks_per_seg = 1 << sbi->log_blocks_per_seg;
 	sbi->segs_per_sec = le32_to_cpu(raw_super->segs_per_sec);
-	printk("%s: segs_per_sec: %u", __func__, sbi->segs_per_sec);
 	sbi->secs_per_zone = le32_to_cpu(raw_super->secs_per_zone);
 	sbi->secs_per_zone = 8192;
 #if SUPERZONE == 0
@@ -3151,23 +3146,6 @@ static void init_sb_info(struct f2fs_sb_info *sbi)
 
 	init_rwsem(&sbi->sb_lock);
 	init_rwsem(&sbi->pin_sem);
-
-#ifdef FSYNC_LAT
-	spin_lock_init(&sbi->lat_lock);
-	sbi->fsync_node_wrt_cnt = 0;
-	sbi->fsync_node_wrt_lat = 0;
-#endif
-//#ifdef MG_HANDLER_WRITE_NODE
-	sbi->prev_cp_reason = CP_REASON_OTHERS;
-#ifdef MG_HANDLER_WRITE_NODE
-	atomic_set(&sbi->synced_node, 0);
-	atomic_set(&sbi->written_node, 0);
-
-	for (i = 0; i < N_SYNC_RATIO; i ++)
-		sbi->sync_ratio[i] = 0;
-	sbi->sync_idx = 0;
-	sbi->sync_avg = 0;
-#endif
 }
 
 static int init_percpu_info(struct f2fs_sb_info *sbi)
@@ -3655,7 +3633,6 @@ try_onemore:
 	}
 
 	init_rwsem(&sbi->cp_rwsem);
-	init_rwsem(&sbi->cp_rwsem_mg);
 	init_rwsem(&sbi->quota_sem);
 	init_waitqueue_head(&sbi->cp_wait);
 	init_sb_info(sbi);
@@ -3820,7 +3797,7 @@ try_onemore:
 	if (unlikely(is_set_ckpt_flags(sbi, CP_DISABLED_FLAG)))
 		goto reset_checkpoint;
 
-	/* recover discard journal */
+	/*discard discard journal*/
 	f2fs_recover_discard_journals(sbi);
 
 	/* recover fsynced data */
@@ -3895,9 +3872,9 @@ reset_checkpoint:
 	 */
 	if (F2FS_OPTION(sbi).bggc_mode != BGGC_MODE_OFF && !f2fs_readonly(sb)) {
 		/* After POR, we can run background GC thread.*/
-		//err = f2fs_start_gc_thread(sbi);
-		//if (err)
-		//	goto sync_free_meta;
+		err = f2fs_start_gc_thread(sbi);
+		if (err)
+			goto sync_free_meta;
 	}
 	kvfree(options);
 
@@ -4013,7 +3990,7 @@ static void kill_f2fs_super(struct super_block *sb)
 		struct f2fs_sb_info *sbi = F2FS_SB(sb);
 
 		set_sbi_flag(sbi, SBI_IS_CLOSE);
-		//f2fs_stop_gc_thread(sbi);
+		f2fs_stop_gc_thread(sbi);
 		f2fs_stop_discard_thread(sbi);
 
 		if (is_sbi_flag_set(sbi, SBI_IS_DIRTY) ||
@@ -4087,9 +4064,9 @@ static int __init init_f2fs_fs(void)
 	err = f2fs_create_extent_cache();
 	if (err)
 		goto free_checkpoint_caches;
-	//err = f2fs_create_garbage_collection_cache();
-	//if (err)
-	//	goto free_extent_cache;
+	err = f2fs_create_garbage_collection_cache();
+	if (err)
+		goto free_extent_cache;
 	err = f2fs_init_sysfs();
 	if (err)
 		goto free_garbage_collection_cache;
@@ -4132,8 +4109,8 @@ free_shrinker:
 free_sysfs:
 	f2fs_exit_sysfs();
 free_garbage_collection_cache:
-	//f2fs_destroy_garbage_collection_cache();
-//free_extent_cache:
+	f2fs_destroy_garbage_collection_cache();
+free_extent_cache:
 	f2fs_destroy_extent_cache();
 free_checkpoint_caches:
 	f2fs_destroy_checkpoint_caches();
@@ -4158,7 +4135,7 @@ static void __exit exit_f2fs_fs(void)
 	unregister_filesystem(&f2fs_fs_type);
 	unregister_shrinker(&f2fs_shrinker_info);
 	f2fs_exit_sysfs();
-	//f2fs_destroy_garbage_collection_cache();
+	f2fs_destroy_garbage_collection_cache();
 	f2fs_destroy_extent_cache();
 	f2fs_destroy_checkpoint_caches();
 	f2fs_destroy_segment_manager_caches();

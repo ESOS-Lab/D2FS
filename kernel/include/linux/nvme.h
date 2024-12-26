@@ -26,8 +26,6 @@
 
 #define NVME_NSID_ALL		0xffffffff
 
-#define NVME_IPLFS_CALLBACK_IO
-
 enum nvme_subsys_type {
 	NVME_NQN_DISC	= 1,		/* Discovery type target subsystem */
 	NVME_NQN_NVME	= 2,		/* NVME type target subsystem */
@@ -676,9 +674,6 @@ enum nvme_opcode {
 	nvme_cmd_compare	= 0x05,
 	nvme_cmd_write_zeroes	= 0x08,
 	nvme_cmd_dsm		= 0x09,
-#ifdef IPLFS_CALLBACK_IO
-	nvme_cmd_rev_mg		= 0x0a,
-#endif
 	nvme_cmd_verify		= 0x0c,
 	nvme_cmd_resv_register	= 0x0d,
 	nvme_cmd_resv_report	= 0x0e,
@@ -978,10 +973,6 @@ enum nvme_admin_opcode {
 	nvme_admin_get_features		= 0x0a,
 	nvme_admin_async_event		= 0x0c,
 	nvme_admin_ns_mgmt		= 0x0d,
-#ifdef NVME_IPLFS_CALLBACK_IO
-	nvme_admin_create_rev_sq		= 0x0e,
-	nvme_admin_create_rev_cq		= 0x0f,
-#endif
 	nvme_admin_activate_fw		= 0x10,
 	nvme_admin_download_fw		= 0x11,
 	nvme_admin_dev_self_test	= 0x14,
@@ -1156,38 +1147,6 @@ struct nvme_create_sq {
 	__le16			cqid;
 	__u32			rsvd12[4];
 };
-
-#ifdef NVME_IPLFS_CALLBACK_IO
-struct nvme_create_rev_sq {
-	__u8			opcode;
-	__u8			flags;
-	__u16			command_id;
-	__u32			rsvd1;
-	__le64			dma_pool_addr;	/* dma pool addr for reverse mg pairs */
-	__le64			dma_pool_size;	/* dma pool size for reverse mg pairs */
-	__le64			prp1;
-	__le64			dma_pool_addr2;	/* dma pool size for reverse mg pairs */
-	__le16			sqid;
-	__le16			qsize;
-	__le16			sq_flags;
-	__le16			irq_vector;
-	__u32			rsvd12[4];
-};
-
-struct nvme_create_rev_cq {
-	__u8			opcode;
-	__u8			flags;
-	__u16			command_id;
-	__u32			rsvd1[5];
-	__le64			prp1;
-	__u64			rsvd8;
-	__le16			cqid;
-	__le16			qsize;
-	__le16			cq_flags;
-	__le16			sqid;
-	__u32			rsvd12[4];
-};
-#endif
 
 struct nvme_delete_queue {
 	__u8			opcode;
@@ -1443,10 +1402,6 @@ struct nvme_command {
 		struct nvme_features features;
 		struct nvme_create_cq create_cq;
 		struct nvme_create_sq create_sq;
-#ifdef NVME_IPLFS_CALLBACK_IO
-		struct nvme_create_rev_sq create_rev_sq;
-		struct nvme_create_rev_cq create_rev_cq;
-#endif
 		struct nvme_delete_queue delete_queue;
 		struct nvme_download_firmware dlfw;
 		struct nvme_format_cmd format;
@@ -1632,62 +1587,12 @@ struct nvme_completion {
 		__le16	u16;
 		__le32	u32;
 		__le64	u64;
-		struct {
-			__le32 result0;
-			__le32 result1;
-		} rev_queue_hint; 
 	} result;
 	__le16	sq_head;	/* how much of this queue may be reclaimed */
 	__le16	sq_id;		/* submission queue that generated this entry */
 	__u16	command_id;	/* of the command which completed */
 	__le16	status;		/* did the command fail, and if so, why? */
 };
-
-#ifdef NVME_IPLFS_CALLBACK_IO
-
-#define NR_MG_PAIR	256
-
-struct mg_pair {
-	__le64	old_lba;
-	__le64	new_lba;
-};
-
-struct mg_pair_batch {
-	struct mg_pair	mg_pairs[NR_MG_PAIR];
-};
-
-/* migration command from device */
-struct nvme_mg_cmd {
-	__u8			opcode;
-	__u8			flags;
-	__u16			command_id;
-	__le32			nsid;
-	__u16			rsvd2[7];
-	__le16			phase;
-	union nvme_data_ptr	dptr;
-	__le32			nr;
-	__le32			attributes;
-	__u32			rsvd12[2];
-	void *			mg_batch_ptr;
-};
-
-struct nvme_rev_completion {
-	/*
-	 * Used by Admin and Fabrics commands to return data:
-	 */
-	union nvme_rev_result {
-		__le16	u16;
-		__le32	u32;
-		__le64	u64;
-	} result;
-	__le32	nsid;
-//	__le16	sq_head;	/* how much of this queue may be reclaimed */
-//	__le16	sq_id;		/* submission queue that generated this entry */
-	__u16	command_id;	/* of the command which completed */
-	__le16	status;		/* did the command fail, and if so, why? */
-};
-
-#endif
 
 #define NVME_VS(major, minor, tertiary) \
 	(((major) << 16) | ((minor) << 8) | (tertiary))

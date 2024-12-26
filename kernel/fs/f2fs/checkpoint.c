@@ -129,29 +129,29 @@ struct page *f2fs_get_tmp_page(struct f2fs_sb_info *sbi, pgoff_t index)
 	return __get_meta_page(sbi, index, false);
 }
 
-//static bool __is_bitmap_valid(struct f2fs_sb_info *sbi, block_t blkaddr,
-//							int type)
-//{
-//	struct seg_entry *se;
-//	unsigned int segno, offset;
-//	bool exist;
-//
-//	if (type != DATA_GENERIC_ENHANCE && type != DATA_GENERIC_ENHANCE_READ)
-//		return true;
-//
-//	segno = GET_SEGNO(sbi, blkaddr);
-//	offset = GET_BLKOFF_FROM_SEG0(sbi, blkaddr);
-//	se = get_seg_entry(sbi, segno);
-//
-//	exist = f2fs_test_bit(offset, se->cur_valid_map);
-//	if (!exist && type == DATA_GENERIC_ENHANCE) {
-//		f2fs_err(sbi, "Inconsistent error blkaddr:%u, sit bitmap:%d",
-//			 blkaddr, exist);
-//		set_sbi_flag(sbi, SBI_NEED_FSCK);
-//		WARN_ON(1);
-//	}
-//	return exist;
-//}
+static bool __is_bitmap_valid(struct f2fs_sb_info *sbi, block_t blkaddr,
+							int type)
+{
+	struct seg_entry *se;
+	unsigned int segno, offset;
+	bool exist;
+
+	if (type != DATA_GENERIC_ENHANCE && type != DATA_GENERIC_ENHANCE_READ)
+		return true;
+
+	segno = GET_SEGNO(sbi, blkaddr);
+	offset = GET_BLKOFF_FROM_SEG0(sbi, blkaddr);
+	se = get_seg_entry(sbi, segno);
+
+	exist = f2fs_test_bit(offset, se->cur_valid_map);
+	if (!exist && type == DATA_GENERIC_ENHANCE) {
+		f2fs_err(sbi, "Inconsistent error blkaddr:%u, sit bitmap:%d",
+			 blkaddr, exist);
+		set_sbi_flag(sbi, SBI_NEED_FSCK);
+		WARN_ON(1);
+	}
+	return exist;
+}
 
 bool f2fs_is_valid_blkaddr(struct f2fs_sb_info *sbi,
 					block_t blkaddr, int type)
@@ -160,7 +160,7 @@ bool f2fs_is_valid_blkaddr(struct f2fs_sb_info *sbi,
 	case META_NAT:
 		break;
 	case META_SIT:
-		if (unlikely(blkaddr >= SLOT_BLK_CNT(sbi)))
+		if (unlikely(blkaddr >= SIT_BLK_CNT(sbi)))
 			return false;
 		break;
 	case META_SSA:
@@ -200,9 +200,9 @@ bool f2fs_is_valid_blkaddr(struct f2fs_sb_info *sbi,
 		}
 		break;
 	case META_GENERIC:
-		//if (unlikely(blkaddr < SEG0_BLKADDR(sbi) ||
-		//	blkaddr >= MAIN_BLKADDR(sbi)))
-		//	return false;
+		if (unlikely(blkaddr < SEG0_BLKADDR(sbi) ||
+			blkaddr >= MAIN_BLKADDR(sbi)))
+			return false;
 		break;
 	default:
 		BUG();
@@ -250,13 +250,7 @@ int f2fs_ra_meta_pages(struct f2fs_sb_info *sbi, block_t start, int nrpages,
 					blkno * NAT_ENTRY_PER_BLOCK);
 			break;
 		case META_SIT:
-#ifndef IPLFS_CALLBACK_IO
 			if (unlikely(blkno >= TOTAL_SEGS(sbi)))
-#else
-			if (unlikely(blkno > MAIN_SEG_SLOTS(sbi)))
-				printk("shival!!!!!!!!!!!!!!!!!!!!!!");
-			if (unlikely(blkno > MAIN_SEG_SLOTS(sbi)))
-#endif
 				goto out;
 			/* get sit block addr */
 			fio.new_blkaddr = current_sit_addr(sbi,
@@ -273,10 +267,8 @@ int f2fs_ra_meta_pages(struct f2fs_sb_info *sbi, block_t start, int nrpages,
 
 		page = f2fs_grab_cache_page(META_MAPPING(sbi),
 						fio.new_blkaddr, false);
-		if (!page) {
-			printk("%s:  shival!!!!!!!!!!!!!!!!", __func__);
+		if (!page)
 			continue;
-		}
 		if (PageUptodate(page)) {
 			f2fs_put_page(page, 1);
 			continue;
@@ -1191,17 +1183,14 @@ static int block_operations(struct f2fs_sb_info *sbi)
 		.for_reclaim = 0,
 	};
 	int err = 0, cnt = 0;
+	//int nid7_was_synced = 0;
 	/*
 	 * Let's flush inline_data in dirty node pages.
 	 */
 	f2fs_flush_inline_data(sbi);
 
 retry_flush_quotas:
-	//printk("%s: bef cp_rwsem down", __func__);
 	f2fs_lock_all(sbi);
-	f2fs_lock_all_mg(sbi);
-	//printk("%s: aft cp_rwsem down", __func__);
-	
 	if (__need_flush_quota(sbi)) {
 		int locked;
 
@@ -1210,7 +1199,6 @@ retry_flush_quotas:
 			set_sbi_flag(sbi, SBI_QUOTA_NEED_FLUSH);
 			goto retry_flush_dents;
 		}
-		f2fs_unlock_all_mg(sbi);
 		f2fs_unlock_all(sbi);
 
 		/* only failed during mount/umount/freeze/quotactl */
@@ -1225,7 +1213,6 @@ retry_flush_quotas:
 retry_flush_dents:
 	/* write all the dirty dentry pages */
 	if (get_pages(sbi, F2FS_DIRTY_DENTS)) {
-		f2fs_unlock_all_mg(sbi);
 		f2fs_unlock_all(sbi);
 		err = f2fs_sync_dirty_inodes(sbi, DIR_INODE);
 		if (err)
@@ -1238,13 +1225,10 @@ retry_flush_dents:
 	 * POR: we should ensure that there are no dirty node pages
 	 * until finishing nat/sit flush. inode->i_blocks can be updated.
 	 */
-	//printk("%s: bef node_change down write", __func__);
 	down_write(&sbi->node_change);
-	//printk("%s: aft node_change down write", __func__);
 
 	if (get_pages(sbi, F2FS_DIRTY_IMETA)) {
 		up_write(&sbi->node_change);
-		f2fs_unlock_all_mg(sbi);
 		f2fs_unlock_all(sbi);
 		err = f2fs_sync_inode_meta(sbi);
 		if (err)
@@ -1254,25 +1238,29 @@ retry_flush_dents:
 	}
 
 retry_flush_nodes:
-	//printk("%s: bef node_write down write dirty_nodes: %d", __func__, 
-	//		get_pages(sbi, F2FS_DIRTY_NODES));
 	down_write(&sbi->node_write);
-	//printk("%s: aft node_write down write", __func__);
 
 	if (get_pages(sbi, F2FS_DIRTY_NODES)) {
 		up_write(&sbi->node_write);
 		atomic_inc(&sbi->wb_sync_req[NODE]);
-		err = f2fs_sync_node_pages(sbi, &wbc, false, FS_CP_NODE_IO);
+		//printk("[JW DBG] %s: Bef f2fs_sync_node_pages()\n", __func__);
+		err = f2fs_sync_node_pages(sbi, &wbc, false, FS_CP_NODE_IO);//, &nid7_was_synced);
 		atomic_dec(&sbi->wb_sync_req[NODE]);
 		if (err) {
 			up_write(&sbi->node_change);
-			f2fs_unlock_all_mg(sbi);
 			f2fs_unlock_all(sbi);
 			return err;
 		}
 		cond_resched();
 		goto retry_flush_nodes;
 	}
+	/*
+	if (nid7_was_synced){
+		//printk("[JW DBG] %s: nid7_was_synced = 1\n", __func__);
+		*nid7_syn = 1;
+		nid7_was_synced = 0;
+		//f2fs_bug_on(sbi, 1);	
+	}*/
 
 	/*
 	 * sbi->node_change is used only for AIO write_begin path which produces
@@ -1286,7 +1274,6 @@ retry_flush_nodes:
 static void unblock_operations(struct f2fs_sb_info *sbi)
 {
 	up_write(&sbi->node_write);
-	f2fs_unlock_all_mg(sbi);
 	f2fs_unlock_all(sbi);
 }
 
@@ -1442,7 +1429,7 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	struct f2fs_checkpoint *ckpt = F2FS_CKPT(sbi);
 	struct f2fs_nm_info *nm_i = NM_I(sbi);
 	unsigned long orphan_num = sbi->im[ORPHAN_INO].ino_num, flags;
-	block_t start_blk, end_of_discard_journal, discard_journal_start_blk, blk;
+	block_t start_blk;
 	unsigned int data_sum_blocks, orphan_blocks;
 	__u32 crc32 = 0;
 	int i;
@@ -1451,7 +1438,6 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	u64 kbytes_written;
 	int err;
 	struct dynamic_discard_map_control *ddmc = SM_I(sbi)->ddmc_info;
-	unsigned int discard_bitmap_segcnt, discard_range_cnt;
 
 	/* Flush all the NAT/SIT pages */
 	f2fs_sync_meta_pages(sbi, META, LONG_MAX, FS_CP_META_IO);
@@ -1477,8 +1463,8 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	}
 	
 	/*save discard journal block count to ckpt*/
-	discard_bitmap_segcnt = (unsigned int) atomic_read(&ddmc->dj_seg_cnt);
-	discard_range_cnt = (unsigned int) atomic_read(&ddmc->dj_range_cnt);
+	unsigned int discard_bitmap_segcnt = (unsigned int) atomic_read(&ddmc->dj_seg_cnt);
+	unsigned int discard_range_cnt = (unsigned int) atomic_read(&ddmc->dj_range_cnt);
 	ckpt->discard_journal_block_count = cpu_to_le32(
 			DISCARD_JOURNAL_BITMAP_BLOCKS(discard_bitmap_segcnt)
 			+ DISCARD_JOURNAL_RANGE_BLOCKS(discard_range_cnt)); 
@@ -1519,12 +1505,13 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 
 	start_blk = __start_cp_next_addr(sbi);
 	
-	end_of_discard_journal = 0;
+	block_t end_of_discard_journal = 0;
 	/*end_of_disard_journal is boundary that limits discard journaling in ckpt*/
 	end_of_discard_journal = start_blk + sbi->blocks_per_seg;
 	/* write nat bits */
 	if (enabled_nat_bits(sbi, cpc)) {
 		__u64 cp_ver = cur_cp_version(ckpt);
+		block_t blk;
 
 		cp_ver |= ((__u64)crc32 << 32);
 		*(__le64 *)nm_i->nat_bits = cpu_to_le64(cp_ver);
@@ -1564,10 +1551,10 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	}
 
 	/* write discard journals. discard journal follows 2nd cp pack*/	
-	discard_journal_start_blk = 0;
+	block_t discard_journal_start_blk = 0;
 	discard_journal_start_blk = start_blk+1; //add + 1 to for 2nd cp pack
 	//printk("[JW DBG] %s: start_blk: %u\n", __func__, start_blk);
-	//f2fs_write_discard_journals(sbi, discard_journal_start_blk, end_of_discard_journal);
+	f2fs_write_discard_journals(sbi, discard_journal_start_blk, end_of_discard_journal);
 
 	/* update user_block_counts */
 	sbi->last_valid_block_count = sbi->total_valid_block_count;
@@ -1633,21 +1620,10 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	unsigned long long ckpt_ver;
 	int err = 0;
 	struct dynamic_discard_map_control *ddmc = SM_I(sbi)->ddmc_info;
-
-#ifdef MIGRATION_HANDLING_LATENCY
-	unsigned long long tstart_, tend_;
-	unsigned long long tstart, tend;
-#endif
-	
-
-#ifdef MIGRATION_HANDLING_LATENCY
-	printk("%s: %s cp start", __func__, current->comm);	
-	tstart_ = OS_TimeGetUS();
-#endif
-
-	
-	//mutex_lock(&ddmc->ddm_lock);	
-	//mutex_unlock(&ddmc->ddm_lock);	
+	struct dynamic_discard_map *ddm, *tmpddm;
+	struct list_head *history_head_ddm = &ddmc->history_head;
+	//int nid7_syn = 0;
+	//static int jw_cp_cnt = 0;
 	if (f2fs_readonly(sbi->sb) || f2fs_hw_is_readonly(sbi))
 		return -EROFS;
 
@@ -1660,8 +1636,16 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	if (cpc->excess_prefree && !excess_prefree_segs(sbi))
 		return 0;
 	
-	if (cpc->excess_nodes && !(excess_dirty_nats(sbi) || excess_dirty_nodes(sbi)))
-		return 0;
+	//mutex_lock(&ddmc->ddm_lock);	
+	////printk("f2fs CP start!! ddmc node cnt: %d\n", ddmc->node_cnt);
+	///*printk("f2fs CP start!! total_inv_blk_cnt: %d, total_val_blk_cnt: %d\n", \
+	//		ddmc->total_inv_blk_cnt, \
+	//		ddmc->total_val_blk_cnt);
+	//		*/
+	//printk("f2fs CP start!! total_inv_blk_cnt: %d MB, total_val_blk_cnt: %d MB\n", \
+	//		atomic_read(&ddmc->total_inv_blk_cnt)*4/1024, \
+	//		atomic_read(&ddmc->total_val_blk_cnt)*4/1024);
+	//mutex_unlock(&ddmc->ddm_lock);	
 
 	if (cpc->reason != CP_RESIZE)
 		down_write(&sbi->cp_global_sem);
@@ -1676,53 +1660,23 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	}
 
 	trace_f2fs_write_checkpoint(sbi->sb, cpc->reason, "start block_ops");
-	//printk("%s: bef block operations", __func__);
 
-
-//#ifdef MG_HANDLER_WRITE_NODE
-	sbi->prev_cp_reason = (cpc->excess_nodes)? \
-						  CP_REASON_EXCESS_DIRTY_NODE :
-						  (cpc->excess_prefree)?
-						  CP_REASON_EXCESS_PREFREE:
-						  CP_REASON_OTHERS ;
-	//printk("%s: cp reason: %u", __func__, sbi->prev_cp_reason);
-	//dump_stack();
-//#endif
-
-#ifdef MIGRATION_HANDLING_LATENCY
-	tstart = OS_TimeGetUS();
-#endif
 	err = block_operations(sbi);
-	//printk("%s: f2fs CP start!!", __func__);
-//	printk("f2fs CP start!! total_inv_blk_cnt: %d MB, total_val_blk_cnt: %d MB\n", \
-//			atomic_read(&ddmc->total_inv_blk_cnt)*4/1024, \
-//			atomic_read(&ddmc->total_val_blk_cnt)*4/1024);
+	//printk("f2fs CP start!! total_inv_blk_cnt: %d MB, total_val_blk_cnt: %d MB\n", \
+	//		atomic_read(&ddmc->total_inv_blk_cnt)*4/1024, \
+	//		atomic_read(&ddmc->total_val_blk_cnt)*4/1024);
 
-#ifdef MIGRATION_HANDLING_LATENCY
-	tend = OS_TimeGetUS();
-	unsigned long long block_op_lat = tend - tstart;
-#endif
 
 	if (err)
 		goto out;
 
 	trace_f2fs_write_checkpoint(sbi->sb, cpc->reason, "finish block_ops");
 
-	//printk("%s: bef flush_merged_writes", __func__);
-#ifdef MIGRATION_HANDLING_LATENCY
-	tstart = OS_TimeGetUS();
-#endif
 	f2fs_flush_merged_writes(sbi);
-	//printk("%s: flush_merged_writes done", __func__);
-#ifdef MIGRATION_HANDLING_LATENCY
-	tend = OS_TimeGetUS();
-	unsigned long long flush_merge_lat = tend - tstart;
-#endif
 
 	/* this is the case of multiple fstrims without any changes */
 	if (cpc->reason & CP_DISCARD) {
-		printk("%s: not prepared to CP_DISCARD\n", __func__);
-		f2fs_bug_on(sbi, 1);
+		panic("f2fs_write_checkpoint: not prepared to CP_DISCARD\n");
 		/*
 		if (!f2fs_exist_trim_candidates(sbi, cpc)) {
 			unblock_operations(sbi);
@@ -1747,110 +1701,40 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	ckpt_ver = cur_cp_version(ckpt);
 	ckpt->checkpoint_ver = cpu_to_le64(++ckpt_ver);
 
-#ifdef MIGRATION_HANDLING_LATENCY
-	tstart = OS_TimeGetUS();
-#endif
 	/* write cached NAT/SIT entries to NAT/SIT area */
 	err = f2fs_flush_nat_entries(sbi, cpc);
-#ifdef MIGRATION_HANDLING_LATENCY
-	tend = OS_TimeGetUS();
-	unsigned long long flush_nat_lat = tend - tstart;
-#endif
-	//printk("%s: flush_nat entries done, err: %d", __func__, err);
 	if (err)
 		goto stop;
-	
-	spin_lock(&SM_I(sbi)->dcnt_info->lock);
-	//printk("%s: dce cnt: %u", __func__, SM_I(sbi)->dcnt_info->total_dce_cnt);
-	SM_I(sbi)->dcnt_info->last_total_dce_cnt = SM_I(sbi)->dcnt_info->total_dce_cnt;
-	spin_unlock(&SM_I(sbi)->dcnt_info->lock);
-	
-#ifdef MIGRATION_HANDLING_LATENCY
-	tstart = OS_TimeGetUS();
-#endif
 
+	//printk("[JW DBG] %s: CP START!!\n", __func__);
 	mutex_lock(&SM_I(sbi)->ddmc_info->ddm_lock);	
 	flush_dynamic_discard_maps(sbi, cpc);
 	mutex_unlock(&SM_I(sbi)->ddmc_info->ddm_lock);	
-#ifdef MIGRATION_HANDLING_LATENCY
-	tend = OS_TimeGetUS();
-	unsigned long long flush_ddm_lat = tend - tstart;
-#endif
-	
-	//spin_lock(&SM_I(sbi)->dcnt_info->lock);
-	//printk("%s: dce cnt: %u last dce cnt: %d delta dcmd: %d", __func__, 
-	//		SM_I(sbi)->dcnt_info->total_dce_cnt, 
-	//		SM_I(sbi)->dcnt_info->last_total_dce_cnt, 
-	//		//SM_I(sbi)->dcnt_info->total_dce_cnt - SM_I(sbi)->dcnt_info->last_total_dce_cnt, 
-	//		(SM_I(sbi)->dcnt_info->total_dce_cnt - SM_I(sbi)->dcnt_info->last_total_dce_cnt) / 256
-	//		);
-	//spin_unlock(&SM_I(sbi)->dcnt_info->lock);
 	
 
-#ifdef MIGRATION_HANDLING_LATENCY
-	tstart = OS_TimeGetUS();
-#endif
-	f2fs_flush_sit_entries(sbi, cpc);
-#ifdef MIGRATION_HANDLING_LATENCY
-	tend = OS_TimeGetUS();
-	unsigned long long flush_sit_lat = tend - tstart;
-#endif
+	//f2fs_flush_sit_entries(sbi, cpc);
+	//printk("f2fs flush end!! ddmc node cnt: %d\n", ddmc->node_cnt);
 	/* save inmem log status */
 	//f2fs_save_inmem_curseg(sbi);
 
-#ifdef MIGRATION_HANDLING_LATENCY
-	tstart = OS_TimeGetUS();
-#endif
 	err = do_checkpoint(sbi, cpc);
-	//printk("%s: do_checkpoint done , err: %d", __func__, err);
 
-#ifdef MIGRATION_HANDLING_LATENCY
-	tend = OS_TimeGetUS();
-	unsigned long long do_cp_lat = tend - tstart;
-#endif
 	/* Umount case: issue every discard journals, and remove all ddm nodes. */	
 	if (cpc->reason & CP_UMOUNT){
 		issue_and_clean_all_ddm(sbi);
 	}
 
-#ifdef MIGRATION_HANDLING_LATENCY
-	tstart = OS_TimeGetUS();
-#endif
 	if (err){
 		f2fs_release_discard_addrs(sbi);
 		printk("[JW DBG] %s: do_checkpoint returns error, not expected!, also modify f2fs_release_discard_addrs\n", __func__);
 	}
 	else
 		f2fs_clear_prefree_segments(sbi, cpc);
-#ifdef MIGRATION_HANDLING_LATENCY
-	tend = OS_TimeGetUS();
-	unsigned long long flush_clear_prefree_lat = tend - tstart;
-#endif
 
 	//f2fs_restore_inmem_curseg(sbi);
-#ifdef MIGRATION_HANDLING_LATENCY
-	tstart = OS_TimeGetUS();
-#endif
-#ifdef IPLFS_CALLBACK_IO
-	clear_prefree_slots(sbi);
-#ifdef MIGRATION_HANDLING_LATENCY
-	tend = OS_TimeGetUS();
-	unsigned long long flush_prefree_slot_lat = tend - tstart;
-#endif
-#ifdef MIGRATION_HANDLING_LATENCY
-	tstart = OS_TimeGetUS();
-#endif
-	clear_precompleted_mg_cmds(sbi);
-#ifdef MIGRATION_HANDLING_LATENCY
-	tend = OS_TimeGetUS();
-	unsigned long long flush_precomple_lat = tend - tstart;
-#endif
-	//printk("%s: clear precompleted mg cmds done ", __func__);
-#endif
 stop:
 	unblock_operations(sbi);
 	stat_inc_cp_count(sbi->stat_info);
-	//printk("%s: unblock operations  done", __func__);
 
 	if (cpc->reason & CP_RECOVERY)
 		f2fs_notice(sbi, "checkpoint: version = %llx", ckpt_ver);
@@ -1861,18 +1745,16 @@ stop:
 out:
 	if (cpc->reason != CP_RESIZE)
 		up_write(&sbi->cp_global_sem);
-
-//#ifdef IPLFS_CALLBACK_IO
-//	complete_migration_cmds(sbi);
-//#endif
-//	printk("f2fs CP end!!"); 
-
-#ifdef MIGRATION_HANDLING_LATENCY
-	tend_ = OS_TimeGetUS();
-	printk("%s: %s cp done. duration: %llu (block_op: %llu flush_merge: %llu nat: %llu ddm: %llu sit: %llu docp: %llu prefree: %llu slot: %llu precomple: %llu) usec", __func__, current->comm, tend_-tstart_, 
-			block_op_lat, flush_merge_lat, flush_nat_lat, flush_ddm_lat, flush_sit_lat,
-	    do_cp_lat, flush_clear_prefree_lat, flush_prefree_slot_lat, flush_precomple_lat);
-#endif
+	/*if (nid7_syn){
+		printk("[JW DBG] %s: fin cp: intended bug\n", __func__);
+		f2fs_bug_on(sbi, 1);
+	}*/
+	/*jw_cp_cnt += 1;
+	printk("f2fs CP end!!"); 
+	if (jw_cp_cnt == 3){
+		printk("[JW DBG] %s: fin %ds cp: intended bug\n", __func__, jw_cp_cnt);
+		f2fs_bug_on(sbi, 1);
+	}*/
 	return err;
 }
 

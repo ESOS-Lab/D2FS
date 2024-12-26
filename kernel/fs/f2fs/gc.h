@@ -49,123 +49,123 @@ struct gc_inode_list {
 	struct radix_tree_root iroot;
 };
 
-//struct victim_info {
-//	unsigned long long mtime;	/* mtime of section */
-//	unsigned int segno;		/* section No. */
-//};
-//
-//struct victim_entry {
-//	struct rb_node rb_node;		/* rb node located in rb-tree */
-//	union {
-//		struct {
-//			unsigned long long mtime;	/* mtime of section */
-//			unsigned int segno;		/* segment No. */
-//		};
-//		struct victim_info vi;	/* victim info */
-//	};
-//	struct list_head list;
-//};
-//
-///*
-// * inline functions
-// */
-//
-///*
-// * On a Zoned device zone-capacity can be less than zone-size and if
-// * zone-capacity is not aligned to f2fs segment size(2MB), then the segment
-// * starting just before zone-capacity has some blocks spanning across the
-// * zone-capacity, these blocks are not usable.
-// * Such spanning segments can be in free list so calculate the sum of usable
-// * blocks in currently free segments including normal and spanning segments.
-// */
-//static inline block_t free_segs_blk_count_zoned(struct f2fs_sb_info *sbi)
-//{
-//	block_t free_seg_blks = 0;
-//	struct free_segmap_info *free_i = FREE_I(sbi);
-//	int j;
-//
-//	spin_lock(&free_i->segmap_lock);
-//	for (j = 0; j < MAIN_SEGS(sbi); j++)
-//		if (!test_bit(j, free_i->free_segmap))
-//			free_seg_blks += f2fs_usable_blks_in_seg(sbi, j);
-//	spin_unlock(&free_i->segmap_lock);
-//
-//	return free_seg_blks;
-//}
-//
-//static inline block_t free_segs_blk_count(struct f2fs_sb_info *sbi)
-//{
-//	if (f2fs_sb_has_blkzoned(sbi))
-//		return free_segs_blk_count_zoned(sbi);
-//
-//	return free_segments(sbi) << sbi->log_blocks_per_seg;
-//}
-//
-//static inline block_t free_user_blocks(struct f2fs_sb_info *sbi)
-//{
-//	block_t free_blks, ovp_blks;
-//
-//	free_blks = free_segs_blk_count(sbi);
-//	ovp_blks = overprovision_segments(sbi) << sbi->log_blocks_per_seg;
-//
-//	if (free_blks < ovp_blks)
-//		return 0;
-//
-//	return free_blks - ovp_blks;
-//}
-//
-//static inline block_t limit_invalid_user_blocks(struct f2fs_sb_info *sbi)
-//{
-//	return (long)(sbi->user_block_count * LIMIT_INVALID_BLOCK) / 100;
-//}
-//
-//static inline block_t limit_free_user_blocks(struct f2fs_sb_info *sbi)
-//{
-//	block_t reclaimable_user_blocks = sbi->user_block_count -
-//		written_block_count(sbi);
-//	return (long)(reclaimable_user_blocks * LIMIT_FREE_BLOCK) / 100;
-//}
-//
-//static inline void increase_sleep_time(struct f2fs_gc_kthread *gc_th,
-//							unsigned int *wait)
-//{
-//	unsigned int min_time = gc_th->min_sleep_time;
-//	unsigned int max_time = gc_th->max_sleep_time;
-//
-//	if (*wait == gc_th->no_gc_sleep_time)
-//		return;
-//
-//	if ((long long)*wait + (long long)min_time > (long long)max_time)
-//		*wait = max_time;
-//	else
-//		*wait += min_time;
-//}
-//
-//static inline void decrease_sleep_time(struct f2fs_gc_kthread *gc_th,
-//							unsigned int *wait)
-//{
-//	unsigned int min_time = gc_th->min_sleep_time;
-//
-//	if (*wait == gc_th->no_gc_sleep_time)
-//		*wait = gc_th->max_sleep_time;
-//
-//	if ((long long)*wait - (long long)min_time < (long long)min_time)
-//		*wait = min_time;
-//	else
-//		*wait -= min_time;
-//}
-//
-//static inline bool has_enough_invalid_blocks(struct f2fs_sb_info *sbi)
-//{
-//	block_t invalid_user_blocks = sbi->user_block_count -
-//					written_block_count(sbi);
-//	/*
-//	 * Background GC is triggered with the following conditions.
-//	 * 1. There are a number of invalid blocks.
-//	 * 2. There is not enough free space.
-//	 */
-//	if (invalid_user_blocks > limit_invalid_user_blocks(sbi) &&
-//			free_user_blocks(sbi) < limit_free_user_blocks(sbi))
-//		return true;
-//	return false;
-//}
+struct victim_info {
+	unsigned long long mtime;	/* mtime of section */
+	unsigned int segno;		/* section No. */
+};
+
+struct victim_entry {
+	struct rb_node rb_node;		/* rb node located in rb-tree */
+	union {
+		struct {
+			unsigned long long mtime;	/* mtime of section */
+			unsigned int segno;		/* segment No. */
+		};
+		struct victim_info vi;	/* victim info */
+	};
+	struct list_head list;
+};
+
+/*
+ * inline functions
+ */
+
+/*
+ * On a Zoned device zone-capacity can be less than zone-size and if
+ * zone-capacity is not aligned to f2fs segment size(2MB), then the segment
+ * starting just before zone-capacity has some blocks spanning across the
+ * zone-capacity, these blocks are not usable.
+ * Such spanning segments can be in free list so calculate the sum of usable
+ * blocks in currently free segments including normal and spanning segments.
+ */
+static inline block_t free_segs_blk_count_zoned(struct f2fs_sb_info *sbi)
+{
+	block_t free_seg_blks = 0;
+	struct free_segmap_info *free_i = FREE_I(sbi);
+	int j;
+
+	spin_lock(&free_i->segmap_lock);
+	for (j = 0; j < MAIN_SEGS(sbi); j++)
+		if (!test_bit(j, free_i->free_segmap))
+			free_seg_blks += f2fs_usable_blks_in_seg(sbi, j);
+	spin_unlock(&free_i->segmap_lock);
+
+	return free_seg_blks;
+}
+
+static inline block_t free_segs_blk_count(struct f2fs_sb_info *sbi)
+{
+	if (f2fs_sb_has_blkzoned(sbi))
+		return free_segs_blk_count_zoned(sbi);
+
+	return free_segments(sbi) << sbi->log_blocks_per_seg;
+}
+
+static inline block_t free_user_blocks(struct f2fs_sb_info *sbi)
+{
+	block_t free_blks, ovp_blks;
+
+	free_blks = free_segs_blk_count(sbi);
+	ovp_blks = overprovision_segments(sbi) << sbi->log_blocks_per_seg;
+
+	if (free_blks < ovp_blks)
+		return 0;
+
+	return free_blks - ovp_blks;
+}
+
+static inline block_t limit_invalid_user_blocks(struct f2fs_sb_info *sbi)
+{
+	return (long)(sbi->user_block_count * LIMIT_INVALID_BLOCK) / 100;
+}
+
+static inline block_t limit_free_user_blocks(struct f2fs_sb_info *sbi)
+{
+	block_t reclaimable_user_blocks = sbi->user_block_count -
+		written_block_count(sbi);
+	return (long)(reclaimable_user_blocks * LIMIT_FREE_BLOCK) / 100;
+}
+
+static inline void increase_sleep_time(struct f2fs_gc_kthread *gc_th,
+							unsigned int *wait)
+{
+	unsigned int min_time = gc_th->min_sleep_time;
+	unsigned int max_time = gc_th->max_sleep_time;
+
+	if (*wait == gc_th->no_gc_sleep_time)
+		return;
+
+	if ((long long)*wait + (long long)min_time > (long long)max_time)
+		*wait = max_time;
+	else
+		*wait += min_time;
+}
+
+static inline void decrease_sleep_time(struct f2fs_gc_kthread *gc_th,
+							unsigned int *wait)
+{
+	unsigned int min_time = gc_th->min_sleep_time;
+
+	if (*wait == gc_th->no_gc_sleep_time)
+		*wait = gc_th->max_sleep_time;
+
+	if ((long long)*wait - (long long)min_time < (long long)min_time)
+		*wait = min_time;
+	else
+		*wait -= min_time;
+}
+
+static inline bool has_enough_invalid_blocks(struct f2fs_sb_info *sbi)
+{
+	block_t invalid_user_blocks = sbi->user_block_count -
+					written_block_count(sbi);
+	/*
+	 * Background GC is triggered with the following conditions.
+	 * 1. There are a number of invalid blocks.
+	 * 2. There is not enough free space.
+	 */
+	if (invalid_user_blocks > limit_invalid_user_blocks(sbi) &&
+			free_user_blocks(sbi) < limit_free_user_blocks(sbi))
+		return true;
+	return false;
+}

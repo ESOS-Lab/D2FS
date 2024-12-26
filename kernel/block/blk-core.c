@@ -744,6 +744,73 @@ static inline int bio_check_eod(struct bio *bio, sector_t maxsector)
 	return 0;
 }
 /*
+static inline int juwon_out_of_sector(struct bio *bio, char* message)
+{
+	unsigned int nr_sectors = bio_sectors(bio);
+	sector_t maxsector = get_capacity(bio->bi_disk);
+
+	if (nr_sectors && maxsector &&
+	    (nr_sectors > maxsector ||
+	     bio->bi_iter.bi_sector > maxsector - nr_sectors)) {
+		printk("[JW DBG] (%s) bio->bi_iter.bi_sector: %lld, maxsector-nr_sectors: %lld\n", message, bio->bi_iter.bi_sector  , maxsector - nr_sectors);
+		//handle_bad_sector(bio, maxsector);
+		//return -EIO;
+		return 0;
+	}
+	return 0;
+}
+*/
+/*
+static inline int juwon_chk_bio_check_eod_fail_submit_bio_noacct(struct bio *bio, sector_t maxsector)
+{
+	unsigned int nr_sectors = bio_sectors(bio);
+
+	if (nr_sectors && maxsector &&
+	    (nr_sectors > maxsector ||
+	     bio->bi_iter.bi_sector > maxsector - nr_sectors)) {
+		printk("[JW DBG] (%s) bio->bi_iter.bi_sector: %lld, maxsector-nr_sectors: %lld\n", __func__, bio->bi_iter.bi_sector  , maxsector - nr_sectors);
+		//handle_bad_sector(bio, maxsector);
+		//return -EIO;
+		return 0;
+	}
+	return 0;
+}
+*/
+
+/*
+static inline int juwon_chk_bef_driver_submit_bio(struct bio *bio, sector_t maxsector)
+{
+	unsigned int nr_sectors = bio_sectors(bio);
+
+	if (nr_sectors && maxsector &&
+	    (nr_sectors > maxsector ||
+	     bio->bi_iter.bi_sector > maxsector - nr_sectors)) {
+		printk("[JW DBG] (%s) bio->bi_iter.bi_sector: %lld, maxsector-nr_sectors: %lld\n", __func__, bio->bi_iter.bi_sector  , maxsector - nr_sectors);
+		//handle_bad_sector(bio, maxsector);
+		//return -EIO;
+		return 0;
+	}
+	return 0;
+}
+
+*/
+/*
+static inline int juwon_chk_bef_blk_mq_submit_bio(struct bio *bio, sector_t maxsector)
+{
+	unsigned int nr_sectors = bio_sectors(bio);
+
+	if (nr_sectors && maxsector &&
+	    (nr_sectors > maxsector ||
+	     bio->bi_iter.bi_sector > maxsector - nr_sectors)) {
+		printk("[JW DBG] (%s) bio->bi_iter.bi_sector: %lld, maxsector-nr_sectors: %lld\n", __func__, bio->bi_iter.bi_sector  , maxsector - nr_sectors);
+		//handle_bad_sector(bio, maxsector);
+		//return -EIO;
+		return 0;
+	}
+	return 0;
+}
+*/
+/*
  * Remap block n of partition p to block n+start(p) of the disk.
  */
 static inline int blk_partition_remap(struct bio *bio)
@@ -1140,25 +1207,6 @@ blk_qc_t submit_bio(struct bio *bio)
 	return submit_bio_noacct(bio);
 }
 EXPORT_SYMBOL(submit_bio);
-
-#ifdef IPLFS_CALLBACK_IO
-int submit_bio_setup_rev_queue(struct request_queue *q, void *data, 
-		void (*wakeup_fn) (void *_data), 
-		void (*insert_fn) (void *__data, void *cmd))
-{
-	return blk_mq_setup_rev_queue(q, data, wakeup_fn, insert_fn);
-}
-EXPORT_SYMBOL(submit_bio_setup_rev_queue);
-
-void complete_migration_cmd(struct request_queue *q, __u16 command_id, unsigned int nsid)
-{
-	blk_mq_complete_migration_cmd(q, command_id, nsid);
-	//printk("%s: command id: %u nsid: %u", __func__, command_id, nsid);
-}
-EXPORT_SYMBOL(complete_migration_cmd);
-
-
-#endif
 
 /**
  * blk_cloned_rq_check_limits - Helper function to check a cloned request

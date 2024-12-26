@@ -1753,7 +1753,7 @@ static void flush_curseg_sit_entries(struct f2fs_sb_info *sbi)
 	for (i = 0; i < NO_CHECK_TYPE; i++) {
 		struct curseg_info *curseg = CURSEG_I(sbi, i);
 		struct f2fs_sit_block *sit_blk;
-		struct f2fs_old_sit_entry *sit;
+		struct f2fs_sit_entry *sit;
 		struct seg_entry *se;
 
 		se = get_seg_entry(sbi, curseg->segno);

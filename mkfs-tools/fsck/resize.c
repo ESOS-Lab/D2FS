@@ -376,7 +376,7 @@ static void migrate_sit(struct f2fs_sb_info *sbi,
 	}
 
 	for (segno = 0; segno < TOTAL_SEGS(sbi); segno++) {
-		struct f2fs_old_sit_entry *sit;
+		struct f2fs_sit_entry *sit;
 
 		se = get_seg_entry(sbi, segno);
 		if (segno < offset) {

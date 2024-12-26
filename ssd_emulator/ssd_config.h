@@ -113,6 +113,8 @@ enum {
 
 #define SSD_PARTITIONS       (4)
 #define SSD_PARTITION_BITS   (2)
+//#define SSD_PARTITIONS       (8)
+//#define SSD_PARTITION_BITS   (3)
 #define NAND_CHANNELS        (8)
 #define LUNS_PER_NAND_CH     (2)
 #define PLNS_PER_LUN         (1)

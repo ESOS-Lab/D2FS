@@ -43,7 +43,6 @@ struct convparams {
 	int bitmask_channel;
 	int bitmask_lun;
 	int bitmask_oneshotpg;
-	int remainder_oneshotpg;
 
 	int divider_channel;
 	int divider_lun;
@@ -119,39 +118,36 @@ struct conv_ftl {
 
     struct convparams cp;
 
+    unsigned long npages_meta;	/* # of lpns in metadata partition */
+    unsigned long npages_main;	/* # of lpns in metadata partition */
+	struct nvmev_ns *ns;
 #ifdef ZONE_MAPPING
-	unsigned long npages_meta;	/* # of lpns in metadata partition */
-#ifdef EQUAL_IM_MEM
-	unsigned long npages_main;	/* # of lpns in metadata partition */
-#endif
-	unsigned long nzones_per_partition;	/* # of logical zones in each partition */
+    unsigned long nzones_per_partition;	/* # of logical zones in each partition */
     unsigned long nzones_per_gc_partition;	/* # of logical zones in each partition */
 #ifdef COUPLED_GC
 	unsigned int no_part;				/* ftl number to recover lpn from local lpn */
-	struct nvmev_ns *ns;
 	struct window_mgmt wm[NO_USER_PARTITION];
 #endif
 #endif
 
-#ifdef MULTI_PARTITION_FTL
     struct ppa *maptbl[NO_TYPE]; /* page level mapping table */
+#ifdef MULTI_WP
     struct write_pointer wp[NO_USER_PARTITION];
     struct write_flow_control wfc[NO_USER_PARTITION];
 #else
-    struct ppa *maptbl; /* page level mapping table */
     struct write_pointer wp;
     struct write_flow_control wfc;
 #endif
+#ifdef MULTI_GC_WP
+    struct write_pointer gc_wp[NO_GC_WP];
+#else
     struct write_pointer gc_wp;
+#endif
     uint64_t *rmap;     /* reverse mapptbl, assume it's stored in OOB */
     struct line_mgmt lm;
 
-	int64_t valid_zone_cnt[NO_USER_PARTITION];
-	int64_t gc_free_zone_cnt[NO_USER_PARTITION];
-#ifdef EQUAL_IM_MEM
-	struct ppa *redundant;
-#endif
-	uint64_t total_valid_zone_cnt;
+	//int64_t valid_zone_cnt[NO_USER_PARTITION];
+	//int64_t gc_free_zone_cnt[NO_USER_PARTITION];
 };
 
 

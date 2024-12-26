@@ -1123,15 +1123,10 @@ static void __set_data_blkaddr(struct dnode_of_data *dn)
  */
 void f2fs_set_data_blkaddr(struct dnode_of_data *dn)
 {
-	struct f2fs_sb_info *sbi = F2FS_I_SB(dn->inode);
-	struct migration_control *mgc = SM_I(sbi)->mgc_info;
 	f2fs_wait_on_page_writeback(dn->node_page, NODE, true, true);
 	__set_data_blkaddr(dn);
-	if (set_page_dirty(dn->node_page)) {
-		atomic_inc(&mgc->dirty_node_pgs);
+	if (set_page_dirty(dn->node_page))
 		dn->node_changed = true;
-	}
-	atomic_inc(&mgc->updated_node_pgs);
 }
 
 void f2fs_update_data_blkaddr(struct dnode_of_data *dn, block_t blkaddr)
@@ -1140,55 +1135,6 @@ void f2fs_update_data_blkaddr(struct dnode_of_data *dn, block_t blkaddr)
 	f2fs_set_data_blkaddr(dn);
 	f2fs_update_extent_cache(dn);
 }
-
-void f2fs_set_data_blkaddr_test(struct dnode_of_data *dn)
-{
-	f2fs_wait_on_page_writeback(dn->node_page, NODE, true, true);
-	__set_data_blkaddr(dn);
-	if (set_page_dirty(dn->node_page)) {
-		//atomic_inc(&mgc->dirty_node_pgs);
-
-		dn->node_changed = true;
-	}
-	//atomic_inc(&mgc->updated_node_pgs);
-}
-
-void f2fs_update_data_blkaddr_test(struct dnode_of_data *dn, block_t blkaddr)
-{
-	dn->data_blkaddr = blkaddr;
-	f2fs_set_data_blkaddr_test(dn);
-	f2fs_update_extent_cache(dn);
-}
-
-#ifdef LM_NO_INODE_READ
-static void __set_data_blkaddr_no_inode(struct dnode_of_data *dn)
-{
-	struct f2fs_node *rn = F2FS_NODE(dn->node_page);
-	__le32 *addr_array;
-	int base = 0;
-	
-	/* Comment here since it is ensured that node page is not inode bef calling this func */
-	//if (IS_INODE(dn->node_page) && f2fs_has_extra_attr(dn->inode))
-	//	base = get_extra_isize(dn->inode);
-
-	/* Get physical address of data block */
-	addr_array = blkaddr_in_node(rn);
-	addr_array[base + dn->ofs_in_node] = cpu_to_le32(dn->data_blkaddr);
-}
-
-static void f2fs_set_data_blkaddr_no_inode(struct dnode_of_data *dn)
-{
-	f2fs_wait_on_page_writeback(dn->node_page, NODE, true, true);
-	__set_data_blkaddr_no_inode(dn);
-	if (set_page_dirty(dn->node_page))
-		dn->node_changed = true;
-}
-void f2fs_update_data_blkaddr_no_inode(struct dnode_of_data *dn, block_t blkaddr)
-{
-	dn->data_blkaddr = blkaddr;
-	f2fs_set_data_blkaddr_no_inode(dn);
-}
-#endif
 
 /* dn->ofs_in_node will be returned with up-to-date last block pointer */
 int f2fs_reserve_new_blocks(struct dnode_of_data *dn, blkcnt_t count)

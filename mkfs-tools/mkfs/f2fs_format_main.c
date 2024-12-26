@@ -20,8 +20,8 @@
 #include <errno.h>
 
 #include "config.h"
-#ifdef HAVE_LIBBLKID_
-#include <blkid/blkid.h>
+#ifdef HAVE_LIBBLKID_JW
+#  include <blkid/blkid.h>
 #endif
 
 #include "f2fs_fs.h"
@@ -201,7 +201,7 @@ static void f2fs_parse_options(int argc, char *argv[])
 		c.feature |= cpu_to_le32(F2FS_FEATURE_BLKZONED);
 }
 
-#ifdef HAVE_LIBBLKID_
+#ifdef HAVE_LIBBLKID_JW
 static int f2fs_dev_is_overwrite(const char *device)
 {
 	const char	*type;
@@ -272,7 +272,7 @@ static int f2fs_check_overwrite(void)
 	return 0;
 }
 
-#endif /* HAVE_LIBBLKID_ */
+#endif /* HAVE_LIBBLKID_JW */
 
 int main(int argc, char *argv[])
 {

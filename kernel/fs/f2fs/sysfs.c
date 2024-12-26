@@ -764,7 +764,7 @@ static int __maybe_unused segment_bits_seq_show(struct seq_file *seq,
 	struct f2fs_sb_info *sbi = F2FS_SB(sb);
 	unsigned int total_segs =
 			le32_to_cpu(sbi->raw_super->segment_count_main);
-	int i;//, j;
+	int i, j;
 
 	seq_puts(seq, "format: segment_type|valid_blocks|bitmaps\n"
 		"segment_type(0:HD, 1:WD, 2:CD, 3:HN, 4:WN, 5:CN)\n");
@@ -774,8 +774,8 @@ static int __maybe_unused segment_bits_seq_show(struct seq_file *seq,
 
 		seq_printf(seq, "%-10d", i);
 		seq_printf(seq, "%d|%-3u|", se->type, se->valid_blocks);
-		//for (j = 0; j < SIT_VBLOCK_MAP_SIZE; j++)
-		//	seq_printf(seq, " %.2x", se->cur_valid_map[j]);
+		for (j = 0; j < SIT_VBLOCK_MAP_SIZE; j++)
+			seq_printf(seq, " %.2x", se->cur_valid_map[j]);
 		seq_putc(seq, '\n');
 	}
 	return 0;
@@ -879,24 +879,22 @@ static int __maybe_unused iostat_info_seq_show(struct seq_file *seq,
 static int __maybe_unused victim_bits_seq_show(struct seq_file *seq,
 						void *offset)
 {
-//	struct super_block *sb = seq->private;
-//	struct f2fs_sb_info *sbi = F2FS_SB(sb);
-//	truct dirty_seglist_info *dirty_i = DIRTY_I(sbi);
-//	int i;
-//
-//	seq_puts(seq, "format: victim_secmap bitmaps\n");
-//
-//	for (i = 0; i < MAIN_SECS(sbi); i++) {
-//		if ((i % 10) == 0)
-//			seq_printf(seq, "%-10d", i);
-//		seq_printf(seq, "%d", test_bit(i, dirty_i->victim_secmap) ? 1 : 0);
-//		if ((i % 10) == 9 || i == (MAIN_SECS(sbi) - 1))
-//			seq_putc(seq, '\n');
-//		else
-//			seq_putc(seq, ' ');
-//	}
-	printk("%s unexpected", __func__);
-	panic("%s", __func__);
+	struct super_block *sb = seq->private;
+	struct f2fs_sb_info *sbi = F2FS_SB(sb);
+	struct dirty_seglist_info *dirty_i = DIRTY_I(sbi);
+	int i;
+
+	seq_puts(seq, "format: victim_secmap bitmaps\n");
+
+	for (i = 0; i < MAIN_SECS(sbi); i++) {
+		if ((i % 10) == 0)
+			seq_printf(seq, "%-10d", i);
+		seq_printf(seq, "%d", test_bit(i, dirty_i->victim_secmap) ? 1 : 0);
+		if ((i % 10) == 9 || i == (MAIN_SECS(sbi) - 1))
+			seq_putc(seq, '\n');
+		else
+			seq_putc(seq, ' ');
+	}
 	return 0;
 }
 
