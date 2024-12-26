@@ -114,7 +114,7 @@ int generic_fadvise(struct file *file, loff_t offset, loff_t len, int advice)
 		if (cnt > 5)
 			break;
 
-		//printk("[JW DBG] %s: POSIX_FADV_DONTNEED!! \n", __func__);
+		printk("[JW DBG] %s: POSIX_FADV_DONTNEED!! \n", __func__);
 		if (!inode_write_congested(mapping->host))
 			__filemap_fdatawrite_range(mapping, offset, endbyte,
 						   WB_SYNC_NONE);

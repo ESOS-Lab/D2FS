@@ -38,7 +38,7 @@
 	} while (0)
 #endif
 
-#define AGGRESSIVE_DISCARD
+#undef AGGRESSIVE_DISCARD
 #define WAF
 
 
