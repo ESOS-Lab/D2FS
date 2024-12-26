@@ -1,0 +1,28 @@
+Filebench Version 1.5-alpha3
+0.000: Allocated 2865MB of shared memory
+0.008: Latency histogram enabled
+0.009: File-server Version 3.0 personality successfully loaded
+0.009: Populating and pre-allocating filesets
+0.041: bigfileset populated: 45000 files, avg. dir. width = 20, avg. dir. depth = 3.6, 0 leafdirs, 179395.045MB total size
+0.041: Removing bigfileset tree (if exists)
+0.046: Pre-allocating directories in bigfileset tree
+0.070: Pre-allocating files in bigfileset tree
+94.926: Waiting for pre-allocation to finish (in case of a parallel pre-allocation)
+94.926: Population and pre-allocation of filesets completed
+94.927: Starting 1 filereader instances
+95.941: Running...
+495.989: Run took 400 seconds...
+496.011: Per-Operation Breakdown
+statfile1            103766ops      259ops/s   0.0mb/s    3.906ms/op [0.002ms - 271.690ms][p95: 0 (us) , p99: 0 (us) , p99.9: 0 (us) , p99.95: 0 (us), p99.99: 0 (us)]
+deletefile1          103768ops      259ops/s   0.0mb/s   10.718ms/op [0.012ms - 327.520ms][p95: 0 (us) , p99: 0 (us) , p99.9: 0 (us) , p99.95: 0 (us), p99.99: 0 (us)]
+closefile3           103769ops      259ops/s   0.0mb/s    0.002ms/op [0.001ms - 0.442ms][p95: 5 (us) , p99: 7 (us) , p99.9: 17 (us) , p99.95: 21 (us), p99.99: 47 (us)]
+readfile1            103772ops      259ops/s 1109.9mb/s   29.210ms/op [0.007ms - 953.619ms][p95: 0 (us) , p99: 0 (us) , p99.9: 0 (us) , p99.95: 0 (us), p99.99: 0 (us)]
+openfile2            103776ops      259ops/s   0.0mb/s    2.746ms/op [0.002ms - 246.523ms][p95: 0 (us) , p99: 0 (us) , p99.9: 0 (us) , p99.95: 0 (us), p99.99: 0 (us)]
+closefile2           103776ops      259ops/s   0.0mb/s    0.001ms/op [0.000ms - 0.646ms][p95: 4 (us) , p99: 6 (us) , p99.9: 16 (us) , p99.95: 20 (us), p99.99: 54 (us)]
+appendfilerand1      103778ops      259ops/s   0.5mb/s    1.699ms/op [0.001ms - 203.304ms][p95: 7266 (us) , p99: 0 (us) , p99.9: 0 (us) , p99.95: 0 (us), p99.99: 0 (us)]
+openfile1            103779ops      259ops/s   0.0mb/s    3.768ms/op [0.003ms - 244.844ms][p95: 0 (us) , p99: 0 (us) , p99.9: 0 (us) , p99.95: 0 (us), p99.99: 0 (us)]
+closefile1           103779ops      259ops/s   0.0mb/s    0.002ms/op [0.001ms - 0.688ms][p95: 5 (us) , p99: 7 (us) , p99.9: 16 (us) , p99.95: 20 (us), p99.99: 59 (us)]
+wrtfile1             103780ops      259ops/s 1146.2mb/s    5.115ms/op [0.008ms - 466.695ms][p95: 10200 (us) , p99: 57500 (us) , p99.9: 234200 (us) , p99.95: 400200 (us), p99.99: 411500 (us) please ]
+createfile1          103780ops      259ops/s   0.0mb/s    0.543ms/op [0.015ms - 87.660ms][p95: 1191 (us) , p99: 0 (us) , p99.9: 0 (us) , p99.95: 0 (us), p99.99: 0 (us)]
+496.011: IO Summary: 1141523 ops 2853.611 ops/s 259/519 rd/wr 2256.6mb/s 5.246ms/op
+496.011: Shutting down processes
