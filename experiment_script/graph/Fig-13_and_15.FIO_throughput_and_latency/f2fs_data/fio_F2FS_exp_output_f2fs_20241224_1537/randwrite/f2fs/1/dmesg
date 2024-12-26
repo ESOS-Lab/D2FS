@@ -1,0 +1,67 @@
+[   45.167339] nvmev: loading out-of-tree module taints kernel.
+[   45.169246] NVMeVirt: Storage : 4000100000 + 3ffff00000
+[   45.433056] NVMeVirt: Total Capacity(GiB,MiB)=64,65536 chs=2 luns=4 lines=8192 blk-size(MiB,KiB)=2,2048 line-size(MiB,KiB)=8,8192
+[   45.907616] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   46.382211] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   46.382245] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   46.382247] NVMeVirt: initialize maptbl
+[   46.429339] init_maptbl: redundant: 2176 MB
+[   47.291358] NVMeVirt: initialize rmap
+[   47.369175] NVMeVirt: initialize lines
+[   47.369409] NVMeVirt: initialize write pointer
+[   47.369410] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   47.913149] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   48.455595] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   48.455652] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   48.455653] NVMeVirt: initialize maptbl
+[   48.530526] init_maptbl: redundant: 2176 MB
+[   49.433178] NVMeVirt: initialize rmap
+[   49.511072] NVMeVirt: initialize lines
+[   49.511321] NVMeVirt: initialize write pointer
+[   49.511323] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   50.055359] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   50.599282] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   50.599339] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   50.599341] NVMeVirt: initialize maptbl
+[   50.674138] init_maptbl: redundant: 2176 MB
+[   51.577572] NVMeVirt: initialize rmap
+[   51.655453] NVMeVirt: initialize lines
+[   51.655704] NVMeVirt: initialize write pointer
+[   51.655706] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   52.199812] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   52.744051] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   52.744108] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   52.744110] NVMeVirt: initialize maptbl
+[   52.819142] init_maptbl: redundant: 2176 MB
+[   53.722290] NVMeVirt: initialize rmap
+[   53.800239] NVMeVirt: initialize lines
+[   53.800474] NVMeVirt: initialize write pointer
+[   53.800476] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   53.800479] NVMeVirt: FTL physical space: 274876858368, logical space: 256894260157 (physical/logical * 100 = 107)
+[   53.800481] conv_init_namespace: mtl redundant: 10817 MB
+[   58.285109] NVMeVirt: [NVMEV_NAMESPACE_INIT] ns=0 ns_addr=00000000a1cdf942 ns_size=244993(MiB) 
+[   58.285116] ERR 801
+[   58.285186] PCI host bridge to bus 0001:10
+[   58.285188] pci_bus 0001:10: root bus resource [io  0x0000-0xffff]
+[   58.285191] pci_bus 0001:10: root bus resource [mem 0x00000000-0x3fffffffffff]
+[   58.285194] pci_bus 0001:10: root bus resource [bus 00-ff]
+[   58.285202] pci 0001:10:00.0: [0c51:0101] type 00 class 0x010802
+[   58.285206] pci 0001:10:00.0: reg 0x10: [mem 0x4000000000-0x4000003fff 64bit]
+[   58.285210] pci 0001:10:00.0: reg 0x30: [mem 0x00000000-0x000007ff pref]
+[   58.285212] pci 0001:10:00.0: enabling Extended Tags
+[   58.286003] nvme nvme3: pci function 0001:10:00.0
+[   58.286046] NVMeVirt: Successfully created virtual PCI bus (node 1)
+[   58.286971] NVMeVirt: nvmev_proc_io_0 started on cpu 39 (node 1)
+[   58.287006] NVMeVirt: Successfully created Virtual NVMe deivce
+[   58.287019] NVMeVirt: nvmev_dispatcher started on cpu 37 (node 1)
+[   58.293000] nvme nvme3: 40/0/0 default/read/poll queues
+[   58.300790]  nvme3n1: p1
+[   96.577012]  nvme3n1: p1
+[   96.580082]  nvme3n1:
+[   96.580892]  nvme3n1:
+[   96.582920]  nvme3n1:
+[   96.586031]  nvme3n1: p1
+[   97.621870] F2FS-fs (nvme3n1p1): Found nat_bits in checkpoint
+[   97.744458] F2FS-fs (nvme3n1p1): Mounted with checkpoint version = 2e5a1a91
+[   97.824814] run_fio_f2fs.sh (3337): drop_caches: 3
+[   97.869294] STARTTTTTT

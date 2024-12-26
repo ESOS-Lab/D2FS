@@ -1,0 +1,77 @@
+***************************************
+*** ###easy### TPC-C Load Generator ***
+***************************************
+option h with value '127.0.0.1'
+option P with value '3306'
+option d with value 'tpcc1000'
+option u with value 'jw'
+option w with value '1700'
+option c with value '15'
+option r with value '10'
+option l with value '1800'
+option i with value '1800'
+option p with value 'oslab0810'
+<Parameters>
+     [server]: 127.0.0.1
+     [port]: 3306
+     [DBname]: tpcc1000
+       [user]: jw
+       [pass]: oslab0810
+  [warehouse]: 1700
+ [connection]: 15
+     [rampup]: 10 (sec.)
+    [measure]: 1800 (sec.)
+
+RAMP-UP TIME.(10 sec.)
+
+MEASURING START.
+
+1800, trx: 274072, 95%: 95.724, 99%: 225.270 99.90%: 468.654 99.95%: 538.903 99.99%: 678.656, max_rt: 1109.058, 274018|734.397, 27409|771.629, 27406|1167.233, 27408|2502.612
+
+STOPPING THREADSerror at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+error at thread_main
+
+
+<Raw Results>
+  [0] sc:196 lt:273876  rt:7935660  fl:3967 avg_rt: 35.9 (5)
+  [1] sc:96480 lt:177538  rt:7924601  fl:3960 avg_rt: 10.2 (5)
+  [2] sc:14527 lt:12882  rt:793603  fl:397 avg_rt: 9.7 (5)
+  [3] sc:17689 lt:9717  rt:796602  fl:398 avg_rt: 89.0 (80)
+  [4] sc:6 lt:27402  rt:797601  fl:399 avg_rt: 161.1 (20)
+ in 1800 sec.
+
+<Raw Results2(sum ver.)>
+  [0] sc:196  lt:273889  rt:7935683  fl:3967 
+  [1] sc:96496  lt:177594  rt:7924618  fl:3960 
+  [2] sc:14527  lt:12882  rt:793603  fl:397 
+  [3] sc:17690  lt:9718  rt:796602  fl:398 
+  [4] sc:6  lt:27402  rt:797601  fl:399 
+
+<Constraint Check> (all must be [OK])
+ [transaction percentage]
+        Payment: 43.47% (>=43.0%) [OK]
+   Order-Status: 4.35% (>= 4.0%) [OK]
+       Delivery: 4.35% (>= 4.0%) [OK]
+    Stock-Level: 4.35% (>= 4.0%) [OK]
+ [response time (at least 90% passed)]
+      New-Order: 0.07%  [NG] *
+        Payment: 35.21%  [NG] *
+   Order-Status: 53.00%  [NG] *
+       Delivery: 64.54%  [NG] *
+    Stock-Level: 0.02%  [NG] *
+
+<TpmC>
+                 9135.733 TpmC

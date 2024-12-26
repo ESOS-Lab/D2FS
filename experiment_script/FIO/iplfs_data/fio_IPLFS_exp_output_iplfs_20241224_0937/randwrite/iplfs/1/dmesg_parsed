@@ -1,0 +1,327 @@
+-51.7141 nvmev: loading out-of-tree module taints kernel.
+-51.7122 NVMeVirt: Storage : 4000100000 + 3ffff00000
+-51.4474 NVMeVirt: Total Capacity(GiB,MiB)=64,65536 chs=2 luns=4 lines=8192 blk-size(MiB,KiB)=2,2048 line-size(MiB,KiB)=8,8192
+-50.9762 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-50.48 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-50.4799 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-50.4799 NVMeVirt: initialize maptbl
+-49.2145 NVMeVirt: initialize rmap
+-49.1389 NVMeVirt: initialize lines
+-49.1387 NVMeVirt: initialize write pointer
+-49.1387 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-48.6001 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-48.0624 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-48.0623 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-48.0623 NVMeVirt: initialize maptbl
+-46.7521 NVMeVirt: initialize rmap
+-46.6766 NVMeVirt: initialize lines
+-46.6764 NVMeVirt: initialize write pointer
+-46.6764 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-46.137 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-45.5977 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-45.5976 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-45.5976 NVMeVirt: initialize maptbl
+-44.281 NVMeVirt: initialize rmap
+-44.2052 NVMeVirt: initialize lines
+-44.205 NVMeVirt: initialize write pointer
+-44.205 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-43.6653 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-43.1256 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-43.1256 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-43.1256 NVMeVirt: initialize maptbl
+-41.8048 NVMeVirt: initialize rmap
+-41.7293 NVMeVirt: initialize lines
+-41.729 NVMeVirt: initialize write pointer
+-41.729 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-33.5948 NVMeVirt: FTL physical space: 274876858368, logical space: 256894260157 (physical/logical * 100 = 107)
+-33.5948 conv_init_namespace: compaction trace range: 768 GB
+-33.592 NVMeVirt: NVMEV_NAMESPACE_INIT ns=0 ns_addr=000000008a003f3f ns_size=244993(MiB)
+-33.5919 ERR 801
+-33.5919 PCI host bridge to bus 0001:10
+-33.5919 pci_bus 0001:10: root bus resource io 0x0000-0xffff
+-33.5919 pci_bus 0001:10: root bus resource mem 0x00000000-0x3fffffffffff
+-33.5919 pci_bus 0001:10: root bus resource bus 00-ff
+-33.5919 pci 0001:10:00.0: 0c51:0101 type 00 class 0x010802
+-33.5919 pci 0001:10:00.0: reg 0x10: mem 0x4000000000-0x4000003fff 64bit
+-33.5919 pci 0001:10:00.0: reg 0x30: mem 0x00000000-0x000007ff pref
+-33.5919 pci 0001:10:00.0: enabling Extended Tags
+-33.5911 nvme nvme3: pci function 0001:10:00.0
+-33.5911 NVMeVirt: Successfully created virtual PCI bus (node 1)
+-33.5901 NVMeVirt: nvmev_proc_io_0 started on cpu 39 (node 1)
+-33.5901 NVMeVirt: Successfully created Virtual NVMe deivce
+-33.5901 NVMeVirt: nvmev_dispatcher started on cpu 37 (node 1)
+-33.5846 nvme nvme3: 40/0/0 default/read/poll queues
+-33.5768 nvme3n1: p1
+-1.76485 nvme3n1: p1
+-1.76449 Interval_Mapping_Memory_Footprint: 0
+-1.76011 nvme3n1:
+-1.75677 nvme3n1:
+-1.75334 nvme3n1: p1
+-1.59882 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.59882 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1000ffe00 len: fffffe00
+-1.59881 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.58249 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.58249 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2000ffc00 len: fffffe00
+-1.58248 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.56617 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.56617 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 3000ffa00 len: fffffe00
+-1.56617 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.54985 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.54985 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 4000ff800 len: fffffe00
+-1.54985 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.53354 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.53354 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 5000ff600 len: fffffe00
+-1.53353 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.51722 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.51721 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 6000ff400 len: fffffe00
+-1.51721 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.5009 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.5009 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 7000ff200 len: fffffe00
+-1.5009 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.46829 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.46829 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 9000fee00 len: fffffe00
+-1.46828 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.45198 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.45197 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: a000fec00 len: fffffe00
+-1.45197 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.43566 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.43566 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: b000fea00 len: fffffe00
+-1.43565 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.41934 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.41934 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: c000fe800 len: fffffe00
+-1.41934 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.40302 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.40302 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: d000fe600 len: fffffe00
+-1.40302 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.38671 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.3867 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: e000fe400 len: fffffe00
+-1.3867 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.37039 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.37038 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: f000fe200 len: fffffe00
+-1.37038 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.33778 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.33777 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 11000fde00 len: fffffe00
+-1.33777 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.32146 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.32146 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 12000fdc00 len: fffffe00
+-1.32145 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.30514 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.30514 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 13000fda00 len: fffffe00
+-1.30513 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.28883 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.28882 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 14000fd800 len: fffffe00
+-1.28882 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.27252 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.27251 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 15000fd600 len: fffffe00
+-1.27251 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.2562 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.2562 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 16000fd400 len: fffffe00
+-1.2562 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.23989 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.23989 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 17000fd200 len: fffffe00
+-1.23989 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.20728 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.20727 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 19000fce00 len: fffffe00
+-1.20727 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.19096 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.19095 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1a000fcc00 len: fffffe00
+-1.19095 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.17464 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.17464 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1b000fca00 len: fffffe00
+-1.17464 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.15832 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.15832 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1c000fc800 len: fffffe00
+-1.15832 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.14201 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.14201 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1d000fc600 len: fffffe00
+-1.142 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.12569 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.12569 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1e000fc400 len: fffffe00
+-1.12569 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.10938 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.10937 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1f000fc200 len: fffffe00
+-1.10937 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.07677 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.07676 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 21000fbe00 len: fffffe00
+-1.07676 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.06045 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.06045 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 22000fbc00 len: fffffe00
+-1.06045 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.04414 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.04413 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 23000fba00 len: fffffe00
+-1.04413 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.02783 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.02782 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 24000fb800 len: fffffe00
+-1.02782 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.01152 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.01151 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 25000fb600 len: fffffe00
+-1.01151 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.995204 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.995199 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 26000fb400 len: fffffe00
+-0.995198 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.978885 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.978881 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 27000fb200 len: fffffe00
+-0.97888 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.94627 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.946266 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 29000fae00 len: fffffe00
+-0.946264 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.929952 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.929948 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2a000fac00 len: fffffe00
+-0.929946 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.913635 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.913631 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2b000faa00 len: fffffe00
+-0.91363 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.89732 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-0.897317 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2c000fa800 len: fffffe00
+-0.897315 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-0.881007 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.881003 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2d000fa600 len: fffffe00
+-0.881001 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.864691 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.864687 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2e000fa400 len: fffffe00
+-0.864686 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.848383 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.848379 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2f000fa200 len: fffffe00
+-0.848377 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.815778 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.815775 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 31000f9e00 len: fffffe00
+-0.815773 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.799462 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.799458 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 32000f9c00 len: fffffe00
+-0.799457 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.783146 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.783142 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 33000f9a00 len: fffffe00
+-0.78314 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.766828 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-0.766824 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 34000f9800 len: fffffe00
+-0.766823 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-0.750508 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.750504 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 35000f9600 len: fffffe00
+-0.750503 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.734189 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.734185 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 36000f9400 len: fffffe00
+-0.734184 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.717871 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.717868 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 37000f9200 len: fffffe00
+-0.717866 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.685268 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.685265 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 39000f8e00 len: fffffe00
+-0.685263 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.668959 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.668955 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 3a000f8c00 len: fffffe00
+-0.668954 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.652643 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.652639 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 3b000f8a00 len: d007c800
+-0.652638 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.63938 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.513089 Interval_Mapping_Memory_Footprint: 0
+-0.284179 JWDBG f2fs_fill_super: bef read super block
+-0.283999 JWDBG f2fs_fill_super: aft read super block log_blocks_per_seg: 9
+-0.247423 f2fs_build_segment_manager: NR_CURSEG_TYPE: 8, CURSEG_HOT_DATA: 0
+-0.247419 JWDBG f2fs_build_segment_manager: seg0_blkaddr = 512 0x200 blocks_per_seg: 512
+-0.247417 JWDBG JW_set_zone: seg0 blkaddr: 0x200 blocks Per seg: 512
+-0.247415 JW_set_zone: type 0 superzone: 0 curseg_zone: 127 secno: 1048213 segno: 1048213 !!!!!
+-0.247413 type: 0, start_blkaddr: 0x20000000 startblkaddr: 0x20000000, segno: 1048213
+-0.247411 JW_set_zone: type 1 superzone: 1 curseg_zone: 255 secno: 2096789 segno: 2096789 !!!!!
+-0.24741 type: 1, start_blkaddr: 0x40000000 startblkaddr: 0x40000000, segno: 2096789
+-0.247408 JW_set_zone: type 2 superzone: 2 curseg_zone: 383 secno: 3145365 segno: 3145365 !!!!!
+-0.247407 type: 2, start_blkaddr: 0x60000000 startblkaddr: 0x60000000, segno: 3145365
+-0.247406 JW_set_zone: type 3 superzone: 3 curseg_zone: 511 secno: 4193941 segno: 4193941 !!!!!
+-0.247405 type: 3, start_blkaddr: 0x80000000 startblkaddr: 0x80000000, segno: 4193941
+-0.247403 JW_set_zone: type 4 superzone: 4 curseg_zone: 639 secno: 5242517 segno: 5242517 !!!!!
+-0.247402 type: 4, start_blkaddr: 0xa0000000 startblkaddr: 0xa0000000, segno: 5242517
+-0.2474 JW_set_zone: type 5 superzone: 5 curseg_zone: 767 secno: 6291093 segno: 6291093 !!!!!
+-0.247399 type: 5, start_blkaddr: 0xc0000000 startblkaddr: 0xc0000000, segno: 6291093
+-0.247259 F2FS-fs (nvme3n1p1): Found nat_bits in checkpoint
+-0.124297 F2FS-fs (nvme3n1p1): Mounted with checkpoint version = 6babf777
+-0.046751 run_fio_iplfs.s (3382): drop_caches: 3
+0 STARTTTTTT
+5.02408 Interval_Mapping_Memory_Footprint: 0
+5.02408 conv_write: type: 1 start_lpn: 0x20000000
+5.03786 conv_write: type: 5 start_lpn: 0xa0000000
+5.08432 conv_write: type: 4 start_lpn: 0x80000000
+5.14666 conv_write: host write on cold partition!! type: 6 lpn: 3221225728
+5.14666 conv_write: type: 6 start_lpn: 0xc0000000
+5.32727 conv_write: type: 2 start_lpn: 0x40000000
+6.02863 Interval_Mapping_Memory_Footprint: 20
+7.03487 Interval_Mapping_Memory_Footprint: 20
+8.03321 Interval_Mapping_Memory_Footprint: 20
+9.03284 Interval_Mapping_Memory_Footprint: 20
+10.0325 Interval_Mapping_Memory_Footprint: 24
+11.9799 Interval_Mapping_Memory_Footprint: 24
+13.1088 Interval_Mapping_Memory_Footprint: 24
+14.3133 Interval_Mapping_Memory_Footprint: 24
+15.3162 Interval_Mapping_Memory_Footprint: 28
+16.3086 Interval_Mapping_Memory_Footprint: 28
+18.5437 Interval_Mapping_Memory_Footprint: 28
+19.7722 Interval_Mapping_Memory_Footprint: 32
+20.777 divide error: 0000 #1 SMP NOPTI
+20.777 CPU: 37 PID: 3338 Comm: nvmev_dispatche Tainted: G IOE 5.11.0.iplfs #82
+20.777 Hardware name: Dell Inc. PowerEdge R740xd/06WXJT, BIOS 2.14.2 03/21/2022
+20.777 RIP: 0010:compact_map_node+0x227/0x390 nvmev
+20.777 Code: 20 00 08 00 01 48 83 c4 30 4c 89 e0 5b 41 5c 41 5d 41 5e 41 5f 5d c3 41 0f b7 54 24 06 44 89 c8 2b 45 cc 89 d1 89 55 b4 31 d2 <f7> f1 89 45 b0 41 89 c2 39 45 c8 0f 84 12 01 00 00 89 d8 41 8d 91
+20.777 RSP: 0000:ffffa14c48153c38 EFLAGS: 00010246
+20.777 RAX: 0000000000000001 RBX: 0000000000000000 RCX: 0000000000000000
+20.777 RDX: 0000000000000000 RSI: 0000000000100000 RDI: ffffa14c49ad1000
+20.777 RBP: ffffa14c48153c90 R08: 0000000000000001 R09: 0000000000018927
+20.777 R10: 000000000000073c R11: 00000000001cedd2 R12: ffffa14c4f3b8000
+20.777 R13: 0000000000000000 R14: ffffa14c4f43a000 R15: 0000000000100000
+20.777 FS: 0000000000000000(0000) GS:ffff9478fdc80000(0000) knlGS:0000000000000000
+20.777 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+20.777 CR2: 0000000000000000 CR3: 000000060c010001 CR4: 00000000007706e0
+20.777 DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+20.777 DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+20.777 PKRU: 55555554
+20.777 Call Trace:
+20.777 compaction1+0x2a7/0x2f0 nvmev
+20.777 conv_write+0x464/0x660 nvmev
+20.777 conv_proc_nvme_io_cmd+0x25/0x70 nvmev
+20.777 nvmev_proc_io_sq+0x176/0x860 nvmev
+20.777 ? sysvec_apic_timer_interrupt+0x48/0x90
+20.777 nvmev_dispatcher+0x134/0x240 nvmev
+20.777 kthread+0x114/0x150
+20.7771 ? __proc_file_read+0x230/0x230 nvmev
+20.7771 ? kthread_park+0x90/0x90
+20.7771 ret_from_fork+0x1f/0x30
+20.7771 Modules linked in: f2fs(E) nvmev(OE) nls_iso8859_1(E) intel_rapl_msr(E) intel_rapl_common(E) ipmi_ssif(E) isst_if_common(E) skx_edac(E) nfit(E) x86_pkg_temp_thermal(E) intel_powerclamp(E) coretemp(E) kvm_intel(E) kvm(E) crct10dif_pclmul(E) ghash_clmulni_intel(E) aesni_intel(E) crypto_simd(E) cryptd(E) glue_helper(E) rapl(E) joydev(E) dell_smbios(E) dcdbas(E) dell_wmi_descriptor(E) wmi_bmof(E) input_leds(E) intel_cstate(E) binfmt_misc(E) mgag200(E) drm_kms_helper(E) cec(E) rc_core(E) fb_sys_fops(E) syscopyarea(E) sysfillrect(E) sysimgblt(E) mei_me(E) mei(E) intel_pch_thermal(E) acpi_ipmi(E) ipmi_si(E) ipmi_devintf(E) ipmi_msghandler(E) acpi_power_meter(E) mac_hid(E) sch_fq_codel(E) msr(E) nfsd(E) parport_pc(E) auth_rpcgss(E) ppdev(E) nfs_acl(E) lockd(E) lp(E) grace(E) parport(E) ramoops(E) drm(E) pstore_blk(E) reed_solomon(E) efi_pstore(E) pstore_zone(E) sunrpc(E) nfs_ssc(E) ip_tables(E) x_tables(E) autofs4(E) hid_generic(E) usbhid(E) hid(E) crc32_pclmul(E) nvme(E)
+20.7771 nvme_core(E) ixgbe(E) igb(E) i2c_algo_bit(E) xfrm_algo(E) dca(E) mdio(E) megaraid_sas(E) i2c_i801(E) i2c_smbus(E) lpc_ich(E) ahci(E) xhci_pci(E) xhci_pci_renesas(E) libahci(E) wmi(E)
+20.7771 --- end trace 8dc7b0bc7f23121d ---
+20.8202 RIP: 0010:compact_map_node+0x227/0x390 nvmev
+20.8202 Code: 20 00 08 00 01 48 83 c4 30 4c 89 e0 5b 41 5c 41 5d 41 5e 41 5f 5d c3 41 0f b7 54 24 06 44 89 c8 2b 45 cc 89 d1 89 55 b4 31 d2 <f7> f1 89 45 b0 41 89 c2 39 45 c8 0f 84 12 01 00 00 89 d8 41 8d 91
+20.8202 RSP: 0000:ffffa14c48153c38 EFLAGS: 00010246
+20.8202 RAX: 0000000000000001 RBX: 0000000000000000 RCX: 0000000000000000
+20.8202 RDX: 0000000000000000 RSI: 0000000000100000 RDI: ffffa14c49ad1000
+20.8202 RBP: ffffa14c48153c90 R08: 0000000000000001 R09: 0000000000018927
+20.8202 R10: 000000000000073c R11: 00000000001cedd2 R12: ffffa14c4f3b8000
+20.8202 R13: 0000000000000000 R14: ffffa14c4f43a000 R15: 0000000000100000
+20.8202 FS: 0000000000000000(0000) GS:ffff9478fdc80000(0000) knlGS:0000000000000000
+20.8202 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+20.8202 CR2: 0000000000000000 CR3: 000000060c010001 CR4: 00000000007706e0
+20.8202 DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+20.8202 DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+20.8202 PKRU: 55555554
+51.5314 nvme nvme3: I/O 64 QID 36 timeout, aborting
+51.5314 nvme nvme3: I/O 65 QID 36 timeout, aborting
+51.5314 nvme nvme3: I/O 66 QID 36 timeout, aborting
+51.5314 nvme nvme3: I/O 67 QID 36 timeout, aborting
+82.2532 nvme nvme3: I/O 64 QID 36 timeout, reset controller
+112.973 nvme nvme3: I/O 0 QID 0 timeout, reset controller
+144.197 nvme nvme3: Device not ready; aborting reset, CSTS=0x1
+144.225 nvme nvme3: Abort status: 0x371
+144.225 nvme nvme3: Abort status: 0x371
+144.225 nvme nvme3: Abort status: 0x371
+144.226 nvme nvme3: Abort status: 0x371
+144.773 nvme nvme3: Device not ready; aborting reset, CSTS=0x1
+144.773 nvme nvme3: Removing after probe failure status: -19
+145.305 nvme nvme3: Device not ready; aborting reset, CSTS=0x1
+145.305 nvme3n1: detected capacity change from 0 to 501746601
+145.305 blk_update_request: I/O error, dev nvme3n1, sector 8620385408 op 0x1:(WRITE) flags 0x100000 phys_seg 64 prio class 0
+145.305 blk_update_request: I/O error, dev nvme3n1, sector 8620384896 op 0x1:(WRITE) flags 0x104000 phys_seg 64 prio class 0
+145.305 blk_update_request: I/O error, dev nvme3n1, sector 8620385920 op 0x1:(WRITE) flags 0x104000 phys_seg 64 prio class 0
+145.305 blk_update_request: I/O error, dev nvme3n1, sector 8620384384 op 0x1:(WRITE) flags 0x104000 phys_seg 64 prio class 0
+145.305 blk_update_request: I/O error, dev nvme3n1, sector 8620383872 op 0x1:(WRITE) flags 0x104000 phys_seg 64 prio class 0
+145.305 blk_update_request: I/O error, dev nvme3n1, sector 8620383360 op 0x1:(WRITE) flags 0x100000 phys_seg 64 prio class 0
+145.305 blk_update_request: I/O error, dev nvme3n1, sector 8620382848 op 0x1:(WRITE) flags 0x104000 phys_seg 64 prio class 0
+145.305 blk_update_request: I/O error, dev nvme3n1, sector 8620382336 op 0x1:(WRITE) flags 0x104000 phys_seg 64 prio class 0
+145.305 blk_update_request: I/O error, dev nvme3n1, sector 8620381824 op 0x1:(WRITE) flags 0x104000 phys_seg 64 prio class 0
+145.305 blk_update_request: I/O error, dev nvme3n1, sector 8620381312 op 0x1:(WRITE) flags 0x100000 phys_seg 64 prio class 0

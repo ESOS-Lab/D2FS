@@ -1,0 +1,45 @@
+#kiops
+set terminal postscript eps enhanced color dashed dashlength 3 \
+	                linewidth 2 rounded font "Helvetica, 40"
+
+set output "./Fig-18.eps"
+#set key inside center top horizontal reverse Left font "Helvetica, 40"
+set key inside left top vertical reverse Left font "Helvetica, 40"
+
+set key samplen 1.5
+set key width -3
+#set key at 200, 0.85
+set key at 10, 630
+set border 3
+set xtics nomirror
+set ytics nomirror
+set y2tics nomirror
+
+#set yrange [0:500]
+set yrange [0:]
+set y2range [0:4]
+
+set ytics 200 font "Helvetica, 40" offset 0.5, 0
+set xtics 300 font "Helvetica, 40" offset 0, 0.3
+set xlabel "Time (sec)" font "Helvetica, 40" offset 0, 0.8
+set ylabel "Upcall (# / sec)" font "Helvetica, 40" offset 2.0, -0.7
+set y2label "Record Size (MB)" font "Helvetica, 40" offset -2.4+0.5, -0.6
+set xrange [0:1200]
+#set xtics add ("1200" 1195)
+
+set y2tics 2 offset -1, 0
+set border 11
+
+
+set tmargin at screen 0.0
+set lmargin at screen 0.12
+set rmargin at screen 0.91
+set tmargin at screen 0.92
+set bmargin at screen 0.26
+
+set term postscript size 7.5,2.25
+
+plot \
+	 "migration_record_memory_footprint_parsed" u 1:($2) w l axes x1y2 title 'Migration Record' linecolor rgb 'blue' lw 3, \
+	 "migration_command_count_parsed" u 1:($2) with l axes x1y1 title 'Upcall' linecolor rgb 'red' lw 4 , \
+

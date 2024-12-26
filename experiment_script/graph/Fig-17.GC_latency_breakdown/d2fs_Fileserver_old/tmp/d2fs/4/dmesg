@@ -1,0 +1,1895 @@
+[   53.066789] nvmev: loading out-of-tree module taints kernel.
+[   53.070873] NVMeVirt: Storage : 4000100000 + 3ffff00000
+[   53.332199] NVMeVirt: Total Capacity(GiB,MiB)=64,65536 chs=2 luns=4 lines=8192 blk-size(MiB,KiB)=2,2048 line-size(MiB,KiB)=8,8192
+[   53.332205] [JWDBG] conv_init_params: pgsz: 4096 ps_per_oneshotpg: 8 nchs: 2 luns_per_ch: 2 pgs_per_blk: 512
+[   53.833111] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   54.333763] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   54.333797] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   54.333799] conv_init_ftl: conv ftl: no_part: 0
+[   54.333800] NVMeVirt: initialize maptbl
+[   54.333801] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   54.335335] init_maptbl: redundant: 2303 MB
+[   54.868547] NVMeVirt: initialize rmap
+[   54.919836] NVMeVirt: initialize lines
+[   54.920016] NVMeVirt: initialize write pointer
+[   54.920031] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   55.421666] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   55.923288] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   55.923321] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   55.923323] conv_init_ftl: conv ftl: no_part: 1
+[   55.923325] NVMeVirt: initialize maptbl
+[   55.923326] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   55.924862] init_maptbl: redundant: 2303 MB
+[   56.458041] NVMeVirt: initialize rmap
+[   56.509305] NVMeVirt: initialize lines
+[   56.509503] NVMeVirt: initialize write pointer
+[   56.509518] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   57.010737] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   57.512075] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   57.512109] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   57.512111] conv_init_ftl: conv ftl: no_part: 2
+[   57.512112] NVMeVirt: initialize maptbl
+[   57.512113] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   57.513661] init_maptbl: redundant: 2303 MB
+[   58.046803] NVMeVirt: initialize rmap
+[   58.098092] NVMeVirt: initialize lines
+[   58.098280] NVMeVirt: initialize write pointer
+[   58.098295] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   58.598567] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   59.098421] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   59.098456] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   59.098457] conv_init_ftl: conv ftl: no_part: 3
+[   59.098458] NVMeVirt: initialize maptbl
+[   59.098459] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   59.100009] init_maptbl: redundant: 2303 MB
+[   59.633145] NVMeVirt: initialize rmap
+[   59.684271] NVMeVirt: initialize lines
+[   59.684466] NVMeVirt: initialize write pointer
+[   59.684482] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   59.684485] conv_init_namespace: n_gc_log_max: 0 gc_log size: 72
+[   59.715661] conv_init_namespace: gc log size: 28 byte
+[   63.647653] NVMeVirt: FTL physical space: 274876858368, logical space: 256894260157 (physical/logical * 100 = 107)
+[   63.647658] conv_init_namespace: mtl redundant: 6658 MB
+[   63.647659] conv_init_namespace: mtl redundant: 4 MB
+[   65.197585] NVMeVirt: [NVMEV_NAMESPACE_INIT] ns=0 ns_addr=000000005246a0b3 ns_size=244993(MiB) 
+[   65.197592] ERR 801
+[   65.197657] PCI host bridge to bus 0001:10
+[   65.197660] pci_bus 0001:10: root bus resource [io  0x0000-0xffff]
+[   65.197662] pci_bus 0001:10: root bus resource [mem 0x00000000-0x3fffffffffff]
+[   65.197664] pci_bus 0001:10: root bus resource [bus 00-ff]
+[   65.197671] pci 0001:10:00.0: [0c51:0101] type 00 class 0x010802
+[   65.197674] pci 0001:10:00.0: reg 0x10: [mem 0x4000000000-0x4000003fff 64bit]
+[   65.197678] pci 0001:10:00.0: reg 0x30: [mem 0x00000000-0x000007ff pref]
+[   65.197680] pci 0001:10:00.0: enabling Extended Tags
+[   65.198342] nvme nvme3: pci function 0001:10:00.0
+[   65.198387] NVMeVirt: Successfully created virtual PCI bus (node 1)
+[   65.200171] NVMeVirt: nvmev_proc_io_0 started on cpu 39 (node 1)
+[   65.200225] NVMeVirt: Successfully created Virtual NVMe deivce
+[   65.200231] NVMeVirt: nvmev_dispatcher started on cpu 37 (node 1)
+[   65.205337] nvme nvme3: 40/0/0 default/read/poll queues
+[   65.212586] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   65.212592] print_GC_LOG_MEM: mem: 0 MB 
+[   65.212632]  nvme3n1: p1
+[   81.662940] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   81.662943] print_GC_LOG_MEM: mem: 0 MB 
+[   81.663392]  nvme3n1: p1
+[   81.666888]  nvme3n1:
+[   81.667709]  nvme3n1:
+[   81.669275]  nvme3n1:
+[   81.672050]  nvme3n1: p1
+[   81.766547] f2fs_create_segment_manager_caches: mes: ffff89f7c47ec000 000000000907b969
+[   83.190028] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   83.190032] print_GC_LOG_MEM: mem: 0 MB 
+[   83.408435] [JWDBG] f2fs_fill_super: bef read super block
+[   83.408581] [JWDBG] f2fs_fill_super: aft read super block log_blocks_per_seg: 9
+[   83.408587] init_sb_info: segs_per_sec: 16
+[   83.408945] f2fs_build_segment_manager: segment_count: 122480
+[   83.411882] __nvmev_admin_create_rev_sq: send rev cmd. nr_mg_batch: 2048 qsize: 2048
+[   83.413964] build_sit_info: dirty_sentries_bitmap size: 60696
+[   83.413984] build_free_segmap: MAIN_SEGS: 121392 MAIN_SECS: 7587 MAIN_SEGS_INTERVAL: 194227 MAIN_SECS_INTERVAL: 12139 segs_per_sec: 16
+[   83.414169] f2fs_build_segment_manager: build_curseg done
+[   83.470532] seg_info_from_raw_sit: vblk == 1 segno: 0 type: 3
+[   83.470536] seg_info_from_raw_sit: vblk == 1 segno: 48 type: 0
+[   83.470537] f2fs_build_segment_manager: build_sit_entries done
+[   83.470538] f2fs_build_segment_manager: NR_CURSEG_TYPE: 10, CURSEG_HOT_DATA: 0
+[   83.470539] [JWDBG] f2fs_build_segment_manager: seg0_blkaddr = 8192 0x2000 blocks_per_seg: 512
+[   83.476551] build_slot_entries: valid seg entry exists. vblk: 1 segno: 0
+[   83.476554] build_slot_entries: valid seg entry exists. vblk: 1 segno: 48
+[   83.498397] init_dirty_segmap: start 
+[   83.498410] init_dirty_segmap: end 
+[   83.498562] F2FS-fs (nvme3n1p1): Found nat_bits in checkpoint
+[   83.630099] F2FS-fs (nvme3n1p1): Mounted with checkpoint version = 70a54253
+[   83.755789] run_fileserver_ (3278): drop_caches: 3
+[   83.799319] STARTTTTTT
+[   84.201678] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   84.201682] print_GC_LOG_MEM: mem: 0 MB 
+[   86.247933] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   86.247936] print_GC_LOG_MEM: mem: 0 MB 
+[   86.247938] section utilization of gc region: 0 %
+[   87.249395] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   87.249399] print_GC_LOG_MEM: mem: 0 MB 
+[   88.270587] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   88.270590] print_GC_LOG_MEM: mem: 0 MB 
+[   88.283102] section utilization of regular region: 0 %
+[   89.378843] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   89.378847] print_GC_LOG_MEM: mem: 0 MB 
+[   90.384367] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   90.384371] print_GC_LOG_MEM: mem: 0 MB 
+[   91.386337] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   91.386341] print_GC_LOG_MEM: mem: 0 MB 
+[   91.386342] section utilization of gc region: 0 %
+[   92.388955] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   92.388959] print_GC_LOG_MEM: mem: 0 MB 
+[   93.426604] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   93.426607] print_GC_LOG_MEM: mem: 0 MB 
+[   94.503846] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   94.503850] print_GC_LOG_MEM: mem: 0 MB 
+[   95.512083] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   95.512087] print_GC_LOG_MEM: mem: 0 MB 
+[   96.588294] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   96.588298] print_GC_LOG_MEM: mem: 0 MB 
+[   96.588299] section utilization of gc region: 0 %
+[   97.159213] section utilization of regular region: 4 %
+[   97.589552] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   97.589556] print_GC_LOG_MEM: mem: 0 MB 
+[   98.593290] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   98.593294] print_GC_LOG_MEM: mem: 0 MB 
+[   99.597280] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[   99.597283] print_GC_LOG_MEM: mem: 0 MB 
+[  100.609536] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  100.609539] print_GC_LOG_MEM: mem: 0 MB 
+[  101.618644] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  101.618647] print_GC_LOG_MEM: mem: 0 MB 
+[  101.618649] section utilization of gc region: 0 %
+[  102.621373] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  102.621377] print_GC_LOG_MEM: mem: 0 MB 
+[  103.879143] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  103.879146] print_GC_LOG_MEM: mem: 0 MB 
+[  104.943700] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  104.943703] print_GC_LOG_MEM: mem: 0 MB 
+[  105.945480] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  105.945484] print_GC_LOG_MEM: mem: 0 MB 
+[  106.039827] section utilization of regular region: 8 %
+[  106.949521] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  106.949526] print_GC_LOG_MEM: mem: 0 MB 
+[  106.949527] section utilization of gc region: 0 %
+[  108.219623] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  108.219627] print_GC_LOG_MEM: mem: 0 MB 
+[  109.221576] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  109.221580] print_GC_LOG_MEM: mem: 0 MB 
+[  110.654809] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  110.654814] print_GC_LOG_MEM: mem: 0 MB 
+[  111.669791] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  111.669794] print_GC_LOG_MEM: mem: 0 MB 
+[  112.673837] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  112.673841] print_GC_LOG_MEM: mem: 0 MB 
+[  112.673842] section utilization of gc region: 0 %
+[  113.719838] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  113.719842] print_GC_LOG_MEM: mem: 0 MB 
+[  114.761290] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  114.761293] print_GC_LOG_MEM: mem: 0 MB 
+[  115.445118] section utilization of regular region: 11 %
+[  115.764825] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  115.764830] print_GC_LOG_MEM: mem: 0 MB 
+[  116.767663] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  116.767667] print_GC_LOG_MEM: mem: 0 MB 
+[  117.769996] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  117.770001] print_GC_LOG_MEM: mem: 0 MB 
+[  117.770003] section utilization of gc region: 0 %
+[  118.775288] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  118.775292] print_GC_LOG_MEM: mem: 0 MB 
+[  119.778411] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  119.778415] print_GC_LOG_MEM: mem: 0 MB 
+[  120.782902] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  120.782905] print_GC_LOG_MEM: mem: 0 MB 
+[  121.788163] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  121.788167] print_GC_LOG_MEM: mem: 0 MB 
+[  122.790064] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  122.790068] print_GC_LOG_MEM: mem: 0 MB 
+[  122.790070] section utilization of gc region: 0 %
+[  123.800550] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  123.800554] print_GC_LOG_MEM: mem: 0 MB 
+[  124.176735] section utilization of regular region: 15 %
+[  124.802072] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  124.802077] print_GC_LOG_MEM: mem: 0 MB 
+[  125.807459] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  125.807463] print_GC_LOG_MEM: mem: 0 MB 
+[  126.810097] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  126.810101] print_GC_LOG_MEM: mem: 0 MB 
+[  127.814481] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  127.814485] print_GC_LOG_MEM: mem: 0 MB 
+[  127.814486] section utilization of gc region: 0 %
+[  128.818307] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  128.818311] print_GC_LOG_MEM: mem: 0 MB 
+[  129.830983] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  129.830987] print_GC_LOG_MEM: mem: 0 MB 
+[  130.834543] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  130.834548] print_GC_LOG_MEM: mem: 0 MB 
+[  131.838159] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  131.838163] print_GC_LOG_MEM: mem: 0 MB 
+[  132.850055] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  132.850059] print_GC_LOG_MEM: mem: 0 MB 
+[  132.850060] section utilization of gc region: 0 %
+[  133.203457] section utilization of regular region: 18 %
+[  133.850279] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  133.850283] print_GC_LOG_MEM: mem: 0 MB 
+[  134.854473] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  134.854477] print_GC_LOG_MEM: mem: 0 MB 
+[  135.869058] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  135.869063] print_GC_LOG_MEM: mem: 0 MB 
+[  136.883005] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  136.883009] print_GC_LOG_MEM: mem: 0 MB 
+[  137.886544] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  137.886548] print_GC_LOG_MEM: mem: 0 MB 
+[  137.886549] section utilization of gc region: 0 %
+[  138.891233] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  138.891238] print_GC_LOG_MEM: mem: 0 MB 
+[  139.894742] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  139.894746] print_GC_LOG_MEM: mem: 0 MB 
+[  140.899372] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  140.899376] print_GC_LOG_MEM: mem: 0 MB 
+[  141.903659] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  141.903663] print_GC_LOG_MEM: mem: 0 MB 
+[  142.783598] section utilization of regular region: 22 %
+[  142.908441] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  142.908445] print_GC_LOG_MEM: mem: 0 MB 
+[  142.908446] section utilization of gc region: 0 %
+[  143.911404] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  143.911408] print_GC_LOG_MEM: mem: 0 MB 
+[  144.915245] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  144.915249] print_GC_LOG_MEM: mem: 0 MB 
+[  145.965365] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  145.965369] print_GC_LOG_MEM: mem: 0 MB 
+[  146.972299] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  146.972303] print_GC_LOG_MEM: mem: 0 MB 
+[  148.017756] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  148.017760] print_GC_LOG_MEM: mem: 0 MB 
+[  148.017762] section utilization of gc region: 0 %
+[  149.022044] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  149.022049] print_GC_LOG_MEM: mem: 0 MB 
+[  150.024047] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  150.024050] print_GC_LOG_MEM: mem: 0 MB 
+[  151.028465] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  151.028469] print_GC_LOG_MEM: mem: 0 MB 
+[  152.032094] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  152.032097] print_GC_LOG_MEM: mem: 0 MB 
+[  152.207178] section utilization of regular region: 25 %
+[  153.051745] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  153.051749] print_GC_LOG_MEM: mem: 0 MB 
+[  153.051751] section utilization of gc region: 0 %
+[  154.060412] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  154.060417] print_GC_LOG_MEM: mem: 0 MB 
+[  155.065550] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  155.065554] print_GC_LOG_MEM: mem: 0 MB 
+[  156.069568] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  156.069572] print_GC_LOG_MEM: mem: 0 MB 
+[  157.072749] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  157.072753] print_GC_LOG_MEM: mem: 0 MB 
+[  158.077343] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  158.077347] print_GC_LOG_MEM: mem: 0 MB 
+[  158.077348] section utilization of gc region: 0 %
+[  159.081015] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  159.081019] print_GC_LOG_MEM: mem: 0 MB 
+[  160.084623] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  160.084627] print_GC_LOG_MEM: mem: 0 MB 
+[  161.088806] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  161.088810] print_GC_LOG_MEM: mem: 0 MB 
+[  161.717503] section utilization of regular region: 29 %
+[  162.092750] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  162.092753] print_GC_LOG_MEM: mem: 0 MB 
+[  163.096727] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  163.096731] print_GC_LOG_MEM: mem: 0 MB 
+[  163.096732] section utilization of gc region: 0 %
+[  164.150683] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  164.150688] print_GC_LOG_MEM: mem: 0 MB 
+[  165.153280] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  165.153284] print_GC_LOG_MEM: mem: 0 MB 
+[  166.156707] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  166.156711] print_GC_LOG_MEM: mem: 0 MB 
+[  167.162293] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  167.162297] print_GC_LOG_MEM: mem: 0 MB 
+[  168.165600] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  168.165604] print_GC_LOG_MEM: mem: 0 MB 
+[  168.165605] section utilization of gc region: 0 %
+[  169.171111] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  169.171115] print_GC_LOG_MEM: mem: 0 MB 
+[  170.174272] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  170.174276] print_GC_LOG_MEM: mem: 0 MB 
+[  171.066730] section utilization of regular region: 33 %
+[  171.178212] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  171.178216] print_GC_LOG_MEM: mem: 0 MB 
+[  172.181195] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  172.181199] print_GC_LOG_MEM: mem: 0 MB 
+[  173.185107] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  173.185111] print_GC_LOG_MEM: mem: 0 MB 
+[  173.185112] section utilization of gc region: 0 %
+[  174.190046] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  174.190050] print_GC_LOG_MEM: mem: 0 MB 
+[  175.255390] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  175.255393] print_GC_LOG_MEM: mem: 0 MB 
+[  176.257279] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  176.257283] print_GC_LOG_MEM: mem: 0 MB 
+[  177.261318] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  177.261321] print_GC_LOG_MEM: mem: 0 MB 
+[  178.266689] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  178.266693] print_GC_LOG_MEM: mem: 0 MB 
+[  178.266694] section utilization of gc region: 0 %
+[  179.269404] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  179.269408] print_GC_LOG_MEM: mem: 0 MB 
+[  180.089364] section utilization of regular region: 36 %
+[  180.273658] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  180.273664] print_GC_LOG_MEM: mem: 0 MB 
+[  181.277518] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  181.277523] print_GC_LOG_MEM: mem: 0 MB 
+[  182.281974] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  182.281980] print_GC_LOG_MEM: mem: 0 MB 
+[  183.306113] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  183.306118] print_GC_LOG_MEM: mem: 0 MB 
+[  183.306120] section utilization of gc region: 0 %
+[  184.309729] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  184.309734] print_GC_LOG_MEM: mem: 0 MB 
+[  185.313908] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  185.313914] print_GC_LOG_MEM: mem: 0 MB 
+[  185.980981] section utilization of regular region: 38 %
+[  186.317737] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  186.317742] print_GC_LOG_MEM: mem: 0 MB 
+[  187.321788] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  187.321793] print_GC_LOG_MEM: mem: 0 MB 
+[  188.325830] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  188.325835] print_GC_LOG_MEM: mem: 0 MB 
+[  188.325836] section utilization of gc region: 0 %
+[  189.332072] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  189.332078] print_GC_LOG_MEM: mem: 0 MB 
+[  190.334449] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  190.334454] print_GC_LOG_MEM: mem: 0 MB 
+[  191.337980] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  191.337985] print_GC_LOG_MEM: mem: 0 MB 
+[  191.465853] section utilization of regular region: 40 %
+[  192.342032] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  192.342037] print_GC_LOG_MEM: mem: 0 MB 
+[  193.346065] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  193.346070] print_GC_LOG_MEM: mem: 0 MB 
+[  193.346071] section utilization of gc region: 0 %
+[  194.351066] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  194.351070] print_GC_LOG_MEM: mem: 0 MB 
+[  195.354195] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  195.354199] print_GC_LOG_MEM: mem: 0 MB 
+[  196.358192] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  196.358196] print_GC_LOG_MEM: mem: 0 MB 
+[  196.973562] section utilization of regular region: 42 %
+[  197.362203] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  197.362207] print_GC_LOG_MEM: mem: 0 MB 
+[  198.366355] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  198.366360] print_GC_LOG_MEM: mem: 0 MB 
+[  198.366362] section utilization of gc region: 0 %
+[  199.370437] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  199.370443] print_GC_LOG_MEM: mem: 0 MB 
+[  200.374444] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  200.374449] print_GC_LOG_MEM: mem: 0 MB 
+[  201.378384] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  201.378389] print_GC_LOG_MEM: mem: 0 MB 
+[  202.117947] section utilization of regular region: 44 %
+[  202.383031] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  202.383036] print_GC_LOG_MEM: mem: 0 MB 
+[  203.386974] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  203.386978] print_GC_LOG_MEM: mem: 0 MB 
+[  203.386980] section utilization of gc region: 0 %
+[  204.390674] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  204.390679] print_GC_LOG_MEM: mem: 0 MB 
+[  205.395346] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  205.395350] print_GC_LOG_MEM: mem: 0 MB 
+[  206.398714] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  206.398719] print_GC_LOG_MEM: mem: 0 MB 
+[  207.330031] section utilization of regular region: 45 %
+[  207.404681] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  207.404684] print_GC_LOG_MEM: mem: 0 MB 
+[  208.406706] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  208.406711] print_GC_LOG_MEM: mem: 0 MB 
+[  208.406712] section utilization of gc region: 0 %
+[  209.452303] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  209.452308] print_GC_LOG_MEM: mem: 0 MB 
+[  210.454690] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  210.454694] print_GC_LOG_MEM: mem: 0 MB 
+[  211.461421] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  211.461426] print_GC_LOG_MEM: mem: 0 MB 
+[  212.462960] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  212.462965] print_GC_LOG_MEM: mem: 0 MB 
+[  212.745650] section utilization of regular region: 47 %
+[  213.466811] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  213.466816] print_GC_LOG_MEM: mem: 0 MB 
+[  213.466817] section utilization of gc region: 0 %
+[  214.470876] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  214.470880] print_GC_LOG_MEM: mem: 0 MB 
+[  215.475951] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  215.475955] print_GC_LOG_MEM: mem: 0 MB 
+[  216.478987] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  216.478993] print_GC_LOG_MEM: mem: 0 MB 
+[  217.495456] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  217.495461] print_GC_LOG_MEM: mem: 0 MB 
+[  218.202086] section utilization of regular region: 49 %
+[  218.499344] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  218.499348] print_GC_LOG_MEM: mem: 0 MB 
+[  218.499349] section utilization of gc region: 0 %
+[  219.503005] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  219.503009] print_GC_LOG_MEM: mem: 0 MB 
+[  220.507362] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  220.507366] print_GC_LOG_MEM: mem: 0 MB 
+[  221.511642] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  221.511647] print_GC_LOG_MEM: mem: 0 MB 
+[  222.515097] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  222.515102] print_GC_LOG_MEM: mem: 0 MB 
+[  223.235169] section utilization of regular region: 51 %
+[  223.519844] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  223.519848] print_GC_LOG_MEM: mem: 0 MB 
+[  223.519850] section utilization of gc region: 0 %
+[  224.523383] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  224.523388] print_GC_LOG_MEM: mem: 0 MB 
+[  225.527617] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  225.527622] print_GC_LOG_MEM: mem: 0 MB 
+[  226.535427] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  226.535432] print_GC_LOG_MEM: mem: 0 MB 
+[  227.539292] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  227.539296] print_GC_LOG_MEM: mem: 0 MB 
+[  228.543291] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  228.543296] print_GC_LOG_MEM: mem: 0 MB 
+[  228.543298] section utilization of gc region: 0 %
+[  228.927561] section utilization of regular region: 53 %
+[  229.548242] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  229.548247] print_GC_LOG_MEM: mem: 0 MB 
+[  230.552307] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  230.552312] print_GC_LOG_MEM: mem: 0 MB 
+[  231.555563] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  231.555567] print_GC_LOG_MEM: mem: 0 MB 
+[  232.559415] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  232.559420] print_GC_LOG_MEM: mem: 0 MB 
+[  233.563619] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  233.563624] print_GC_LOG_MEM: mem: 0 MB 
+[  233.563625] section utilization of gc region: 0 %
+[  234.569220] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  234.569225] print_GC_LOG_MEM: mem: 0 MB 
+[  235.095209] section utilization of regular region: 56 %
+[  235.571512] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  235.571517] print_GC_LOG_MEM: mem: 0 MB 
+[  236.575976] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  236.575981] print_GC_LOG_MEM: mem: 0 MB 
+[  237.579566] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  237.579572] print_GC_LOG_MEM: mem: 0 MB 
+[  238.583951] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  238.583956] print_GC_LOG_MEM: mem: 0 MB 
+[  238.583957] section utilization of gc region: 0 %
+[  239.587982] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  239.587986] print_GC_LOG_MEM: mem: 0 MB 
+[  240.591673] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  240.591678] print_GC_LOG_MEM: mem: 0 MB 
+[  241.355720] section utilization of regular region: 58 %
+[  241.596111] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  241.596124] print_GC_LOG_MEM: mem: 0 MB 
+[  242.599820] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  242.599826] print_GC_LOG_MEM: mem: 0 MB 
+[  243.603749] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  243.603754] print_GC_LOG_MEM: mem: 0 MB 
+[  243.603755] section utilization of gc region: 0 %
+[  244.608005] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  244.608010] print_GC_LOG_MEM: mem: 0 MB 
+[  245.611826] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  245.611831] print_GC_LOG_MEM: mem: 0 MB 
+[  246.602351] section utilization of regular region: 59 %
+[  246.661690] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  246.661694] print_GC_LOG_MEM: mem: 0 MB 
+[  247.663921] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  247.663926] print_GC_LOG_MEM: mem: 0 MB 
+[  248.667996] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  248.668001] print_GC_LOG_MEM: mem: 0 MB 
+[  248.668002] section utilization of gc region: 0 %
+[  249.672709] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  249.672714] print_GC_LOG_MEM: mem: 0 MB 
+[  250.676115] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  250.676120] print_GC_LOG_MEM: mem: 0 MB 
+[  251.679992] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  251.679996] print_GC_LOG_MEM: mem: 0 MB 
+[  252.579083] section utilization of regular region: 62 %
+[  252.684027] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  252.684031] print_GC_LOG_MEM: mem: 0 MB 
+[  253.688131] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  253.688137] print_GC_LOG_MEM: mem: 0 MB 
+[  253.688138] section utilization of gc region: 0 %
+[  254.692503] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  254.692508] print_GC_LOG_MEM: mem: 0 MB 
+[  255.696110] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  255.696114] print_GC_LOG_MEM: mem: 0 MB 
+[  256.700163] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  256.700168] print_GC_LOG_MEM: mem: 0 MB 
+[  257.704172] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  257.704177] print_GC_LOG_MEM: mem: 0 MB 
+[  257.943539] section utilization of regular region: 63 %
+[  258.708327] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  258.708332] print_GC_LOG_MEM: mem: 0 MB 
+[  258.708333] section utilization of gc region: 0 %
+[  259.712326] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  259.712331] print_GC_LOG_MEM: mem: 0 MB 
+[  260.716272] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  260.716277] print_GC_LOG_MEM: mem: 0 MB 
+[  261.720466] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  261.720471] print_GC_LOG_MEM: mem: 0 MB 
+[  262.724314] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  262.724319] print_GC_LOG_MEM: mem: 0 MB 
+[  262.979032] section utilization of regular region: 65 %
+[  263.728443] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  263.728449] print_GC_LOG_MEM: mem: 0 MB 
+[  263.728450] section utilization of gc region: 0 %
+[  264.728315] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  264.728320] print_GC_LOG_MEM: mem: 0 MB 
+[  265.729589] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  265.729594] print_GC_LOG_MEM: mem: 0 MB 
+[  266.729152] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  266.729156] print_GC_LOG_MEM: mem: 0 MB 
+[  267.728297] print_GC_LATENCY: latency: 0 (rd: 0 wrt: 0) us.  SW_lat: 18 us. 
+[  267.728303] print_GC_LATENCY: breakdown us. rd op: 0 wrt op: 0 read xfer: 0 write xfer: 0
+[  267.728304] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  267.728306] print_GC_LOG_MEM: mem: 0 MB 
+[  268.728260] print_GC_LATENCY: latency: 8 (rd: 3 wrt: 4) us.  SW_lat: 19 us. 
+[  268.728265] print_GC_LATENCY: breakdown us. rd op: 2 wrt op: 3 read xfer: 0 write xfer: 0
+[  268.728267] print_MG_CMD_CNT: mg cmd submitted: 0 (per sec)
+[  268.728269] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 162 ( 162 / 0 ) total: 162 discard: 0 submit: 0 completed: 0
+[  268.728272] section utilization of gc region: 0 %
+[  268.747669] __fill_rev_sq_cmd: first submitted!!
+[  268.767772] section utilization of regular region: 67 %
+[  269.728279] print_GC_LATENCY: latency: 234 (rd: 67 wrt: 182) us.  SW_lat: 33 us. 
+[  269.728286] print_GC_LATENCY: breakdown us. rd op: 34 wrt op: 144 read xfer: 33 write xfer: 38
+[  269.728288] print_MG_CMD_CNT: mg cmd submitted: 41 (per sec) total mg cmd: 41 total completed mg cmd: 0
+[  269.728290] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 10650 ( 154 / 10496 ) total: 10650 discard: 0 submit: 10496 completed: 0
+[  270.728692] print_GC_LATENCY: latency: 458 (rd: 128 wrt: 350) us.  SW_lat: 46 us. 
+[  270.728697] print_GC_LATENCY: breakdown us. rd op: 64 wrt op: 277 read xfer: 64 write xfer: 72
+[  270.728699] print_MG_CMD_CNT: mg cmd submitted: 71 (per sec) total mg cmd: 112 total completed mg cmd: 88
+[  270.728701] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 6156 ( 12 / 6144 ) total: 28684 discard: 0 submit: 28672 completed: 22528
+[  271.728340] print_GC_LATENCY: latency: 652 (rd: 192 wrt: 485) us.  SW_lat: 56 us. 
+[  271.728346] print_GC_LATENCY: breakdown us. rd op: 103 wrt op: 383 read xfer: 88 write xfer: 101
+[  271.728347] print_MG_CMD_CNT: mg cmd submitted: 83 (per sec) total mg cmd: 195 total completed mg cmd: 152
+[  271.728349] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 11076 ( 68 / 11008 ) total: 49988 discard: 0 submit: 49920 completed: 38912
+[  272.728921] print_GC_LATENCY: latency: 789 (rd: 242 wrt: 574) us.  SW_lat: 63 us. 
+[  272.728927] print_GC_LATENCY: breakdown us. rd op: 137 wrt op: 455 read xfer: 105 write xfer: 119
+[  272.728928] print_MG_CMD_CNT: mg cmd submitted: 68 (per sec) total mg cmd: 263 total completed mg cmd: 221
+[  272.728930] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 10840 ( 88 / 10752 ) total: 67416 discard: 0 submit: 67328 completed: 56576
+[  273.728227] print_GC_LATENCY: latency: 899 (rd: 274 wrt: 652) us.  SW_lat: 69 us. 
+[  273.728234] print_GC_LATENCY: breakdown us. rd op: 155 wrt op: 517 read xfer: 119 write xfer: 135
+[  273.728235] print_MG_CMD_CNT: mg cmd submitted: 82 (per sec) total mg cmd: 345 total completed mg cmd: 274
+[  273.728237] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 18271 ( 95 / 18176 ) total: 88415 discard: 0 submit: 88320 completed: 70144
+[  273.728240] section utilization of gc region: 0 %
+[  274.728198] print_GC_LATENCY: latency: 1061 (rd: 315 wrt: 773) us.  SW_lat: 77 us. 
+[  274.728204] print_GC_LATENCY: breakdown us. rd op: 175 wrt op: 613 read xfer: 140 write xfer: 160
+[  274.728206] print_MG_CMD_CNT: mg cmd submitted: 142 (per sec) total mg cmd: 487 total completed mg cmd: 345
+[  274.728208] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 36417 ( 65 / 36352 ) total: 124752 discard: 15 submit: 124672 completed: 88320
+[  275.231475] section utilization of regular region: 67 %
+[  275.728443] print_GC_LATENCY: latency: 1167 (rd: 341 wrt: 855) us.  SW_lat: 82 us. 
+[  275.728448] print_GC_LATENCY: breakdown us. rd op: 186 wrt op: 678 read xfer: 155 write xfer: 176
+[  275.728450] print_MG_CMD_CNT: mg cmd submitted: 122 (per sec) total mg cmd: 609 total completed mg cmd: 527
+[  275.728452] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 21070 ( 78 / 20992 ) total: 155997 discard: 15 submit: 155904 completed: 134912
+[  276.728188] print_GC_LATENCY: latency: 1293 (rd: 371 wrt: 953) us.  SW_lat: 89 us. 
+[  276.728193] print_GC_LATENCY: breakdown us. rd op: 199 wrt op: 756 read xfer: 172 write xfer: 196
+[  276.728195] print_MG_CMD_CNT: mg cmd submitted: 156 (per sec) total mg cmd: 765 total completed mg cmd: 688
+[  276.728196] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 19745 ( 33 / 19712 ) total: 195888 discard: 15 submit: 195840 completed: 176128
+[  277.728190] print_GC_LATENCY: latency: 1399 (rd: 395 wrt: 1037) us.  SW_lat: 95 us. 
+[  277.728195] print_GC_LATENCY: breakdown us. rd op: 208 wrt op: 823 read xfer: 187 write xfer: 214
+[  277.728197] print_MG_CMD_CNT: mg cmd submitted: 158 (per sec) total mg cmd: 923 total completed mg cmd: 897
+[  277.728199] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 6813 ( 157 / 6656 ) total: 236460 discard: 15 submit: 236288 completed: 229632
+[  278.728171] print_GC_LATENCY: latency: 1515 (rd: 422 wrt: 1128) us.  SW_lat: 101 us. 
+[  278.728176] print_GC_LATENCY: breakdown us. rd op: 218 wrt op: 895 read xfer: 203 write xfer: 232
+[  278.728177] print_MG_CMD_CNT: mg cmd submitted: 182 (per sec) total mg cmd: 1105 total completed mg cmd: 897
+[  278.728179] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 53255 ( 7 / 53248 ) total: 282902 discard: 15 submit: 282880 completed: 229632
+[  278.728182] section utilization of gc region: 0 %
+[  279.728251] print_GC_LATENCY: latency: 1577 (rd: 436 wrt: 1176) us.  SW_lat: 104 us. 
+[  279.728257] print_GC_LATENCY: breakdown us. rd op: 224 wrt op: 933 read xfer: 211 write xfer: 242
+[  279.728258] print_MG_CMD_CNT: mg cmd submitted: 146 (per sec) total mg cmd: 1251 total completed mg cmd: 1099
+[  279.728260] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 39053 ( 141 / 38912 ) total: 320416 discard: 19 submit: 320256 completed: 281344
+[  280.728188] print_GC_LATENCY: latency: 1657 (rd: 456 wrt: 1236) us.  SW_lat: 108 us. 
+[  280.728194] print_GC_LATENCY: breakdown us. rd op: 234 wrt op: 981 read xfer: 221 write xfer: 255
+[  280.728196] print_MG_CMD_CNT: mg cmd submitted: 175 (per sec) total mg cmd: 1426 total completed mg cmd: 1261
+[  280.728198] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 42418 ( 178 / 42240 ) total: 365253 discard: 19 submit: 365056 completed: 322816
+[  281.475252] section utilization of regular region: 67 %
+[  281.728394] print_GC_LATENCY: latency: 1749 (rd: 479 wrt: 1305) us.  SW_lat: 113 us. 
+[  281.728400] print_GC_LATENCY: breakdown us. rd op: 246 wrt op: 1035 read xfer: 233 write xfer: 269
+[  281.728401] print_MG_CMD_CNT: mg cmd submitted: 186 (per sec) total mg cmd: 1612 total completed mg cmd: 1418
+[  281.728403] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 49868 ( 204 / 49664 ) total: 412895 discard: 19 submit: 412672 completed: 363008
+[  282.728456] print_GC_LATENCY: latency: 1772 (rd: 484 wrt: 1323) us.  SW_lat: 114 us. 
+[  282.728462] print_GC_LATENCY: breakdown us. rd op: 247 wrt op: 1049 read xfer: 236 write xfer: 273
+[  282.728463] print_MG_CMD_CNT: mg cmd submitted: 147 (per sec) total mg cmd: 1759 total completed mg cmd: 1586
+[  282.728465] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 44326 ( 38 / 44288 ) total: 450361 discard: 19 submit: 450304 completed: 406016
+[  283.728146] print_GC_LATENCY: latency: 1853 (rd: 503 wrt: 1386) us.  SW_lat: 118 us. 
+[  283.728151] print_GC_LATENCY: breakdown us. rd op: 255 wrt op: 1099 read xfer: 247 write xfer: 286
+[  283.728153] print_MG_CMD_CNT: mg cmd submitted: 196 (per sec) total mg cmd: 1955 total completed mg cmd: 1586
+[  283.728155] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 94547 ( 83 / 94464 ) total: 500582 discard: 19 submit: 500480 completed: 406016
+[  283.728158] section utilization of gc region: 0 %
+[  284.728607] print_GC_LATENCY: latency: 1895 (rd: 513 wrt: 1419) us.  SW_lat: 121 us. 
+[  284.728612] print_GC_LATENCY: breakdown us. rd op: 259 wrt op: 1126 read xfer: 253 write xfer: 293
+[  284.728614] print_MG_CMD_CNT: mg cmd submitted: 151 (per sec) total mg cmd: 2106 total completed mg cmd: 1728
+[  284.728616] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 96887 ( 119 / 96768 ) total: 539274 discard: 19 submit: 539136 completed: 442368
+[  285.730265] print_GC_LATENCY: latency: 1954 (rd: 526 wrt: 1465) us.  SW_lat: 124 us. 
+[  285.730271] print_GC_LATENCY: breakdown us. rd op: 265 wrt op: 1162 read xfer: 261 write xfer: 303
+[  285.730273] print_MG_CMD_CNT: mg cmd submitted: 200 (per sec) total mg cmd: 2306 total completed mg cmd: 2182
+[  285.730275] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 31763 ( 19 / 31744 ) total: 590374 discard: 19 submit: 590336 completed: 558592
+[  286.728299] print_GC_LATENCY: latency: 2053 (rd: 552 wrt: 1540) us.  SW_lat: 130 us. 
+[  286.728305] print_GC_LATENCY: breakdown us. rd op: 277 wrt op: 1221 read xfer: 274 write xfer: 318
+[  286.728307] print_MG_CMD_CNT: mg cmd submitted: 291 (per sec) total mg cmd: 2597 total completed mg cmd: 2182
+[  286.728309] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 106313 ( 73 / 106240 ) total: 664924 discard: 19 submit: 664832 completed: 558592
+[  286.993827] section utilization of regular region: 67 %
+[  287.728129] print_GC_LATENCY: latency: 2065 (rd: 554 wrt: 1550) us.  SW_lat: 131 us. 
+[  287.728134] print_GC_LATENCY: breakdown us. rd op: 277 wrt op: 1229 read xfer: 276 write xfer: 321
+[  287.728136] print_MG_CMD_CNT: mg cmd submitted: 133 (per sec) total mg cmd: 2730 total completed mg cmd: 2436
+[  287.728137] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 75490 ( 226 / 75264 ) total: 699125 discard: 19 submit: 698880 completed: 623616
+[  288.731015] print_GC_LATENCY: latency: 2090 (rd: 560 wrt: 1569) us.  SW_lat: 132 us. 
+[  288.731021] print_GC_LATENCY: breakdown us. rd op: 280 wrt op: 1244 read xfer: 279 write xfer: 324
+[  288.731022] print_MG_CMD_CNT: mg cmd submitted: 157 (per sec) total mg cmd: 2887 total completed mg cmd: 2597
+[  288.731024] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 74295 ( 55 / 74240 ) total: 739146 discard: 19 submit: 739072 completed: 664832
+[  288.731027] section utilization of gc region: 0 %
+[  289.728126] print_GC_LATENCY: latency: 2166 (rd: 578 wrt: 1628) us.  SW_lat: 136 us. 
+[  289.728132] print_GC_LATENCY: breakdown us. rd op: 289 wrt op: 1291 read xfer: 289 write xfer: 337
+[  289.728134] print_MG_CMD_CNT: mg cmd submitted: 264 (per sec) total mg cmd: 3151 total completed mg cmd: 2597
+[  289.728136] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 141873 ( 49 / 141824 ) total: 806724 discard: 19 submit: 806656 completed: 664832
+[  290.780604] print_GC_LATENCY: latency: 2189 (rd: 585 wrt: 1645) us.  SW_lat: 138 us. 
+[  290.780609] print_GC_LATENCY: breakdown us. rd op: 292 wrt op: 1304 read xfer: 292 write xfer: 340
+[  290.780611] print_MG_CMD_CNT: mg cmd submitted: 137 (per sec) total mg cmd: 3288 total completed mg cmd: 2999
+[  290.780612] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 74005 ( 21 / 73984 ) total: 841768 discard: 19 submit: 841728 completed: 767744
+[  291.780122] print_GC_LATENCY: latency: 2231 (rd: 595 wrt: 1677) us.  SW_lat: 140 us. 
+[  291.780127] print_GC_LATENCY: breakdown us. rd op: 297 wrt op: 1330 read xfer: 298 write xfer: 347
+[  291.780129] print_MG_CMD_CNT: mg cmd submitted: 240 (per sec) total mg cmd: 3528 total completed mg cmd: 3209
+[  291.780131] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 81766 ( 102 / 81664 ) total: 903289 discard: 19 submit: 903168 completed: 821504
+[  292.331510] section utilization of regular region: 66 %
+[  292.780273] print_GC_LATENCY: latency: 2256 (rd: 601 wrt: 1696) us.  SW_lat: 141 us. 
+[  292.780278] print_GC_LATENCY: breakdown us. rd op: 299 wrt op: 1345 read xfer: 301 write xfer: 351
+[  292.780281] print_MG_CMD_CNT: mg cmd submitted: 168 (per sec) total mg cmd: 3696 total completed mg cmd: 3481
+[  292.780282] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 55205 ( 165 / 55040 ) total: 946361 discard: 20 submit: 946176 completed: 891136
+[  293.784129] print_GC_LATENCY: latency: 2290 (rd: 609 wrt: 1722) us.  SW_lat: 143 us. 
+[  293.784136] print_GC_LATENCY: breakdown us. rd op: 303 wrt op: 1365 read xfer: 306 write xfer: 356
+[  293.784138] print_MG_CMD_CNT: mg cmd submitted: 193 (per sec) total mg cmd: 3889 total completed mg cmd: 3878
+[  293.784139] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 2991 ( 175 / 2816 ) total: 995849 discard: 90 submit: 995584 completed: 992768
+[  293.784143] section utilization of gc region: 0 %
+[  294.788237] print_GC_LATENCY: latency: 2332 (rd: 619 wrt: 1754) us.  SW_lat: 145 us. 
+[  294.788242] print_GC_LATENCY: breakdown us. rd op: 307 wrt op: 1391 read xfer: 311 write xfer: 363
+[  294.788244] print_MG_CMD_CNT: mg cmd submitted: 229 (per sec) total mg cmd: 4118 total completed mg cmd: 3878
+[  294.788245] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 61526 ( 86 / 61440 ) total: 1054384 discard: 90 submit: 1054208 completed: 992768
+[  295.792420] print_GC_LATENCY: latency: 2366 (rd: 627 wrt: 1780) us.  SW_lat: 147 us. 
+[  295.792426] print_GC_LATENCY: breakdown us. rd op: 311 wrt op: 1411 read xfer: 316 write xfer: 369
+[  295.792427] print_MG_CMD_CNT: mg cmd submitted: 219 (per sec) total mg cmd: 4337 total completed mg cmd: 4200
+[  295.792429] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 35079 ( 7 / 35072 ) total: 1110369 discard: 90 submit: 1110272 completed: 1075200
+[  296.796523] print_GC_LATENCY: latency: 2398 (rd: 635 wrt: 1805) us.  SW_lat: 148 us. 
+[  296.796528] print_GC_LATENCY: breakdown us. rd op: 314 wrt op: 1431 read xfer: 320 write xfer: 374
+[  296.796530] print_MG_CMD_CNT: mg cmd submitted: 222 (per sec) total mg cmd: 4559 total completed mg cmd: 4519
+[  296.796532] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 10458 ( 218 / 10240 ) total: 1167412 discard: 90 submit: 1167104 completed: 1156864
+[  297.800292] print_GC_LATENCY: latency: 2440 (rd: 645 wrt: 1837) us.  SW_lat: 150 us. 
+[  297.800298] print_GC_LATENCY: breakdown us. rd op: 319 wrt op: 1456 read xfer: 326 write xfer: 380
+[  297.800300] print_MG_CMD_CNT: mg cmd submitted: 241 (per sec) total mg cmd: 4800 total completed mg cmd: 4519
+[  297.800302] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 72170 ( 234 / 71936 ) total: 1229124 discard: 90 submit: 1228800 completed: 1156864
+[  297.926557] section utilization of regular region: 66 %
+[  298.804236] print_GC_LATENCY: latency: 2468 (rd: 651 wrt: 1859) us.  SW_lat: 152 us. 
+[  298.804242] print_GC_LATENCY: breakdown us. rd op: 321 wrt op: 1473 read xfer: 329 write xfer: 385
+[  298.804244] print_MG_CMD_CNT: mg cmd submitted: 237 (per sec) total mg cmd: 5037 total completed mg cmd: 4823
+[  298.804246] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 54792 ( 8 / 54784 ) total: 1289570 discard: 90 submit: 1289472 completed: 1234688
+[  298.804249] section utilization of gc region: 1 %
+[  299.808466] print_GC_LATENCY: latency: 2494 (rd: 657 wrt: 1879) us.  SW_lat: 153 us. 
+[  299.808472] print_GC_LATENCY: breakdown us. rd op: 324 wrt op: 1489 read xfer: 333 write xfer: 390
+[  299.808474] print_MG_CMD_CNT: mg cmd submitted: 220 (per sec) total mg cmd: 5257 total completed mg cmd: 5190
+[  299.808475] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 17247 ( 95 / 17152 ) total: 1345977 discard: 90 submit: 1345792 completed: 1328640
+[  300.820163] print_GC_LATENCY: latency: 2526 (rd: 665 wrt: 1904) us.  SW_lat: 155 us. 
+[  300.820169] print_GC_LATENCY: breakdown us. rd op: 328 wrt op: 1509 read xfer: 337 write xfer: 395
+[  300.820171] print_MG_CMD_CNT: mg cmd submitted: 248 (per sec) total mg cmd: 5505 total completed mg cmd: 5190
+[  300.820172] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 80774 ( 134 / 80640 ) total: 1409618 discard: 204 submit: 1409280 completed: 1328640
+[  301.824583] print_GC_LATENCY: latency: 2573 (rd: 677 wrt: 1939) us.  SW_lat: 157 us. 
+[  301.824589] print_GC_LATENCY: breakdown us. rd op: 333 wrt op: 1537 read xfer: 344 write xfer: 402
+[  301.824590] print_MG_CMD_CNT: mg cmd submitted: 308 (per sec) total mg cmd: 5813 total completed mg cmd: 5448
+[  301.824592] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 93491 ( 51 / 93440 ) total: 1488383 discard: 204 submit: 1488128 completed: 1394688
+[  302.828134] print_GC_LATENCY: latency: 2584 (rd: 680 wrt: 1948) us.  SW_lat: 158 us. 
+[  302.828139] print_GC_LATENCY: breakdown us. rd op: 334 wrt op: 1543 read xfer: 345 write xfer: 404
+[  302.828141] print_MG_CMD_CNT: mg cmd submitted: 158 (per sec) total mg cmd: 5971 total completed mg cmd: 5718
+[  302.828143] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 64780 ( 12 / 64768 ) total: 1528792 discard: 204 submit: 1528576 completed: 1463808
+[  303.440528] section utilization of regular region: 66 %
+[  303.833832] print_GC_LATENCY: latency: 2603 (rd: 684 wrt: 1963) us.  SW_lat: 159 us. 
+[  303.833837] print_GC_LATENCY: breakdown us. rd op: 336 wrt op: 1555 read xfer: 348 write xfer: 407
+[  303.833839] print_MG_CMD_CNT: mg cmd submitted: 211 (per sec) total mg cmd: 6182 total completed mg cmd: 6025
+[  303.833840] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 40355 ( 163 / 40192 ) total: 1582959 discard: 204 submit: 1582592 completed: 1542400
+[  303.833844] section utilization of gc region: 1 %
+[  304.836679] print_GC_LATENCY: latency: 2632 (rd: 691 wrt: 1985) us.  SW_lat: 160 us. 
+[  304.836684] print_GC_LATENCY: breakdown us. rd op: 339 wrt op: 1573 read xfer: 352 write xfer: 412
+[  304.836686] print_MG_CMD_CNT: mg cmd submitted: 226 (per sec) total mg cmd: 6408 total completed mg cmd: 6328
+[  304.836688] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 20541 ( 61 / 20480 ) total: 1640713 discard: 204 submit: 1640448 completed: 1619968
+[  305.842855] print_GC_LATENCY: latency: 2663 (rd: 699 wrt: 2008) us.  SW_lat: 162 us. 
+[  305.842860] print_GC_LATENCY: breakdown us. rd op: 342 wrt op: 1591 read xfer: 356 write xfer: 416
+[  305.842861] print_MG_CMD_CNT: mg cmd submitted: 269 (per sec) total mg cmd: 6677 total completed mg cmd: 6328
+[  305.842863] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 89514 ( 170 / 89344 ) total: 1709686 discard: 204 submit: 1709312 completed: 1619968
+[  306.844220] print_GC_LATENCY: latency: 2679 (rd: 702 wrt: 2021) us.  SW_lat: 163 us. 
+[  306.844225] print_GC_LATENCY: breakdown us. rd op: 344 wrt op: 1602 read xfer: 358 write xfer: 419
+[  306.844227] print_MG_CMD_CNT: mg cmd submitted: 209 (per sec) total mg cmd: 6886 total completed mg cmd: 6767
+[  306.844228] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 30670 ( 206 / 30464 ) total: 1763226 discard: 204 submit: 1762816 completed: 1732352
+[  307.848151] print_GC_LATENCY: latency: 2713 (rd: 710 wrt: 2046) us.  SW_lat: 164 us. 
+[  307.848157] print_GC_LATENCY: breakdown us. rd op: 348 wrt op: 1622 read xfer: 362 write xfer: 424
+[  307.848159] print_MG_CMD_CNT: mg cmd submitted: 257 (per sec) total mg cmd: 7143 total completed mg cmd: 7053
+[  307.848160] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 23151 ( 111 / 23040 ) total: 1828923 discard: 204 submit: 1828608 completed: 1805568
+[  308.852624] print_GC_LATENCY: latency: 2732 (rd: 715 wrt: 2061) us.  SW_lat: 165 us. 
+[  308.852630] print_GC_LATENCY: breakdown us. rd op: 350 wrt op: 1634 read xfer: 365 write xfer: 427
+[  308.852632] print_MG_CMD_CNT: mg cmd submitted: 247 (per sec) total mg cmd: 7390 total completed mg cmd: 7053
+[  308.852634] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 86397 ( 125 / 86272 ) total: 1892169 discard: 204 submit: 1891840 completed: 1805568
+[  308.852637] section utilization of gc region: 1 %
+[  309.070611] section utilization of regular region: 65 %
+[  309.856425] print_GC_LATENCY: latency: 2751 (rd: 720 wrt: 2075) us.  SW_lat: 166 us. 
+[  309.856430] print_GC_LATENCY: breakdown us. rd op: 352 wrt op: 1645 read xfer: 367 write xfer: 430
+[  309.856432] print_MG_CMD_CNT: mg cmd submitted: 226 (per sec) total mg cmd: 7616 total completed mg cmd: 7397
+[  309.856434] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 56188 ( 124 / 56064 ) total: 1950024 discard: 204 submit: 1949696 completed: 1893632
+[  310.860728] print_GC_LATENCY: latency: 2763 (rd: 722 wrt: 2084) us.  SW_lat: 167 us. 
+[  310.860733] print_GC_LATENCY: breakdown us. rd op: 353 wrt op: 1652 read xfer: 369 write xfer: 432
+[  310.860735] print_MG_CMD_CNT: mg cmd submitted: 203 (per sec) total mg cmd: 7819 total completed mg cmd: 7759
+[  310.860737] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 15420 ( 60 / 15360 ) total: 2001928 discard: 204 submit: 2001664 completed: 1986304
+[  311.866875] print_GC_LATENCY: latency: 2789 (rd: 728 wrt: 2105) us.  SW_lat: 168 us. 
+[  311.866881] print_GC_LATENCY: breakdown us. rd op: 356 wrt op: 1668 read xfer: 372 write xfer: 436
+[  311.866883] print_MG_CMD_CNT: mg cmd submitted: 281 (per sec) total mg cmd: 8100 total completed mg cmd: 7759
+[  311.866885] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 87312 ( 16 / 87296 ) total: 2073820 discard: 204 submit: 2073600 completed: 1986304
+[  312.868465] print_GC_LATENCY: latency: 2809 (rd: 733 wrt: 2120) us.  SW_lat: 169 us. 
+[  312.868471] print_GC_LATENCY: breakdown us. rd op: 358 wrt op: 1680 read xfer: 375 write xfer: 439
+[  312.868472] print_MG_CMD_CNT: mg cmd submitted: 231 (per sec) total mg cmd: 8331 total completed mg cmd: 8048
+[  312.868474] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 72516 ( 68 / 72448 ) total: 2133008 discard: 204 submit: 2132736 completed: 2060288
+[  313.873910] print_GC_LATENCY: latency: 2816 (rd: 735 wrt: 2125) us.  SW_lat: 170 us. 
+[  313.873916] print_GC_LATENCY: breakdown us. rd op: 359 wrt op: 1684 read xfer: 376 write xfer: 441
+[  313.873918] print_MG_CMD_CNT: mg cmd submitted: 209 (per sec) total mg cmd: 8540 total completed mg cmd: 8355
+[  313.873920] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 47615 ( 255 / 47360 ) total: 2186699 discard: 204 submit: 2186240 completed: 2138880
+[  313.873922] section utilization of gc region: 2 %
+[  314.802319] section utilization of regular region: 65 %
+[  314.883790] print_GC_LATENCY: latency: 2855 (rd: 744 wrt: 2155) us.  SW_lat: 172 us. 
+[  314.883795] print_GC_LATENCY: breakdown us. rd op: 363 wrt op: 1708 read xfer: 381 write xfer: 447
+[  314.883797] print_MG_CMD_CNT: mg cmd submitted: 316 (per sec) total mg cmd: 8856 total completed mg cmd: 8355
+[  314.883798] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 128273 ( 17 / 128256 ) total: 2267357 discard: 204 submit: 2267136 completed: 2138880
+[  315.884341] print_GC_LATENCY: latency: 2864 (rd: 746 wrt: 2163) us.  SW_lat: 172 us. 
+[  315.884346] print_GC_LATENCY: breakdown us. rd op: 364 wrt op: 1713 read xfer: 382 write xfer: 449
+[  315.884347] print_MG_CMD_CNT: mg cmd submitted: 198 (per sec) total mg cmd: 9054 total completed mg cmd: 8740
+[  315.884349] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 80391 ( 7 / 80384 ) total: 2318035 discard: 204 submit: 2317824 completed: 2237440
+[  316.888314] print_GC_LATENCY: latency: 2885 (rd: 751 wrt: 2179) us.  SW_lat: 173 us. 
+[  316.888320] print_GC_LATENCY: breakdown us. rd op: 366 wrt op: 1726 read xfer: 385 write xfer: 452
+[  316.888322] print_MG_CMD_CNT: mg cmd submitted: 238 (per sec) total mg cmd: 9292 total completed mg cmd: 9060
+[  316.888323] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 59568 ( 176 / 59392 ) total: 2379132 discard: 204 submit: 2378752 completed: 2319360
+[  317.892287] print_GC_LATENCY: latency: 2890 (rd: 753 wrt: 2182) us.  SW_lat: 174 us. 
+[  317.892292] print_GC_LATENCY: breakdown us. rd op: 367 wrt op: 1729 read xfer: 385 write xfer: 453
+[  317.892294] print_MG_CMD_CNT: mg cmd submitted: 227 (per sec) total mg cmd: 9519 total completed mg cmd: 9387
+[  317.892296] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 33967 ( 175 / 33792 ) total: 2437243 discard: 204 submit: 2436864 completed: 2403072
+[  318.896303] print_GC_LATENCY: latency: 2929 (rd: 762 wrt: 2212) us.  SW_lat: 176 us. 
+[  318.896309] print_GC_LATENCY: breakdown us. rd op: 371 wrt op: 1752 read xfer: 391 write xfer: 460
+[  318.896310] print_MG_CMD_CNT: mg cmd submitted: 404 (per sec) total mg cmd: 9923 total completed mg cmd: 9387
+[  318.896312] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 137375 ( 159 / 137216 ) total: 2540651 discard: 204 submit: 2540288 completed: 2403072
+[  318.896315] section utilization of gc region: 2 %
+[  319.900226] print_GC_LATENCY: latency: 2946 (rd: 767 wrt: 2225) us.  SW_lat: 177 us. 
+[  319.900230] print_GC_LATENCY: breakdown us. rd op: 373 wrt op: 1763 read xfer: 393 write xfer: 462
+[  319.900232] print_MG_CMD_CNT: mg cmd submitted: 253 (per sec) total mg cmd: 10176 total completed mg cmd: 9881
+[  319.900234] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 75678 ( 158 / 75520 ) total: 2605418 discard: 204 submit: 2605056 completed: 2529536
+[  320.314260] section utilization of regular region: 65 %
+[  320.905275] print_GC_LATENCY: latency: 2944 (rd: 766 wrt: 2224) us.  SW_lat: 177 us. 
+[  320.905280] print_GC_LATENCY: breakdown us. rd op: 373 wrt op: 1761 read xfer: 393 write xfer: 462
+[  320.905282] print_MG_CMD_CNT: mg cmd submitted: 121 (per sec) total mg cmd: 10297 total completed mg cmd: 10150
+[  320.905284] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 37754 ( 122 / 37632 ) total: 2636358 discard: 204 submit: 2636032 completed: 2598400
+[  321.908249] print_GC_LATENCY: latency: 2972 (rd: 773 wrt: 2245) us.  SW_lat: 178 us. 
+[  321.908255] print_GC_LATENCY: breakdown us. rd op: 376 wrt op: 1778 read xfer: 396 write xfer: 466
+[  321.908257] print_MG_CMD_CNT: mg cmd submitted: 289 (per sec) total mg cmd: 10586 total completed mg cmd: 10389
+[  321.908259] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 50530 ( 98 / 50432 ) total: 2710318 discard: 204 submit: 2710016 completed: 2659584
+[  322.912268] print_GC_LATENCY: latency: 2981 (rd: 775 wrt: 2252) us.  SW_lat: 179 us. 
+[  322.912274] print_GC_LATENCY: breakdown us. rd op: 377 wrt op: 1784 read xfer: 397 write xfer: 468
+[  322.912275] print_MG_CMD_CNT: mg cmd submitted: 259 (per sec) total mg cmd: 10845 total completed mg cmd: 10389
+[  322.912277] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 116965 ( 229 / 116736 ) total: 2776753 discard: 204 submit: 2776320 completed: 2659584
+[  323.916260] print_GC_LATENCY: latency: 2989 (rd: 776 wrt: 2258) us.  SW_lat: 179 us. 
+[  323.916265] print_GC_LATENCY: breakdown us. rd op: 377 wrt op: 1789 read xfer: 399 write xfer: 469
+[  323.916266] print_MG_CMD_CNT: mg cmd submitted: 254 (per sec) total mg cmd: 11099 total completed mg cmd: 10720
+[  323.916268] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 97186 ( 162 / 97024 ) total: 2841710 discard: 204 submit: 2841344 completed: 2744320
+[  323.916272] section utilization of gc region: 2 %
+[  324.920279] print_GC_LATENCY: latency: 2991 (rd: 777 wrt: 2260) us.  SW_lat: 179 us. 
+[  324.920284] print_GC_LATENCY: breakdown us. rd op: 377 wrt op: 1790 read xfer: 399 write xfer: 470
+[  324.920286] print_MG_CMD_CNT: mg cmd submitted: 179 (per sec) total mg cmd: 11278 total completed mg cmd: 11119
+[  324.920288] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 40876 ( 172 / 40704 ) total: 2887544 discard: 204 submit: 2887168 completed: 2846464
+[  325.924389] print_GC_LATENCY: latency: 3025 (rd: 785 wrt: 2285) us.  SW_lat: 181 us. 
+[  325.924395] print_GC_LATENCY: breakdown us. rd op: 381 wrt op: 1810 read xfer: 403 write xfer: 475
+[  325.924397] print_MG_CMD_CNT: mg cmd submitted: 338 (per sec) total mg cmd: 11616 total completed mg cmd: 11119
+[  325.924399] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 127340 ( 108 / 127232 ) total: 2974008 discard: 204 submit: 2973696 completed: 2846464
+[  326.061558] section utilization of regular region: 64 %
+[  326.928526] print_GC_LATENCY: latency: 3027 (rd: 785 wrt: 2287) us.  SW_lat: 181 us. 
+[  326.928531] print_GC_LATENCY: breakdown us. rd op: 381 wrt op: 1811 read xfer: 404 write xfer: 475
+[  326.928533] print_MG_CMD_CNT: mg cmd submitted: 165 (per sec) total mg cmd: 11781 total completed mg cmd: 11392
+[  326.928535] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 99690 ( 106 / 99584 ) total: 3016246 discard: 204 submit: 3015936 completed: 2916352
+[  327.932322] print_GC_LATENCY: latency: 3029 (rd: 786 wrt: 2289) us.  SW_lat: 181 us. 
+[  327.932328] print_GC_LATENCY: breakdown us. rd op: 382 wrt op: 1813 read xfer: 404 write xfer: 476
+[  327.932329] print_MG_CMD_CNT: mg cmd submitted: 214 (per sec) total mg cmd: 11995 total completed mg cmd: 11794
+[  327.932331] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 51646 ( 190 / 51456 ) total: 3071114 discard: 204 submit: 3070720 completed: 3019264
+[  328.936572] print_GC_LATENCY: latency: 3054 (rd: 792 wrt: 2307) us.  SW_lat: 183 us. 
+[  328.936579] print_GC_LATENCY: breakdown us. rd op: 384 wrt op: 1827 read xfer: 407 write xfer: 480
+[  328.936580] print_MG_CMD_CNT: mg cmd submitted: 271 (per sec) total mg cmd: 12266 total completed mg cmd: 11981
+[  328.936582] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 73154 ( 194 / 72960 ) total: 3140494 discard: 204 submit: 3140096 completed: 3067136
+[  328.936585] section utilization of gc region: 2 %
+[  329.940484] print_GC_LATENCY: latency: 3058 (rd: 793 wrt: 2310) us.  SW_lat: 183 us. 
+[  329.940490] print_GC_LATENCY: breakdown us. rd op: 385 wrt op: 1829 read xfer: 408 write xfer: 480
+[  329.940492] print_MG_CMD_CNT: mg cmd submitted: 266 (per sec) total mg cmd: 12532 total completed mg cmd: 11981
+[  329.940494] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 141165 ( 109 / 141056 ) total: 3208505 discard: 204 submit: 3208192 completed: 3067136
+[  330.944460] print_GC_LATENCY: latency: 3055 (rd: 792 wrt: 2308) us.  SW_lat: 183 us. 
+[  330.944466] print_GC_LATENCY: breakdown us. rd op: 384 wrt op: 1828 read xfer: 407 write xfer: 480
+[  330.944468] print_MG_CMD_CNT: mg cmd submitted: 167 (per sec) total mg cmd: 12699 total completed mg cmd: 12405
+[  330.944469] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 75355 ( 91 / 75264 ) total: 3251239 discard: 204 submit: 3250944 completed: 3175680
+[  331.241365] section utilization of regular region: 64 %
+[  331.948636] print_GC_LATENCY: latency: 3049 (rd: 790 wrt: 2304) us.  SW_lat: 182 us. 
+[  331.948642] print_GC_LATENCY: breakdown us. rd op: 383 wrt op: 1824 read xfer: 406 write xfer: 479
+[  331.948643] print_MG_CMD_CNT: mg cmd submitted: 207 (per sec) total mg cmd: 12906 total completed mg cmd: 12671
+[  331.948645] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 60323 ( 163 / 60160 ) total: 3304303 discard: 204 submit: 3303936 completed: 3243776
+[  332.952341] print_GC_LATENCY: latency: 3085 (rd: 800 wrt: 2331) us.  SW_lat: 184 us. 
+[  332.952346] print_GC_LATENCY: breakdown us. rd op: 388 wrt op: 1846 read xfer: 411 write xfer: 485
+[  332.952348] print_MG_CMD_CNT: mg cmd submitted: 414 (per sec) total mg cmd: 13320 total completed mg cmd: 12671
+[  332.952350] print_GC_LOG_MEM: mem: 4 MB migration record cnt (buffer/inflight): 166377 ( 233 / 166144 ) total: 3410357 discard: 204 submit: 3409920 completed: 3243776
+[  333.956439] print_GC_LATENCY: latency: 3108 (rd: 805 wrt: 2349) us.  SW_lat: 186 us. 
+[  333.956445] print_GC_LATENCY: breakdown us. rd op: 390 wrt op: 1860 read xfer: 414 write xfer: 489
+[  333.956447] print_MG_CMD_CNT: mg cmd submitted: 291 (per sec) total mg cmd: 13611 total completed mg cmd: 13011
+[  333.956449] print_GC_LOG_MEM: mem: 4 MB migration record cnt (buffer/inflight): 153836 ( 236 / 153600 ) total: 3484856 discard: 204 submit: 3484416 completed: 3330816
+[  333.956452] section utilization of gc region: 3 %
+[  334.960370] print_GC_LATENCY: latency: 3091 (rd: 801 wrt: 2336) us.  SW_lat: 185 us. 
+[  334.960376] print_GC_LATENCY: breakdown us. rd op: 388 wrt op: 1850 read xfer: 412 write xfer: 486
+[  334.960378] print_MG_CMD_CNT: mg cmd submitted: 91 (per sec) total mg cmd: 13702 total completed mg cmd: 13242
+[  334.960380] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 117821 ( 61 / 117760 ) total: 3507977 discard: 204 submit: 3507712 completed: 3389952
+[  335.965417] print_GC_LATENCY: latency: 3109 (rd: 805 wrt: 2349) us.  SW_lat: 186 us. 
+[  335.965423] print_GC_LATENCY: breakdown us. rd op: 390 wrt op: 1860 read xfer: 414 write xfer: 489
+[  335.965425] print_MG_CMD_CNT: mg cmd submitted: 312 (per sec) total mg cmd: 14014 total completed mg cmd: 13242
+[  335.965427] print_GC_LOG_MEM: mem: 5 MB migration record cnt (buffer/inflight): 197757 ( 125 / 197632 ) total: 3587913 discard: 204 submit: 3587584 completed: 3389952
+[  336.968641] print_GC_LATENCY: latency: 3107 (rd: 804 wrt: 2348) us.  SW_lat: 186 us. 
+[  336.968647] print_GC_LATENCY: breakdown us. rd op: 390 wrt op: 1859 read xfer: 414 write xfer: 489
+[  336.968649] print_MG_CMD_CNT: mg cmd submitted: 170 (per sec) total mg cmd: 14184 total completed mg cmd: 13971
+[  336.968650] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 54585 ( 57 / 54528 ) total: 3631365 discard: 204 submit: 3631104 completed: 3576576
+[  337.516299] section utilization of regular region: 64 %
+[  337.973096] print_GC_LATENCY: latency: 3117 (rd: 807 wrt: 2355) us.  SW_lat: 187 us. 
+[  337.973101] print_GC_LATENCY: breakdown us. rd op: 391 wrt op: 1865 read xfer: 415 write xfer: 490
+[  337.973103] print_MG_CMD_CNT: mg cmd submitted: 251 (per sec) total mg cmd: 14435 total completed mg cmd: 14248
+[  337.973105] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 48024 ( 152 / 47872 ) total: 3695716 discard: 204 submit: 3695360 completed: 3647488
+[  338.976447] print_GC_LATENCY: latency: 3141 (rd: 813 wrt: 2373) us.  SW_lat: 188 us. 
+[  338.976454] print_GC_LATENCY: breakdown us. rd op: 394 wrt op: 1879 read xfer: 418 write xfer: 494
+[  338.976456] print_MG_CMD_CNT: mg cmd submitted: 387 (per sec) total mg cmd: 14822 total completed mg cmd: 14248
+[  338.976458] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 147058 ( 114 / 146944 ) total: 3794750 discard: 204 submit: 3794432 completed: 3647488
+[  338.976460] section utilization of gc region: 3 %
+[  339.980422] print_GC_LATENCY: latency: 3136 (rd: 812 wrt: 2370) us.  SW_lat: 188 us. 
+[  339.980428] print_GC_LATENCY: breakdown us. rd op: 394 wrt op: 1876 read xfer: 418 write xfer: 493
+[  339.980429] print_MG_CMD_CNT: mg cmd submitted: 84 (per sec) total mg cmd: 14906 total completed mg cmd: 14827
+[  339.980431] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 20297 ( 73 / 20224 ) total: 3816213 discard: 204 submit: 3815936 completed: 3795712
+[  340.984752] print_GC_LATENCY: latency: 3143 (rd: 814 wrt: 2375) us.  SW_lat: 188 us. 
+[  340.984758] print_GC_LATENCY: breakdown us. rd op: 394 wrt op: 1881 read xfer: 419 write xfer: 494
+[  340.984759] print_MG_CMD_CNT: mg cmd submitted: 289 (per sec) total mg cmd: 15195 total completed mg cmd: 14827
+[  340.984761] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 94380 ( 172 / 94208 ) total: 3890296 discard: 204 submit: 3889920 completed: 3795712
+[  341.988513] print_GC_LATENCY: latency: 3152 (rd: 816 wrt: 2382) us.  SW_lat: 189 us. 
+[  341.988519] print_GC_LATENCY: breakdown us. rd op: 395 wrt op: 1886 read xfer: 420 write xfer: 496
+[  341.988521] print_MG_CMD_CNT: mg cmd submitted: 245 (per sec) total mg cmd: 15440 total completed mg cmd: 15309
+[  341.988523] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 33710 ( 174 / 33536 ) total: 3953019 discard: 205 submit: 3952640 completed: 3919104
+[  342.755307] section utilization of regular region: 63 %
+[  342.992503] print_GC_LATENCY: latency: 3156 (rd: 816 wrt: 2385) us.  SW_lat: 189 us. 
+[  342.992509] print_GC_LATENCY: breakdown us. rd op: 396 wrt op: 1888 read xfer: 420 write xfer: 497
+[  342.992511] print_MG_CMD_CNT: mg cmd submitted: 216 (per sec) total mg cmd: 15656 total completed mg cmd: 15651
+[  342.992512] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 1401 ( 121 / 1280 ) total: 4008262 discard: 205 submit: 4007936 completed: 4006656
+[  343.996508] print_GC_LATENCY: latency: 3164 (rd: 818 wrt: 2391) us.  SW_lat: 189 us. 
+[  343.996514] print_GC_LATENCY: breakdown us. rd op: 397 wrt op: 1893 read xfer: 421 write xfer: 498
+[  343.996515] print_MG_CMD_CNT: mg cmd submitted: 282 (per sec) total mg cmd: 15938 total completed mg cmd: 15651
+[  343.996517] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 73682 ( 210 / 73472 ) total: 4080543 discard: 205 submit: 4080128 completed: 4006656
+[  343.996521] section utilization of gc region: 3 %
+[  345.000553] print_GC_LATENCY: latency: 3171 (rd: 820 wrt: 2396) us.  SW_lat: 190 us. 
+[  345.000559] print_GC_LATENCY: breakdown us. rd op: 397 wrt op: 1897 read xfer: 422 write xfer: 499
+[  345.000561] print_MG_CMD_CNT: mg cmd submitted: 247 (per sec) total mg cmd: 16185 total completed mg cmd: 15965
+[  345.000563] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 56344 ( 24 / 56320 ) total: 4143589 discard: 205 submit: 4143360 completed: 4087040
+[  346.004634] print_GC_LATENCY: latency: 3189 (rd: 825 wrt: 2410) us.  SW_lat: 191 us. 
+[  346.004639] print_GC_LATENCY: breakdown us. rd op: 400 wrt op: 1908 read xfer: 425 write xfer: 502
+[  346.004641] print_MG_CMD_CNT: mg cmd submitted: 266 (per sec) total mg cmd: 16451 total completed mg cmd: 16327
+[  346.004643] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 31965 ( 221 / 31744 ) total: 4211882 discard: 205 submit: 4211456 completed: 4179712
+[  347.008552] print_GC_LATENCY: latency: 3194 (rd: 826 wrt: 2414) us.  SW_lat: 191 us. 
+[  347.008558] print_GC_LATENCY: breakdown us. rd op: 400 wrt op: 1911 read xfer: 425 write xfer: 503
+[  347.008560] print_MG_CMD_CNT: mg cmd submitted: 309 (per sec) total mg cmd: 16760 total completed mg cmd: 16327
+[  347.008562] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 110906 ( 58 / 110848 ) total: 4290823 discard: 205 submit: 4290560 completed: 4179712
+[  348.012618] print_GC_LATENCY: latency: 3193 (rd: 825 wrt: 2413) us.  SW_lat: 191 us. 
+[  348.012624] print_GC_LATENCY: breakdown us. rd op: 400 wrt op: 1910 read xfer: 425 write xfer: 502
+[  348.012626] print_MG_CMD_CNT: mg cmd submitted: 157 (per sec) total mg cmd: 16917 total completed mg cmd: 16646
+[  348.012628] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 69408 ( 32 / 69376 ) total: 4330989 discard: 205 submit: 4330752 completed: 4261376
+[  348.227334] section utilization of regular region: 63 %
+[  349.020139] print_GC_LATENCY: latency: 3191 (rd: 825 wrt: 2412) us.  SW_lat: 191 us. 
+[  349.020145] print_GC_LATENCY: breakdown us. rd op: 399 wrt op: 1910 read xfer: 425 write xfer: 502
+[  349.020147] print_MG_CMD_CNT: mg cmd submitted: 219 (per sec) total mg cmd: 17136 total completed mg cmd: 16973
+[  349.020149] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 41762 ( 34 / 41728 ) total: 4387055 discard: 205 submit: 4386816 completed: 4345088
+[  349.020152] section utilization of gc region: 4 %
+[  350.021287] print_GC_LATENCY: latency: 3205 (rd: 829 wrt: 2422) us.  SW_lat: 191 us. 
+[  350.021292] print_GC_LATENCY: breakdown us. rd op: 402 wrt op: 1918 read xfer: 427 write xfer: 504
+[  350.021294] print_MG_CMD_CNT: mg cmd submitted: 274 (per sec) total mg cmd: 17410 total completed mg cmd: 17346
+[  350.021297] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 16473 ( 89 / 16384 ) total: 4457254 discard: 205 submit: 4456960 completed: 4440576
+[  351.024564] print_GC_LATENCY: latency: 3213 (rd: 831 wrt: 2428) us.  SW_lat: 192 us. 
+[  351.024569] print_GC_LATENCY: breakdown us. rd op: 403 wrt op: 1922 read xfer: 428 write xfer: 505
+[  351.024571] print_MG_CMD_CNT: mg cmd submitted: 279 (per sec) total mg cmd: 17689 total completed mg cmd: 17346
+[  351.024573] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 88013 ( 205 / 87808 ) total: 4528794 discard: 205 submit: 4528384 completed: 4440576
+[  352.028753] print_GC_LATENCY: latency: 3238 (rd: 838 wrt: 2447) us.  SW_lat: 193 us. 
+[  352.028759] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1937 read xfer: 431 write xfer: 509
+[  352.028761] print_MG_CMD_CNT: mg cmd submitted: 356 (per sec) total mg cmd: 18045 total completed mg cmd: 17904
+[  352.028763] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 36221 ( 125 / 36096 ) total: 4619850 discard: 205 submit: 4619520 completed: 4583424
+[  353.032655] print_GC_LATENCY: latency: 3235 (rd: 837 wrt: 2445) us.  SW_lat: 193 us. 
+[  353.032660] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1936 read xfer: 431 write xfer: 509
+[  353.032662] print_MG_CMD_CNT: mg cmd submitted: 241 (per sec) total mg cmd: 18286 total completed mg cmd: 17904
+[  353.032664] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 98013 ( 221 / 97792 ) total: 4681642 discard: 205 submit: 4681216 completed: 4583424
+[  353.383473] section utilization of regular region: 63 %
+[  354.036626] print_GC_LATENCY: latency: 3238 (rd: 838 wrt: 2447) us.  SW_lat: 193 us. 
+[  354.036632] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1938 read xfer: 431 write xfer: 509
+[  354.036634] print_MG_CMD_CNT: mg cmd submitted: 217 (per sec) total mg cmd: 18503 total completed mg cmd: 18295
+[  354.036636] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 53377 ( 129 / 53248 ) total: 4737102 discard: 205 submit: 4736768 completed: 4683520
+[  354.036639] section utilization of gc region: 4 %
+[  355.040765] print_GC_LATENCY: latency: 3237 (rd: 837 wrt: 2446) us.  SW_lat: 193 us. 
+[  355.040770] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1937 read xfer: 431 write xfer: 509
+[  355.040772] print_MG_CMD_CNT: mg cmd submitted: 185 (per sec) total mg cmd: 18688 total completed mg cmd: 18513
+[  355.040774] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 44807 ( 7 / 44800 ) total: 4784340 discard: 205 submit: 4784128 completed: 4739328
+[  356.044892] print_GC_LATENCY: latency: 3238 (rd: 838 wrt: 2447) us.  SW_lat: 193 us. 
+[  356.044897] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1937 read xfer: 431 write xfer: 509
+[  356.044899] print_MG_CMD_CNT: mg cmd submitted: 162 (per sec) total mg cmd: 18850 total completed mg cmd: 18756
+[  356.044901] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 24169 ( 105 / 24064 ) total: 4825910 discard: 205 submit: 4825600 completed: 4801536
+[  357.049796] print_GC_LATENCY: latency: 3227 (rd: 835 wrt: 2438) us.  SW_lat: 192 us. 
+[  357.049801] print_GC_LATENCY: breakdown us. rd op: 405 wrt op: 1931 read xfer: 430 write xfer: 507
+[  357.049803] print_MG_CMD_CNT: mg cmd submitted: 178 (per sec) total mg cmd: 19028 total completed mg cmd: 18936
+[  357.049805] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 23621 ( 69 / 23552 ) total: 4871442 discard: 205 submit: 4871168 completed: 4847616
+[  358.043955] f2fs_iget: bad_inode ino: 10767
+[  358.052706] print_GC_LATENCY: latency: 3242 (rd: 838 wrt: 2450) us.  SW_lat: 193 us. 
+[  358.052712] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1940 read xfer: 432 write xfer: 509
+[  358.052714] print_MG_CMD_CNT: mg cmd submitted: 328 (per sec) total mg cmd: 19356 total completed mg cmd: 18936
+[  358.052716] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 107771 ( 251 / 107520 ) total: 4955592 discard: 205 submit: 4955136 completed: 4847616
+[  359.056682] print_GC_LATENCY: latency: 3238 (rd: 837 wrt: 2447) us.  SW_lat: 193 us. 
+[  359.056687] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1938 read xfer: 431 write xfer: 509
+[  359.056689] print_MG_CMD_CNT: mg cmd submitted: 190 (per sec) total mg cmd: 19546 total completed mg cmd: 19272
+[  359.056691] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 70199 ( 55 / 70144 ) total: 5004036 discard: 205 submit: 5003776 completed: 4933632
+[  359.056695] section utilization of gc region: 4 %
+[  359.409844] section utilization of regular region: 62 %
+[  360.060820] print_GC_LATENCY: latency: 3235 (rd: 837 wrt: 2444) us.  SW_lat: 193 us. 
+[  360.060825] print_GC_LATENCY: breakdown us. rd op: 405 wrt op: 1936 read xfer: 431 write xfer: 508
+[  360.060826] print_MG_CMD_CNT: mg cmd submitted: 126 (per sec) total mg cmd: 19672 total completed mg cmd: 19522
+[  360.060828] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 38554 ( 154 / 38400 ) total: 5036391 discard: 205 submit: 5036032 completed: 4997632
+[  361.064760] print_GC_LATENCY: latency: 3227 (rd: 835 wrt: 2439) us.  SW_lat: 192 us. 
+[  361.064766] print_GC_LATENCY: breakdown us. rd op: 404 wrt op: 1931 read xfer: 430 write xfer: 507
+[  361.064768] print_MG_CMD_CNT: mg cmd submitted: 163 (per sec) total mg cmd: 19835 total completed mg cmd: 19694
+[  361.064770] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 36149 ( 53 / 36096 ) total: 5078018 discard: 205 submit: 5077760 completed: 5041664
+[  362.068721] print_GC_LATENCY: latency: 3239 (rd: 838 wrt: 2448) us.  SW_lat: 193 us. 
+[  362.068726] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1938 read xfer: 431 write xfer: 509
+[  362.068727] print_MG_CMD_CNT: mg cmd submitted: 291 (per sec) total mg cmd: 20126 total completed mg cmd: 20074
+[  362.068729] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 13356 ( 44 / 13312 ) total: 5152505 discard: 205 submit: 5152256 completed: 5138944
+[  363.073892] print_GC_LATENCY: latency: 3241 (rd: 838 wrt: 2449) us.  SW_lat: 193 us. 
+[  363.073897] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1939 read xfer: 432 write xfer: 509
+[  363.073899] print_MG_CMD_CNT: mg cmd submitted: 271 (per sec) total mg cmd: 20397 total completed mg cmd: 20074
+[  363.073901] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 82792 ( 104 / 82688 ) total: 5221941 discard: 205 submit: 5221632 completed: 5138944
+[  364.076743] print_GC_LATENCY: latency: 3241 (rd: 838 wrt: 2449) us.  SW_lat: 193 us. 
+[  364.076749] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1940 read xfer: 432 write xfer: 509
+[  364.076750] print_MG_CMD_CNT: mg cmd submitted: 214 (per sec) total mg cmd: 20611 total completed mg cmd: 20397
+[  364.076752] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 55023 ( 239 / 54784 ) total: 5276860 discard: 205 submit: 5276416 completed: 5221632
+[  364.076756] section utilization of gc region: 4 %
+[  364.756414] section utilization of regular region: 62 %
+[  365.081173] print_GC_LATENCY: latency: 3248 (rd: 840 wrt: 2454) us.  SW_lat: 193 us. 
+[  365.081179] print_GC_LATENCY: breakdown us. rd op: 407 wrt op: 1943 read xfer: 432 write xfer: 510
+[  365.081180] print_MG_CMD_CNT: mg cmd submitted: 199 (per sec) total mg cmd: 20810 total completed mg cmd: 20666
+[  365.081182] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 36955 ( 91 / 36864 ) total: 5327656 discard: 205 submit: 5327360 completed: 5290496
+[  366.084830] print_GC_LATENCY: latency: 3253 (rd: 842 wrt: 2458) us.  SW_lat: 193 us. 
+[  366.084836] print_GC_LATENCY: breakdown us. rd op: 408 wrt op: 1946 read xfer: 433 write xfer: 511
+[  366.084838] print_MG_CMD_CNT: mg cmd submitted: 228 (per sec) total mg cmd: 21038 total completed mg cmd: 20941
+[  366.084840] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 24957 ( 125 / 24832 ) total: 5386059 discard: 206 submit: 5385728 completed: 5360896
+[  367.088797] print_GC_LATENCY: latency: 3235 (rd: 837 wrt: 2445) us.  SW_lat: 193 us. 
+[  367.088804] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1936 read xfer: 431 write xfer: 508
+[  367.088805] print_MG_CMD_CNT: mg cmd submitted: 92 (per sec) total mg cmd: 21130 total completed mg cmd: 21106
+[  367.088807] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 6202 ( 58 / 6144 ) total: 5409544 discard: 206 submit: 5409280 completed: 5403136
+[  368.092818] print_GC_LATENCY: latency: 3224 (rd: 834 wrt: 2436) us.  SW_lat: 192 us. 
+[  368.092824] print_GC_LATENCY: breakdown us. rd op: 404 wrt op: 1929 read xfer: 429 write xfer: 506
+[  368.092825] print_MG_CMD_CNT: mg cmd submitted: 116 (per sec) total mg cmd: 21246 total completed mg cmd: 21213
+[  368.092827] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 8641 ( 193 / 8448 ) total: 5439375 discard: 206 submit: 5438976 completed: 5430528
+[  369.097022] print_GC_LATENCY: latency: 3227 (rd: 835 wrt: 2438) us.  SW_lat: 192 us. 
+[  369.097028] print_GC_LATENCY: breakdown us. rd op: 404 wrt op: 1931 read xfer: 430 write xfer: 507
+[  369.097029] print_MG_CMD_CNT: mg cmd submitted: 252 (per sec) total mg cmd: 21498 total completed mg cmd: 21213
+[  369.097032] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 73020 ( 60 / 72960 ) total: 5503754 discard: 206 submit: 5503488 completed: 5430528
+[  369.097035] section utilization of gc region: 5 %
+[  370.101162] print_GC_LATENCY: latency: 3227 (rd: 835 wrt: 2438) us.  SW_lat: 192 us. 
+[  370.101168] print_GC_LATENCY: breakdown us. rd op: 404 wrt op: 1931 read xfer: 430 write xfer: 507
+[  370.101170] print_MG_CMD_CNT: mg cmd submitted: 248 (per sec) total mg cmd: 21746 total completed mg cmd: 21491
+[  370.101171] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 65357 ( 77 / 65280 ) total: 5567259 discard: 206 submit: 5566976 completed: 5501696
+[  370.605256] section utilization of regular region: 62 %
+[  371.104886] print_GC_LATENCY: latency: 3226 (rd: 834 wrt: 2437) us.  SW_lat: 192 us. 
+[  371.104891] print_GC_LATENCY: breakdown us. rd op: 404 wrt op: 1930 read xfer: 430 write xfer: 507
+[  371.104893] print_MG_CMD_CNT: mg cmd submitted: 157 (per sec) total mg cmd: 21903 total completed mg cmd: 21808
+[  371.104895] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 24524 ( 204 / 24320 ) total: 5607578 discard: 206 submit: 5607168 completed: 5582848
+[  372.108887] print_GC_LATENCY: latency: 3219 (rd: 833 wrt: 2432) us.  SW_lat: 192 us. 
+[  372.108893] print_GC_LATENCY: breakdown us. rd op: 403 wrt op: 1926 read xfer: 429 write xfer: 505
+[  372.108895] print_MG_CMD_CNT: mg cmd submitted: 129 (per sec) total mg cmd: 22032 total completed mg cmd: 21959
+[  372.108896] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 18841 ( 153 / 18688 ) total: 5640551 discard: 206 submit: 5640192 completed: 5621504
+[  373.113582] print_GC_LATENCY: latency: 3218 (rd: 832 wrt: 2432) us.  SW_lat: 191 us. 
+[  373.113588] print_GC_LATENCY: breakdown us. rd op: 403 wrt op: 1926 read xfer: 429 write xfer: 505
+[  373.113590] print_MG_CMD_CNT: mg cmd submitted: 197 (per sec) total mg cmd: 22229 total completed mg cmd: 22113
+[  373.113591] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 29925 ( 229 / 29696 ) total: 5691059 discard: 206 submit: 5690624 completed: 5660928
+[  374.117131] print_GC_LATENCY: latency: 3233 (rd: 837 wrt: 2442) us.  SW_lat: 192 us. 
+[  374.117137] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1934 read xfer: 430 write xfer: 508
+[  374.117139] print_MG_CMD_CNT: mg cmd submitted: 316 (per sec) total mg cmd: 22545 total completed mg cmd: 22113
+[  374.117141] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 110611 ( 19 / 110592 ) total: 5771745 discard: 206 submit: 5771520 completed: 5660928
+[  374.117144] section utilization of gc region: 5 %
+[  375.120942] print_GC_LATENCY: latency: 3236 (rd: 838 wrt: 2444) us.  SW_lat: 192 us. 
+[  375.120948] print_GC_LATENCY: breakdown us. rd op: 406 wrt op: 1936 read xfer: 431 write xfer: 508
+[  375.120949] print_MG_CMD_CNT: mg cmd submitted: 295 (per sec) total mg cmd: 22840 total completed mg cmd: 22421
+[  375.120951] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 107505 ( 241 / 107264 ) total: 5847487 discard: 206 submit: 5847040 completed: 5739776
+[  375.915974] section utilization of regular region: 62 %
+[  376.125036] print_GC_LATENCY: latency: 3244 (rd: 840 wrt: 2450) us.  SW_lat: 193 us. 
+[  376.125042] print_GC_LATENCY: breakdown us. rd op: 408 wrt op: 1941 read xfer: 432 write xfer: 509
+[  376.125044] print_MG_CMD_CNT: mg cmd submitted: 230 (per sec) total mg cmd: 23070 total completed mg cmd: 22927
+[  376.125045] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 36789 ( 181 / 36608 ) total: 5906307 discard: 206 submit: 5905920 completed: 5869312
+[  377.130372] print_GC_LATENCY: latency: 3250 (rd: 842 wrt: 2454) us.  SW_lat: 193 us. 
+[  377.130377] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1944 read xfer: 433 write xfer: 510
+[  377.130379] print_MG_CMD_CNT: mg cmd submitted: 260 (per sec) total mg cmd: 23330 total completed mg cmd: 22927
+[  377.130380] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 103383 ( 215 / 103168 ) total: 5972901 discard: 206 submit: 5972480 completed: 5869312
+[  378.133014] print_GC_LATENCY: latency: 3248 (rd: 841 wrt: 2453) us.  SW_lat: 193 us. 
+[  378.133020] print_GC_LATENCY: breakdown us. rd op: 408 wrt op: 1942 read xfer: 432 write xfer: 510
+[  378.133022] print_MG_CMD_CNT: mg cmd submitted: 217 (per sec) total mg cmd: 23547 total completed mg cmd: 23249
+[  378.133024] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 76410 ( 122 / 76288 ) total: 6028360 discard: 206 submit: 6028032 completed: 5951744
+[  379.137131] print_GC_LATENCY: latency: 3247 (rd: 840 wrt: 2452) us.  SW_lat: 193 us. 
+[  379.137137] print_GC_LATENCY: breakdown us. rd op: 408 wrt op: 1942 read xfer: 432 write xfer: 510
+[  379.137138] print_MG_CMD_CNT: mg cmd submitted: 167 (per sec) total mg cmd: 23714 total completed mg cmd: 23503
+[  379.137140] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 54240 ( 224 / 54016 ) total: 6071214 discard: 206 submit: 6070784 completed: 6016768
+[  379.137143] section utilization of gc region: 5 %
+[  380.141141] print_GC_LATENCY: latency: 3262 (rd: 845 wrt: 2463) us.  SW_lat: 194 us. 
+[  380.141147] print_GC_LATENCY: breakdown us. rd op: 410 wrt op: 1951 read xfer: 434 write xfer: 512
+[  380.141149] print_MG_CMD_CNT: mg cmd submitted: 328 (per sec) total mg cmd: 24042 total completed mg cmd: 23832
+[  380.141151] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 53805 ( 45 / 53760 ) total: 6155003 discard: 206 submit: 6154752 completed: 6100992
+[  381.068454] section utilization of regular region: 61 %
+[  381.145174] print_GC_LATENCY: latency: 3257 (rd: 843 wrt: 2460) us.  SW_lat: 193 us. 
+[  381.145177] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1948 read xfer: 434 write xfer: 511
+[  381.145179] print_MG_CMD_CNT: mg cmd submitted: 161 (per sec) total mg cmd: 24203 total completed mg cmd: 23832
+[  381.145181] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 95076 ( 100 / 94976 ) total: 6196274 discard: 206 submit: 6195968 completed: 6100992
+[  382.149784] print_GC_LATENCY: latency: 3257 (rd: 843 wrt: 2460) us.  SW_lat: 193 us. 
+[  382.149790] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1948 read xfer: 434 write xfer: 511
+[  382.149792] print_MG_CMD_CNT: mg cmd submitted: 250 (per sec) total mg cmd: 24453 total completed mg cmd: 24083
+[  382.149794] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 94840 ( 120 / 94720 ) total: 6260295 discard: 207 submit: 6259968 completed: 6165248
+[  383.153353] print_GC_LATENCY: latency: 3262 (rd: 844 wrt: 2463) us.  SW_lat: 194 us. 
+[  383.153358] print_GC_LATENCY: breakdown us. rd op: 410 wrt op: 1951 read xfer: 434 write xfer: 512
+[  383.153360] print_MG_CMD_CNT: mg cmd submitted: 199 (per sec) total mg cmd: 24652 total completed mg cmd: 24517
+[  383.153362] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 34771 ( 211 / 34560 ) total: 6311330 discard: 207 submit: 6310912 completed: 6276352
+[  384.157075] print_GC_LATENCY: latency: 3263 (rd: 845 wrt: 2464) us.  SW_lat: 194 us. 
+[  384.157081] print_GC_LATENCY: breakdown us. rd op: 410 wrt op: 1951 read xfer: 434 write xfer: 512
+[  384.157082] print_MG_CMD_CNT: mg cmd submitted: 221 (per sec) total mg cmd: 24873 total completed mg cmd: 24781
+[  384.157084] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 23567 ( 15 / 23552 ) total: 6367710 discard: 207 submit: 6367488 completed: 6343936
+[  384.157088] section utilization of gc region: 5 %
+[  385.161121] print_GC_LATENCY: latency: 3261 (rd: 844 wrt: 2463) us.  SW_lat: 194 us. 
+[  385.161126] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1950 read xfer: 434 write xfer: 512
+[  385.161128] print_MG_CMD_CNT: mg cmd submitted: 227 (per sec) total mg cmd: 25100 total completed mg cmd: 24781
+[  385.161130] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 81801 ( 137 / 81664 ) total: 6425944 discard: 207 submit: 6425600 completed: 6343936
+[  386.165175] print_GC_LATENCY: latency: 3250 (rd: 841 wrt: 2455) us.  SW_lat: 193 us. 
+[  386.165181] print_GC_LATENCY: breakdown us. rd op: 408 wrt op: 1944 read xfer: 433 write xfer: 510
+[  386.165183] print_MG_CMD_CNT: mg cmd submitted: 122 (per sec) total mg cmd: 25222 total completed mg cmd: 25220
+[  386.165185] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 534 ( 22 / 512 ) total: 6457062 discard: 208 submit: 6456832 completed: 6456320
+[  387.169141] print_GC_LATENCY: latency: 3253 (rd: 842 wrt: 2457) us.  SW_lat: 193 us. 
+[  387.169146] print_GC_LATENCY: breakdown us. rd op: 408 wrt op: 1946 read xfer: 433 write xfer: 511
+[  387.169148] print_MG_CMD_CNT: mg cmd submitted: 292 (per sec) total mg cmd: 25514 total completed mg cmd: 25220
+[  387.169150] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 75294 ( 30 / 75264 ) total: 6531822 discard: 208 submit: 6531584 completed: 6456320
+[  387.636220] section utilization of regular region: 61 %
+[  388.173454] print_GC_LATENCY: latency: 3255 (rd: 842 wrt: 2458) us.  SW_lat: 193 us. 
+[  388.173459] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1947 read xfer: 433 write xfer: 511
+[  388.173461] print_MG_CMD_CNT: mg cmd submitted: 251 (per sec) total mg cmd: 25765 total completed mg cmd: 25589
+[  388.173462] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 45181 ( 125 / 45056 ) total: 6596173 discard: 208 submit: 6595840 completed: 6550784
+[  389.177578] print_GC_LATENCY: latency: 3270 (rd: 846 wrt: 2470) us.  SW_lat: 194 us. 
+[  389.177583] print_GC_LATENCY: breakdown us. rd op: 411 wrt op: 1956 read xfer: 435 write xfer: 513
+[  389.177585] print_MG_CMD_CNT: mg cmd submitted: 359 (per sec) total mg cmd: 26124 total completed mg cmd: 25589
+[  389.177586] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 137035 ( 75 / 136960 ) total: 6688027 discard: 208 submit: 6687744 completed: 6550784
+[  389.177589] section utilization of gc region: 6 %
+[  390.182010] print_GC_LATENCY: latency: 3266 (rd: 845 wrt: 2467) us.  SW_lat: 194 us. 
+[  390.182015] print_GC_LATENCY: breakdown us. rd op: 410 wrt op: 1953 read xfer: 435 write xfer: 513
+[  390.182017] print_MG_CMD_CNT: mg cmd submitted: 169 (per sec) total mg cmd: 26293 total completed mg cmd: 26004
+[  390.182019] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 74115 ( 131 / 73984 ) total: 6731348 discard: 209 submit: 6731008 completed: 6657024
+[  391.185511] print_GC_LATENCY: latency: 3274 (rd: 847 wrt: 2472) us.  SW_lat: 194 us. 
+[  391.185517] print_GC_LATENCY: breakdown us. rd op: 411 wrt op: 1958 read xfer: 436 write xfer: 514
+[  391.185519] print_MG_CMD_CNT: mg cmd submitted: 250 (per sec) total mg cmd: 26543 total completed mg cmd: 26370
+[  391.185521] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 44380 ( 92 / 44288 ) total: 6795309 discard: 209 submit: 6795008 completed: 6750720
+[  392.189327] print_GC_LATENCY: latency: 3266 (rd: 845 wrt: 2466) us.  SW_lat: 194 us. 
+[  392.189333] print_GC_LATENCY: breakdown us. rd op: 410 wrt op: 1953 read xfer: 435 write xfer: 513
+[  392.189334] print_MG_CMD_CNT: mg cmd submitted: 135 (per sec) total mg cmd: 26678 total completed mg cmd: 26629
+[  392.189336] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 12565 ( 21 / 12544 ) total: 6829798 discard: 209 submit: 6829568 completed: 6817024
+[  392.854585] section utilization of regular region: 60 %
+[  393.193327] print_GC_LATENCY: latency: 3259 (rd: 843 wrt: 2461) us.  SW_lat: 193 us. 
+[  393.193333] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1949 read xfer: 434 write xfer: 512
+[  393.193335] print_MG_CMD_CNT: mg cmd submitted: 174 (per sec) total mg cmd: 26852 total completed mg cmd: 26836
+[  393.193337] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 4124 ( 28 / 4096 ) total: 6874349 discard: 209 submit: 6874112 completed: 6870016
+[  394.198024] print_GC_LATENCY: latency: 3257 (rd: 843 wrt: 2460) us.  SW_lat: 193 us. 
+[  394.198030] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1948 read xfer: 433 write xfer: 511
+[  394.198032] print_MG_CMD_CNT: mg cmd submitted: 181 (per sec) total mg cmd: 27033 total completed mg cmd: 27020
+[  394.198034] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 3498 ( 170 / 3328 ) total: 6920827 discard: 209 submit: 6920448 completed: 6917120
+[  394.198037] section utilization of gc region: 6 %
+[  395.201554] print_GC_LATENCY: latency: 3263 (rd: 844 wrt: 2464) us.  SW_lat: 193 us. 
+[  395.201560] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1951 read xfer: 434 write xfer: 512
+[  395.201562] print_MG_CMD_CNT: mg cmd submitted: 290 (per sec) total mg cmd: 27323 total completed mg cmd: 27020
+[  395.201563] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 77805 ( 237 / 77568 ) total: 6995134 discard: 209 submit: 6994688 completed: 6917120
+[  396.205377] print_GC_LATENCY: latency: 3262 (rd: 844 wrt: 2463) us.  SW_lat: 193 us. 
+[  396.205382] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1950 read xfer: 434 write xfer: 512
+[  396.205384] print_MG_CMD_CNT: mg cmd submitted: 136 (per sec) total mg cmd: 27459 total completed mg cmd: 27258
+[  396.205386] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 51608 ( 152 / 51456 ) total: 7029865 discard: 209 submit: 7029504 completed: 6978048
+[  397.209302] print_GC_LATENCY: latency: 3260 (rd: 843 wrt: 2462) us.  SW_lat: 193 us. 
+[  397.209307] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1950 read xfer: 434 write xfer: 512
+[  397.209309] print_MG_CMD_CNT: mg cmd submitted: 204 (per sec) total mg cmd: 27663 total completed mg cmd: 27495
+[  397.209310] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 43105 ( 97 / 43008 ) total: 7082034 discard: 209 submit: 7081728 completed: 7038720
+[  398.039825] section utilization of regular region: 60 %
+[  398.213720] print_GC_LATENCY: latency: 3272 (rd: 846 wrt: 2471) us.  SW_lat: 194 us. 
+[  398.213726] print_GC_LATENCY: breakdown us. rd op: 410 wrt op: 1957 read xfer: 435 write xfer: 514
+[  398.213728] print_MG_CMD_CNT: mg cmd submitted: 305 (per sec) total mg cmd: 27968 total completed mg cmd: 27779
+[  398.213730] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 48456 ( 72 / 48384 ) total: 7160089 discard: 209 submit: 7159808 completed: 7111424
+[  399.220294] print_GC_LATENCY: latency: 3262 (rd: 844 wrt: 2464) us.  SW_lat: 193 us. 
+[  399.220299] print_GC_LATENCY: breakdown us. rd op: 409 wrt op: 1951 read xfer: 434 write xfer: 512
+[  399.220301] print_MG_CMD_CNT: mg cmd submitted: 122 (per sec) total mg cmd: 28090 total completed mg cmd: 28046
+[  399.220302] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 11442 ( 178 / 11264 ) total: 7191427 discard: 209 submit: 7191040 completed: 7179776
+[  399.220306] section utilization of gc region: 6 %
+[  400.227178] print_GC_LATENCY: latency: 3270 (rd: 846 wrt: 2470) us.  SW_lat: 194 us. 
+[  400.227183] print_GC_LATENCY: breakdown us. rd op: 410 wrt op: 1956 read xfer: 435 write xfer: 513
+[  400.227185] print_MG_CMD_CNT: mg cmd submitted: 337 (per sec) total mg cmd: 28427 total completed mg cmd: 28046
+[  400.227187] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 97752 ( 216 / 97536 ) total: 7277737 discard: 209 submit: 7277312 completed: 7179776
+[  401.229669] print_GC_LATENCY: latency: 3282 (rd: 849 wrt: 2479) us.  SW_lat: 195 us. 
+[  401.229675] print_GC_LATENCY: breakdown us. rd op: 412 wrt op: 1963 read xfer: 437 write xfer: 515
+[  401.229677] print_MG_CMD_CNT: mg cmd submitted: 294 (per sec) total mg cmd: 28721 total completed mg cmd: 28494
+[  401.229679] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 58363 ( 251 / 58112 ) total: 7353036 discard: 209 submit: 7352576 completed: 7294464
+[  402.253401] print_GC_LATENCY: latency: 3284 (rd: 849 wrt: 2480) us.  SW_lat: 195 us. 
+[  402.253407] print_GC_LATENCY: breakdown us. rd op: 412 wrt op: 1964 read xfer: 437 write xfer: 515
+[  402.253408] print_MG_CMD_CNT: mg cmd submitted: 214 (per sec) total mg cmd: 28935 total completed mg cmd: 28494
+[  402.253410] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 113115 ( 219 / 112896 ) total: 7407788 discard: 209 submit: 7407360 completed: 7294464
+[  403.257478] print_GC_LATENCY: latency: 3286 (rd: 850 wrt: 2481) us.  SW_lat: 195 us. 
+[  403.257483] print_GC_LATENCY: breakdown us. rd op: 412 wrt op: 1965 read xfer: 437 write xfer: 516
+[  403.257485] print_MG_CMD_CNT: mg cmd submitted: 291 (per sec) total mg cmd: 29226 total completed mg cmd: 28925
+[  403.257487] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 77165 ( 109 / 77056 ) total: 7482174 discard: 209 submit: 7481856 completed: 7404800
+[  403.586302] section utilization of regular region: 60 %
+[  404.261905] print_GC_LATENCY: latency: 3284 (rd: 849 wrt: 2480) us.  SW_lat: 194 us. 
+[  404.261911] print_GC_LATENCY: breakdown us. rd op: 412 wrt op: 1964 read xfer: 437 write xfer: 516
+[  404.261913] print_MG_CMD_CNT: mg cmd submitted: 189 (per sec) total mg cmd: 29415 total completed mg cmd: 29241
+[  404.261915] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 44789 ( 245 / 44544 ) total: 7530694 discard: 209 submit: 7530240 completed: 7485696
+[  404.261918] section utilization of gc region: 6 %
+[  405.265529] print_GC_LATENCY: latency: 3294 (rd: 852 wrt: 2488) us.  SW_lat: 195 us. 
+[  405.265535] print_GC_LATENCY: breakdown us. rd op: 413 wrt op: 1970 read xfer: 438 write xfer: 517
+[  405.265537] print_MG_CMD_CNT: mg cmd submitted: 301 (per sec) total mg cmd: 29716 total completed mg cmd: 29545
+[  405.265539] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 43812 ( 36 / 43776 ) total: 7607541 discard: 209 submit: 7607296 completed: 7563520
+[  406.271837] print_GC_LATENCY: latency: 3300 (rd: 853 wrt: 2492) us.  SW_lat: 195 us. 
+[  406.271842] print_GC_LATENCY: breakdown us. rd op: 414 wrt op: 1974 read xfer: 439 write xfer: 518
+[  406.271844] print_MG_CMD_CNT: mg cmd submitted: 313 (per sec) total mg cmd: 30029 total completed mg cmd: 29545
+[  406.271846] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 124070 ( 166 / 123904 ) total: 7687799 discard: 209 submit: 7687424 completed: 7563520
+[  407.273578] print_GC_LATENCY: latency: 3300 (rd: 853 wrt: 2492) us.  SW_lat: 195 us. 
+[  407.273584] print_GC_LATENCY: breakdown us. rd op: 413 wrt op: 1974 read xfer: 439 write xfer: 518
+[  407.273586] print_MG_CMD_CNT: mg cmd submitted: 211 (per sec) total mg cmd: 30240 total completed mg cmd: 29958
+[  407.273588] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 72256 ( 64 / 72192 ) total: 7741714 discard: 210 submit: 7741440 completed: 7669248
+[  408.277715] print_GC_LATENCY: latency: 3316 (rd: 857 wrt: 2504) us.  SW_lat: 196 us. 
+[  408.277720] print_GC_LATENCY: breakdown us. rd op: 415 wrt op: 1983 read xfer: 441 write xfer: 521
+[  408.277722] print_MG_CMD_CNT: mg cmd submitted: 410 (per sec) total mg cmd: 30650 total completed mg cmd: 29958
+[  408.277723] print_GC_LOG_MEM: mem: 4 MB migration record cnt (buffer/inflight): 177212 ( 60 / 177152 ) total: 7846670 discard: 210 submit: 7846400 completed: 7669248
+[  408.895072] section utilization of regular region: 60 %
+[  409.281660] print_GC_LATENCY: latency: 3327 (rd: 860 wrt: 2513) us.  SW_lat: 197 us. 
+[  409.281667] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1990 read xfer: 443 write xfer: 522
+[  409.281669] print_MG_CMD_CNT: mg cmd submitted: 308 (per sec) total mg cmd: 30958 total completed mg cmd: 30747
+[  409.281671] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 54230 ( 214 / 54016 ) total: 7925672 discard: 210 submit: 7925248 completed: 7871232
+[  409.281675] section utilization of gc region: 7 %
+[  410.285552] print_GC_LATENCY: latency: 3327 (rd: 860 wrt: 2513) us.  SW_lat: 197 us. 
+[  410.285557] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1990 read xfer: 443 write xfer: 522
+[  410.285559] print_MG_CMD_CNT: mg cmd submitted: 221 (per sec) total mg cmd: 31179 total completed mg cmd: 31096
+[  410.285561] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 21338 ( 90 / 21248 ) total: 7982124 discard: 210 submit: 7981824 completed: 7960576
+[  411.298254] print_GC_LATENCY: latency: 3329 (rd: 860 wrt: 2514) us.  SW_lat: 197 us. 
+[  411.298260] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1991 read xfer: 443 write xfer: 523
+[  411.298261] print_MG_CMD_CNT: mg cmd submitted: 278 (per sec) total mg cmd: 31457 total completed mg cmd: 31096
+[  411.298263] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 92568 ( 152 / 92416 ) total: 8053354 discard: 210 submit: 8052992 completed: 7960576
+[  412.301714] print_GC_LATENCY: latency: 3328 (rd: 860 wrt: 2513) us.  SW_lat: 197 us. 
+[  412.301719] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1990 read xfer: 443 write xfer: 522
+[  412.301721] print_MG_CMD_CNT: mg cmd submitted: 186 (per sec) total mg cmd: 31643 total completed mg cmd: 31433
+[  412.301723] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 53817 ( 57 / 53760 ) total: 8100875 discard: 210 submit: 8100608 completed: 8046848
+[  413.305638] print_GC_LATENCY: latency: 3324 (rd: 859 wrt: 2511) us.  SW_lat: 197 us. 
+[  413.305644] print_GC_LATENCY: breakdown us. rd op: 416 wrt op: 1988 read xfer: 442 write xfer: 522
+[  413.305646] print_MG_CMD_CNT: mg cmd submitted: 205 (per sec) total mg cmd: 31848 total completed mg cmd: 31633
+[  413.305648] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 55209 ( 169 / 55040 ) total: 8153467 discard: 210 submit: 8153088 completed: 8098048
+[  414.309732] print_GC_LATENCY: latency: 3320 (rd: 858 wrt: 2507) us.  SW_lat: 197 us. 
+[  414.309738] print_GC_LATENCY: breakdown us. rd op: 416 wrt op: 1986 read xfer: 442 write xfer: 521
+[  414.309740] print_MG_CMD_CNT: mg cmd submitted: 139 (per sec) total mg cmd: 31987 total completed mg cmd: 31912
+[  414.309742] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 19340 ( 140 / 19200 ) total: 8189022 discard: 210 submit: 8188672 completed: 8169472
+[  414.309745] section utilization of gc region: 7 %
+[  415.092491] section utilization of regular region: 59 %
+[  415.313700] print_GC_LATENCY: latency: 3327 (rd: 859 wrt: 2513) us.  SW_lat: 197 us. 
+[  415.313705] print_GC_LATENCY: breakdown us. rd op: 416 wrt op: 1990 read xfer: 443 write xfer: 522
+[  415.313707] print_MG_CMD_CNT: mg cmd submitted: 276 (per sec) total mg cmd: 32263 total completed mg cmd: 32177
+[  415.313709] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 22188 ( 172 / 22016 ) total: 8259710 discard: 210 submit: 8259328 completed: 8237312
+[  416.324262] print_GC_LATENCY: latency: 3328 (rd: 860 wrt: 2513) us.  SW_lat: 197 us. 
+[  416.324268] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1990 read xfer: 443 write xfer: 522
+[  416.324269] print_MG_CMD_CNT: mg cmd submitted: 241 (per sec) total mg cmd: 32504 total completed mg cmd: 32177
+[  416.324271] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 83779 ( 67 / 83712 ) total: 8321301 discard: 210 submit: 8321024 completed: 8237312
+[  417.326001] print_GC_LATENCY: latency: 3324 (rd: 859 wrt: 2510) us.  SW_lat: 197 us. 
+[  417.326007] print_GC_LATENCY: breakdown us. rd op: 416 wrt op: 1988 read xfer: 442 write xfer: 522
+[  417.326009] print_MG_CMD_CNT: mg cmd submitted: 163 (per sec) total mg cmd: 32667 total completed mg cmd: 32401
+[  417.326011] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 68135 ( 39 / 68096 ) total: 8363001 discard: 210 submit: 8362752 completed: 8294656
+[  418.329957] print_GC_LATENCY: latency: 3326 (rd: 859 wrt: 2512) us.  SW_lat: 197 us. 
+[  418.329964] print_GC_LATENCY: breakdown us. rd op: 416 wrt op: 1989 read xfer: 442 write xfer: 522
+[  418.329965] print_MG_CMD_CNT: mg cmd submitted: 250 (per sec) total mg cmd: 32917 total completed mg cmd: 32725
+[  418.329968] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 49390 ( 238 / 49152 ) total: 8427200 discard: 210 submit: 8426752 completed: 8377600
+[  419.333721] print_GC_LATENCY: latency: 3330 (rd: 860 wrt: 2515) us.  SW_lat: 197 us. 
+[  419.333727] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1992 read xfer: 443 write xfer: 523
+[  419.333728] print_MG_CMD_CNT: mg cmd submitted: 235 (per sec) total mg cmd: 33152 total completed mg cmd: 33132
+[  419.333730] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 5322 ( 202 / 5120 ) total: 8487324 discard: 210 submit: 8486912 completed: 8481792
+[  419.333733] section utilization of gc region: 7 %
+[  420.338005] print_GC_LATENCY: latency: 3334 (rd: 861 wrt: 2518) us.  SW_lat: 197 us. 
+[  420.338011] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1994 read xfer: 443 write xfer: 523
+[  420.338013] print_MG_CMD_CNT: mg cmd submitted: 286 (per sec) total mg cmd: 33438 total completed mg cmd: 33132
+[  420.338015] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 78563 ( 227 / 78336 ) total: 8560565 discard: 210 submit: 8560128 completed: 8481792
+[  420.413912] section utilization of regular region: 59 %
+[  421.342482] print_GC_LATENCY: latency: 3330 (rd: 860 wrt: 2515) us.  SW_lat: 197 us. 
+[  421.342488] print_GC_LATENCY: breakdown us. rd op: 416 wrt op: 1992 read xfer: 443 write xfer: 523
+[  421.342490] print_MG_CMD_CNT: mg cmd submitted: 155 (per sec) total mg cmd: 33593 total completed mg cmd: 33375
+[  421.342492] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 55982 ( 174 / 55808 ) total: 8600192 discard: 210 submit: 8599808 completed: 8544000
+[  422.345780] print_GC_LATENCY: latency: 3333 (rd: 861 wrt: 2517) us.  SW_lat: 197 us. 
+[  422.345784] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1994 read xfer: 443 write xfer: 523
+[  422.345786] print_MG_CMD_CNT: mg cmd submitted: 265 (per sec) total mg cmd: 33858 total completed mg cmd: 33727
+[  422.345788] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 33555 ( 19 / 33536 ) total: 8667878 discard: 211 submit: 8667648 completed: 8634112
+[  423.349845] print_GC_LATENCY: latency: 3343 (rd: 863 wrt: 2524) us.  SW_lat: 198 us. 
+[  423.349852] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 1999 read xfer: 445 write xfer: 525
+[  423.349853] print_MG_CMD_CNT: mg cmd submitted: 380 (per sec) total mg cmd: 34238 total completed mg cmd: 33727
+[  423.349855] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 130864 ( 48 / 130816 ) total: 8765187 discard: 211 submit: 8764928 completed: 8634112
+[  424.354193] print_GC_LATENCY: latency: 3343 (rd: 863 wrt: 2525) us.  SW_lat: 198 us. 
+[  424.354200] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2000 read xfer: 445 write xfer: 525
+[  424.354202] print_MG_CMD_CNT: mg cmd submitted: 184 (per sec) total mg cmd: 34422 total completed mg cmd: 34144
+[  424.354204] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 71276 ( 108 / 71168 ) total: 8812351 discard: 211 submit: 8812032 completed: 8740864
+[  424.354207] section utilization of gc region: 7 %
+[  425.357839] print_GC_LATENCY: latency: 3335 (rd: 861 wrt: 2519) us.  SW_lat: 197 us. 
+[  425.357845] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1995 read xfer: 444 write xfer: 523
+[  425.357846] print_MG_CMD_CNT: mg cmd submitted: 103 (per sec) total mg cmd: 34525 total completed mg cmd: 34471
+[  425.357848] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 13931 ( 107 / 13824 ) total: 8838718 discard: 211 submit: 8838400 completed: 8824576
+[  425.703319] section utilization of regular region: 59 %
+[  426.362099] print_GC_LATENCY: latency: 3334 (rd: 861 wrt: 2518) us.  SW_lat: 197 us. 
+[  426.362104] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1994 read xfer: 443 write xfer: 523
+[  426.362106] print_MG_CMD_CNT: mg cmd submitted: 217 (per sec) total mg cmd: 34742 total completed mg cmd: 34614
+[  426.362108] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 32893 ( 125 / 32768 ) total: 8894288 discard: 211 submit: 8893952 completed: 8861184
+[  427.365964] print_GC_LATENCY: latency: 3346 (rd: 864 wrt: 2527) us.  SW_lat: 198 us. 
+[  427.365970] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2001 read xfer: 445 write xfer: 525
+[  427.365972] print_MG_CMD_CNT: mg cmd submitted: 362 (per sec) total mg cmd: 35104 total completed mg cmd: 34614
+[  427.365974] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 125577 ( 137 / 125440 ) total: 8986972 discard: 211 submit: 8986624 completed: 8861184
+[  428.369900] print_GC_LATENCY: latency: 3344 (rd: 863 wrt: 2525) us.  SW_lat: 198 us. 
+[  428.369906] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2000 read xfer: 445 write xfer: 525
+[  428.369907] print_MG_CMD_CNT: mg cmd submitted: 194 (per sec) total mg cmd: 35298 total completed mg cmd: 34983
+[  428.369909] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 80780 ( 140 / 80640 ) total: 9036639 discard: 211 submit: 9036288 completed: 8955648
+[  429.373918] print_GC_LATENCY: latency: 3342 (rd: 862 wrt: 2524) us.  SW_lat: 198 us. 
+[  429.373924] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1999 read xfer: 444 write xfer: 525
+[  429.373925] print_MG_CMD_CNT: mg cmd submitted: 145 (per sec) total mg cmd: 35443 total completed mg cmd: 35187
+[  429.373927] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 65730 ( 194 / 65536 ) total: 9073813 discard: 211 submit: 9073408 completed: 9007872
+[  429.373929] section utilization of gc region: 8 %
+[  430.378591] print_GC_LATENCY: latency: 3339 (rd: 862 wrt: 2522) us.  SW_lat: 198 us. 
+[  430.378596] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1997 read xfer: 444 write xfer: 524
+[  430.378598] print_MG_CMD_CNT: mg cmd submitted: 172 (per sec) total mg cmd: 35615 total completed mg cmd: 35463
+[  430.378600] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 38935 ( 23 / 38912 ) total: 9117674 discard: 211 submit: 9117440 completed: 9078528
+[  430.801750] section utilization of regular region: 59 %
+[  431.381958] print_GC_LATENCY: latency: 3341 (rd: 862 wrt: 2523) us.  SW_lat: 198 us. 
+[  431.381963] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1998 read xfer: 444 write xfer: 525
+[  431.381965] print_MG_CMD_CNT: mg cmd submitted: 270 (per sec) total mg cmd: 35885 total completed mg cmd: 35652
+[  431.381967] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 59656 ( 8 / 59648 ) total: 9186779 discard: 211 submit: 9186560 completed: 9126912
+[  432.385986] print_GC_LATENCY: latency: 3352 (rd: 865 wrt: 2532) us.  SW_lat: 198 us. 
+[  432.385991] print_GC_LATENCY: breakdown us. rd op: 419 wrt op: 2005 read xfer: 446 write xfer: 526
+[  432.385992] print_MG_CMD_CNT: mg cmd submitted: 345 (per sec) total mg cmd: 36230 total completed mg cmd: 35652
+[  432.385994] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 147977 ( 9 / 147968 ) total: 9275100 discard: 211 submit: 9274880 completed: 9126912
+[  432.671492] f2fs_iget: bad_inode ino: 2981
+[  433.390206] print_GC_LATENCY: latency: 3347 (rd: 864 wrt: 2528) us.  SW_lat: 198 us. 
+[  433.390211] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2002 read xfer: 445 write xfer: 526
+[  433.390213] print_MG_CMD_CNT: mg cmd submitted: 17 (per sec) total mg cmd: 36247 total completed mg cmd: 36180
+[  433.390215] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 17377 ( 225 / 17152 ) total: 9279668 discard: 211 submit: 9279232 completed: 9262080
+[  434.395286] print_GC_LATENCY: latency: 3341 (rd: 862 wrt: 2523) us.  SW_lat: 198 us. 
+[  434.395291] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1998 read xfer: 444 write xfer: 524
+[  434.395293] print_MG_CMD_CNT: mg cmd submitted: 164 (per sec) total mg cmd: 36411 total completed mg cmd: 36402
+[  434.395295] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 2343 ( 39 / 2304 ) total: 9321466 discard: 211 submit: 9321216 completed: 9318912
+[  434.395299] section utilization of gc region: 8 %
+[  435.398672] print_GC_LATENCY: latency: 3340 (rd: 862 wrt: 2523) us.  SW_lat: 198 us. 
+[  435.398677] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 1998 read xfer: 444 write xfer: 524
+[  435.398679] print_MG_CMD_CNT: mg cmd submitted: 254 (per sec) total mg cmd: 36665 total completed mg cmd: 36402
+[  435.398681] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 67435 ( 107 / 67328 ) total: 9386558 discard: 211 submit: 9386240 completed: 9318912
+[  436.082154] section utilization of regular region: 59 %
+[  436.402460] print_GC_LATENCY: latency: 3343 (rd: 862 wrt: 2525) us.  SW_lat: 198 us. 
+[  436.402465] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 2000 read xfer: 445 write xfer: 525
+[  436.402467] print_MG_CMD_CNT: mg cmd submitted: 271 (per sec) total mg cmd: 36936 total completed mg cmd: 36796
+[  436.402469] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 35864 ( 24 / 35840 ) total: 9455851 discard: 211 submit: 9455616 completed: 9419776
+[  437.406259] print_GC_LATENCY: latency: 3348 (rd: 864 wrt: 2529) us.  SW_lat: 198 us. 
+[  437.406264] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2003 read xfer: 445 write xfer: 526
+[  437.406266] print_MG_CMD_CNT: mg cmd submitted: 324 (per sec) total mg cmd: 37260 total completed mg cmd: 36796
+[  437.406268] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 118786 ( 2 / 118784 ) total: 9538773 discard: 211 submit: 9538560 completed: 9419776
+[  438.410702] print_GC_LATENCY: latency: 3355 (rd: 866 wrt: 2534) us.  SW_lat: 199 us. 
+[  438.410707] print_GC_LATENCY: breakdown us. rd op: 419 wrt op: 2007 read xfer: 446 write xfer: 527
+[  438.410709] print_MG_CMD_CNT: mg cmd submitted: 286 (per sec) total mg cmd: 37546 total completed mg cmd: 37400
+[  438.410711] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 37394 ( 18 / 37376 ) total: 9612005 discard: 211 submit: 9611776 completed: 9574400
+[  439.414136] print_GC_LATENCY: latency: 3361 (rd: 867 wrt: 2538) us.  SW_lat: 199 us. 
+[  439.414141] print_GC_LATENCY: breakdown us. rd op: 420 wrt op: 2010 read xfer: 447 write xfer: 527
+[  439.414143] print_MG_CMD_CNT: mg cmd submitted: 330 (per sec) total mg cmd: 37876 total completed mg cmd: 37400
+[  439.414145] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 121904 ( 48 / 121856 ) total: 9696515 discard: 211 submit: 9696256 completed: 9574400
+[  439.414148] section utilization of gc region: 8 %
+[  440.418144] print_GC_LATENCY: latency: 3362 (rd: 867 wrt: 2538) us.  SW_lat: 199 us. 
+[  440.418149] print_GC_LATENCY: breakdown us. rd op: 420 wrt op: 2011 read xfer: 447 write xfer: 527
+[  440.418151] print_MG_CMD_CNT: mg cmd submitted: 266 (per sec) total mg cmd: 38142 total completed mg cmd: 37820
+[  440.418153] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 82557 ( 125 / 82432 ) total: 9764688 discard: 211 submit: 9764352 completed: 9681920
+[  441.422330] print_GC_LATENCY: latency: 3366 (rd: 868 wrt: 2542) us.  SW_lat: 199 us. 
+[  441.422337] print_GC_LATENCY: breakdown us. rd op: 420 wrt op: 2013 read xfer: 448 write xfer: 528
+[  441.422339] print_MG_CMD_CNT: mg cmd submitted: 222 (per sec) total mg cmd: 38364 total completed mg cmd: 38304
+[  441.422341] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 15607 ( 247 / 15360 ) total: 9821642 discard: 211 submit: 9821184 completed: 9805824
+[  442.048832] section utilization of regular region: 58 %
+[  442.426186] print_GC_LATENCY: latency: 3364 (rd: 868 wrt: 2540) us.  SW_lat: 199 us. 
+[  442.426192] print_GC_LATENCY: breakdown us. rd op: 420 wrt op: 2012 read xfer: 447 write xfer: 528
+[  442.426194] print_MG_CMD_CNT: mg cmd submitted: 141 (per sec) total mg cmd: 38505 total completed mg cmd: 38476
+[  442.426195] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 7640 ( 216 / 7424 ) total: 9857707 discard: 211 submit: 9857280 completed: 9849856
+[  443.430206] print_GC_LATENCY: latency: 3355 (rd: 865 wrt: 2533) us.  SW_lat: 199 us. 
+[  443.430211] print_GC_LATENCY: breakdown us. rd op: 419 wrt op: 2006 read xfer: 446 write xfer: 527
+[  443.430213] print_MG_CMD_CNT: mg cmd submitted: 117 (per sec) total mg cmd: 38622 total completed mg cmd: 38558
+[  443.430215] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 16585 ( 201 / 16384 ) total: 9887644 discard: 211 submit: 9887232 completed: 9870848
+[  444.434226] print_GC_LATENCY: latency: 3357 (rd: 866 wrt: 2535) us.  SW_lat: 199 us. 
+[  444.434231] print_GC_LATENCY: breakdown us. rd op: 419 wrt op: 2007 read xfer: 446 write xfer: 527
+[  444.434233] print_MG_CMD_CNT: mg cmd submitted: 226 (per sec) total mg cmd: 38848 total completed mg cmd: 38832
+[  444.434235] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 4213 ( 117 / 4096 ) total: 9945416 discard: 211 submit: 9945088 completed: 9940992
+[  444.434238] section utilization of gc region: 8 %
+[  445.438299] print_GC_LATENCY: latency: 3349 (rd: 864 wrt: 2529) us.  SW_lat: 198 us. 
+[  445.438306] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2003 read xfer: 445 write xfer: 526
+[  445.438308] print_MG_CMD_CNT: mg cmd submitted: 107 (per sec) total mg cmd: 38955 total completed mg cmd: 38949
+[  445.438310] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 1684 ( 148 / 1536 ) total: 9972839 discard: 211 submit: 9972480 completed: 9970944
+[  446.442290] print_GC_LATENCY: latency: 3352 (rd: 864 wrt: 2531) us.  SW_lat: 198 us. 
+[  446.442295] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2005 read xfer: 446 write xfer: 526
+[  446.442297] print_MG_CMD_CNT: mg cmd submitted: 278 (per sec) total mg cmd: 39233 total completed mg cmd: 38949
+[  446.442299] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 72913 ( 209 / 72704 ) total: 10044068 discard: 211 submit: 10043648 completed: 9970944
+[  447.446818] print_GC_LATENCY: latency: 3346 (rd: 863 wrt: 2527) us.  SW_lat: 198 us. 
+[  447.446823] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2001 read xfer: 445 write xfer: 525
+[  447.446825] print_MG_CMD_CNT: mg cmd submitted: 160 (per sec) total mg cmd: 39393 total completed mg cmd: 39227
+[  447.446826] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 42545 ( 49 / 42496 ) total: 10084868 discard: 211 submit: 10084608 completed: 10042112
+[  448.053723] section utilization of regular region: 58 %
+[  448.450637] print_GC_LATENCY: latency: 3350 (rd: 864 wrt: 2530) us.  SW_lat: 198 us. 
+[  448.450642] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2003 read xfer: 445 write xfer: 526
+[  448.450644] print_MG_CMD_CNT: mg cmd submitted: 236 (per sec) total mg cmd: 39629 total completed mg cmd: 39509
+[  448.450645] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 30882 ( 162 / 30720 ) total: 10145397 discard: 211 submit: 10145024 completed: 10114304
+[  449.454777] print_GC_LATENCY: latency: 3348 (rd: 863 wrt: 2528) us.  SW_lat: 198 us. 
+[  449.454783] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2002 read xfer: 445 write xfer: 526
+[  449.454785] print_MG_CMD_CNT: mg cmd submitted: 216 (per sec) total mg cmd: 39845 total completed mg cmd: 39797
+[  449.454786] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 12337 ( 49 / 12288 ) total: 10200580 discard: 211 submit: 10200320 completed: 10188032
+[  449.454789] section utilization of gc region: 8 %
+[  450.458428] print_GC_LATENCY: latency: 3349 (rd: 864 wrt: 2530) us.  SW_lat: 198 us. 
+[  450.458433] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2003 read xfer: 445 write xfer: 526
+[  450.458435] print_MG_CMD_CNT: mg cmd submitted: 216 (per sec) total mg cmd: 40061 total completed mg cmd: 39797
+[  450.458437] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 67713 ( 129 / 67584 ) total: 10255956 discard: 211 submit: 10255616 completed: 10188032
+[  451.462452] print_GC_LATENCY: latency: 3346 (rd: 863 wrt: 2527) us.  SW_lat: 198 us. 
+[  451.462458] print_GC_LATENCY: breakdown us. rd op: 417 wrt op: 2001 read xfer: 445 write xfer: 525
+[  451.462460] print_MG_CMD_CNT: mg cmd submitted: 191 (per sec) total mg cmd: 40252 total completed mg cmd: 40059
+[  451.462462] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 49451 ( 43 / 49408 ) total: 10304766 discard: 211 submit: 10304512 completed: 10255104
+[  452.466390] print_GC_LATENCY: latency: 3347 (rd: 863 wrt: 2528) us.  SW_lat: 198 us. 
+[  452.466395] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2002 read xfer: 445 write xfer: 526
+[  452.466397] print_MG_CMD_CNT: mg cmd submitted: 214 (per sec) total mg cmd: 40466 total completed mg cmd: 40300
+[  452.466399] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 42630 ( 134 / 42496 ) total: 10359641 discard: 211 submit: 10359296 completed: 10316800
+[  453.470736] print_GC_LATENCY: latency: 3347 (rd: 863 wrt: 2528) us.  SW_lat: 198 us. 
+[  453.470742] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2002 read xfer: 445 write xfer: 525
+[  453.470744] print_MG_CMD_CNT: mg cmd submitted: 175 (per sec) total mg cmd: 40641 total completed mg cmd: 40451
+[  453.470745] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 48642 ( 2 / 48640 ) total: 10404309 discard: 211 submit: 10404096 completed: 10355456
+[  454.071148] f2fs_iget: bad_inode ino: 19488
+[  454.153045] section utilization of regular region: 58 %
+[  454.474839] print_GC_LATENCY: latency: 3350 (rd: 864 wrt: 2530) us.  SW_lat: 198 us. 
+[  454.474844] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2004 read xfer: 445 write xfer: 526
+[  454.474846] print_MG_CMD_CNT: mg cmd submitted: 235 (per sec) total mg cmd: 40876 total completed mg cmd: 40788
+[  454.474848] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 22658 ( 130 / 22528 ) total: 10464597 discard: 211 submit: 10464256 completed: 10441728
+[  454.474852] section utilization of gc region: 8 %
+[  455.478455] print_GC_LATENCY: latency: 3355 (rd: 865 wrt: 2534) us.  SW_lat: 198 us. 
+[  455.478460] print_GC_LATENCY: breakdown us. rd op: 419 wrt op: 2007 read xfer: 446 write xfer: 527
+[  455.478462] print_MG_CMD_CNT: mg cmd submitted: 362 (per sec) total mg cmd: 41238 total completed mg cmd: 40788
+[  455.478464] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 115313 ( 113 / 115200 ) total: 10557252 discard: 211 submit: 10556928 completed: 10441728
+[  456.482561] print_GC_LATENCY: latency: 3357 (rd: 866 wrt: 2535) us.  SW_lat: 198 us. 
+[  456.482567] print_GC_LATENCY: breakdown us. rd op: 419 wrt op: 2008 read xfer: 446 write xfer: 527
+[  456.482569] print_MG_CMD_CNT: mg cmd submitted: 199 (per sec) total mg cmd: 41437 total completed mg cmd: 41162
+[  456.482570] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 70441 ( 41 / 70400 ) total: 10608124 discard: 211 submit: 10607872 completed: 10537472
+[  457.486497] print_GC_LATENCY: latency: 3353 (rd: 865 wrt: 2533) us.  SW_lat: 198 us. 
+[  457.486502] print_GC_LATENCY: breakdown us. rd op: 418 wrt op: 2006 read xfer: 446 write xfer: 526
+[  457.486504] print_MG_CMD_CNT: mg cmd submitted: 213 (per sec) total mg cmd: 41650 total completed mg cmd: 41504
+[  457.486506] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 37519 ( 143 / 37376 ) total: 10662754 discard: 211 submit: 10662400 completed: 10625024
+[  458.490515] print_GC_LATENCY: latency: 3363 (rd: 867 wrt: 2539) us.  SW_lat: 199 us. 
+[  458.490521] print_GC_LATENCY: breakdown us. rd op: 420 wrt op: 2011 read xfer: 447 write xfer: 528
+[  458.490523] print_MG_CMD_CNT: mg cmd submitted: 392 (per sec) total mg cmd: 42042 total completed mg cmd: 41504
+[  458.490524] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 137808 ( 80 / 137728 ) total: 10763043 discard: 211 submit: 10762752 completed: 10625024
+[  459.494786] print_GC_LATENCY: latency: 3369 (rd: 869 wrt: 2544) us.  SW_lat: 199 us. 
+[  459.494792] print_GC_LATENCY: breakdown us. rd op: 420 wrt op: 2015 read xfer: 448 write xfer: 529
+[  459.494793] print_MG_CMD_CNT: mg cmd submitted: 243 (per sec) total mg cmd: 42285 total completed mg cmd: 42082
+[  459.494795] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 51972 ( 4 / 51968 ) total: 10825175 discard: 211 submit: 10824960 completed: 10772992
+[  459.494798] section utilization of gc region: 9 %
+[  459.674775] section utilization of regular region: 57 %
+[  460.499586] print_GC_LATENCY: latency: 3359 (rd: 866 wrt: 2537) us.  SW_lat: 199 us. 
+[  460.499591] print_GC_LATENCY: breakdown us. rd op: 419 wrt op: 2009 read xfer: 447 write xfer: 527
+[  460.499593] print_MG_CMD_CNT: mg cmd submitted: 107 (per sec) total mg cmd: 42392 total completed mg cmd: 42285
+[  460.499595] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 27463 ( 71 / 27392 ) total: 10852634 discard: 211 submit: 10852352 completed: 10824960
+[  461.503539] print_GC_LATENCY: latency: 3357 (rd: 866 wrt: 2535) us.  SW_lat: 199 us. 
+[  461.503544] print_GC_LATENCY: breakdown us. rd op: 419 wrt op: 2008 read xfer: 446 write xfer: 527
+[  461.503546] print_MG_CMD_CNT: mg cmd submitted: 210 (per sec) total mg cmd: 42602 total completed mg cmd: 42517
+[  461.503547] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 21873 ( 113 / 21760 ) total: 10906436 discard: 211 submit: 10906112 completed: 10884352
+[  462.510517] print_GC_LATENCY: latency: 3364 (rd: 867 wrt: 2540) us.  SW_lat: 199 us. 
+[  462.510522] print_GC_LATENCY: breakdown us. rd op: 420 wrt op: 2012 read xfer: 447 write xfer: 528
+[  462.510524] print_MG_CMD_CNT: mg cmd submitted: 325 (per sec) total mg cmd: 42927 total completed mg cmd: 42517
+[  462.510526] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 105025 ( 65 / 104960 ) total: 10989588 discard: 211 submit: 10989312 completed: 10884352
+[  463.510757] print_GC_LATENCY: latency: 3362 (rd: 867 wrt: 2539) us.  SW_lat: 199 us. 
+[  463.510762] print_GC_LATENCY: breakdown us. rd op: 420 wrt op: 2011 read xfer: 447 write xfer: 528
+[  463.510763] print_MG_CMD_CNT: mg cmd submitted: 197 (per sec) total mg cmd: 43124 total completed mg cmd: 43030
+[  463.510765] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 24192 ( 128 / 24064 ) total: 11040083 discard: 211 submit: 11039744 completed: 11015680
+[  464.515249] print_GC_LATENCY: latency: 3373 (rd: 870 wrt: 2547) us.  SW_lat: 199 us. 
+[  464.515255] print_GC_LATENCY: breakdown us. rd op: 421 wrt op: 2017 read xfer: 448 write xfer: 529
+[  464.515256] print_MG_CMD_CNT: mg cmd submitted: 413 (per sec) total mg cmd: 43537 total completed mg cmd: 43030
+[  464.515258] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 129793 ( 1 / 129792 ) total: 11145684 discard: 211 submit: 11145472 completed: 11015680
+[  464.515261] section utilization of gc region: 9 %
+[  465.518944] print_GC_LATENCY: latency: 3373 (rd: 870 wrt: 2547) us.  SW_lat: 199 us. 
+[  465.518950] print_GC_LATENCY: breakdown us. rd op: 421 wrt op: 2018 read xfer: 448 write xfer: 529
+[  465.518952] print_MG_CMD_CNT: mg cmd submitted: 216 (per sec) total mg cmd: 43753 total completed mg cmd: 43538
+[  465.518954] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 55089 ( 49 / 55040 ) total: 11201028 discard: 211 submit: 11200768 completed: 11145728
+[  465.947816] section utilization of regular region: 57 %
+[  466.523172] print_GC_LATENCY: latency: 3373 (rd: 869 wrt: 2547) us.  SW_lat: 199 us. 
+[  466.523177] print_GC_LATENCY: breakdown us. rd op: 421 wrt op: 2017 read xfer: 448 write xfer: 529
+[  466.523179] print_MG_CMD_CNT: mg cmd submitted: 193 (per sec) total mg cmd: 43946 total completed mg cmd: 43868
+[  466.523181] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 20103 ( 135 / 19968 ) total: 11250522 discard: 211 submit: 11250176 completed: 11230208
+[  467.526771] print_GC_LATENCY: latency: 3383 (rd: 872 wrt: 2554) us.  SW_lat: 200 us. 
+[  467.526777] print_GC_LATENCY: breakdown us. rd op: 422 wrt op: 2023 read xfer: 450 write xfer: 531
+[  467.526779] print_MG_CMD_CNT: mg cmd submitted: 387 (per sec) total mg cmd: 44333 total completed mg cmd: 43868
+[  467.526781] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 119072 ( 32 / 119040 ) total: 11349491 discard: 211 submit: 11349248 completed: 11230208
+[  468.561823] print_GC_LATENCY: latency: 3382 (rd: 872 wrt: 2554) us.  SW_lat: 200 us. 
+[  468.561829] print_GC_LATENCY: breakdown us. rd op: 422 wrt op: 2023 read xfer: 449 write xfer: 530
+[  468.561831] print_MG_CMD_CNT: mg cmd submitted: 229 (per sec) total mg cmd: 44562 total completed mg cmd: 44142
+[  468.561833] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 107736 ( 216 / 107520 ) total: 11408299 discard: 211 submit: 11407872 completed: 11300352
+[  469.563943] print_GC_LATENCY: latency: 3391 (rd: 874 wrt: 2561) us.  SW_lat: 200 us. 
+[  469.563949] print_GC_LATENCY: breakdown us. rd op: 423 wrt op: 2028 read xfer: 451 write xfer: 532
+[  469.563951] print_MG_CMD_CNT: mg cmd submitted: 354 (per sec) total mg cmd: 44916 total completed mg cmd: 44866
+[  469.563953] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 12849 ( 49 / 12800 ) total: 11498757 discard: 212 submit: 11498496 completed: 11485696
+[  469.563956] section utilization of gc region: 9 %
+[  470.568261] print_GC_LATENCY: latency: 3396 (rd: 875 wrt: 2564) us.  SW_lat: 201 us. 
+[  470.568266] print_GC_LATENCY: breakdown us. rd op: 423 wrt op: 2031 read xfer: 451 write xfer: 533
+[  470.568268] print_MG_CMD_CNT: mg cmd submitted: 366 (per sec) total mg cmd: 45282 total completed mg cmd: 44866
+[  470.568270] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 106534 ( 38 / 106496 ) total: 11592442 discard: 212 submit: 11592192 completed: 11485696
+[  471.163611] section utilization of regular region: 57 %
+[  471.571155] print_GC_LATENCY: latency: 3402 (rd: 877 wrt: 2569) us.  SW_lat: 201 us. 
+[  471.571161] print_GC_LATENCY: breakdown us. rd op: 424 wrt op: 2035 read xfer: 452 write xfer: 534
+[  471.571163] print_MG_CMD_CNT: mg cmd submitted: 190 (per sec) total mg cmd: 45472 total completed mg cmd: 45356
+[  471.571165] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 29730 ( 34 / 29696 ) total: 11641079 discard: 213 submit: 11640832 completed: 11611136
+[  472.574996] print_GC_LATENCY: latency: 3396 (rd: 875 wrt: 2565) us.  SW_lat: 201 us. 
+[  472.575002] print_GC_LATENCY: breakdown us. rd op: 423 wrt op: 2031 read xfer: 451 write xfer: 533
+[  472.575004] print_MG_CMD_CNT: mg cmd submitted: 144 (per sec) total mg cmd: 45616 total completed mg cmd: 45476
+[  472.575005] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 36047 ( 207 / 35840 ) total: 11678158 discard: 255 submit: 11677696 completed: 11641856
+[  473.578851] print_GC_LATENCY: latency: 3394 (rd: 875 wrt: 2563) us.  SW_lat: 201 us. 
+[  473.578857] print_GC_LATENCY: breakdown us. rd op: 423 wrt op: 2030 read xfer: 451 write xfer: 532
+[  473.578858] print_MG_CMD_CNT: mg cmd submitted: 178 (per sec) total mg cmd: 45794 total completed mg cmd: 45742
+[  473.578860] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 13324 ( 12 / 13312 ) total: 11723531 discard: 255 submit: 11723264 completed: 11709952
+[  474.583068] print_GC_LATENCY: latency: 3401 (rd: 876 wrt: 2568) us.  SW_lat: 201 us. 
+[  474.583074] print_GC_LATENCY: breakdown us. rd op: 424 wrt op: 2034 read xfer: 452 write xfer: 533
+[  474.583076] print_MG_CMD_CNT: mg cmd submitted: 375 (per sec) total mg cmd: 46169 total completed mg cmd: 45742
+[  474.583078] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 109352 ( 40 / 109312 ) total: 11819559 discard: 255 submit: 11819264 completed: 11709952
+[  474.583082] section utilization of gc region: 9 %
+[  475.587105] print_GC_LATENCY: latency: 3399 (rd: 876 wrt: 2567) us.  SW_lat: 201 us. 
+[  475.587110] print_GC_LATENCY: breakdown us. rd op: 423 wrt op: 2033 read xfer: 452 write xfer: 533
+[  475.587111] print_MG_CMD_CNT: mg cmd submitted: 183 (per sec) total mg cmd: 46352 total completed mg cmd: 46253
+[  475.587113] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 25534 ( 190 / 25344 ) total: 11866557 discard: 255 submit: 11866112 completed: 11840768
+[  476.591671] print_GC_LATENCY: latency: 3413 (rd: 879 wrt: 2577) us.  SW_lat: 202 us. 
+[  476.591677] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2041 read xfer: 454 write xfer: 535
+[  476.591679] print_MG_CMD_CNT: mg cmd submitted: 492 (per sec) total mg cmd: 46844 total completed mg cmd: 46253
+[  476.591681] print_GC_LOG_MEM: mem: 4 MB migration record cnt (buffer/inflight): 151307 ( 11 / 151296 ) total: 11992330 discard: 255 submit: 11992064 completed: 11840768
+[  476.985917] section utilization of regular region: 57 %
+[  477.595598] print_GC_LATENCY: latency: 3413 (rd: 880 wrt: 2577) us.  SW_lat: 202 us. 
+[  477.595603] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2041 read xfer: 454 write xfer: 535
+[  477.595605] print_MG_CMD_CNT: mg cmd submitted: 111 (per sec) total mg cmd: 46955 total completed mg cmd: 46567
+[  477.595607] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 99545 ( 217 / 99328 ) total: 12020952 discard: 255 submit: 12020480 completed: 11921152
+[  478.605901] print_GC_LATENCY: latency: 3409 (rd: 878 wrt: 2574) us.  SW_lat: 201 us. 
+[  478.605907] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2039 read xfer: 453 write xfer: 534
+[  478.605909] print_MG_CMD_CNT: mg cmd submitted: 98 (per sec) total mg cmd: 47053 total completed mg cmd: 46748
+[  478.605910] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 78130 ( 50 / 78080 ) total: 12045873 discard: 255 submit: 12045568 completed: 11967488
+[  479.607217] print_GC_LATENCY: latency: 3405 (rd: 877 wrt: 2571) us.  SW_lat: 201 us. 
+[  479.607223] print_GC_LATENCY: breakdown us. rd op: 424 wrt op: 2037 read xfer: 453 write xfer: 534
+[  479.607225] print_MG_CMD_CNT: mg cmd submitted: 210 (per sec) total mg cmd: 47263 total completed mg cmd: 47029
+[  479.607226] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 60149 ( 245 / 59904 ) total: 12099828 discard: 255 submit: 12099328 completed: 12039424
+[  479.607229] section utilization of gc region: 9 %
+[  480.610998] print_GC_LATENCY: latency: 3403 (rd: 877 wrt: 2570) us.  SW_lat: 201 us. 
+[  480.611003] print_GC_LATENCY: breakdown us. rd op: 424 wrt op: 2036 read xfer: 452 write xfer: 533
+[  480.611005] print_MG_CMD_CNT: mg cmd submitted: 243 (per sec) total mg cmd: 47506 total completed mg cmd: 47444
+[  480.611007] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 15972 ( 100 / 15872 ) total: 12161891 discard: 255 submit: 12161536 completed: 12145664
+[  481.619728] print_GC_LATENCY: latency: 3410 (rd: 879 wrt: 2575) us.  SW_lat: 201 us. 
+[  481.619733] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2040 read xfer: 453 write xfer: 534
+[  481.619735] print_MG_CMD_CNT: mg cmd submitted: 343 (per sec) total mg cmd: 47849 total completed mg cmd: 47444
+[  481.619737] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 103842 ( 162 / 103680 ) total: 12249761 discard: 255 submit: 12249344 completed: 12145664
+[  482.623562] print_GC_LATENCY: latency: 3410 (rd: 879 wrt: 2574) us.  SW_lat: 201 us. 
+[  482.623568] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2040 read xfer: 453 write xfer: 534
+[  482.623570] print_MG_CMD_CNT: mg cmd submitted: 136 (per sec) total mg cmd: 47985 total completed mg cmd: 47881
+[  482.623572] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 26716 ( 92 / 26624 ) total: 12284507 discard: 255 submit: 12284160 completed: 12257536
+[  482.742310] section utilization of regular region: 56 %
+[  483.627170] print_GC_LATENCY: latency: 3406 (rd: 878 wrt: 2572) us.  SW_lat: 201 us. 
+[  483.627175] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2038 read xfer: 453 write xfer: 534
+[  483.627177] print_MG_CMD_CNT: mg cmd submitted: 185 (per sec) total mg cmd: 48170 total completed mg cmd: 48002
+[  483.627178] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 43241 ( 233 / 43008 ) total: 12332008 discard: 255 submit: 12331520 completed: 12288512
+[  484.631701] print_GC_LATENCY: latency: 3404 (rd: 877 wrt: 2570) us.  SW_lat: 201 us. 
+[  484.631708] print_GC_LATENCY: breakdown us. rd op: 424 wrt op: 2036 read xfer: 452 write xfer: 533
+[  484.631710] print_MG_CMD_CNT: mg cmd submitted: 160 (per sec) total mg cmd: 48330 total completed mg cmd: 48184
+[  484.631712] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 37542 ( 166 / 37376 ) total: 12372901 discard: 255 submit: 12372480 completed: 12335104
+[  484.631715] section utilization of gc region: 10 %
+[  485.635104] print_GC_LATENCY: latency: 3405 (rd: 877 wrt: 2571) us.  SW_lat: 201 us. 
+[  485.635109] print_GC_LATENCY: breakdown us. rd op: 424 wrt op: 2037 read xfer: 453 write xfer: 534
+[  485.635111] print_MG_CMD_CNT: mg cmd submitted: 241 (per sec) total mg cmd: 48571 total completed mg cmd: 48527
+[  485.635113] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 11366 ( 102 / 11264 ) total: 12434533 discard: 255 submit: 12434176 completed: 12422912
+[  486.639118] print_GC_LATENCY: latency: 3408 (rd: 878 wrt: 2573) us.  SW_lat: 201 us. 
+[  486.639123] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2039 read xfer: 453 write xfer: 534
+[  486.639125] print_MG_CMD_CNT: mg cmd submitted: 282 (per sec) total mg cmd: 48853 total completed mg cmd: 48527
+[  486.639127] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 83668 ( 212 / 83456 ) total: 12506835 discard: 255 submit: 12506368 completed: 12422912
+[  487.644015] print_GC_LATENCY: latency: 3408 (rd: 878 wrt: 2573) us.  SW_lat: 201 us. 
+[  487.644021] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2039 read xfer: 453 write xfer: 534
+[  487.644023] print_MG_CMD_CNT: mg cmd submitted: 212 (per sec) total mg cmd: 49065 total completed mg cmd: 48936
+[  487.644025] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 33145 ( 121 / 33024 ) total: 12561016 discard: 255 submit: 12560640 completed: 12527616
+[  488.256126] section utilization of regular region: 56 %
+[  488.647630] print_GC_LATENCY: latency: 3408 (rd: 878 wrt: 2573) us.  SW_lat: 201 us. 
+[  488.647636] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2039 read xfer: 453 write xfer: 534
+[  488.647638] print_MG_CMD_CNT: mg cmd submitted: 208 (per sec) total mg cmd: 49273 total completed mg cmd: 49221
+[  488.647639] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 13433 ( 121 / 13312 ) total: 12614273 discard: 264 submit: 12613888 completed: 12600576
+[  489.651199] print_GC_LATENCY: latency: 3411 (rd: 879 wrt: 2575) us.  SW_lat: 201 us. 
+[  489.651205] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2040 read xfer: 453 write xfer: 535
+[  489.651207] print_MG_CMD_CNT: mg cmd submitted: 295 (per sec) total mg cmd: 49568 total completed mg cmd: 49221
+[  489.651209] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 88908 ( 76 / 88832 ) total: 12689748 discard: 264 submit: 12689408 completed: 12600576
+[  489.651212] section utilization of gc region: 10 %
+[  490.663182] print_GC_LATENCY: latency: 3409 (rd: 879 wrt: 2574) us.  SW_lat: 201 us. 
+[  490.663187] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2039 read xfer: 453 write xfer: 534
+[  490.663188] print_MG_CMD_CNT: mg cmd submitted: 191 (per sec) total mg cmd: 49759 total completed mg cmd: 49525
+[  490.663190] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 60003 ( 99 / 59904 ) total: 12738667 discard: 264 submit: 12738304 completed: 12678400
+[  491.663416] print_GC_LATENCY: latency: 3406 (rd: 878 wrt: 2571) us.  SW_lat: 201 us. 
+[  491.663422] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2037 read xfer: 453 write xfer: 534
+[  491.663424] print_MG_CMD_CNT: mg cmd submitted: 151 (per sec) total mg cmd: 49910 total completed mg cmd: 49749
+[  491.663426] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 41361 ( 145 / 41216 ) total: 12777369 discard: 264 submit: 12776960 completed: 12735744
+[  492.667508] print_GC_LATENCY: latency: 3402 (rd: 877 wrt: 2569) us.  SW_lat: 201 us. 
+[  492.667514] print_GC_LATENCY: breakdown us. rd op: 424 wrt op: 2035 read xfer: 452 write xfer: 533
+[  492.667515] print_MG_CMD_CNT: mg cmd submitted: 147 (per sec) total mg cmd: 50057 total completed mg cmd: 49945
+[  492.667517] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 28853 ( 181 / 28672 ) total: 12815037 discard: 264 submit: 12814592 completed: 12785920
+[  493.355363] section utilization of regular region: 56 %
+[  493.671342] print_GC_LATENCY: latency: 3404 (rd: 877 wrt: 2570) us.  SW_lat: 201 us. 
+[  493.671346] print_GC_LATENCY: breakdown us. rd op: 424 wrt op: 2036 read xfer: 453 write xfer: 533
+[  493.671348] print_MG_CMD_CNT: mg cmd submitted: 261 (per sec) total mg cmd: 50318 total completed mg cmd: 50250
+[  493.671350] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 17547 ( 139 / 17408 ) total: 12881812 discard: 265 submit: 12881408 completed: 12864000
+[  494.675292] print_GC_LATENCY: latency: 3408 (rd: 878 wrt: 2573) us.  SW_lat: 201 us. 
+[  494.675298] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2038 read xfer: 453 write xfer: 534
+[  494.675299] print_MG_CMD_CNT: mg cmd submitted: 306 (per sec) total mg cmd: 50624 total completed mg cmd: 50250
+[  494.675301] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 95797 ( 53 / 95744 ) total: 12960062 discard: 265 submit: 12959744 completed: 12864000
+[  494.675305] section utilization of gc region: 10 %
+[  495.679375] print_GC_LATENCY: latency: 3406 (rd: 878 wrt: 2571) us.  SW_lat: 201 us. 
+[  495.679380] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2037 read xfer: 453 write xfer: 534
+[  495.679382] print_MG_CMD_CNT: mg cmd submitted: 161 (per sec) total mg cmd: 50785 total completed mg cmd: 50532
+[  495.679384] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 64848 ( 80 / 64768 ) total: 13001305 discard: 265 submit: 13000960 completed: 12936192
+[  496.684511] print_GC_LATENCY: latency: 3406 (rd: 878 wrt: 2571) us.  SW_lat: 201 us. 
+[  496.684516] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2037 read xfer: 453 write xfer: 534
+[  496.684518] print_MG_CMD_CNT: mg cmd submitted: 231 (per sec) total mg cmd: 51016 total completed mg cmd: 50850
+[  496.684519] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 42583 ( 87 / 42496 ) total: 13060448 discard: 265 submit: 13060096 completed: 13017600
+[  497.687729] print_GC_LATENCY: latency: 3407 (rd: 878 wrt: 2572) us.  SW_lat: 201 us. 
+[  497.687735] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2038 read xfer: 453 write xfer: 534
+[  497.687737] print_MG_CMD_CNT: mg cmd submitted: 224 (per sec) total mg cmd: 51240 total completed mg cmd: 51197
+[  497.687738] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 11091 ( 83 / 11008 ) total: 13117788 discard: 265 submit: 13117440 completed: 13106432
+[  498.559286] section utilization of regular region: 56 %
+[  498.691480] print_GC_LATENCY: latency: 3410 (rd: 879 wrt: 2574) us.  SW_lat: 201 us. 
+[  498.691485] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2039 read xfer: 453 write xfer: 534
+[  498.691487] print_MG_CMD_CNT: mg cmd submitted: 238 (per sec) total mg cmd: 51478 total completed mg cmd: 51436
+[  498.691489] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 10934 ( 182 / 10752 ) total: 13178815 discard: 265 submit: 13178368 completed: 13167616
+[  499.695442] print_GC_LATENCY: latency: 3411 (rd: 879 wrt: 2576) us.  SW_lat: 201 us. 
+[  499.695447] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2041 read xfer: 453 write xfer: 535
+[  499.695449] print_MG_CMD_CNT: mg cmd submitted: 296 (per sec) total mg cmd: 51774 total completed mg cmd: 51436
+[  499.695451] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 86748 ( 220 / 86528 ) total: 13254629 discard: 265 submit: 13254144 completed: 13167616
+[  499.695454] section utilization of gc region: 10 %
+[  500.699458] print_GC_LATENCY: latency: 3412 (rd: 879 wrt: 2576) us.  SW_lat: 201 us. 
+[  500.699464] print_GC_LATENCY: breakdown us. rd op: 425 wrt op: 2041 read xfer: 454 write xfer: 535
+[  500.699466] print_MG_CMD_CNT: mg cmd submitted: 197 (per sec) total mg cmd: 51971 total completed mg cmd: 51891
+[  500.699468] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 20553 ( 73 / 20480 ) total: 13304914 discard: 265 submit: 13304576 completed: 13284096
+[  501.703739] print_GC_LATENCY: latency: 3421 (rd: 881 wrt: 2582) us.  SW_lat: 202 us. 
+[  501.703745] print_GC_LATENCY: breakdown us. rd op: 426 wrt op: 2046 read xfer: 455 write xfer: 536
+[  501.703747] print_MG_CMD_CNT: mg cmd submitted: 418 (per sec) total mg cmd: 52389 total completed mg cmd: 51891
+[  501.703748] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 127710 ( 222 / 127488 ) total: 13412071 discard: 265 submit: 13411584 completed: 13284096
+[  502.707585] print_GC_LATENCY: latency: 3422 (rd: 882 wrt: 2583) us.  SW_lat: 202 us. 
+[  502.707591] print_GC_LATENCY: breakdown us. rd op: 426 wrt op: 2047 read xfer: 455 write xfer: 536
+[  502.707592] print_MG_CMD_CNT: mg cmd submitted: 227 (per sec) total mg cmd: 52616 total completed mg cmd: 52343
+[  502.707594] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 69995 ( 107 / 69888 ) total: 13470068 discard: 265 submit: 13469696 completed: 13399808
+[  503.711601] print_GC_LATENCY: latency: 3429 (rd: 883 wrt: 2589) us.  SW_lat: 202 us. 
+[  503.711607] print_GC_LATENCY: breakdown us. rd op: 427 wrt op: 2051 read xfer: 456 write xfer: 537
+[  503.711609] print_MG_CMD_CNT: mg cmd submitted: 425 (per sec) total mg cmd: 53041 total completed mg cmd: 52343
+[  503.711611] print_GC_LOG_MEM: mem: 4 MB migration record cnt (buffer/inflight): 178710 ( 22 / 178688 ) total: 13578783 discard: 265 submit: 13578496 completed: 13399808
+[  503.931376] section utilization of regular region: 56 %
+[  504.715826] print_GC_LATENCY: latency: 3431 (rd: 884 wrt: 2590) us.  SW_lat: 202 us. 
+[  504.715832] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2052 read xfer: 456 write xfer: 538
+[  504.715834] print_MG_CMD_CNT: mg cmd submitted: 225 (per sec) total mg cmd: 53266 total completed mg cmd: 52855
+[  504.715836] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 105367 ( 151 / 105216 ) total: 13636513 discard: 266 submit: 13636096 completed: 13530880
+[  504.715839] section utilization of gc region: 10 %
+[  505.720060] print_GC_LATENCY: latency: 3431 (rd: 884 wrt: 2590) us.  SW_lat: 202 us. 
+[  505.720066] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2052 read xfer: 456 write xfer: 538
+[  505.720068] print_MG_CMD_CNT: mg cmd submitted: 175 (per sec) total mg cmd: 53441 total completed mg cmd: 53218
+[  505.720070] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 57097 ( 9 / 57088 ) total: 13681171 discard: 266 submit: 13680896 completed: 13623808
+[  506.723612] print_GC_LATENCY: latency: 3438 (rd: 886 wrt: 2596) us.  SW_lat: 203 us. 
+[  506.723619] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2056 read xfer: 457 write xfer: 539
+[  506.723620] print_MG_CMD_CNT: mg cmd submitted: 402 (per sec) total mg cmd: 53843 total completed mg cmd: 53218
+[  506.723622] print_GC_LOG_MEM: mem: 4 MB migration record cnt (buffer/inflight): 160127 ( 127 / 160000 ) total: 13784201 discard: 266 submit: 13783808 completed: 13623808
+[  507.733988] print_GC_LATENCY: latency: 3433 (rd: 885 wrt: 2592) us.  SW_lat: 203 us. 
+[  507.733994] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2053 read xfer: 456 write xfer: 538
+[  507.733996] print_MG_CMD_CNT: mg cmd submitted: 22 (per sec) total mg cmd: 53865 total completed mg cmd: 53860
+[  507.733998] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 1416 ( 136 / 1280 ) total: 13789843 discard: 267 submit: 13789440 completed: 13788160
+[  508.737341] print_GC_LATENCY: latency: 3428 (rd: 883 wrt: 2588) us.  SW_lat: 202 us. 
+[  508.737345] print_GC_LATENCY: breakdown us. rd op: 427 wrt op: 2050 read xfer: 456 write xfer: 537
+[  508.737347] print_MG_CMD_CNT: mg cmd submitted: 120 (per sec) total mg cmd: 53985 total completed mg cmd: 53967
+[  508.737348] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 4672 ( 64 / 4608 ) total: 13820491 discard: 267 submit: 13820160 completed: 13815552
+[  509.739737] print_GC_LATENCY: latency: 3429 (rd: 883 wrt: 2589) us.  SW_lat: 202 us. 
+[  509.739743] print_GC_LATENCY: breakdown us. rd op: 427 wrt op: 2051 read xfer: 456 write xfer: 537
+[  509.739745] print_MG_CMD_CNT: mg cmd submitted: 300 (per sec) total mg cmd: 54285 total completed mg cmd: 53967
+[  509.739746] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 81513 ( 105 / 81408 ) total: 13897332 discard: 267 submit: 13896960 completed: 13815552
+[  509.739750] section utilization of gc region: 10 %
+[  510.051772] section utilization of regular region: 56 %
+[  510.743772] print_GC_LATENCY: latency: 3428 (rd: 883 wrt: 2588) us.  SW_lat: 202 us. 
+[  510.743776] print_GC_LATENCY: breakdown us. rd op: 427 wrt op: 2050 read xfer: 456 write xfer: 537
+[  510.743778] print_MG_CMD_CNT: mg cmd submitted: 223 (per sec) total mg cmd: 54508 total completed mg cmd: 54359
+[  510.743780] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 38274 ( 130 / 38144 ) total: 13954445 discard: 267 submit: 13954048 completed: 13915904
+[  511.748025] print_GC_LATENCY: latency: 3437 (rd: 886 wrt: 2595) us.  SW_lat: 203 us. 
+[  511.748032] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2056 read xfer: 457 write xfer: 539
+[  511.748034] print_MG_CMD_CNT: mg cmd submitted: 433 (per sec) total mg cmd: 54941 total completed mg cmd: 54359
+[  511.748036] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 149185 ( 193 / 148992 ) total: 14065356 discard: 267 submit: 14064896 completed: 13915904
+[  512.752464] print_GC_LATENCY: latency: 3439 (rd: 886 wrt: 2596) us.  SW_lat: 203 us. 
+[  512.752471] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2057 read xfer: 457 write xfer: 539
+[  512.752473] print_MG_CMD_CNT: mg cmd submitted: 170 (per sec) total mg cmd: 55111 total completed mg cmd: 54836
+[  512.752475] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 70579 ( 179 / 70400 ) total: 14108862 discard: 267 submit: 14108416 completed: 14038016
+[  513.755709] print_GC_LATENCY: latency: 3438 (rd: 886 wrt: 2595) us.  SW_lat: 203 us. 
+[  513.755715] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2056 read xfer: 457 write xfer: 539
+[  513.755717] print_MG_CMD_CNT: mg cmd submitted: 258 (per sec) total mg cmd: 55369 total completed mg cmd: 55170
+[  513.755719] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 51171 ( 227 / 50944 ) total: 14174958 discard: 267 submit: 14174464 completed: 14123520
+[  514.759840] print_GC_LATENCY: latency: 3442 (rd: 887 wrt: 2599) us.  SW_lat: 203 us. 
+[  514.759846] print_GC_LATENCY: breakdown us. rd op: 429 wrt op: 2059 read xfer: 457 write xfer: 539
+[  514.759848] print_MG_CMD_CNT: mg cmd submitted: 212 (per sec) total mg cmd: 55581 total completed mg cmd: 55579
+[  514.759850] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 715 ( 203 / 512 ) total: 14229206 discard: 267 submit: 14228736 completed: 14228224
+[  514.759853] section utilization of gc region: 10 %
+[  515.763767] print_GC_LATENCY: latency: 3436 (rd: 885 wrt: 2594) us.  SW_lat: 203 us. 
+[  515.763772] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2055 read xfer: 457 write xfer: 538
+[  515.763774] print_MG_CMD_CNT: mg cmd submitted: 71 (per sec) total mg cmd: 55652 total completed mg cmd: 55581
+[  515.763776] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 18253 ( 77 / 18176 ) total: 14247256 discard: 267 submit: 14246912 completed: 14228736
+[  516.365344] section utilization of regular region: 56 %
+[  516.768648] print_GC_LATENCY: latency: 3432 (rd: 884 wrt: 2591) us.  SW_lat: 203 us. 
+[  516.768653] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2053 read xfer: 456 write xfer: 538
+[  516.768654] print_MG_CMD_CNT: mg cmd submitted: 168 (per sec) total mg cmd: 55820 total completed mg cmd: 55777
+[  516.768657] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 11134 ( 126 / 11008 ) total: 14290313 discard: 267 submit: 14289920 completed: 14278912
+[  517.814463] print_GC_LATENCY: latency: 3435 (rd: 885 wrt: 2593) us.  SW_lat: 203 us. 
+[  517.814468] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2055 read xfer: 457 write xfer: 538
+[  517.814470] print_MG_CMD_CNT: mg cmd submitted: 274 (per sec) total mg cmd: 56094 total completed mg cmd: 55777
+[  517.814472] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 81199 ( 47 / 81152 ) total: 14360378 discard: 267 submit: 14360064 completed: 14278912
+[  518.815820] print_GC_LATENCY: latency: 3435 (rd: 885 wrt: 2593) us.  SW_lat: 203 us. 
+[  518.815825] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2054 read xfer: 456 write xfer: 538
+[  518.815827] print_MG_CMD_CNT: mg cmd submitted: 212 (per sec) total mg cmd: 56306 total completed mg cmd: 56055
+[  518.815829] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 64490 ( 234 / 64256 ) total: 14414837 discard: 267 submit: 14414336 completed: 14350080
+[  519.820273] print_GC_LATENCY: latency: 3434 (rd: 885 wrt: 2592) us.  SW_lat: 203 us. 
+[  519.820279] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2054 read xfer: 456 write xfer: 538
+[  519.820281] print_MG_CMD_CNT: mg cmd submitted: 239 (per sec) total mg cmd: 56545 total completed mg cmd: 56344
+[  519.820283] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 51642 ( 186 / 51456 ) total: 14475982 discard: 276 submit: 14475520 completed: 14424064
+[  519.820286] section utilization of gc region: 10 %
+[  520.819845] print_GC_LATENCY: latency: 3441 (rd: 886 wrt: 2597) us.  SW_lat: 203 us. 
+[  520.819850] print_GC_LATENCY: breakdown us. rd op: 429 wrt op: 2058 read xfer: 457 write xfer: 539
+[  520.819852] print_MG_CMD_CNT: mg cmd submitted: 294 (per sec) total mg cmd: 56839 total completed mg cmd: 56344
+[  520.819854] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 126825 ( 105 / 126720 ) total: 14551165 discard: 276 submit: 14550784 completed: 14424064
+[  521.478549] section utilization of regular region: 55 %
+[  521.819806] print_GC_LATENCY: latency: 3434 (rd: 885 wrt: 2592) us.  SW_lat: 203 us. 
+[  521.819812] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2054 read xfer: 456 write xfer: 538
+[  521.819814] print_MG_CMD_CNT: mg cmd submitted: 91 (per sec) total mg cmd: 56930 total completed mg cmd: 56894
+[  521.819816] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 9241 ( 25 / 9216 ) total: 14574381 discard: 276 submit: 14574080 completed: 14564864
+[  522.820050] print_GC_LATENCY: latency: 3436 (rd: 885 wrt: 2594) us.  SW_lat: 203 us. 
+[  522.820056] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2055 read xfer: 457 write xfer: 538
+[  522.820058] print_MG_CMD_CNT: mg cmd submitted: 262 (per sec) total mg cmd: 57192 total completed mg cmd: 56894
+[  522.820060] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 76449 ( 161 / 76288 ) total: 14641589 discard: 276 submit: 14641152 completed: 14564864
+[  523.821976] print_GC_LATENCY: latency: 3437 (rd: 885 wrt: 2595) us.  SW_lat: 203 us. 
+[  523.821982] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2056 read xfer: 457 write xfer: 538
+[  523.821983] print_MG_CMD_CNT: mg cmd submitted: 252 (per sec) total mg cmd: 57444 total completed mg cmd: 57275
+[  523.821985] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 43453 ( 189 / 43264 ) total: 14706129 discard: 276 submit: 14705664 completed: 14662400
+[  524.819725] print_GC_LATENCY: latency: 3441 (rd: 887 wrt: 2598) us.  SW_lat: 203 us. 
+[  524.819731] print_GC_LATENCY: breakdown us. rd op: 429 wrt op: 2058 read xfer: 457 write xfer: 539
+[  524.819733] print_MG_CMD_CNT: mg cmd submitted: 218 (per sec) total mg cmd: 57662 total completed mg cmd: 57590
+[  524.819735] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 18578 ( 146 / 18432 ) total: 14761894 discard: 276 submit: 14761472 completed: 14743040
+[  524.819738] section utilization of gc region: 10 %
+[  525.820863] print_GC_LATENCY: latency: 3439 (rd: 886 wrt: 2596) us.  SW_lat: 203 us. 
+[  525.820869] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2057 read xfer: 457 write xfer: 539
+[  525.820871] print_MG_CMD_CNT: mg cmd submitted: 175 (per sec) total mg cmd: 57837 total completed mg cmd: 57833
+[  525.820873] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 1043 ( 19 / 1024 ) total: 14806567 discard: 276 submit: 14806272 completed: 14805248
+[  526.819907] print_GC_LATENCY: latency: 3439 (rd: 886 wrt: 2596) us.  SW_lat: 203 us. 
+[  526.819913] print_GC_LATENCY: breakdown us. rd op: 428 wrt op: 2057 read xfer: 457 write xfer: 539
+[  526.819915] print_MG_CMD_CNT: mg cmd submitted: 252 (per sec) total mg cmd: 58089 total completed mg cmd: 57833
+[  526.819917] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 65597 ( 61 / 65536 ) total: 14871121 discard: 276 submit: 14870784 completed: 14805248
+[  527.292558] section utilization of regular region: 56 %
+[  527.819691] print_GC_LATENCY: latency: 3442 (rd: 887 wrt: 2598) us.  SW_lat: 203 us. 
+[  527.819696] print_GC_LATENCY: breakdown us. rd op: 429 wrt op: 2058 read xfer: 457 write xfer: 539
+[  527.819698] print_MG_CMD_CNT: mg cmd submitted: 225 (per sec) total mg cmd: 58314 total completed mg cmd: 58128
+[  527.819700] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 47647 ( 31 / 47616 ) total: 14928691 discard: 276 submit: 14928384 completed: 14880768
+[  528.819600] print_GC_LATENCY: latency: 3445 (rd: 887 wrt: 2601) us.  SW_lat: 203 us. 
+[  528.819607] print_GC_LATENCY: breakdown us. rd op: 429 wrt op: 2060 read xfer: 458 write xfer: 540
+[  528.819608] print_MG_CMD_CNT: mg cmd submitted: 269 (per sec) total mg cmd: 58583 total completed mg cmd: 58518
+[  528.819610] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 16856 ( 216 / 16640 ) total: 14997740 discard: 276 submit: 14997248 completed: 14980608
+[  529.823605] print_GC_LATENCY: latency: 3446 (rd: 888 wrt: 2602) us.  SW_lat: 203 us. 
+[  529.823610] print_GC_LATENCY: breakdown us. rd op: 429 wrt op: 2061 read xfer: 458 write xfer: 540
+[  529.823612] print_MG_CMD_CNT: mg cmd submitted: 295 (per sec) total mg cmd: 58878 total completed mg cmd: 58518
+[  529.823614] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 92381 ( 221 / 92160 ) total: 15073265 discard: 276 submit: 15072768 completed: 14980608
+[  529.823617] section utilization of gc region: 10 %
+[  530.823627] print_GC_LATENCY: latency: 3447 (rd: 888 wrt: 2602) us.  SW_lat: 203 us. 
+[  530.823632] print_GC_LATENCY: breakdown us. rd op: 429 wrt op: 2061 read xfer: 458 write xfer: 540
+[  530.823634] print_MG_CMD_CNT: mg cmd submitted: 248 (per sec) total mg cmd: 59126 total completed mg cmd: 58827
+[  530.823636] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 76779 ( 235 / 76544 ) total: 15136768 discard: 277 submit: 15136256 completed: 15059712
+[  531.823634] print_GC_LATENCY: latency: 3458 (rd: 891 wrt: 2611) us.  SW_lat: 204 us. 
+[  531.823641] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2068 read xfer: 460 write xfer: 542
+[  531.823642] print_MG_CMD_CNT: mg cmd submitted: 494 (per sec) total mg cmd: 59620 total completed mg cmd: 58827
+[  531.823644] print_GC_LOG_MEM: mem: 5 MB migration record cnt (buffer/inflight): 203018 ( 10 / 203008 ) total: 15263007 discard: 277 submit: 15262720 completed: 15059712
+[  532.823497] print_GC_LATENCY: latency: 3459 (rd: 891 wrt: 2611) us.  SW_lat: 204 us. 
+[  532.823503] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2068 read xfer: 460 write xfer: 542
+[  532.823505] print_MG_CMD_CNT: mg cmd submitted: 183 (per sec) total mg cmd: 59803 total completed mg cmd: 59550
+[  532.823507] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 64867 ( 99 / 64768 ) total: 15309944 discard: 277 submit: 15309568 completed: 15244800
+[  532.968382] section utilization of regular region: 55 %
+[  533.823448] print_GC_LATENCY: latency: 3456 (rd: 890 wrt: 2609) us.  SW_lat: 204 us. 
+[  533.823455] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2067 read xfer: 459 write xfer: 541
+[  533.823456] print_MG_CMD_CNT: mg cmd submitted: 138 (per sec) total mg cmd: 59941 total completed mg cmd: 59803
+[  533.823458] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 35552 ( 224 / 35328 ) total: 15345397 discard: 277 submit: 15344896 completed: 15309568
+[  534.823451] print_GC_LATENCY: latency: 3462 (rd: 892 wrt: 2614) us.  SW_lat: 204 us. 
+[  534.823456] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2071 read xfer: 460 write xfer: 542
+[  534.823458] print_MG_CMD_CNT: mg cmd submitted: 357 (per sec) total mg cmd: 60298 total completed mg cmd: 60105
+[  534.823460] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 49568 ( 160 / 49408 ) total: 15436725 discard: 277 submit: 15436288 completed: 15386880
+[  534.823463] section utilization of gc region: 11 %
+[  535.823403] print_GC_LATENCY: latency: 3457 (rd: 891 wrt: 2609) us.  SW_lat: 204 us. 
+[  535.823408] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2067 read xfer: 459 write xfer: 542
+[  535.823410] print_MG_CMD_CNT: mg cmd submitted: 98 (per sec) total mg cmd: 60396 total completed mg cmd: 60343
+[  535.823412] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 13617 ( 49 / 13568 ) total: 15461702 discard: 277 submit: 15461376 completed: 15447808
+[  536.862041] print_GC_LATENCY: latency: 3460 (rd: 891 wrt: 2612) us.  SW_lat: 204 us. 
+[  536.862046] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2069 read xfer: 460 write xfer: 542
+[  536.862047] print_MG_CMD_CNT: mg cmd submitted: 276 (per sec) total mg cmd: 60672 total completed mg cmd: 60343
+[  536.862049] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 84246 ( 22 / 84224 ) total: 15532331 discard: 277 submit: 15532032 completed: 15447808
+[  537.859336] print_GC_LATENCY: latency: 3459 (rd: 891 wrt: 2611) us.  SW_lat: 204 us. 
+[  537.859342] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2069 read xfer: 460 write xfer: 542
+[  537.859344] print_MG_CMD_CNT: mg cmd submitted: 213 (per sec) total mg cmd: 60885 total completed mg cmd: 60672
+[  537.859346] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 54726 ( 198 / 54528 ) total: 15587035 discard: 277 submit: 15586560 completed: 15532032
+[  538.168857] section utilization of regular region: 55 %
+[  538.859362] print_GC_LATENCY: latency: 3458 (rd: 891 wrt: 2610) us.  SW_lat: 204 us. 
+[  538.859368] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2068 read xfer: 459 write xfer: 542
+[  538.859370] print_MG_CMD_CNT: mg cmd submitted: 172 (per sec) total mg cmd: 61057 total completed mg cmd: 60886
+[  538.859372] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 43848 ( 72 / 43776 ) total: 15630941 discard: 277 submit: 15630592 completed: 15586816
+[  539.860351] print_GC_LATENCY: latency: 3460 (rd: 891 wrt: 2612) us.  SW_lat: 204 us. 
+[  539.860357] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2069 read xfer: 460 write xfer: 542
+[  539.860358] print_MG_CMD_CNT: mg cmd submitted: 276 (per sec) total mg cmd: 61333 total completed mg cmd: 61254
+[  539.860360] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 20279 ( 55 / 20224 ) total: 15701580 discard: 277 submit: 15701248 completed: 15681024
+[  539.860363] section utilization of gc region: 11 %
+[  540.864278] print_GC_LATENCY: latency: 3458 (rd: 891 wrt: 2611) us.  SW_lat: 204 us. 
+[  540.864284] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2068 read xfer: 459 write xfer: 542
+[  540.864286] print_MG_CMD_CNT: mg cmd submitted: 208 (per sec) total mg cmd: 61541 total completed mg cmd: 61423
+[  540.864287] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 30306 ( 98 / 30208 ) total: 15754871 discard: 277 submit: 15754496 completed: 15724288
+[  541.875448] print_GC_LATENCY: latency: 3462 (rd: 892 wrt: 2614) us.  SW_lat: 204 us. 
+[  541.875453] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2071 read xfer: 460 write xfer: 542
+[  541.875455] print_MG_CMD_CNT: mg cmd submitted: 241 (per sec) total mg cmd: 61782 total completed mg cmd: 61423
+[  541.875457] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 92053 ( 149 / 91904 ) total: 15816618 discard: 277 submit: 15816192 completed: 15724288
+[  542.875535] print_GC_LATENCY: latency: 3462 (rd: 892 wrt: 2614) us.  SW_lat: 204 us. 
+[  542.875541] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2071 read xfer: 460 write xfer: 542
+[  542.875543] print_MG_CMD_CNT: mg cmd submitted: 265 (per sec) total mg cmd: 62047 total completed mg cmd: 61774
+[  542.875544] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 70082 ( 194 / 69888 ) total: 15884503 discard: 277 submit: 15884032 completed: 15814144
+[  543.313004] section utilization of regular region: 55 %
+[  543.875193] print_GC_LATENCY: latency: 3461 (rd: 891 wrt: 2612) us.  SW_lat: 204 us. 
+[  543.875198] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2070 read xfer: 460 write xfer: 542
+[  543.875200] print_MG_CMD_CNT: mg cmd submitted: 181 (per sec) total mg cmd: 62228 total completed mg cmd: 62121
+[  543.875202] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 27534 ( 142 / 27392 ) total: 15930787 discard: 277 submit: 15930368 completed: 15902976
+[  544.875171] print_GC_LATENCY: latency: 3457 (rd: 891 wrt: 2610) us.  SW_lat: 204 us. 
+[  544.875177] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2068 read xfer: 459 write xfer: 542
+[  544.875178] print_MG_CMD_CNT: mg cmd submitted: 134 (per sec) total mg cmd: 62362 total completed mg cmd: 62330
+[  544.875180] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 8356 ( 164 / 8192 ) total: 15965113 discard: 277 submit: 15964672 completed: 15956480
+[  544.875184] section utilization of gc region: 11 %
+[  545.875141] print_GC_LATENCY: latency: 3459 (rd: 891 wrt: 2611) us.  SW_lat: 204 us. 
+[  545.875147] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2069 read xfer: 460 write xfer: 542
+[  545.875149] print_MG_CMD_CNT: mg cmd submitted: 252 (per sec) total mg cmd: 62614 total completed mg cmd: 62330
+[  545.875151] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 72959 ( 255 / 72704 ) total: 16029716 discard: 277 submit: 16029184 completed: 15956480
+[  546.875199] print_GC_LATENCY: latency: 3460 (rd: 891 wrt: 2612) us.  SW_lat: 204 us. 
+[  546.875206] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2069 read xfer: 460 write xfer: 542
+[  546.875207] print_MG_CMD_CNT: mg cmd submitted: 260 (per sec) total mg cmd: 62874 total completed mg cmd: 62549
+[  546.875209] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 83261 ( 61 / 83200 ) total: 16096082 discard: 277 submit: 16095744 completed: 16012544
+[  547.875166] print_GC_LATENCY: latency: 3459 (rd: 891 wrt: 2611) us.  SW_lat: 204 us. 
+[  547.875172] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2069 read xfer: 460 write xfer: 542
+[  547.875173] print_MG_CMD_CNT: mg cmd submitted: 178 (per sec) total mg cmd: 63052 total completed mg cmd: 62963
+[  547.875175] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 22993 ( 209 / 22784 ) total: 16141798 discard: 277 submit: 16141312 completed: 16118528
+[  548.803572] section utilization of regular region: 55 %
+[  548.886004] print_GC_LATENCY: latency: 3465 (rd: 892 wrt: 2616) us.  SW_lat: 204 us. 
+[  548.886008] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2072 read xfer: 460 write xfer: 543
+[  548.886010] print_MG_CMD_CNT: mg cmd submitted: 365 (per sec) total mg cmd: 63417 total completed mg cmd: 62963
+[  548.886012] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 116415 ( 191 / 116224 ) total: 16235220 discard: 277 submit: 16234752 completed: 16118528
+[  549.883279] print_GC_LATENCY: latency: 3464 (rd: 892 wrt: 2615) us.  SW_lat: 204 us. 
+[  549.883284] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2072 read xfer: 460 write xfer: 543
+[  549.883286] print_MG_CMD_CNT: mg cmd submitted: 266 (per sec) total mg cmd: 63683 total completed mg cmd: 63307
+[  549.883288] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 96505 ( 249 / 96256 ) total: 16303374 discard: 277 submit: 16302848 completed: 16206592
+[  549.883291] section utilization of gc region: 11 %
+[  550.883174] print_GC_LATENCY: latency: 3470 (rd: 894 wrt: 2619) us.  SW_lat: 204 us. 
+[  550.883180] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2075 read xfer: 461 write xfer: 544
+[  550.883182] print_MG_CMD_CNT: mg cmd submitted: 333 (per sec) total mg cmd: 64016 total completed mg cmd: 63736
+[  550.883184] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 71833 ( 153 / 71680 ) total: 16388526 discard: 277 submit: 16388096 completed: 16316416
+[  551.883170] print_GC_LATENCY: latency: 3467 (rd: 893 wrt: 2617) us.  SW_lat: 204 us. 
+[  551.883176] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2073 read xfer: 461 write xfer: 543
+[  551.883177] print_MG_CMD_CNT: mg cmd submitted: 93 (per sec) total mg cmd: 64109 total completed mg cmd: 64101
+[  551.883179] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 2137 ( 89 / 2048 ) total: 16412270 discard: 277 submit: 16411904 completed: 16409856
+[  552.891091] print_GC_LATENCY: latency: 3471 (rd: 894 wrt: 2620) us.  SW_lat: 204 us. 
+[  552.891096] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2076 read xfer: 461 write xfer: 544
+[  552.891098] print_MG_CMD_CNT: mg cmd submitted: 367 (per sec) total mg cmd: 64476 total completed mg cmd: 64101
+[  552.891100] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 96042 ( 42 / 96000 ) total: 16506175 discard: 277 submit: 16505856 completed: 16409856
+[  553.891389] print_GC_LATENCY: latency: 3478 (rd: 896 wrt: 2625) us.  SW_lat: 205 us. 
+[  553.891395] print_GC_LATENCY: breakdown us. rd op: 433 wrt op: 2080 read xfer: 462 write xfer: 545
+[  553.891397] print_MG_CMD_CNT: mg cmd submitted: 335 (per sec) total mg cmd: 64811 total completed mg cmd: 64591
+[  553.891399] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 56345 ( 25 / 56320 ) total: 16591918 discard: 277 submit: 16591616 completed: 16535296
+[  554.529282] section utilization of regular region: 55 %
+[  554.891124] print_GC_LATENCY: latency: 3472 (rd: 894 wrt: 2621) us.  SW_lat: 204 us. 
+[  554.891130] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2076 read xfer: 461 write xfer: 544
+[  554.891131] print_MG_CMD_CNT: mg cmd submitted: 114 (per sec) total mg cmd: 64925 total completed mg cmd: 64906
+[  554.891133] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 4904 ( 40 / 4864 ) total: 16621117 discard: 277 submit: 16620800 completed: 16615936
+[  554.891136] section utilization of gc region: 11 %
+[  555.890917] print_GC_LATENCY: latency: 3469 (rd: 893 wrt: 2619) us.  SW_lat: 204 us. 
+[  555.890922] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2075 read xfer: 461 write xfer: 543
+[  555.890924] print_MG_CMD_CNT: mg cmd submitted: 118 (per sec) total mg cmd: 65043 total completed mg cmd: 65012
+[  555.890926] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 8141 ( 205 / 7936 ) total: 16651491 discard: 278 submit: 16651008 completed: 16643072
+[  556.891764] print_GC_LATENCY: latency: 3468 (rd: 893 wrt: 2618) us.  SW_lat: 204 us. 
+[  556.891770] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2074 read xfer: 461 write xfer: 543
+[  556.891772] print_MG_CMD_CNT: mg cmd submitted: 195 (per sec) total mg cmd: 65238 total completed mg cmd: 65194
+[  556.891773] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 11270 ( 6 / 11264 ) total: 16701212 discard: 278 submit: 16700928 completed: 16689664
+[  557.892383] print_GC_LATENCY: latency: 3468 (rd: 893 wrt: 2618) us.  SW_lat: 204 us. 
+[  557.892389] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2074 read xfer: 461 write xfer: 543
+[  557.892390] print_MG_CMD_CNT: mg cmd submitted: 263 (per sec) total mg cmd: 65501 total completed mg cmd: 65194
+[  557.892392] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 78684 ( 92 / 78592 ) total: 16768626 discard: 278 submit: 16768256 completed: 16689664
+[  558.891126] print_GC_LATENCY: latency: 3465 (rd: 892 wrt: 2616) us.  SW_lat: 204 us. 
+[  558.891132] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2072 read xfer: 460 write xfer: 543
+[  558.891134] print_MG_CMD_CNT: mg cmd submitted: 146 (per sec) total mg cmd: 65647 total completed mg cmd: 65472
+[  558.891136] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 44948 ( 148 / 44800 ) total: 16806058 discard: 278 submit: 16805632 completed: 16760832
+[  559.913450] print_GC_LATENCY: latency: 3463 (rd: 892 wrt: 2614) us.  SW_lat: 204 us. 
+[  559.913455] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2071 read xfer: 460 write xfer: 543
+[  559.913457] print_MG_CMD_CNT: mg cmd submitted: 179 (per sec) total mg cmd: 65826 total completed mg cmd: 65656
+[  559.913459] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 43734 ( 214 / 43520 ) total: 16851948 discard: 278 submit: 16851456 completed: 16807936
+[  559.913462] section utilization of gc region: 11 %
+[  560.530868] section utilization of regular region: 55 %
+[  560.910816] print_GC_LATENCY: latency: 3462 (rd: 892 wrt: 2613) us.  SW_lat: 204 us. 
+[  560.910822] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2071 read xfer: 460 write xfer: 542
+[  560.910824] print_MG_CMD_CNT: mg cmd submitted: 202 (per sec) total mg cmd: 66028 total completed mg cmd: 65938
+[  560.910825] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 23083 ( 43 / 23040 ) total: 16903489 discard: 278 submit: 16903168 completed: 16880128
+[  561.911210] print_GC_LATENCY: latency: 3467 (rd: 893 wrt: 2618) us.  SW_lat: 204 us. 
+[  561.911217] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2074 read xfer: 461 write xfer: 543
+[  561.911218] print_MG_CMD_CNT: mg cmd submitted: 376 (per sec) total mg cmd: 66404 total completed mg cmd: 65938
+[  561.911220] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 119540 ( 244 / 119296 ) total: 16999946 discard: 278 submit: 16999424 completed: 16880128
+[  562.911018] print_GC_LATENCY: latency: 3468 (rd: 893 wrt: 2618) us.  SW_lat: 204 us. 
+[  562.911023] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2074 read xfer: 461 write xfer: 543
+[  562.911025] print_MG_CMD_CNT: mg cmd submitted: 92 (per sec) total mg cmd: 66496 total completed mg cmd: 66457
+[  562.911027] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 10097 ( 113 / 9984 ) total: 17023367 discard: 278 submit: 17022976 completed: 17012992
+[  563.910774] print_GC_LATENCY: latency: 3463 (rd: 892 wrt: 2614) us.  SW_lat: 204 us. 
+[  563.910779] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2071 read xfer: 460 write xfer: 542
+[  563.910781] print_MG_CMD_CNT: mg cmd submitted: 183 (per sec) total mg cmd: 66679 total completed mg cmd: 66457
+[  563.910783] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 56852 ( 20 / 56832 ) total: 17070122 discard: 278 submit: 17069824 completed: 17012992
+[  564.910793] print_GC_LATENCY: latency: 3460 (rd: 891 wrt: 2612) us.  SW_lat: 204 us. 
+[  564.910799] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2070 read xfer: 460 write xfer: 542
+[  564.910801] print_MG_CMD_CNT: mg cmd submitted: 193 (per sec) total mg cmd: 66872 total completed mg cmd: 66726
+[  564.910803] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 37559 ( 183 / 37376 ) total: 17119693 discard: 278 submit: 17119232 completed: 17081856
+[  564.910806] section utilization of gc region: 11 %
+[  565.560618] section utilization of regular region: 55 %
+[  565.910828] print_GC_LATENCY: latency: 3460 (rd: 891 wrt: 2612) us.  SW_lat: 204 us. 
+[  565.910833] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2069 read xfer: 460 write xfer: 542
+[  565.910835] print_MG_CMD_CNT: mg cmd submitted: 208 (per sec) total mg cmd: 67080 total completed mg cmd: 67052
+[  565.910837] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 7217 ( 49 / 7168 ) total: 17172807 discard: 278 submit: 17172480 completed: 17165312
+[  566.910709] print_GC_LATENCY: latency: 3463 (rd: 892 wrt: 2615) us.  SW_lat: 204 us. 
+[  566.910715] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2071 read xfer: 460 write xfer: 543
+[  566.910716] print_MG_CMD_CNT: mg cmd submitted: 322 (per sec) total mg cmd: 67402 total completed mg cmd: 67052
+[  566.910718] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 89641 ( 41 / 89600 ) total: 17255231 discard: 278 submit: 17254912 completed: 17165312
+[  567.910705] print_GC_LATENCY: latency: 3464 (rd: 892 wrt: 2615) us.  SW_lat: 204 us. 
+[  567.910710] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2072 read xfer: 460 write xfer: 543
+[  567.910712] print_MG_CMD_CNT: mg cmd submitted: 256 (per sec) total mg cmd: 67658 total completed mg cmd: 67521
+[  567.910714] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 35174 ( 102 / 35072 ) total: 17320828 discard: 278 submit: 17320448 completed: 17285376
+[  568.911139] print_GC_LATENCY: latency: 3471 (rd: 894 wrt: 2620) us.  SW_lat: 204 us. 
+[  568.911145] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2076 read xfer: 461 write xfer: 544
+[  568.911146] print_MG_CMD_CNT: mg cmd submitted: 353 (per sec) total mg cmd: 68011 total completed mg cmd: 67521
+[  568.911148] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 125677 ( 237 / 125440 ) total: 17411331 discard: 278 submit: 17410816 completed: 17285376
+[  569.952422] print_GC_LATENCY: latency: 3469 (rd: 893 wrt: 2619) us.  SW_lat: 204 us. 
+[  569.952427] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2075 read xfer: 461 write xfer: 543
+[  569.952429] print_MG_CMD_CNT: mg cmd submitted: 137 (per sec) total mg cmd: 68148 total completed mg cmd: 67961
+[  569.952430] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 47883 ( 11 / 47872 ) total: 17446177 discard: 278 submit: 17445888 completed: 17398016
+[  569.952434] section utilization of gc region: 11 %
+[  570.951827] print_GC_LATENCY: latency: 3466 (rd: 892 wrt: 2616) us.  SW_lat: 204 us. 
+[  570.951833] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2073 read xfer: 460 write xfer: 543
+[  570.951835] print_MG_CMD_CNT: mg cmd submitted: 220 (per sec) total mg cmd: 68368 total completed mg cmd: 68146
+[  570.951837] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 57078 ( 246 / 56832 ) total: 17502732 discard: 278 submit: 17502208 completed: 17445376
+[  571.709383] section utilization of regular region: 55 %
+[  571.950635] print_GC_LATENCY: latency: 3471 (rd: 894 wrt: 2620) us.  SW_lat: 204 us. 
+[  571.950641] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2076 read xfer: 461 write xfer: 544
+[  571.950643] print_MG_CMD_CNT: mg cmd submitted: 312 (per sec) total mg cmd: 68680 total completed mg cmd: 68497
+[  571.950645] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 46926 ( 78 / 46848 ) total: 17582436 discard: 278 submit: 17582080 completed: 17535232
+[  572.951117] print_GC_LATENCY: latency: 3465 (rd: 892 wrt: 2616) us.  SW_lat: 204 us. 
+[  572.951123] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2073 read xfer: 460 write xfer: 543
+[  572.951124] print_MG_CMD_CNT: mg cmd submitted: 107 (per sec) total mg cmd: 68787 total completed mg cmd: 68734
+[  572.951126] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 13815 ( 247 / 13568 ) total: 17609997 discard: 278 submit: 17609472 completed: 17595904
+[  573.950653] print_GC_LATENCY: latency: 3467 (rd: 893 wrt: 2617) us.  SW_lat: 204 us. 
+[  573.950659] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2074 read xfer: 461 write xfer: 543
+[  573.950661] print_MG_CMD_CNT: mg cmd submitted: 221 (per sec) total mg cmd: 69008 total completed mg cmd: 68734
+[  573.950663] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 70357 ( 213 / 70144 ) total: 17666539 discard: 278 submit: 17666048 completed: 17595904
+[  574.950684] print_GC_LATENCY: latency: 3468 (rd: 893 wrt: 2618) us.  SW_lat: 204 us. 
+[  574.950690] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2074 read xfer: 461 write xfer: 543
+[  574.950692] print_MG_CMD_CNT: mg cmd submitted: 279 (per sec) total mg cmd: 69287 total completed mg cmd: 69003
+[  574.950694] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 72829 ( 125 / 72704 ) total: 17737875 discard: 278 submit: 17737472 completed: 17664768
+[  574.950697] section utilization of gc region: 11 %
+[  575.957641] print_GC_LATENCY: latency: 3465 (rd: 892 wrt: 2616) us.  SW_lat: 204 us. 
+[  575.957646] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2073 read xfer: 460 write xfer: 543
+[  575.957648] print_MG_CMD_CNT: mg cmd submitted: 178 (per sec) total mg cmd: 69465 total completed mg cmd: 69214
+[  575.957650] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 64369 ( 113 / 64256 ) total: 17783431 discard: 278 submit: 17783040 completed: 17718784
+[  576.954660] print_GC_LATENCY: latency: 3465 (rd: 892 wrt: 2616) us.  SW_lat: 204 us. 
+[  576.954665] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2073 read xfer: 460 write xfer: 543
+[  576.954667] print_MG_CMD_CNT: mg cmd submitted: 183 (per sec) total mg cmd: 69648 total completed mg cmd: 69491
+[  576.954669] print_GC_LOG_MEM: mem: 1 MB migration record cnt (buffer/inflight): 40374 ( 182 / 40192 ) total: 17830348 discard: 278 submit: 17829888 completed: 17789696
+[  577.623858] section utilization of regular region: 55 %
+[  577.954684] print_GC_LATENCY: latency: 3467 (rd: 893 wrt: 2617) us.  SW_lat: 204 us. 
+[  577.954690] print_GC_LATENCY: breakdown us. rd op: 431 wrt op: 2074 read xfer: 461 write xfer: 543
+[  577.954692] print_MG_CMD_CNT: mg cmd submitted: 239 (per sec) total mg cmd: 69887 total completed mg cmd: 69804
+[  577.954694] print_GC_LOG_MEM: mem: 0 MB migration record cnt (buffer/inflight): 21503 ( 255 / 21248 ) total: 17891605 discard: 278 submit: 17891072 completed: 17869824
+[  578.955017] print_GC_LATENCY: latency: 3472 (rd: 894 wrt: 2621) us.  SW_lat: 204 us. 
+[  578.955023] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2077 read xfer: 461 write xfer: 544
+[  578.955025] print_MG_CMD_CNT: mg cmd submitted: 372 (per sec) total mg cmd: 70259 total completed mg cmd: 69804
+[  578.955027] print_GC_LOG_MEM: mem: 3 MB migration record cnt (buffer/inflight): 116707 ( 227 / 116480 ) total: 17986809 discard: 278 submit: 17986304 completed: 17869824
+[  579.955260] print_GC_LATENCY: latency: 3472 (rd: 894 wrt: 2621) us.  SW_lat: 204 us. 
+[  579.955265] print_GC_LATENCY: breakdown us. rd op: 432 wrt op: 2077 read xfer: 461 write xfer: 544
+[  579.955267] print_MG_CMD_CNT: mg cmd submitted: 183 (per sec) total mg cmd: 70442 total completed mg cmd: 70142
+[  579.955269] print_GC_LOG_MEM: mem: 2 MB migration record cnt (buffer/inflight): 76896 ( 96 / 76800 ) total: 18033526 discard: 278 submit: 18033152 completed: 17956352

@@ -1,0 +1,246 @@
+[   62.036196] nvmev: loading out-of-tree module taints kernel.
+[   62.040205] NVMeVirt: Storage : 4000100000 + 3ffff00000
+[   62.304106] NVMeVirt: Total Capacity(GiB,MiB)=64,65536 chs=2 luns=4 lines=8192 blk-size(MiB,KiB)=2,2048 line-size(MiB,KiB)=8,8192
+[   62.304112] [JWDBG] conv_init_params: pgsz: 4096 ps_per_oneshotpg: 8 nchs: 2 luns_per_ch: 2 pgs_per_blk: 512
+[   62.805897] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   63.307619] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   63.307650] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   63.307652] conv_init_ftl: conv ftl: no_part: 0
+[   63.307653] NVMeVirt: initialize maptbl
+[   63.307655] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   63.309163] init_maptbl: redundant: 2303 MB
+[   64.242868] NVMeVirt: initialize rmap
+[   64.318040] NVMeVirt: initialize lines
+[   64.318327] NVMeVirt: initialize write pointer
+[   64.318352] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   64.888857] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   65.458372] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   65.458430] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   65.458433] conv_init_ftl: conv ftl: no_part: 1
+[   65.458434] NVMeVirt: initialize maptbl
+[   65.458435] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   65.460787] init_maptbl: redundant: 2303 MB
+[   66.418233] NVMeVirt: initialize rmap
+[   66.493660] NVMeVirt: initialize lines
+[   66.493939] NVMeVirt: initialize write pointer
+[   66.493964] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   67.063787] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   67.634269] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   67.634326] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   67.634329] conv_init_ftl: conv ftl: no_part: 2
+[   67.634330] NVMeVirt: initialize maptbl
+[   67.634331] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   67.636689] init_maptbl: redundant: 2303 MB
+[   68.594539] NVMeVirt: initialize rmap
+[   68.670143] NVMeVirt: initialize lines
+[   68.670443] NVMeVirt: initialize write pointer
+[   68.670471] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   69.240891] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   69.811166] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   69.811223] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   69.811225] conv_init_ftl: conv ftl: no_part: 3
+[   69.811226] NVMeVirt: initialize maptbl
+[   69.811227] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   69.813598] init_maptbl: redundant: 2303 MB
+[   70.770975] NVMeVirt: initialize rmap
+[   70.846236] NVMeVirt: initialize lines
+[   70.846527] NVMeVirt: initialize write pointer
+[   70.846553] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   70.846556] conv_init_namespace: n_gc_log_max: 0 gc_log size: 72
+[   70.885244] conv_init_namespace: gc log size: 28 byte
+[   75.959850] NVMeVirt: FTL physical space: 274876858368, logical space: 256894260157 (physical/logical * 100 = 107)
+[   75.959856] conv_init_namespace: mtl redundant: 6658 MB
+[   75.959857] conv_init_namespace: mtl redundant: 4 MB
+[   78.725620] NVMeVirt: [NVMEV_NAMESPACE_INIT] ns=0 ns_addr=00000000d406342b ns_size=244993(MiB) 
+[   78.725627] ERR 801
+[   78.725696] PCI host bridge to bus 0001:10
+[   78.725698] pci_bus 0001:10: root bus resource [io  0x0000-0xffff]
+[   78.725701] pci_bus 0001:10: root bus resource [mem 0x00000000-0x3fffffffffff]
+[   78.725704] pci_bus 0001:10: root bus resource [bus 00-ff]
+[   78.725712] pci 0001:10:00.0: [0c51:0101] type 00 class 0x010802
+[   78.725716] pci 0001:10:00.0: reg 0x10: [mem 0x4000000000-0x4000003fff 64bit]
+[   78.725719] pci 0001:10:00.0: reg 0x30: [mem 0x00000000-0x000007ff pref]
+[   78.725722] pci 0001:10:00.0: enabling Extended Tags
+[   78.726395] nvme nvme3: pci function 0001:10:00.0
+[   78.726415] NVMeVirt: Successfully created virtual PCI bus (node 1)
+[   78.729685] NVMeVirt: nvmev_proc_io_0 started on cpu 39 (node 1)
+[   78.729734] NVMeVirt: Successfully created Virtual NVMe deivce
+[   78.729747] NVMeVirt: nvmev_dispatcher started on cpu 37 (node 1)
+[   78.735899] nvme nvme3: 40/0/0 default/read/poll queues
+[   78.744448]  nvme3n1: p1
+[   91.525074]  nvme3n1: p1
+[   91.527823]  nvme3n1:
+[   91.528598]  nvme3n1:
+[   91.532581]  nvme3n1:
+[   91.536431]  nvme3n1: p1
+[   91.538633]  nvme3n1: p1
+[   91.659912] f2fs_create_segment_manager_caches: mes: ffff8dd94483b100 00000000f0311f8d
+[   93.342282] [JWDBG] f2fs_fill_super: bef read super block
+[   93.342485] [JWDBG] f2fs_fill_super: aft read super block log_blocks_per_seg: 9
+[   93.342501] init_sb_info: segs_per_sec: 16
+[   93.342995] f2fs_build_segment_manager: segment_count: 122480
+[   93.346633] __nvmev_admin_create_rev_sq: send rev cmd. nr_mg_batch: 2048 qsize: 2048
+[   93.349609] build_sit_info: dirty_sentries_bitmap size: 45616
+[   93.349634] build_free_segmap: MAIN_SEGS: 121632 MAIN_SECS: 7602 MAIN_SEGS_INTERVAL: 194611 MAIN_SECS_INTERVAL: 12163 segs_per_sec: 16
+[   93.349803] f2fs_build_segment_manager: build_curseg done
+[   93.390124] seg_info_from_raw_sit: vblk == 1 segno: 0 type: 3
+[   93.390127] seg_info_from_raw_sit: vblk == 1 segno: 48 type: 0
+[   93.390129] f2fs_build_segment_manager: build_sit_entries done
+[   93.390130] f2fs_build_segment_manager: NR_CURSEG_TYPE: 10, CURSEG_HOT_DATA: 0
+[   93.390131] [JWDBG] f2fs_build_segment_manager: seg0_blkaddr = 8192 0x2000 blocks_per_seg: 512
+[   93.397922] build_slot_entries: valid seg entry exists. vblk: 1 segno: 0
+[   93.397925] build_slot_entries: valid seg entry exists. vblk: 1 segno: 48
+[   93.417445] init_dirty_segmap: start 
+[   93.417459] init_dirty_segmap: end 
+[   93.417607] F2FS-fs (nvme3n1p1): Found nat_bits in checkpoint
+[   93.551778] F2FS-fs (nvme3n1p1): Mounted with checkpoint version = 7ec49ca5
+[   93.644679] run_fio_d2fs.sh (3400): drop_caches: 3
+[   93.693284] STARTTTTTT
+[   98.585051] lm_write: type: 1 start_lpn: 0x20000000
+[   98.594175] lm_write: type: 4 start_lpn: 0x80002000
+[   98.665104] lm_write: type: 4 start_lpn: 0x80000000
+[   98.729676] section utilization of regular region: 0 %
+[   99.581390] section utilization of gc region: 0 %
+[  105.545869] section utilization of gc region: 0 %
+[  105.547274] section utilization of regular region: 1 %
+[  112.226146] section utilization of gc region: 0 %
+[  112.271138] section utilization of regular region: 3 %
+[  118.382924] section utilization of regular region: 4 %
+[  119.121061] section utilization of gc region: 0 %
+[  123.783700] section utilization of regular region: 5 %
+[  125.056922] section utilization of gc region: 0 %
+[  129.841351] section utilization of regular region: 7 %
+[  130.185496] section utilization of gc region: 0 %
+[  135.178128] section utilization of regular region: 8 %
+[  136.173480] section utilization of gc region: 0 %
+[  144.216645] section utilization of gc region: 0 %
+[  144.331170] section utilization of regular region: 10 %
+[  149.333922] section utilization of gc region: 0 %
+[  150.962267] section utilization of regular region: 12 %
+[  156.425657] section utilization of regular region: 13 %
+[  157.309867] section utilization of gc region: 0 %
+[  162.960196] section utilization of regular region: 14 %
+[  163.884796] section utilization of gc region: 0 %
+[  169.429371] section utilization of regular region: 16 %
+[  169.750306] section utilization of gc region: 0 %
+[  176.099535] section utilization of gc region: 0 %
+[  176.643107] section utilization of regular region: 17 %
+[  182.464296] section utilization of gc region: 0 %
+[  183.159366] section utilization of regular region: 19 %
+[  188.393343] section utilization of gc region: 0 %
+[  189.028623] section utilization of regular region: 20 %
+[  193.870696] section utilization of gc region: 0 %
+[  195.679307] section utilization of regular region: 21 %
+[  199.782719] section utilization of gc region: 0 %
+[  201.160550] section utilization of regular region: 23 %
+[  206.235470] section utilization of gc region: 0 %
+[  206.594705] section utilization of regular region: 24 %
+[  212.301985] section utilization of regular region: 25 %
+[  212.953709] section utilization of gc region: 0 %
+[  218.283838] section utilization of gc region: 0 %
+[  218.314332] section utilization of regular region: 26 %
+[  223.548987] section utilization of gc region: 0 %
+[  227.264748] section utilization of regular region: 28 %
+[  230.745391] section utilization of gc region: 0 %
+[  233.649218] section utilization of regular region: 30 %
+[  236.866217] section utilization of gc region: 0 %
+[  239.200112] section utilization of regular region: 31 %
+[  243.678744] section utilization of gc region: 0 %
+[  245.393716] section utilization of regular region: 32 %
+[  248.734611] section utilization of gc region: 0 %
+[  251.333702] section utilization of regular region: 34 %
+[  254.306774] section utilization of gc region: 0 %
+[  257.059157] section utilization of regular region: 35 %
+[  261.691425] section utilization of gc region: 0 %
+[  262.117808] section utilization of regular region: 36 %
+[  267.655752] section utilization of regular region: 37 %
+[  268.635769] section utilization of gc region: 0 %
+[  274.245831] section utilization of regular region: 39 %
+[  275.203849] section utilization of gc region: 0 %
+[  279.885661] section utilization of regular region: 40 %
+[  281.724102] section utilization of gc region: 0 %
+[  285.189454] section utilization of regular region: 41 %
+[  287.173835] section utilization of gc region: 0 %
+[  290.904945] section utilization of regular region: 42 %
+[  292.224825] section utilization of gc region: 0 %
+[  296.777344] section utilization of regular region: 44 %
+[  298.468335] section utilization of gc region: 0 %
+[  303.461973] section utilization of regular region: 45 %
+[  305.145389] section utilization of gc region: 0 %
+[  309.547074] section utilization of regular region: 46 %
+[  310.517746] section utilization of gc region: 0 %
+[  315.242903] section utilization of regular region: 48 %
+[  315.765579] section utilization of gc region: 0 %
+[  321.540889] section utilization of regular region: 49 %
+[  322.513962] section utilization of gc region: 0 %
+[  327.098769] section utilization of regular region: 50 %
+[  327.534359] section utilization of gc region: 0 %
+[  332.936282] section utilization of regular region: 52 %
+[  333.043045] section utilization of gc region: 0 %
+[  338.700576] section utilization of regular region: 53 %
+[  340.106509] section utilization of gc region: 0 %
+[  344.164686] section utilization of regular region: 54 %
+[  345.274881] section utilization of gc region: 0 %
+[  350.894888] section utilization of regular region: 55 %
+[  352.005910] section utilization of gc region: 0 %
+[  355.571191] BUG: unable to handle page fault for address: 0000000100000034
+[  355.571199] #PF: supervisor read access in kernel mode
+[  355.571201] #PF: error_code(0x0000) - not-present page
+[  355.571203] PGD 0 P4D 0 
+[  355.571206] Oops: 0000 [#1] SMP NOPTI
+[  355.571210] CPU: 20 PID: 3522 Comm: fio Tainted: G          IOE     5.11.0.d2fs #83
+[  355.571213] Hardware name: Dell Inc. PowerEdge R740xd/06WXJT, BIOS 2.14.2 03/21/2022
+[  355.571214] RIP: 0010:find_get_entry+0x83/0x1c0
+[  355.571221] Code: 00 e8 91 21 3d 00 49 89 c4 48 3d 06 04 00 00 74 e4 48 3d 02 04 00 00 74 dc 48 85 c0 0f 84 e4 00 00 00 a8 01 0f 85 e4 00 00 00 <8b> 40 34 85 c0 74 c4 8d 50 01 f0 41 0f b1 54 24 34 75 f0 48 8b 5d
+[  355.571224] RSP: 0018:ffffa69f4ad27b88 EFLAGS: 00010246
+[  355.571227] RAX: 0000000100000000 RBX: 00000000017d8688 RCX: 0000000000000000
+[  355.571228] RDX: 0000000000000000 RSI: ffff8d60be928000 RDI: ffffa69f4ad27b90
+[  355.571230] RBP: ffffa69f4ad27be8 R08: 0000000000000000 R09: ffffa69f4ad27d40
+[  355.571232] R10: 0000000000001000 R11: 0000000000000005 R12: 0000000100000000
+[  355.571234] R13: ffff8dd94e28c570 R14: 000000000000000e R15: 0000000000000c40
+[  355.571236] FS:  00007ffff7bf4740(0000) GS:ffff8d6901e80000(0000) knlGS:0000000000000000
+[  355.571238] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  355.571240] CR2: 0000000100000034 CR3: 00000007616b0006 CR4: 00000000007706e0
+[  355.571242] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  355.571243] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  355.571245] PKRU: 55555554
+[  355.571246] Call Trace:
+[  355.571249]  pagecache_get_page+0x3d/0x350
+[  355.571256]  f2fs_write_begin+0xe0/0xdd0 [f2fs]
+[  355.571288]  ? f2fs_map_blocks+0x8b3/0xc40 [f2fs]
+[  355.571307]  generic_perform_write+0xc2/0x1c0
+[  355.571310]  ? file_update_time+0x62/0x120
+[  355.571314]  __generic_file_write_iter+0x107/0x1d0
+[  355.571317]  f2fs_file_write_iter+0x22b/0x570 [f2fs]
+[  355.571330]  new_sync_write+0x117/0x1b0
+[  355.571334]  vfs_write+0x1ca/0x280
+[  355.571336]  ksys_pwrite64+0x6d/0xa0
+[  355.571339]  __x64_sys_pwrite64+0x1e/0x20
+[  355.571341]  do_syscall_64+0x38/0x90
+[  355.571344]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[  355.571348] RIP: 0033:0x7ffff7f7fd1f
+[  355.571350] Code: 08 89 3c 24 48 89 4c 24 18 e8 3d f3 ff ff 4c 8b 54 24 18 48 8b 54 24 10 41 89 c0 48 8b 74 24 08 8b 3c 24 b8 12 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 2d 44 89 c7 48 89 04 24 e8 6d f3 ff ff 48 8b
+[  355.571353] RSP: 002b:00007fffffff4df0 EFLAGS: 00000293 ORIG_RAX: 0000000000000012
+[  355.571355] RAX: ffffffffffffffda RBX: 00005555557b9000 RCX: 00007ffff7f7fd1f
+[  355.571357] RDX: 0000000000001000 RSI: 00005555557b91b0 RDI: 0000000000000006
+[  355.571358] RBP: 00005555557b9000 R08: 0000000000000000 R09: 0000000000000000
+[  355.571360] R10: 00000017d8688000 R11: 0000000000000293 R12: 00007fffef7f3000
+[  355.571361] R13: 0000000000000001 R14: 0000000000001000 R15: 00005555557b9028
+[  355.571364] Modules linked in: f2fs(E) nvmev(OE) nls_iso8859_1(E) intel_rapl_msr(E) intel_rapl_common(E) isst_if_common(E) skx_edac(E) nfit(E) x86_pkg_temp_thermal(E) intel_powerclamp(E) ipmi_ssif(E) coretemp(E) kvm_intel(E) kvm(E) crct10dif_pclmul(E) ghash_clmulni_intel(E) aesni_intel(E) crypto_simd(E) cryptd(E) glue_helper(E) rapl(E) dell_smbios(E) dcdbas(E) binfmt_misc(E) intel_cstate(E) input_leds(E) dell_wmi_descriptor(E) wmi_bmof(E) joydev(E) mgag200(E) drm_kms_helper(E) cec(E) rc_core(E) fb_sys_fops(E) syscopyarea(E) mei_me(E) sysfillrect(E) sysimgblt(E) mei(E) intel_pch_thermal(E) acpi_ipmi(E) ipmi_si(E) ipmi_devintf(E) ipmi_msghandler(E) acpi_power_meter(E) mac_hid(E) sch_fq_codel(E) nfsd(E) msr(E) parport_pc(E) ppdev(E) auth_rpcgss(E) nfs_acl(E) lockd(E) lp(E) grace(E) parport(E) ramoops(E) reed_solomon(E) drm(E) pstore_blk(E) pstore_zone(E) efi_pstore(E) sunrpc(E) nfs_ssc(E) ip_tables(E) x_tables(E) autofs4(E) hid_generic(E) usbhid(E) hid(E) crc32_pclmul(E) nvme(E)
+[  355.571422]  nvme_core(E) ixgbe(E) igb(E) xfrm_algo(E) i2c_algo_bit(E) dca(E) mdio(E) megaraid_sas(E) i2c_i801(E) i2c_smbus(E) lpc_ich(E) ahci(E) xhci_pci(E) libahci(E) xhci_pci_renesas(E) wmi(E)
+[  355.571439] CR2: 0000000100000034
+[  355.571441] ---[ end trace 48442f854546f43c ]---
+[  355.587272] RIP: 0010:find_get_entry+0x83/0x1c0
+[  355.587280] Code: 00 e8 91 21 3d 00 49 89 c4 48 3d 06 04 00 00 74 e4 48 3d 02 04 00 00 74 dc 48 85 c0 0f 84 e4 00 00 00 a8 01 0f 85 e4 00 00 00 <8b> 40 34 85 c0 74 c4 8d 50 01 f0 41 0f b1 54 24 34 75 f0 48 8b 5d
+[  355.587283] RSP: 0018:ffffa69f4ad27b88 EFLAGS: 00010246
+[  355.587286] RAX: 0000000100000000 RBX: 00000000017d8688 RCX: 0000000000000000
+[  355.587288] RDX: 0000000000000000 RSI: ffff8d60be928000 RDI: ffffa69f4ad27b90
+[  355.587290] RBP: ffffa69f4ad27be8 R08: 0000000000000000 R09: ffffa69f4ad27d40
+[  355.587292] R10: 0000000000001000 R11: 0000000000000005 R12: 0000000100000000
+[  355.587293] R13: ffff8dd94e28c570 R14: 000000000000000e R15: 0000000000000c40
+[  355.587295] FS:  00007ffff7bf4740(0000) GS:ffff8d6901e80000(0000) knlGS:0000000000000000
+[  355.587297] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  355.587299] CR2: 0000000100000034 CR3: 00000007616b0006 CR4: 00000000007706e0
+[  355.587301] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  355.587302] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  355.587304] PKRU: 55555554

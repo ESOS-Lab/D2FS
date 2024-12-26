@@ -1,0 +1,51 @@
+#kiops
+set terminal postscript eps enhanced color dashed dashlength 3 \
+	                linewidth 2 rounded font "Helvetica, 32"
+
+fn(v) = sprintf("%.1f", v)
+fnn(v) = sprintf("%d", v)
+jw_fnn(v) = (v < 100)? fn(v) : fnn(v)
+
+#set output "./graph_fio_cmp_kiops.eps"
+set output "./Fig-14.Macrogenchmark_throughput.eps"
+set term postscript size 7.5,3.
+set key outside top horizontal reverse Left font "Helvetica, 32"
+
+set key samplen 1 width 0.2
+
+set xtics nomirror
+set ytics nomirror
+
+set xtics font "Helvetica, 38" offset 0, 0.3 
+
+set xrange[0.5:4.5]
+set yrange[0:1.4]
+set key at 3.5, 3.2
+set ytics 1 font "Helvetica, 38" offset 0.7, 0
+
+set ylabel font "Helvetica, 38" "Normalized\nThroughput" offset 0.1, 0
+
+set lmargin at screen 0.12
+set rmargin at screen 0.99
+set bmargin at screen 0.23
+set tmargin at screen 0.98
+
+set style data histogram
+set style fill solid 1.0 border 0
+set style histogram clustered gap 1
+set boxwidth 1 absolute
+
+set border 11
+
+unset key
+
+plot 'throughput' \
+		  u ($3/$3):xtic(1) t 'D2FS' lc 'blue', \
+		 '' u ($2/$3):xtic(1) t 'IPLFS' lc 'red', \
+		 '' u ($4/$3):xtic(1) t 'zF2FS' lc 'dark-violet', \
+		 '' u ($5/$3):xtic(1) t 'F2FS' lc 'black', \
+                 '' u ($0-0.1):($2/$3):(jw_fnn(($2)))  with labels rotate by 90 font "Helvetica, 38" offset 0,1.6 notitle, \
+                 '' u ($0-0.3):($3/$3):(jw_fnn(($3)))  with labels rotate by 90 font "Helvetica, 38" offset 0,1.6 notitle, \
+                 '' u ($0+0.1):($4/$3):(jw_fnn(($4)))  with labels rotate by 90 font "Helvetica, 38" offset 0,1.6 notitle, \
+                 '' u ($0+0.3):($5/$3):(jw_fnn(($5)))  with labels rotate by 90 font "Helvetica, 38" offset 0,1.6 notitle \
+

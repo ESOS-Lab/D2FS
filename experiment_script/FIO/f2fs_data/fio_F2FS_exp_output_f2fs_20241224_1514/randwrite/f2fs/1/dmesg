@@ -1,0 +1,117 @@
+[  127.892136] nvmev: loading out-of-tree module taints kernel.
+[  127.893280] NVMeVirt: Storage : 4000100000 + 3ffff00000
+[  128.158179] NVMeVirt: Total Capacity(GiB,MiB)=64,65536 chs=2 luns=4 lines=8192 blk-size(MiB,KiB)=2,2048 line-size(MiB,KiB)=8,8192
+[  128.631650] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[  129.105055] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[  129.105091] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[  129.105093] NVMeVirt: initialize maptbl
+[  129.152493] init_maptbl: redundant: 2176 MB
+[  129.657645] NVMeVirt: initialize rmap
+[  129.709083] NVMeVirt: initialize lines
+[  129.709248] NVMeVirt: initialize write pointer
+[  129.709250] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[  130.183112] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[  130.657225] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[  130.657261] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[  130.657263] NVMeVirt: initialize maptbl
+[  130.704710] init_maptbl: redundant: 2176 MB
+[  131.209531] NVMeVirt: initialize rmap
+[  131.261052] NVMeVirt: initialize lines
+[  131.261221] NVMeVirt: initialize write pointer
+[  131.261224] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[  131.734194] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[  132.207951] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[  132.207986] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[  132.207988] NVMeVirt: initialize maptbl
+[  132.255288] init_maptbl: redundant: 2176 MB
+[  132.760382] NVMeVirt: initialize rmap
+[  132.811619] NVMeVirt: initialize lines
+[  132.811772] NVMeVirt: initialize write pointer
+[  132.811773] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[  133.285382] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[  133.759943] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[  133.759978] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[  133.759980] NVMeVirt: initialize maptbl
+[  133.807475] init_maptbl: redundant: 2176 MB
+[  134.311844] NVMeVirt: initialize rmap
+[  134.363353] NVMeVirt: initialize lines
+[  134.363528] NVMeVirt: initialize write pointer
+[  134.363530] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[  134.363533] NVMeVirt: FTL physical space: 274876858368, logical space: 256894260157 (physical/logical * 100 = 107)
+[  134.363535] conv_init_namespace: mtl redundant: 10817 MB
+[  136.885062] NVMeVirt: [NVMEV_NAMESPACE_INIT] ns=0 ns_addr=000000001f49c4a9 ns_size=244993(MiB) 
+[  136.885069] ERR 801
+[  136.885137] PCI host bridge to bus 0001:10
+[  136.885140] pci_bus 0001:10: root bus resource [io  0x0000-0xffff]
+[  136.885142] pci_bus 0001:10: root bus resource [mem 0x00000000-0x3fffffffffff]
+[  136.885145] pci_bus 0001:10: root bus resource [bus 00-ff]
+[  136.885152] pci 0001:10:00.0: [0c51:0101] type 00 class 0x010802
+[  136.885156] pci 0001:10:00.0: reg 0x10: [mem 0x4000000000-0x4000003fff 64bit]
+[  136.885159] pci 0001:10:00.0: reg 0x30: [mem 0x00000000-0x000007ff pref]
+[  136.885161] pci 0001:10:00.0: enabling Extended Tags
+[  136.885771] nvme nvme3: pci function 0001:10:00.0
+[  136.885815] NVMeVirt: Successfully created virtual PCI bus (node 1)
+[  136.886378] NVMeVirt: nvmev_proc_io_0 started on cpu 39 (node 1)
+[  136.886421] NVMeVirt: Successfully created Virtual NVMe deivce
+[  136.886427] NVMeVirt: nvmev_dispatcher started on cpu 37 (node 1)
+[  136.892391] nvme nvme3: 40/0/0 default/read/poll queues
+[  136.899251]  nvme3n1: p1
+[  183.292405]  nvme3n1: p1
+[  183.294818]  nvme3n1:
+[  183.295629]  nvme3n1:
+[  183.300419]  nvme3n1:
+[  183.305070]  nvme3n1: p1
+[  184.299174] F2FS-fs (nvme3n1p1): Found nat_bits in checkpoint
+[  184.421610] F2FS-fs (nvme3n1p1): Mounted with checkpoint version = 2eb9d675
+[  184.944052] run_fio_f2fs.sh (3431): drop_caches: 3
+[  184.985257] STARTTTTTT
+[  358.693101] BUG: kernel NULL pointer dereference, address: 0000000000000000
+[  358.693115] #PF: supervisor read access in kernel mode
+[  358.693121] #PF: error_code(0x0000) - not-present page
+[  358.693127] PGD 0 P4D 0 
+[  358.693137] Oops: 0000 [#1] SMP NOPTI
+[  358.693146] CPU: 14 PID: 2428 Comm: kworker/14:2 Tainted: G          IOE     5.11.0.vanilla-f2fs #82
+[  358.693156] Hardware name: Dell Inc. PowerEdge R740xd/06WXJT, BIOS 2.14.2 03/21/2022
+[  358.693162] Workqueue: cgroup_destroy css_killed_work_fn
+[  358.693176] RIP: 0010:memcg_drain_all_list_lrus+0xc1/0x1e0
+[  358.693192] Code: 45 c8 e9 96 00 00 00 48 8b 4d c8 4c 8b 74 ca 10 49 8b 55 20 48 85 d2 0f 84 c8 00 00 00 85 c0 0f 88 c0 00 00 00 48 8b 44 c2 10 <49> 8b 16 4c 39 f2 74 1f 48 8b 10 49 8b 3e 49 8b 76 08 48 89 47 08
+[  358.693200] RSP: 0018:ffffb58549b2fd70 EFLAGS: 00010046
+[  358.693208] RAX: 0000000000000000 RBX: ffff9efc43eeacc8 RCX: 0000000000000019
+[  358.693215] RDX: ffff9f7b4b7be000 RSI: 0000000000000000 RDI: ffff9efc44519d40
+[  358.693221] RBP: ffffb58549b2fdb0 R08: ffff9efc44519d40 R09: 0000000000000001
+[  358.693226] R10: 0000000000000001 R11: 000000000000000f R12: ffff9efc540b4000
+[  358.693232] R13: ffff9efc44519d40 R14: 0000000000000000 R15: 0000000000000001
+[  358.693237] FS:  0000000000000000(0000) GS:ffff9f0b01dc0000(0000) knlGS:0000000000000000
+[  358.693245] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  358.693251] CR2: 0000000000000000 CR3: 0000000105dd0001 CR4: 00000000007706e0
+[  358.693258] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  358.693263] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  358.693268] PKRU: 55555554
+[  358.693272] Call Trace:
+[  358.693280]  memcg_offline_kmem.part.0+0x1e1/0x260
+[  358.693291]  mem_cgroup_css_offline+0xbc/0xf0
+[  358.693302]  css_killed_work_fn+0x57/0x110
+[  358.693309]  process_one_work+0x222/0x3c0
+[  358.693323]  worker_thread+0x4d/0x3f0
+[  358.693335]  kthread+0x114/0x150
+[  358.693345]  ? process_one_work+0x3c0/0x3c0
+[  358.693363]  ? kthread_park+0x90/0x90
+[  358.693369]  ret_from_fork+0x1f/0x30
+[  358.693380] Modules linked in: f2fs(E) nvmev(OE) intel_rapl_msr(E) intel_rapl_common(E) nls_iso8859_1(E) isst_if_common(E) skx_edac(E) nfit(E) x86_pkg_temp_thermal(E) intel_powerclamp(E) ipmi_ssif(E) coretemp(E) kvm_intel(E) kvm(E) crct10dif_pclmul(E) ghash_clmulni_intel(E) aesni_intel(E) crypto_simd(E) cryptd(E) glue_helper(E) rapl(E) dell_smbios(E) dcdbas(E) binfmt_misc(E) wmi_bmof(E) intel_cstate(E) input_leds(E) dell_wmi_descriptor(E) joydev(E) mgag200(E) drm_kms_helper(E) cec(E) rc_core(E) fb_sys_fops(E) syscopyarea(E) sysfillrect(E) sysimgblt(E) mei_me(E) mei(E) intel_pch_thermal(E) acpi_ipmi(E) ipmi_si(E) ipmi_devintf(E) ipmi_msghandler(E) acpi_power_meter(E) mac_hid(E) sch_fq_codel(E) nfsd(E) msr(E) parport_pc(E) ppdev(E) auth_rpcgss(E) nfs_acl(E) lockd(E) grace(E) lp(E) parport(E) drm(E) ramoops(E) reed_solomon(E) pstore_blk(E) efi_pstore(E) pstore_zone(E) sunrpc(E) nfs_ssc(E) ip_tables(E) x_tables(E) autofs4(E) hid_generic(E) usbhid(E) hid(E) crc32_pclmul(E) nvme(E)
+[  358.693492]  nvme_core(E) i2c_i801(E) megaraid_sas(E) i2c_smbus(E) igb(E) ixgbe(E) i2c_algo_bit(E) xfrm_algo(E) mdio(E) dca(E) xhci_pci(E) xhci_pci_renesas(E) ahci(E) lpc_ich(E) libahci(E) wmi(E)
+[  358.693521] CR2: 0000000000000000
+[  358.693525] ---[ end trace a0e581c7fcd86ebd ]---
+[  358.714989] RIP: 0010:memcg_drain_all_list_lrus+0xc1/0x1e0
+[  358.715002] Code: 45 c8 e9 96 00 00 00 48 8b 4d c8 4c 8b 74 ca 10 49 8b 55 20 48 85 d2 0f 84 c8 00 00 00 85 c0 0f 88 c0 00 00 00 48 8b 44 c2 10 <49> 8b 16 4c 39 f2 74 1f 48 8b 10 49 8b 3e 49 8b 76 08 48 89 47 08
+[  358.715007] RSP: 0018:ffffb58549b2fd70 EFLAGS: 00010046
+[  358.715012] RAX: 0000000000000000 RBX: ffff9efc43eeacc8 RCX: 0000000000000019
+[  358.715016] RDX: ffff9f7b4b7be000 RSI: 0000000000000000 RDI: ffff9efc44519d40
+[  358.715020] RBP: ffffb58549b2fdb0 R08: ffff9efc44519d40 R09: 0000000000000001
+[  358.715023] R10: 0000000000000001 R11: 000000000000000f R12: ffff9efc540b4000
+[  358.715026] R13: ffff9efc44519d40 R14: 0000000000000000 R15: 0000000000000001
+[  358.715029] FS:  0000000000000000(0000) GS:ffff9f0b01dc0000(0000) knlGS:0000000000000000
+[  358.715033] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  358.715037] CR2: 0000000000000000 CR3: 0000000105dd0001 CR4: 00000000007706e0
+[  358.715041] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  358.715044] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  358.715047] PKRU: 55555554

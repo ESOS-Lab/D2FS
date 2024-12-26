@@ -1,0 +1,40 @@
+#kiops
+set terminal postscript eps enhanced color dashed dashlength 3 \
+	                linewidth 2 rounded font "Helvetica, 36"
+
+set output "./Fig-12.eps"
+
+
+set yrange [0:1]
+set ytics 0.5
+set xlabel "Time (sec)" font "Helvetica, 36" offset 0, 0.7
+set ylabel "Region Utilization" font "Helvetica, 36" offset 2, -0.9
+set xtics 300 offset 0, 0.2
+set xrange[0:1200]
+
+set key samplen 2 at 1225, 0.975
+
+
+
+
+set arrow from 315, 0 to 315, 1 nohead lw 4 lc rgb 'black' dt 3
+set arrow from 365, 0.9 to 322, 0.9 lw 4 lc rgb 'black'
+set label 'Coupled GC starts.' at 375, 0.9  font "Helvetica, 36" front left
+
+#set key
+
+set tmargin at screen 0.95
+set lmargin at screen 0.11
+set rmargin at screen 0.96
+
+
+set border 3
+
+set ytics nomirror
+set xtics nomirror
+
+set term postscript size 7.5,2.2
+plot \
+'section_utilization_gc_region' u 1:($2/100) with lines title 'GC Region' linecolor rgb 'blue' lw 4, \
+'section_utilization_regular_region' u 1:($2/100) with lines title 'Regular Region' linecolor rgb 'black' lw 4, \
+

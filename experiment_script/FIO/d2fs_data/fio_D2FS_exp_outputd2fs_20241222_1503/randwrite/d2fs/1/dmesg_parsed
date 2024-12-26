@@ -1,0 +1,155 @@
+-49.2516 nvmev: loading out-of-tree module taints kernel.
+-49.2453 NVMeVirt: Storage : 4000100000 + 3ffff00000
+-48.9797 NVMeVirt: Total Capacity(GiB,MiB)=64,65536 chs=2 luns=4 lines=8192 blk-size(MiB,KiB)=2,2048 line-size(MiB,KiB)=8,8192
+-48.9797 JWDBG conv_init_params: pgsz: 4096 ps_per_oneshotpg: 8 nchs: 2 luns_per_ch: 2 pgs_per_blk: 512
+-48.4787 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-47.9677 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-47.9676 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-47.9676 conv_init_ftl: conv ftl: no_part: 0
+-47.9676 NVMeVirt: initialize maptbl
+-47.9676 NVMeVirt: JWDBG init_maptbl: ssd total pgs: 16777216 capacity: 64 GB
+-47.9653 init_maptbl: redundant: 2303 MB
+-47.0361 NVMeVirt: initialize rmap
+-46.9608 NVMeVirt: initialize lines
+-46.9605 NVMeVirt: initialize write pointer
+-46.9605 init_window_mgmt type: 1 head_zoneno: 65536 tail_zoneno: 65536 next_local_lpn: 134217728 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-46.9605 init_window_mgmt type: 2 head_zoneno: 131072 tail_zoneno: 131072 next_local_lpn: 268435456 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-46.9605 init_window_mgmt type: 3 head_zoneno: 196608 tail_zoneno: 196608 next_local_lpn: 402653184 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-46.9605 init_window_mgmt type: 4 head_zoneno: 262144 tail_zoneno: 262144 next_local_lpn: 536870912 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-46.9605 init_window_mgmt type: 5 head_zoneno: 327680 tail_zoneno: 327680 next_local_lpn: 671088640 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-46.9605 init_window_mgmt type: 6 head_zoneno: 393216 tail_zoneno: 393216 next_local_lpn: 805306368 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-46.9605 init_window_mgmt type: 7 head_zoneno: 458752 tail_zoneno: 458752 next_local_lpn: 939524096 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-46.9605 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-46.3908 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-45.8213 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-45.8212 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-45.8212 conv_init_ftl: conv ftl: no_part: 1
+-45.8212 NVMeVirt: initialize maptbl
+-45.8212 NVMeVirt: JWDBG init_maptbl: ssd total pgs: 16777216 capacity: 64 GB
+-45.8189 init_maptbl: redundant: 2303 MB
+-44.8628 NVMeVirt: initialize rmap
+-44.7874 NVMeVirt: initialize lines
+-44.7871 NVMeVirt: initialize write pointer
+-44.7871 init_window_mgmt type: 1 head_zoneno: 65536 tail_zoneno: 65536 next_local_lpn: 134217728 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-44.7871 init_window_mgmt type: 2 head_zoneno: 131072 tail_zoneno: 131072 next_local_lpn: 268435456 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-44.7871 init_window_mgmt type: 3 head_zoneno: 196608 tail_zoneno: 196608 next_local_lpn: 402653184 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-44.7871 init_window_mgmt type: 4 head_zoneno: 262144 tail_zoneno: 262144 next_local_lpn: 536870912 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-44.7871 init_window_mgmt type: 5 head_zoneno: 327680 tail_zoneno: 327680 next_local_lpn: 671088640 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-44.7871 init_window_mgmt type: 6 head_zoneno: 393216 tail_zoneno: 393216 next_local_lpn: 805306368 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-44.7871 init_window_mgmt type: 7 head_zoneno: 458752 tail_zoneno: 458752 next_local_lpn: 939524096 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-44.7871 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-44.2174 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-43.6481 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-43.648 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-43.648 conv_init_ftl: conv ftl: no_part: 2
+-43.648 NVMeVirt: initialize maptbl
+-43.648 NVMeVirt: JWDBG init_maptbl: ssd total pgs: 16777216 capacity: 64 GB
+-43.6457 init_maptbl: redundant: 2303 MB
+-42.6905 NVMeVirt: initialize rmap
+-42.6153 NVMeVirt: initialize lines
+-42.615 NVMeVirt: initialize write pointer
+-42.615 init_window_mgmt type: 1 head_zoneno: 65536 tail_zoneno: 65536 next_local_lpn: 134217728 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-42.615 init_window_mgmt type: 2 head_zoneno: 131072 tail_zoneno: 131072 next_local_lpn: 268435456 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-42.615 init_window_mgmt type: 3 head_zoneno: 196608 tail_zoneno: 196608 next_local_lpn: 402653184 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-42.615 init_window_mgmt type: 4 head_zoneno: 262144 tail_zoneno: 262144 next_local_lpn: 536870912 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-42.615 init_window_mgmt type: 5 head_zoneno: 327680 tail_zoneno: 327680 next_local_lpn: 671088640 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-42.615 init_window_mgmt type: 6 head_zoneno: 393216 tail_zoneno: 393216 next_local_lpn: 805306368 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-42.6149 init_window_mgmt type: 7 head_zoneno: 458752 tail_zoneno: 458752 next_local_lpn: 939524096 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-42.6149 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-42.0433 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-41.4711 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-41.4711 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-41.4711 conv_init_ftl: conv ftl: no_part: 3
+-41.4711 NVMeVirt: initialize maptbl
+-41.4711 NVMeVirt: JWDBG init_maptbl: ssd total pgs: 16777216 capacity: 64 GB
+-41.4687 init_maptbl: redundant: 2303 MB
+-40.5131 NVMeVirt: initialize rmap
+-40.4379 NVMeVirt: initialize lines
+-40.4376 NVMeVirt: initialize write pointer
+-40.4376 init_window_mgmt type: 1 head_zoneno: 65536 tail_zoneno: 65536 next_local_lpn: 134217728 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-40.4376 init_window_mgmt type: 2 head_zoneno: 131072 tail_zoneno: 131072 next_local_lpn: 268435456 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-40.4376 init_window_mgmt type: 3 head_zoneno: 196608 tail_zoneno: 196608 next_local_lpn: 402653184 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-40.4376 init_window_mgmt type: 4 head_zoneno: 262144 tail_zoneno: 262144 next_local_lpn: 536870912 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-40.4376 init_window_mgmt type: 5 head_zoneno: 327680 tail_zoneno: 327680 next_local_lpn: 671088640 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-40.4376 init_window_mgmt type: 6 head_zoneno: 393216 tail_zoneno: 393216 next_local_lpn: 805306368 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+-40.4376 init_window_mgmt type: 7 head_zoneno: 458752 tail_zoneno: 458752 next_local_lpn: 939524096 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+-40.4376 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-40.4376 conv_init_namespace: n_gc_log_max: 0 gc_log size: 72
+-40.3989 conv_init_namespace: gc log size: 28 byte
+-35.2916 NVMeVirt: FTL physical space: 274876858368, logical space: 256894260157 (physical/logical * 100 = 107)
+-35.2916 conv_init_namespace: mtl redundant: 6658 MB
+-35.2916 conv_init_namespace: mtl redundant: 4 MB
+-32.5332 NVMeVirt: NVMEV_NAMESPACE_INIT ns=0 ns_addr=000000003c44815b ns_size=244993(MiB)
+-32.5332 ERR 801
+-32.5332 PCI host bridge to bus 0001:10
+-32.5332 pci_bus 0001:10: root bus resource io 0x0000-0xffff
+-32.5332 pci_bus 0001:10: root bus resource mem 0x00000000-0x3fffffffffff
+-32.5331 pci_bus 0001:10: root bus resource bus 00-ff
+-32.5331 pci 0001:10:00.0: 0c51:0101 type 00 class 0x010802
+-32.5331 pci 0001:10:00.0: reg 0x10: mem 0x4000000000-0x4000003fff 64bit
+-32.5331 pci 0001:10:00.0: reg 0x30: mem 0x00000000-0x000007ff pref
+-32.5331 pci 0001:10:00.0: enabling Extended Tags
+-32.5323 nvme nvme3: pci function 0001:10:00.0
+-32.5323 NVMeVirt: Successfully created virtual PCI bus (node 1)
+-32.529 NVMeVirt: nvmev_proc_io_0 started on cpu 39 (node 1)
+-32.529 NVMeVirt: Successfully created Virtual NVMe deivce
+-32.529 NVMeVirt: nvmev_dispatcher started on cpu 37 (node 1)
+-32.5277 BUG: kernel NULL pointer dereference, address: 00000000000004c8
+-32.5277 #PF: supervisor read access in kernel mode
+-32.5277 #PF: error_code(0x0000) - not-present page
+-32.5277 PGD 0 P4D 0
+-32.5277 Oops: 0000 #1 SMP NOPTI
+-32.5277 CPU: 33 PID: 24 Comm: kworker/u82:0 Tainted: G IOE 5.11.0.d2fs #83
+-32.5277 Hardware name: Dell Inc. PowerEdge R740xd/06WXJT, BIOS 2.14.2 03/21/2022
+-32.5277 Workqueue: nvme-reset-wq nvme_rev_queue_crq nvme
+-32.5277 RIP: 0010:nvme_setup_zone_mgmt_send+0x461/0x4b0 nvme_core
+-32.5276 Code: 00 00 00 74 ca eb da 85 c9 74 1c 83 e9 01 48 63 c9 48 83 f9 07 77 49 66 83 bc 4b d0 00 00 00 00 74 ad 48 8b 13 eb 0d 48 8b 17 <66> 83 ba c8 04 00 00 00 74 9b b8 a4 01 00 00 f6 82 e9 04 00 00 40
+-32.5276 RSP: 0018:ffffb8464684fb70 EFLAGS: 00010246
+-32.5276 RAX: 0000000000000005 RBX: ffff9b0785c26018 RCX: 0000000000000000
+-32.5276 RDX: 0000000000000000 RSI: 0000000000000001 RDI: ffff9b0785c26018
+-32.5276 RBP: ffffb8464684fb80 R08: 00000000fffffffe R09: 0000000000000124
+-32.5276 R10: ffffffff95a7c809 R11: 0000000000000001 R12: 0000000000000005
+-32.5276 R13: 0000000000000000 R14: ffffffffc04adba0 R15: 0000000000000001
+-32.5276 FS: 0000000000000000(0000) GS:ffff9b07fdc00000(0000) knlGS:0000000000000000
+-32.5276 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+-32.5276 CR2: 00000000000004c8 CR3: 00000005aa410002 CR4: 00000000007706e0
+-32.5276 DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+-32.5276 DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+-32.5276 PKRU: 55555554
+-32.5276 Call Trace:
+-32.5276 __hwmon_device_register+0x276/0x730
+-32.5275 hwmon_device_register_with_info+0x42/0x50
+-32.5275 devm_hwmon_device_register_with_info+0x6f/0xb0
+-32.5275 nvme_hwmon_init+0x7d/0x98 nvme_core
+-32.5275 nvme_init_identify+0x5ea/0xd50 nvme_core
+-32.5275 nvme_rev_queue_crq+0x1719/0x3069 nvme
+-32.5275 ? ttwu_do_wakeup+0x1c/0x150
+-32.5274 ? ttwu_do_activate+0xa1/0x470
+-32.5274 ? try_to_wake_up+0x456/0x6a0
+-32.5274 process_one_work+0x222/0x3c0
+-32.5274 worker_thread+0x4d/0x3f0
+-32.5274 kthread+0x114/0x150
+-32.5274 ? process_one_work+0x3c0/0x3c0
+-32.5274 ? kthread_park+0x90/0x90
+-32.5274 ret_from_fork+0x1f/0x30
+-32.5274 Modules linked in: nvmev(OE) intel_rapl_msr(E) intel_rapl_common(E) ipmi_ssif(E) nls_iso8859_1(E) isst_if_common(E) skx_edac(E) nfit(E) x86_pkg_temp_thermal(E) intel_powerclamp(E) coretemp(E) kvm_intel(E) kvm(E) crct10dif_pclmul(E) ghash_clmulni_intel(E) aesni_intel(E) crypto_simd(E) cryptd(E) glue_helper(E) binfmt_misc(E) rapl(E) wmi_bmof(E) intel_cstate(E) dell_smbios(E) dcdbas(E) dell_wmi_descriptor(E) mgag200(E) input_leds(E) joydev(E) drm_kms_helper(E) cec(E) rc_core(E) fb_sys_fops(E) syscopyarea(E) sysfillrect(E) mei_me(E) sysimgblt(E) intel_pch_thermal(E) mei(E) acpi_ipmi(E) ipmi_si(E) ipmi_devintf(E) ipmi_msghandler(E) acpi_power_meter(E) mac_hid(E) sch_fq_codel(E) msr(E) parport_pc(E) nfsd(E) ppdev(E) auth_rpcgss(E) nfs_acl(E) lockd(E) grace(E) lp(E) parport(E) ramoops(E) pstore_blk(E) drm(E) reed_solomon(E) pstore_zone(E) efi_pstore(E) sunrpc(E) nfs_ssc(E) ip_tables(E) x_tables(E) autofs4(E) hid_generic(E) usbhid(E) hid(E) crc32_pclmul(E) nvme(E) nvme_core(E)
+-32.5272 ixgbe(E) igb(E) xfrm_algo(E) i2c_algo_bit(E) dca(E) i2c_i801(E) megaraid_sas(E) mdio(E) i2c_smbus(E) lpc_ich(E) ahci(E) xhci_pci(E) xhci_pci_renesas(E) libahci(E) wmi(E)
+-32.5271 CR2: 00000000000004c8
+-32.5271 --- end trace 95b72c58baea95f5 ---
+-32.5058 RIP: 0010:nvme_setup_zone_mgmt_send+0x461/0x4b0 nvme_core
+-32.5058 Code: 00 00 00 74 ca eb da 85 c9 74 1c 83 e9 01 48 63 c9 48 83 f9 07 77 49 66 83 bc 4b d0 00 00 00 00 74 ad 48 8b 13 eb 0d 48 8b 17 <66> 83 ba c8 04 00 00 00 74 9b b8 a4 01 00 00 f6 82 e9 04 00 00 40
+-32.5058 RSP: 0018:ffffb8464684fb70 EFLAGS: 00010246
+-32.5057 RAX: 0000000000000005 RBX: ffff9b0785c26018 RCX: 0000000000000000
+-32.5057 RDX: 0000000000000000 RSI: 0000000000000001 RDI: ffff9b0785c26018
+-32.5057 RBP: ffffb8464684fb80 R08: 00000000fffffffe R09: 0000000000000124
+-32.5057 R10: ffffffff95a7c809 R11: 0000000000000001 R12: 0000000000000005
+-32.5057 R13: 0000000000000000 R14: ffffffffc04adba0 R15: 0000000000000001
+-32.5057 FS: 0000000000000000(0000) GS:ffff9b07fdc00000(0000) knlGS:0000000000000000
+-32.5057 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+-32.5057 CR2: 00000000000004c8 CR3: 00000005aa410002 CR4: 00000000007706e0
+-32.5056 DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+-32.5056 DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+-32.5056 PKRU: 55555554
+-0.136183 f2fs_create_segment_manager_caches: mes: ffff9b0785dc8000 00000000e7d6c243
+-0.042474 run_fio_d2fs.sh (3299): drop_caches: 3
+0 STARTTTTTT

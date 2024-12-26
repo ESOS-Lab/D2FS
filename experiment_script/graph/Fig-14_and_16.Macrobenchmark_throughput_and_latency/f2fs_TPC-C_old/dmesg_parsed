@@ -1,0 +1,71 @@
+-288.841 nvmev: loading out-of-tree module taints kernel.
+-288.839 NVMeVirt: Storage : 4000100000 + 3ffff00000
+-288.574 NVMeVirt: Total Capacity(GiB,MiB)=64,65536 chs=2 luns=4 lines=8192 blk-size(MiB,KiB)=2,2048 line-size(MiB,KiB)=8,8192
+-288.1 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-287.625 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-287.625 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-287.625 NVMeVirt: initialize maptbl
+-287.578 init_maptbl: redundant: 2176 MB
+-287.073 NVMeVirt: initialize rmap
+-287.022 NVMeVirt: initialize lines
+-287.022 NVMeVirt: initialize write pointer
+-287.022 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-286.548 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-286.073 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-286.073 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-286.073 NVMeVirt: initialize maptbl
+-286.026 init_maptbl: redundant: 2176 MB
+-285.522 NVMeVirt: initialize rmap
+-285.47 NVMeVirt: initialize lines
+-285.47 NVMeVirt: initialize write pointer
+-285.47 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-284.995 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-284.521 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-284.521 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-284.521 NVMeVirt: initialize maptbl
+-284.474 init_maptbl: redundant: 2176 MB
+-283.969 NVMeVirt: initialize rmap
+-283.918 NVMeVirt: initialize lines
+-283.918 NVMeVirt: initialize write pointer
+-283.918 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-283.444 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-282.969 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-282.969 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-282.969 NVMeVirt: initialize maptbl
+-282.922 init_maptbl: redundant: 2176 MB
+-282.417 NVMeVirt: initialize rmap
+-282.365 NVMeVirt: initialize lines
+-282.365 NVMeVirt: initialize write pointer
+-282.365 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-282.365 NVMeVirt: FTL physical space: 274876858368, logical space: 256894260157 (physical/logical * 100 = 107)
+-282.365 conv_init_namespace: mtl redundant: 10817 MB
+-279.832 NVMeVirt: NVMEV_NAMESPACE_INIT ns=0 ns_addr=0000000007ca8b1d ns_size=244993(MiB)
+-279.832 ERR 801
+-279.832 PCI host bridge to bus 0001:10
+-279.832 pci_bus 0001:10: root bus resource io 0x0000-0xffff
+-279.832 pci_bus 0001:10: root bus resource mem 0x00000000-0x3fffffffffff
+-279.832 pci_bus 0001:10: root bus resource bus 00-ff
+-279.832 pci 0001:10:00.0: 0c51:0101 type 00 class 0x010802
+-279.832 pci 0001:10:00.0: reg 0x10: mem 0x4000000000-0x4000003fff 64bit
+-279.832 pci 0001:10:00.0: reg 0x30: mem 0x00000000-0x000007ff pref
+-279.832 pci 0001:10:00.0: enabling Extended Tags
+-279.831 nvme nvme3: pci function 0001:10:00.0
+-279.831 NVMeVirt: Successfully created virtual PCI bus (node 1)
+-279.83 NVMeVirt: nvmev_proc_io_0 started on cpu 39 (node 1)
+-279.83 NVMeVirt: Successfully created Virtual NVMe deivce
+-279.83 NVMeVirt: nvmev_dispatcher started on cpu 37 (node 1)
+-279.824 nvme nvme3: 40/0/0 default/read/poll queues
+-279.817 nvme3n1: p1
+-272.155 nvme3n1: p1
+-272.15 nvme3n1:
+-272.144 nvme3n1:
+-272.14 nvme3n1: p1
+-271.093 F2FS-fs (nvme3n1p1): Found nat_bits in checkpoint
+-270.97 F2FS-fs (nvme3n1p1): Mounted with checkpoint version = 185f317d
+-9.31665 JW DBG generic_fadvise: POSIX_FADV_DONTNEED!!
+-9.31662 JW DBG generic_fadvise: POSIX_FADV_DONTNEED!!
+-9.3164 JW DBG generic_fadvise: POSIX_FADV_DONTNEED!!
+-9.31628 JW DBG generic_fadvise: POSIX_FADV_DONTNEED!!
+-9.31615 JW DBG generic_fadvise: POSIX_FADV_DONTNEED!!
+-0.041056 run_tpcc_f2fs.s (3256): drop_caches: 3
+0 STARTTTTTT

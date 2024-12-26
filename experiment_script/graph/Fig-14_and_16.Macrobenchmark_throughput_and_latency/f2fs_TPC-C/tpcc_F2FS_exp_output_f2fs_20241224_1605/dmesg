@@ -1,0 +1,71 @@
+[   29.882533] nvmev: loading out-of-tree module taints kernel.
+[   29.884496] NVMeVirt: Storage : 4000100000 + 3ffff00000
+[   30.148724] NVMeVirt: Total Capacity(GiB,MiB)=64,65536 chs=2 luns=4 lines=8192 blk-size(MiB,KiB)=2,2048 line-size(MiB,KiB)=8,8192
+[   30.623489] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   31.098107] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   31.098142] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   31.098143] NVMeVirt: initialize maptbl
+[   31.145203] init_maptbl: redundant: 2176 MB
+[   31.650020] NVMeVirt: initialize rmap
+[   31.701074] NVMeVirt: initialize lines
+[   31.701242] NVMeVirt: initialize write pointer
+[   31.701244] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   32.175510] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   32.649797] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   32.649831] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   32.649833] NVMeVirt: initialize maptbl
+[   32.696857] init_maptbl: redundant: 2176 MB
+[   33.201424] NVMeVirt: initialize rmap
+[   33.252688] NVMeVirt: initialize lines
+[   33.252852] NVMeVirt: initialize write pointer
+[   33.252854] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   33.727582] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   34.202010] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   34.202045] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   34.202047] NVMeVirt: initialize maptbl
+[   34.249183] init_maptbl: redundant: 2176 MB
+[   34.753678] NVMeVirt: initialize rmap
+[   34.804939] NVMeVirt: initialize lines
+[   34.805103] NVMeVirt: initialize write pointer
+[   34.805106] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   35.279437] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   35.753980] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   35.754015] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   35.754017] NVMeVirt: initialize maptbl
+[   35.801154] init_maptbl: redundant: 2176 MB
+[   36.306317] NVMeVirt: initialize rmap
+[   36.357588] NVMeVirt: initialize lines
+[   36.357754] NVMeVirt: initialize write pointer
+[   36.357757] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   36.357760] NVMeVirt: FTL physical space: 274876858368, logical space: 256894260157 (physical/logical * 100 = 107)
+[   36.357762] conv_init_namespace: mtl redundant: 10817 MB
+[   38.891281] NVMeVirt: [NVMEV_NAMESPACE_INIT] ns=0 ns_addr=0000000007ca8b1d ns_size=244993(MiB) 
+[   38.891289] ERR 801
+[   38.891355] PCI host bridge to bus 0001:10
+[   38.891357] pci_bus 0001:10: root bus resource [io  0x0000-0xffff]
+[   38.891360] pci_bus 0001:10: root bus resource [mem 0x00000000-0x3fffffffffff]
+[   38.891363] pci_bus 0001:10: root bus resource [bus 00-ff]
+[   38.891371] pci 0001:10:00.0: [0c51:0101] type 00 class 0x010802
+[   38.891375] pci 0001:10:00.0: reg 0x10: [mem 0x4000000000-0x4000003fff 64bit]
+[   38.891379] pci 0001:10:00.0: reg 0x30: [mem 0x00000000-0x000007ff pref]
+[   38.891382] pci 0001:10:00.0: enabling Extended Tags
+[   38.892003] nvme nvme3: pci function 0001:10:00.0
+[   38.892052] NVMeVirt: Successfully created virtual PCI bus (node 1)
+[   38.892660] NVMeVirt: nvmev_proc_io_0 started on cpu 39 (node 1)
+[   38.892720] NVMeVirt: Successfully created Virtual NVMe deivce
+[   38.892728] NVMeVirt: nvmev_dispatcher started on cpu 37 (node 1)
+[   38.898897] nvme nvme3: 40/0/0 default/read/poll queues
+[   38.906358]  nvme3n1: p1
+[   46.568168]  nvme3n1: p1
+[   46.572761]  nvme3n1:
+[   46.579190]  nvme3n1:
+[   46.582851]  nvme3n1: p1
+[   47.630201] F2FS-fs (nvme3n1p1): Found nat_bits in checkpoint
+[   47.752830] F2FS-fs (nvme3n1p1): Mounted with checkpoint version = 185f317d
+[  309.406407] [JW DBG] generic_fadvise: POSIX_FADV_DONTNEED!! 
+[  309.406432] [JW DBG] generic_fadvise: POSIX_FADV_DONTNEED!! 
+[  309.406657] [JW DBG] generic_fadvise: POSIX_FADV_DONTNEED!! 
+[  309.406773] [JW DBG] generic_fadvise: POSIX_FADV_DONTNEED!! 
+[  309.406905] [JW DBG] generic_fadvise: POSIX_FADV_DONTNEED!! 
+[  318.681999] run_tpcc_f2fs.s (3256): drop_caches: 3
+[  318.723055] STARTTTTTT

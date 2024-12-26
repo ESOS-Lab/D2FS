@@ -1,0 +1,55 @@
+#kiops
+set terminal postscript eps enhanced color dashed dashlength 3 \
+	                linewidth 2 rounded font "Helvetica, 40"
+
+fn(v) = sprintf("%d", v)
+fnn(v) = sprintf("%.1f", v)
+
+set output "./Fig-15-a.FIO_avg_latency.eps"
+#set term postscript size 3,2
+set term postscript size 2.5+0.7+0.5,1.7+0.8
+set key outside top horizontal reverse Left font "Helvetica, 40"
+
+set key samplen 1 width 0.2
+
+set xtics nomirror
+set ytics nomirror
+
+bm = 0
+lm = 3 + 0.8 +0.5 + 0.7
+rm = 0.90 -0.5
+size = 0.8
+
+set lmargin lm
+set rmargin rm
+set tmargin at screen 0.88
+set bmargin 0.9
+
+set xtics font "Helvetica, 32" offset 0, 0.3 
+
+set xrange[0.5:1.5]
+set yrange[0:]
+set key at 3.5, 3.2
+set ytics 5 font "Helvetica, 52" offset 0.7, 0
+
+set ylabel font "Helvetica, 52" "Latency (us)" offset 1.8, -0.1
+
+set style data histogram
+set style fill solid 1.0 border 0
+set style histogram clustered gap 1
+set boxwidth 1 absolute
+
+set border 11
+
+
+unset key
+unset xtics
+plot 'avg_lat_data' \
+		  u ($3/1000) t 'VOLFS' lc 'blue', \
+		 '' u ($2/1000) t 'IPLFS' lc 'red', \
+		 '' u ($4/1000) t 'zF2FS' lc 'dark-violet', \
+		 '' u ($5/1000) t 'F2FS' lc 'black', \
+                 '' u ($0-0.3):($3/1000):(fnn(($3/1000)))  with labels rotate by 90 font "Helvetica, 52" offset 0,1.2 notitle, \
+                 '' u ($0-0.1):($2/1000):(fnn(($2/1000)))  with labels rotate by 90 font "Helvetica, 52" offset 0,1.2 notitle, \
+                 '' u ($0+0.1):($4/1000):(fnn(($4/1000)))  with labels rotate by 90 font "Helvetica, 52" offset 0,1.2 notitle, \
+        '' u ($0+0.3):($5/1000):(fnn(($5/1000)))  with labels rotate by 0 font "Helvetica, 52" offset 0,0.7 notitle \

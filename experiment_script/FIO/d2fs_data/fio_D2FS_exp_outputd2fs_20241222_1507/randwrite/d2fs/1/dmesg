@@ -1,0 +1,800 @@
+[   33.490860] loop13: detected capacity change from 8 to 0
+[   33.756046] nvmev: loading out-of-tree module taints kernel.
+[   33.761980] NVMeVirt: Storage : 4000100000 + 3ffff00000
+[   34.053091] NVMeVirt: Total Capacity(GiB,MiB)=64,65536 chs=2 luns=4 lines=8192 blk-size(MiB,KiB)=2,2048 line-size(MiB,KiB)=8,8192
+[   34.053097] [JWDBG] conv_init_params: pgsz: 4096 ps_per_oneshotpg: 8 nchs: 2 luns_per_ch: 2 pgs_per_blk: 512
+[   34.553673] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   35.055072] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   35.055105] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   35.055107] conv_init_ftl: conv ftl: no_part: 0
+[   35.055108] NVMeVirt: initialize maptbl
+[   35.055109] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   35.056605] init_maptbl: redundant: 2303 MB
+[   35.589613] NVMeVirt: initialize rmap
+[   35.637884] NVMeVirt: initialize lines
+[   35.638072] NVMeVirt: initialize write pointer
+[   35.638074] init_window_mgmt type: 1 head_zoneno: 65536 tail_zoneno: 65536 next_local_lpn: 134217728 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   35.638077] init_window_mgmt type: 2 head_zoneno: 131072 tail_zoneno: 131072 next_local_lpn: 268435456 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   35.638085] init_window_mgmt type: 3 head_zoneno: 196608 tail_zoneno: 196608 next_local_lpn: 402653184 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   35.638088] init_window_mgmt type: 4 head_zoneno: 262144 tail_zoneno: 262144 next_local_lpn: 536870912 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   35.638089] init_window_mgmt type: 5 head_zoneno: 327680 tail_zoneno: 327680 next_local_lpn: 671088640 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   35.638091] init_window_mgmt type: 6 head_zoneno: 393216 tail_zoneno: 393216 next_local_lpn: 805306368 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   35.638100] init_window_mgmt type: 7 head_zoneno: 458752 tail_zoneno: 458752 next_local_lpn: 939524096 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   35.638102] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   36.138513] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   36.639002] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   36.639036] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   36.639038] conv_init_ftl: conv ftl: no_part: 1
+[   36.639039] NVMeVirt: initialize maptbl
+[   36.639040] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   36.640543] init_maptbl: redundant: 2303 MB
+[   37.173801] NVMeVirt: initialize rmap
+[   37.222132] NVMeVirt: initialize lines
+[   37.222311] NVMeVirt: initialize write pointer
+[   37.222314] init_window_mgmt type: 1 head_zoneno: 65536 tail_zoneno: 65536 next_local_lpn: 134217728 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   37.222316] init_window_mgmt type: 2 head_zoneno: 131072 tail_zoneno: 131072 next_local_lpn: 268435456 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   37.222325] init_window_mgmt type: 3 head_zoneno: 196608 tail_zoneno: 196608 next_local_lpn: 402653184 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   37.222327] init_window_mgmt type: 4 head_zoneno: 262144 tail_zoneno: 262144 next_local_lpn: 536870912 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   37.222328] init_window_mgmt type: 5 head_zoneno: 327680 tail_zoneno: 327680 next_local_lpn: 671088640 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   37.222330] init_window_mgmt type: 6 head_zoneno: 393216 tail_zoneno: 393216 next_local_lpn: 805306368 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   37.222345] init_window_mgmt type: 7 head_zoneno: 458752 tail_zoneno: 458752 next_local_lpn: 939524096 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   37.222347] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   37.722241] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   38.222177] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   38.222210] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   38.222212] conv_init_ftl: conv ftl: no_part: 2
+[   38.222213] NVMeVirt: initialize maptbl
+[   38.222214] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   38.223725] init_maptbl: redundant: 2303 MB
+[   38.756934] NVMeVirt: initialize rmap
+[   38.805458] NVMeVirt: initialize lines
+[   38.805659] NVMeVirt: initialize write pointer
+[   38.805661] init_window_mgmt type: 1 head_zoneno: 65536 tail_zoneno: 65536 next_local_lpn: 134217728 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   38.805664] init_window_mgmt type: 2 head_zoneno: 131072 tail_zoneno: 131072 next_local_lpn: 268435456 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   38.805672] init_window_mgmt type: 3 head_zoneno: 196608 tail_zoneno: 196608 next_local_lpn: 402653184 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   38.805674] init_window_mgmt type: 4 head_zoneno: 262144 tail_zoneno: 262144 next_local_lpn: 536870912 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   38.805676] init_window_mgmt type: 5 head_zoneno: 327680 tail_zoneno: 327680 next_local_lpn: 671088640 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   38.805677] init_window_mgmt type: 6 head_zoneno: 393216 tail_zoneno: 393216 next_local_lpn: 805306368 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   38.805685] init_window_mgmt type: 7 head_zoneno: 458752 tail_zoneno: 458752 next_local_lpn: 939524096 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   38.805687] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   39.305938] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   39.806983] NVMeVirt: [chmodel_init] bandwidth 800 max_credits 26 tx_time 152
+[   39.807017] NVMeVirt: [chmodel_init] bandwidth 3360 max_credits 110 tx_time 36
+[   39.807019] conv_init_ftl: conv ftl: no_part: 3
+[   39.807020] NVMeVirt: initialize maptbl
+[   39.807021] NVMeVirt: [JWDBG] init_maptbl: ssd total pgs: 16777216 capacity: 64 GB 
+[   39.808506] init_maptbl: redundant: 2303 MB
+[   40.341718] NVMeVirt: initialize rmap
+[   40.390026] NVMeVirt: initialize lines
+[   40.390221] NVMeVirt: initialize write pointer
+[   40.390222] init_window_mgmt type: 1 head_zoneno: 65536 tail_zoneno: 65536 next_local_lpn: 134217728 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   40.390225] init_window_mgmt type: 2 head_zoneno: 131072 tail_zoneno: 131072 next_local_lpn: 268435456 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   40.390234] init_window_mgmt type: 3 head_zoneno: 196608 tail_zoneno: 196608 next_local_lpn: 402653184 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   40.390236] init_window_mgmt type: 4 head_zoneno: 262144 tail_zoneno: 262144 next_local_lpn: 536870912 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   40.390237] init_window_mgmt type: 5 head_zoneno: 327680 tail_zoneno: 327680 next_local_lpn: 671088640 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   40.390239] init_window_mgmt type: 6 head_zoneno: 393216 tail_zoneno: 393216 next_local_lpn: 805306368 head_idx: 0 tail_idx: 0 nzones_per_partition: 0
+[   40.390247] init_window_mgmt type: 7 head_zoneno: 458752 tail_zoneno: 458752 next_local_lpn: 939524096 head_idx: 0 tail_idx: 0 nzones_per_partition: 13107
+[   40.390249] NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+[   40.390252] conv_init_namespace: n_gc_log_max: 0 gc_log size: 72
+[   40.421416] conv_init_namespace: gc log size: 28 byte
+[   44.424786] NVMeVirt: FTL physical space: 274876858368, logical space: 256894260157 (physical/logical * 100 = 107)
+[   44.424792] conv_init_namespace: mtl redundant: 6658 MB
+[   44.424793] conv_init_namespace: mtl redundant: 4 MB
+[   45.965720] NVMeVirt: [NVMEV_NAMESPACE_INIT] ns=0 ns_addr=0000000038dc7605 ns_size=244993(MiB) 
+[   45.965727] ERR 801
+[   45.965787] PCI host bridge to bus 0001:10
+[   45.965789] pci_bus 0001:10: root bus resource [io  0x0000-0xffff]
+[   45.965792] pci_bus 0001:10: root bus resource [mem 0x00000000-0x3fffffffffff]
+[   45.965794] pci_bus 0001:10: root bus resource [bus 00-ff]
+[   45.965801] pci 0001:10:00.0: [0c51:0101] type 00 class 0x010802
+[   45.965805] pci 0001:10:00.0: reg 0x10: [mem 0x4000000000-0x4000003fff 64bit]
+[   45.965808] pci 0001:10:00.0: reg 0x30: [mem 0x00000000-0x000007ff pref]
+[   45.965810] pci 0001:10:00.0: enabling Extended Tags
+[   45.966417] nvme nvme3: pci function 0001:10:00.0
+[   45.966488] NVMeVirt: Successfully created virtual PCI bus (node 1)
+[   45.968421] NVMeVirt: nvmev_proc_io_0 started on cpu 39 (node 1)
+[   45.968478] NVMeVirt: Successfully created Virtual NVMe deivce
+[   45.968485] NVMeVirt: nvmev_dispatcher started on cpu 37 (node 1)
+[   45.973339] nvme nvme3: 40/0/0 default/read/poll queues
+[   45.980899]  nvme3n1: p1
+[   65.886400]  nvme3n1: p1
+[   65.892061]  nvme3n1:
+[   65.898290]  nvme3n1:
+[   65.904035]  nvme3n1: p1
+[   67.047520] f2fs_create_segment_manager_caches: mes: ffffa011c4cb8c00 00000000dc1fd7ea
+[   67.061461] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x100 elpn; 0x1000ff
+[   67.074460] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x1000ff elpn; 0x2000ff
+[   67.087425] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x2000ff elpn; 0x3000ff
+[   67.095800] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.095806] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 1000ffe00 len: fffffe00
+[   67.095809] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.101105] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x3000ff elpn; 0x4000ff
+[   67.117183] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.117187] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 2000ffc00 len: fffffe00
+[   67.117189] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   67.138576] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   67.138579] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 3000ffa00 len: fffffe00
+[   67.138581] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   67.159939] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   67.159991] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x4000ff elpn; 0x5000ff
+[   67.173676] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 4000ff800 len: fffffe00
+[   67.173678] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x5000ff elpn; 0x6000ff
+[   67.173680] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   67.187363] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x6000ff elpn; 0x7000ff
+[   67.195042] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   67.195046] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 5000ff600 len: fffffe00
+[   67.195047] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   67.201042] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x7000ff elpn; 0x8000fe
+[   67.214857] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x8000ff elpn; 0x9000fe
+[   67.216392] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   67.216395] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 6000ff400 len: fffffe00
+[   67.216397] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.228536] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x9000fe elpn; 0xa000fe
+[   67.237750] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.237753] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 7000ff200 len: fffffe00
+[   67.237755] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.242443] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0xa000fe elpn; 0xb000fe
+[   67.256231] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0xb000fe elpn; 0xc000fe
+[   67.270069] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0xc000fe elpn; 0xd000fe
+[   67.280427] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.280430] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 9000fee00 len: fffffe00
+[   67.280432] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.283856] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0xd000fe elpn; 0xe000fe
+[   67.297534] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0xe000fe elpn; 0xf000fe
+[   67.301812] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.301815] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: a000fec00 len: fffffe00
+[   67.301817] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   67.311442] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0xf000fe elpn; 0x10000fd
+[   67.323193] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   67.323197] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: b000fea00 len: fffffe00
+[   67.323199] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   67.325316] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x10000fe elpn; 0x11000fd
+[   67.339016] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x11000fd elpn; 0x12000fd
+[   67.344528] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   67.344531] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: c000fe800 len: fffffe00
+[   67.344533] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   67.352695] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x12000fd elpn; 0x13000fd
+[   67.365896] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   67.365899] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: d000fe600 len: fffffe00
+[   67.365901] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   67.366375] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x13000fd elpn; 0x14000fd
+[   67.380059] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x14000fd elpn; 0x15000fd
+[   67.387275] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   67.387279] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: e000fe400 len: fffffe00
+[   67.387280] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.393972] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x15000fd elpn; 0x16000fd
+[   67.407759] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x16000fd elpn; 0x17000fd
+[   67.408618] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.408620] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: f000fe200 len: fffffe00
+[   67.408622] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.421463] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x17000fd elpn; 0x18000fc
+[   67.435175] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x18000fd elpn; 0x19000fc
+[   67.449040] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x19000fc elpn; 0x1a000fc
+[   67.451320] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.451324] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 11000fde00 len: fffffe00
+[   67.451326] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.462725] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x1a000fc elpn; 0x1b000fc
+[   67.472686] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.472689] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 12000fdc00 len: fffffe00
+[   67.472690] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   67.476514] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x1b000fc elpn; 0x1c000fc
+[   67.490305] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x1c000fc elpn; 0x1d000fc
+[   67.494038] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   67.494041] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 13000fda00 len: fffffe00
+[   67.494042] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   67.504087] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x1d000fc elpn; 0x1e000fc
+[   67.515399] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   67.515402] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 14000fd800 len: fffffe00
+[   67.515403] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   67.517819] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x1e000fc elpn; 0x1f000fc
+[   67.531503] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x1f000fc elpn; 0x20000fb
+[   67.536758] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   67.536761] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 15000fd600 len: fffffe00
+[   67.536763] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   67.545322] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x20000fc elpn; 0x21000fb
+[   67.558111] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   67.558115] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 16000fd400 len: fffffe00
+[   67.558116] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.559028] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x21000fb elpn; 0x22000fb
+[   67.572794] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x22000fb elpn; 0x23000fb
+[   67.579492] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.579496] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 17000fd200 len: fffffe00
+[   67.579497] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.586620] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x23000fb elpn; 0x24000fb
+[   67.600359] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x24000fb elpn; 0x25000fb
+[   67.614195] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x25000fb elpn; 0x26000fb
+[   67.622195] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.622199] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 19000fce00 len: fffffe00
+[   67.622200] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.628138] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x26000fb elpn; 0x27000fb
+[   67.642025] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x27000fb elpn; 0x28000fa
+[   67.643575] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.643578] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 1a000fcc00 len: fffffe00
+[   67.643580] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   67.655815] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x28000fb elpn; 0x29000fa
+[   67.664919] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   67.664922] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 1b000fca00 len: fffffe00
+[   67.664924] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   67.669586] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x29000fa elpn; 0x2a000fa
+[   67.683499] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x2a000fa elpn; 0x2b000fa
+[   67.686274] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   67.686277] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 1c000fc800 len: fffffe00
+[   67.686278] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   67.697332] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x2b000fa elpn; 0x2c000fa
+[   67.707606] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   67.707609] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 1d000fc600 len: fffffe00
+[   67.707611] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   67.711250] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x2c000fa elpn; 0x2d000fa
+[   67.725009] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x2d000fa elpn; 0x2e000fa
+[   67.728953] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   67.728957] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 1e000fc400 len: fffffe00
+[   67.728958] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.738721] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x2e000fa elpn; 0x2f000fa
+[   67.750350] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.750353] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 1f000fc200 len: fffffe00
+[   67.750355] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.752510] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x2f000fa elpn; 0x30000f9
+[   67.766189] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x30000fa elpn; 0x31000f9
+[   67.779869] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x31000f9 elpn; 0x32000f9
+[   67.793001] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.793004] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 21000fbe00 len: fffffe00
+[   67.793006] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.793716] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x32000f9 elpn; 0x33000f9
+[   67.807411] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x33000f9 elpn; 0x34000f9
+[   67.814381] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.814385] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 22000fbc00 len: fffffe00
+[   67.814387] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   67.821090] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x34000f9 elpn; 0x35000f9
+[   67.834894] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x35000f9 elpn; 0x36000f9
+[   67.835744] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   67.835747] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 23000fba00 len: fffffe00
+[   67.835748] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   67.848748] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x36000f9 elpn; 0x37000f9
+[   67.857126] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   67.857129] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 24000fb800 len: fffffe00
+[   67.857130] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   67.862430] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x37000f9 elpn; 0x38000f8
+[   67.876108] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x38000f9 elpn; 0x39000f8
+[   67.878536] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   67.878539] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 25000fb600 len: fffffe00
+[   67.878540] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   67.889843] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x39000f8 elpn; 0x3a000f8
+[   67.899895] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   67.899898] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 26000fb400 len: fffffe00
+[   67.899900] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.903735] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x3a000f8 elpn; 0x3b000f8
+[   67.917521] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x3b000f8 elpn; 0x3bd0175
+[   67.921262] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.921265] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 27000fb200 len: fffffe00
+[   67.921267] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.963996] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   67.963999] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 29000fae00 len: fffffe00
+[   67.964001] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   67.985373] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   67.985376] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 2a000fac00 len: fffffe00
+[   67.985378] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   68.006787] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   68.006791] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 2b000faa00 len: fffffe00
+[   68.006792] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   68.028152] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   68.028156] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 2c000fa800 len: fffffe00
+[   68.028157] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   68.049512] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   68.049515] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 2d000fa600 len: fffffe00
+[   68.049517] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   68.070916] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   68.070919] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 2e000fa400 len: fffffe00
+[   68.070920] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   68.092270] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   68.092273] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 2f000fa200 len: fffffe00
+[   68.092275] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   68.135007] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   68.135011] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 31000f9e00 len: fffffe00
+[   68.135012] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   68.156379] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   68.156382] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 32000f9c00 len: fffffe00
+[   68.156384] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   68.177735] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   68.177738] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 33000f9a00 len: fffffe00
+[   68.177740] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   68.199156] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   68.199160] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 34000f9800 len: fffffe00
+[   68.199161] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+[   68.220502] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   68.220505] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 35000f9600 len: fffffe00
+[   68.220507] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   68.241849] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   68.241852] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 36000f9400 len: fffffe00
+[   68.241854] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   68.263253] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   68.263256] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 37000f9200 len: fffffe00
+[   68.263258] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   68.305903] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+[   68.305906] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 39000f8e00 len: fffffe00
+[   68.305908] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   68.327374] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+[   68.327377] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 3a000f8c00 len: fffffe00
+[   68.327378] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+[   68.348758] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+[   68.348761] NVMeVirt: [JWDBG] __do_perform_io_dsm: offset not aligned to PG. ofs: 3b000f8a00 len: d007c800
+[   68.348763] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+[   68.366140] NVMeVirt: [JWDBG] __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+[   68.684936] [JWDBG] f2fs_fill_super: bef read super block
+[   68.685105] [JWDBG] f2fs_fill_super: aft read super block log_blocks_per_seg: 9
+[   68.685118] init_sb_info: segs_per_sec: 16
+[   68.685528] f2fs_build_segment_manager: segment_count: 122480
+[   68.690760] __nvmev_admin_create_rev_sq: send rev cmd. nr_mg_batch: 2048 qsize: 2048
+[   68.692903] build_sit_info: dirty_sentries_bitmap size: 45616
+[   68.692925] build_free_segmap: MAIN_SEGS: 121632 MAIN_SECS: 7602 MAIN_SEGS_INTERVAL: 194611 MAIN_SECS_INTERVAL: 12163 segs_per_sec: 16
+[   68.693118] f2fs_build_segment_manager: build_curseg done
+[   68.693121] build_sit_entries: MAIN_SEG_SLOTS: 364896 364896
+[   68.732589] build_sit_entries: OUT OF LOOP
+[   68.732592] seg_info_from_raw_sit: vblk == 1 segno: 0 type: 3
+[   68.732594] seg_info_from_raw_sit: vblk == 1 segno: 48 type: 0
+[   68.732595] f2fs_build_segment_manager: build_sit_entries done
+[   68.732596] f2fs_build_segment_manager: NR_CURSEG_TYPE: 10, CURSEG_HOT_DATA: 0
+[   68.732597] [JWDBG] f2fs_build_segment_manager: seg0_blkaddr = 8192 0x2000 blocks_per_seg: 512
+[   68.737575] build_slot_entries: valid seg entry exists. vblk: 1 segno: 0
+[   68.737578] build_slot_entries: valid seg entry exists. vblk: 1 segno: 48
+[   68.753829] init_free_segmap: !!!!!!!!! segno: 0 slot idx: 0
+[   68.753831] init_free_segmap: !!!!!!!!! segno: 48 slot idx: 1
+[   68.756643] init_dirty_segmap: start 
+[   68.756657] init_dirty_segmap: end 
+[   68.756658] LIPLFS_set_segment_two_partition: start 
+[   68.756658] [JWDBG] LIPLFS_set_segment_two_partition: seg0 blkaddr: 0x2000 blocks Per seg: 512
+[   68.756660] LIPLFS_set_segment_two_partition: CURSEG_HOT_DATA: START_SEGNO_INTERVAL: 1047712 segno: 1047712
+[   68.756662] LIPLFS_set_segment_two_partition: type 0  superzone: 0 curseg_zone: 7 secno: 65482 segno: 1047712 !!!!!
+[   68.756664] type: 0, start_blkaddr: 0x20000000 startblkaddr: 0x20000000, segno: 1047712
+[   68.756666] LIPLFS_set_segment_two_partition: CURSEG_HOT_DATA: START_SEGNO_INTERVAL: 1047712 segno: 1047728
+[   68.756667] LIPLFS_set_segment_two_partition: type 1  superzone: 0 curseg_zone: 7 secno: 65483 segno: 1047728 !!!!!
+[   68.756668] type: 1, start_blkaddr: 0x20002000 startblkaddr: 0x20002000, segno: 1047728
+[   68.756670] LIPLFS_set_segment_two_partition: CURSEG_HOT_DATA: START_SEGNO_INTERVAL: 1047712 segno: 1047744
+[   68.756671] LIPLFS_set_segment_two_partition: type 2  superzone: 0 curseg_zone: 7 secno: 65484 segno: 1047744 !!!!!
+[   68.756672] type: 2, start_blkaddr: 0x20004000 startblkaddr: 0x20004000, segno: 1047744
+[   68.756674] LIPLFS_set_segment_two_partition: CURSEG_HOT_NODE: START_SEGNO_INTERVAL_NODE: 4193440 segno: 4193440
+[   68.756675] LIPLFS_set_segment_two_partition: type 3  superzone: 0 curseg_zone: 31 secno: 262090 segno: 4193440 !!!!!
+[   68.756676] type: 3, start_blkaddr: 0x80000000 startblkaddr: 0x80000000, segno: 4193440
+[   68.756677] LIPLFS_set_segment_two_partition: CURSEG_HOT_NODE: START_SEGNO_INTERVAL_NODE: 4193440 segno: 4193456
+[   68.756679] LIPLFS_set_segment_two_partition: type 4  superzone: 0 curseg_zone: 31 secno: 262091 segno: 4193456 !!!!!
+[   68.756680] type: 4, start_blkaddr: 0x80002000 startblkaddr: 0x80002000, segno: 4193456
+[   68.756681] LIPLFS_set_segment_two_partition: CURSEG_HOT_NODE: START_SEGNO_INTERVAL_NODE: 4193440 segno: 4193472
+[   68.756682] LIPLFS_set_segment_two_partition: type 5  superzone: 0 curseg_zone: 31 secno: 262092 segno: 4193472 !!!!!
+[   68.756684] type: 5, start_blkaddr: 0x80004000 startblkaddr: 0x80004000, segno: 4193472
+[   68.756685] LIPLFS_set_segment_two_partition: end 
+[   68.756831] F2FS-fs (nvme3n1p1): Found nat_bits in checkpoint
+[   68.890709] F2FS-fs (nvme3n1p1): Mounted with checkpoint version = 25f967cf
+[   69.060286] run_fio_d2fs.sh (3247): drop_caches: 3
+[   69.101067] STARTTTTTT
+[   73.226067] lm_write: type: 1 start_lpn: 0x20000000
+[   73.235676] lm_write: type: 4 start_lpn: 0x80002000
+[   73.292301] lm_write: type: 4 start_lpn: 0x80000000
+[   73.377085] section utilization of regular region: 4294942982 / 12163 352917 % (4294955144) (data free: 12160 node free: 12155)
+[   73.377613] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x6c100 elpn; 0x6c100
+[   73.377621] NVMeVirt: [JWDBG] conv_discard: discard on meta partition. slpn: 0x72100 elpn; 0x72100
+[   78.397204] section utilization of regular region: 4294943118 / 12163 352918 % (4294955280) (data free: 12026 node free: 12153)
+[   87.063056] section utilization of regular region: 4294943365 / 12163 352920 % (4294955527) (data free: 11780 node free: 12152)
+[   93.216676] section utilization of regular region: 4294943543 / 12163 352922 % (4294955705) (data free: 11604 node free: 12150)
+[   98.503717] section utilization of regular region: 4294943697 / 12163 352923 % (4294955859) (data free: 11451 node free: 12149)
+[  104.490022] section utilization of regular region: 4294943860 / 12163 352924 % (4294956022) (data free: 11283 node free: 12154)
+[  109.877298] section utilization of regular region: 4294944014 / 12163 352926 % (4294956176) (data free: 11129 node free: 12154)
+[  117.671163] section utilization of regular region: 4294944288 / 12163 352928 % (4294956450) (data free: 10860 node free: 12149)
+[  123.644024] section utilization of regular region: 4294944396 / 12163 352929 % (4294956558) (data free: 10752 node free: 12149)
+[  130.703425] section utilization of regular region: 4294944581 / 12163 352930 % (4294956743) (data free: 10565 node free: 12151)
+[  137.167442] section utilization of regular region: 4294944758 / 12163 352932 % (4294956920) (data free: 10389 node free: 12150)
+[  143.548333] section utilization of regular region: 4294944929 / 12163 352933 % (4294957091) (data free: 10218 node free: 12150)
+[  150.925250] section utilization of regular region: 4294945121 / 12163 352935 % (4294957283) (data free: 10024 node free: 12152)
+[  157.940778] section utilization of regular region: 4294945309 / 12163 352936 % (4294957471) (data free: 9837 node free: 12151)
+[  165.328802] section utilization of regular region: 4294945496 / 12163 352938 % (4294957658) (data free: 9648 node free: 12153)
+[  171.756840] section utilization of regular region: 4294945668 / 12163 352939 % (4294957830) (data free: 9476 node free: 12153)
+[  179.144397] section utilization of regular region: 4294945867 / 12163 352941 % (4294958029) (data free: 9279 node free: 12151)
+[  187.153509] section utilization of regular region: 4294946079 / 12163 352942 % (4294958241) (data free: 9065 node free: 12153)
+[  193.996124] section utilization of regular region: 4294946263 / 12163 352944 % (4294958425) (data free: 8881 node free: 12153)
+[  199.952712] section utilization of regular region: 4294946436 / 12163 352945 % (4294958598) (data free: 8708 node free: 12153)
+[  207.329049] section utilization of regular region: 4294946571 / 12163 352947 % (4294958733) (data free: 8574 node free: 12152)
+[  215.232929] section utilization of regular region: 4294946796 / 12163 352948 % (4294958958) (data free: 8351 node free: 12150)
+[  221.739165] section utilization of regular region: 4294946985 / 12163 352950 % (4294959147) (data free: 8160 node free: 12152)
+[  229.412496] section utilization of regular region: 4294947168 / 12163 352951 % (4294959330) (data free: 7977 node free: 12152)
+[  234.476139] section utilization of regular region: 4294947299 / 12163 352953 % (4294959461) (data free: 7844 node free: 12154)
+[  240.689036] section utilization of regular region: 4294947450 / 12163 352954 % (4294959612) (data free: 7694 node free: 12153)
+[  246.512751] section utilization of regular region: 4294947604 / 12163 352955 % (4294959766) (data free: 7539 node free: 12154)
+[  253.350304] section utilization of regular region: 4294947790 / 12163 352957 % (4294959952) (data free: 7354 node free: 12153)
+[  259.482894] section utilization of regular region: 4294947956 / 12163 352958 % (4294960118) (data free: 7189 node free: 12152)
+[  267.041743] section utilization of regular region: 4294948150 / 12163 352960 % (4294960312) (data free: 6994 node free: 12153)
+[  273.387640] section utilization of regular region: 4294948319 / 12163 352961 % (4294960481) (data free: 6826 node free: 12152)
+[  279.789533] section utilization of regular region: 4294948509 / 12163 352962 % (4294960671) (data free: 6636 node free: 12152)
+[  285.638641] section utilization of regular region: 4294948667 / 12163 352964 % (4294960829) (data free: 6477 node free: 12153)
+[  291.136142] section utilization of regular region: 4294948791 / 12163 352965 % (4294960953) (data free: 6355 node free: 12151)
+[  296.421817] section utilization of regular region: 4294948925 / 12163 352966 % (4294961087) (data free: 6219 node free: 12153)
+[  302.591150] section utilization of regular region: 4294949109 / 12163 352967 % (4294961271) (data free: 6036 node free: 12152)
+[  307.688969] section utilization of regular region: 4294949222 / 12163 352968 % (4294961384) (data free: 5921 node free: 12154)
+[  313.530137] section utilization of regular region: 4294949397 / 12163 352970 % (4294961559) (data free: 5747 node free: 12153)
+[  320.034478] section utilization of regular region: 4294949582 / 12163 352971 % (4294961744) (data free: 5563 node free: 12152)
+[  325.247996] section utilization of regular region: 4294949678 / 12163 352972 % (4294961840) (data free: 5466 node free: 12153)
+[  330.677596] section utilization of regular region: 4294949844 / 12163 352973 % (4294962006) (data free: 5300 node free: 12153)
+[  336.769506] section utilization of regular region: 4294949981 / 12163 352975 % (4294962143) (data free: 5162 node free: 12154)
+[  342.339087] section utilization of regular region: 4294950168 / 12163 352976 % (4294962330) (data free: 4976 node free: 12153)
+[  349.719240] section utilization of regular region: 4294950327 / 12163 352977 % (4294962489) (data free: 4817 node free: 12153)
+[  355.361138] section utilization of regular region: 4294950479 / 12163 352979 % (4294962641) (data free: 4665 node free: 12153)
+[  361.762355] section utilization of regular region: 4294950663 / 12163 352980 % (4294962825) (data free: 4481 node free: 12153)
+[  367.744182] section utilization of regular region: 4294950820 / 12163 352981 % (4294962982) (data free: 4324 node free: 12153)
+[  371.804862] print_GC_LATENCY: latency: 0 (rd: 0 wrt: 0) us.  SW_lat: 16 us. 
+[  371.804868] print_GC_LATENCY: breakdown us. rd op: 0 wrt op: 0 read xfer: 0 write xfer: 0
+[  372.808055] print_GC_LATENCY: latency: 1 (rd: 0 wrt: 0) us.  SW_lat: 15 us. 
+[  372.808059] print_GC_LATENCY: breakdown us. rd op: 0 wrt op: 0 read xfer: 0 write xfer: 0
+[  373.136880] section utilization of regular region: 4294950941 / 12163 352982 % (4294963103) (data free: 4203 node free: 12153)
+[  373.812903] print_GC_LATENCY: latency: 1 (rd: 0 wrt: 0) us.  SW_lat: 15 us. 
+[  373.812908] print_GC_LATENCY: breakdown us. rd op: 0 wrt op: 0 read xfer: 0 write xfer: 0
+[  374.815668] print_GC_LATENCY: latency: 0 (rd: 0 wrt: 0) us.  SW_lat: 15 us. 
+[  374.815673] print_GC_LATENCY: breakdown us. rd op: 0 wrt op: 0 read xfer: 0 write xfer: 0
+[  375.880212] print_GC_LATENCY: latency: 0 (rd: 0 wrt: 0) us.  SW_lat: 15 us. 
+[  375.880217] print_GC_LATENCY: breakdown us. rd op: 0 wrt op: 0 read xfer: 0 write xfer: 0
+[  377.096569] print_GC_LATENCY: latency: 0 (rd: 0 wrt: 0) us.  SW_lat: 15 us. 
+[  377.096574] print_GC_LATENCY: breakdown us. rd op: 0 wrt op: 0 read xfer: 0 write xfer: 0
+[  378.099823] print_GC_LATENCY: latency: 0 (rd: 0 wrt: 0) us.  SW_lat: 15 us. 
+[  378.099828] print_GC_LATENCY: breakdown us. rd op: 0 wrt op: 0 read xfer: 0 write xfer: 0
+[  378.435641] section utilization of regular region: 4294951103 / 12163 352984 % (4294963265) (data free: 4041 node free: 12153)
+[  379.284723] print_GC_LATENCY: latency: 0 (rd: 0 wrt: 0) us.  SW_lat: 15 us. 
+[  379.284727] print_GC_LATENCY: breakdown us. rd op: 0 wrt op: 0 read xfer: 0 write xfer: 0
+[  380.086404] __fill_rev_sq_cmd: first submitted!!
+[  380.289233] print_GC_LATENCY: latency: 164 (rd: 73 wrt: 91) us.  SW_lat: 23 us. 
+[  380.289238] print_GC_LATENCY: breakdown us. rd op: 55 wrt op: 73 read xfer: 18 write xfer: 17
+[  380.289240] print_MG_CMD_CNT: mg cmd submitted: 52 (per sec) total mg cmd: 52 total completed mg cmd: 0
+[  380.289242] print_GC_LOG_MEM: mem: 0 MB gc log cnt (buffer/inflight): 13364 ( 52 / 13312 ) merge ratio: 0 / 13364 0 percent total: 13364 discard: 0 submit: 13312 completed: 0
+[  381.291805] print_GC_LATENCY: latency: 702 (rd: 313 wrt: 393) us.  SW_lat: 48 us. 
+[  381.291811] print_GC_LATENCY: breakdown us. rd op: 234 wrt op: 316 read xfer: 78 write xfer: 76
+[  381.291813] print_MG_CMD_CNT: mg cmd submitted: 195 (per sec) total mg cmd: 247 total completed mg cmd: 59
+[  381.291815] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 48179 ( 51 / 48128 ) merge ratio: 0 / 63283 0 percent total: 63283 discard: 0 submit: 63232 completed: 15104
+[  382.295953] print_GC_LATENCY: latency: 1207 (rd: 534 wrt: 681) us.  SW_lat: 73 us. 
+[  382.295958] print_GC_LATENCY: breakdown us. rd op: 397 wrt op: 548 read xfer: 136 write xfer: 133
+[  382.295959] print_MG_CMD_CNT: mg cmd submitted: 226 (per sec) total mg cmd: 473 total completed mg cmd: 393
+[  382.295961] print_GC_LOG_MEM: mem: 0 MB gc log cnt (buffer/inflight): 20697 ( 217 / 20480 ) merge ratio: 0 / 121314 0 percent total: 121314 discard: 9 submit: 121088 completed: 100608
+[  383.299790] print_GC_LATENCY: latency: 1677 (rd: 741 wrt: 946) us.  SW_lat: 94 us. 
+[  383.299795] print_GC_LATENCY: breakdown us. rd op: 551 wrt op: 761 read xfer: 189 write xfer: 184
+[  383.299796] print_MG_CMD_CNT: mg cmd submitted: 255 (per sec) total mg cmd: 728 total completed mg cmd: 568
+[  383.299798] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 41144 ( 184 / 40960 ) merge ratio: 0 / 186561 0 percent total: 186561 discard: 9 submit: 186368 completed: 145408
+[  384.304257] print_GC_LATENCY: latency: 2124 (rd: 938 wrt: 1200) us.  SW_lat: 117 us. 
+[  384.304263] print_GC_LATENCY: breakdown us. rd op: 698 wrt op: 966 read xfer: 240 write xfer: 234
+[  384.304264] print_MG_CMD_CNT: mg cmd submitted: 296 (per sec) total mg cmd: 1024 total completed mg cmd: 568
+[  384.304266] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 116784 ( 48 / 116736 ) merge ratio: 0 / 262201 0 percent total: 262201 discard: 9 submit: 262144 completed: 145408
+[  384.833930] section utilization of regular region: 4294951247 / 12163 352985 % (4294963409) (data free: 3904 node free: 12146)
+[  385.307849] print_GC_LATENCY: latency: 2393 (rd: 1054 wrt: 1355) us.  SW_lat: 132 us. 
+[  385.307854] print_GC_LATENCY: breakdown us. rd op: 783 wrt op: 1090 read xfer: 271 write xfer: 264
+[  385.307856] print_MG_CMD_CNT: mg cmd submitted: 231 (per sec) total mg cmd: 1255 total completed mg cmd: 1141
+[  385.307858] print_GC_LOG_MEM: mem: 0 MB gc log cnt (buffer/inflight): 29267 ( 83 / 29184 ) merge ratio: 0 / 321402 0 percent total: 321402 discard: 39 submit: 321280 completed: 292096
+[  386.312922] print_GC_LATENCY: latency: 2730 (rd: 1202 wrt: 1546) us.  SW_lat: 147 us. 
+[  386.312927] print_GC_LATENCY: breakdown us. rd op: 893 wrt op: 1244 read xfer: 309 write xfer: 302
+[  386.312929] print_MG_CMD_CNT: mg cmd submitted: 314 (per sec) total mg cmd: 1569 total completed mg cmd: 1141
+[  386.312931] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 109721 ( 153 / 109568 ) merge ratio: 0 / 401856 0 percent total: 401856 discard: 39 submit: 401664 completed: 292096
+[  387.316563] print_GC_LATENCY: latency: 2921 (rd: 1284 wrt: 1656) us.  SW_lat: 158 us. 
+[  387.316568] print_GC_LATENCY: breakdown us. rd op: 952 wrt op: 1333 read xfer: 331 write xfer: 323
+[  387.316570] print_MG_CMD_CNT: mg cmd submitted: 229 (per sec) total mg cmd: 1798 total completed mg cmd: 1141
+[  387.316572] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 168370 ( 178 / 168192 ) merge ratio: 0 / 460510 0 percent total: 460510 discard: 44 submit: 460288 completed: 292096
+[  388.320759] print_GC_LATENCY: latency: 3159 (rd: 1388 wrt: 1792) us.  SW_lat: 169 us. 
+[  388.320764] print_GC_LATENCY: breakdown us. rd op: 1030 wrt op: 1442 read xfer: 358 write xfer: 350
+[  388.320766] print_MG_CMD_CNT: mg cmd submitted: 300 (per sec) total mg cmd: 2098 total completed mg cmd: 1813
+[  388.320767] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 73175 ( 215 / 72960 ) merge ratio: 0 / 537351 0 percent total: 537351 discard: 48 submit: 537088 completed: 464128
+[  389.325442] print_GC_LATENCY: latency: 3375 (rd: 1482 wrt: 1915) us.  SW_lat: 180 us. 
+[  389.325448] print_GC_LATENCY: breakdown us. rd op: 1099 wrt op: 1541 read xfer: 383 write xfer: 374
+[  389.325449] print_MG_CMD_CNT: mg cmd submitted: 307 (per sec) total mg cmd: 2405 total completed mg cmd: 1813
+[  389.325451] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 151661 ( 109 / 151552 ) merge ratio: 0 / 615837 0 percent total: 615837 discard: 48 submit: 615680 completed: 464128
+[  390.328120] print_GC_LATENCY: latency: 3511 (rd: 1541 wrt: 1994) us.  SW_lat: 187 us. 
+[  390.328126] print_GC_LATENCY: breakdown us. rd op: 1142 wrt op: 1604 read xfer: 398 write xfer: 389
+[  390.328127] print_MG_CMD_CNT: mg cmd submitted: 250 (per sec) total mg cmd: 2655 total completed mg cmd: 2401
+[  390.328129] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 65232 ( 208 / 65024 ) merge ratio: 0 / 679936 0 percent total: 679936 discard: 48 submit: 679680 completed: 614656
+[  391.333080] print_GC_LATENCY: latency: 3684 (rd: 1616 wrt: 2093) us.  SW_lat: 196 us. 
+[  391.333085] print_GC_LATENCY: breakdown us. rd op: 1197 wrt op: 1684 read xfer: 418 write xfer: 409
+[  391.333087] print_MG_CMD_CNT: mg cmd submitted: 313 (per sec) total mg cmd: 2968 total completed mg cmd: 2401
+[  391.333089] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 145298 ( 146 / 145152 ) merge ratio: 0 / 760002 0 percent total: 760002 discard: 48 submit: 759808 completed: 614656
+[  391.611013] section utilization of regular region: 4294951330 / 12163 352986 % (4294963492) (data free: 3822 node free: 12145)
+[  392.337562] print_GC_LATENCY: latency: 3771 (rd: 1654 wrt: 2142) us.  SW_lat: 201 us. 
+[  392.337567] print_GC_LATENCY: breakdown us. rd op: 1225 wrt op: 1723 read xfer: 428 write xfer: 418
+[  392.337569] print_MG_CMD_CNT: mg cmd submitted: 225 (per sec) total mg cmd: 3193 total completed mg cmd: 2998
+[  392.337571] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 49931 ( 11 / 49920 ) merge ratio: 0 / 817468 0 percent total: 817468 discard: 49 submit: 817408 completed: 767488
+[  393.340399] print_GC_LATENCY: latency: 3912 (rd: 1716 wrt: 2222) us.  SW_lat: 208 us. 
+[  393.340405] print_GC_LATENCY: breakdown us. rd op: 1271 wrt op: 1788 read xfer: 444 write xfer: 434
+[  393.340406] print_MG_CMD_CNT: mg cmd submitted: 312 (per sec) total mg cmd: 3505 total completed mg cmd: 2998
+[  393.340408] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 129924 ( 132 / 129792 ) merge ratio: 0 / 897461 0 percent total: 897461 discard: 49 submit: 897280 completed: 767488
+[  394.897155] print_GC_LATENCY: latency: 3918 (rd: 1718 wrt: 2226) us.  SW_lat: 208 us. 
+[  394.897159] print_GC_LATENCY: breakdown us. rd op: 1273 wrt op: 1791 read xfer: 445 write xfer: 435
+[  394.897161] print_MG_CMD_CNT: mg cmd submitted: 14 (per sec) total mg cmd: 3519 total completed mg cmd: 2998
+[  394.897162] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 133480 ( 104 / 133376 ) merge ratio: 0 / 901017 0 percent total: 901017 discard: 49 submit: 900864 completed: 767488
+[  395.900068] print_GC_LATENCY: latency: 3994 (rd: 1751 wrt: 2269) us.  SW_lat: 212 us. 
+[  395.900073] print_GC_LATENCY: breakdown us. rd op: 1297 wrt op: 1825 read xfer: 454 write xfer: 443
+[  395.900075] print_MG_CMD_CNT: mg cmd submitted: 229 (per sec) total mg cmd: 3748 total completed mg cmd: 3519
+[  395.900077] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 58845 ( 221 / 58624 ) merge ratio: 0 / 959758 0 percent total: 959758 discard: 49 submit: 959488 completed: 900864
+[  396.903968] print_GC_LATENCY: latency: 4080 (rd: 1789 wrt: 2318) us.  SW_lat: 216 us. 
+[  396.903974] print_GC_LATENCY: breakdown us. rd op: 1324 wrt op: 1865 read xfer: 464 write xfer: 453
+[  396.903975] print_MG_CMD_CNT: mg cmd submitted: 248 (per sec) total mg cmd: 3996 total completed mg cmd: 3837
+[  396.903977] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 40792 ( 88 / 40704 ) merge ratio: 0 / 1023113 0 percent total: 1023113 discard: 49 submit: 1022976 completed: 982272
+[  397.908631] print_GC_LATENCY: latency: 4191 (rd: 1837 wrt: 2382) us.  SW_lat: 221 us. 
+[  397.908637] print_GC_LATENCY: breakdown us. rd op: 1360 wrt op: 1917 read xfer: 476 write xfer: 465
+[  397.908638] print_MG_CMD_CNT: mg cmd submitted: 317 (per sec) total mg cmd: 4313 total completed mg cmd: 3837
+[  397.908640] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 121904 ( 48 / 121856 ) merge ratio: 0 / 1104225 0 percent total: 1104225 discard: 49 submit: 1104128 completed: 982272
+[  398.439119] section utilization of regular region: 4294951296 / 12163 352985 % (4294963458) (data free: 3855 node free: 12146)
+[  398.912155] print_GC_LATENCY: latency: 4251 (rd: 1861 wrt: 2417) us.  SW_lat: 225 us. 
+[  398.912160] print_GC_LATENCY: breakdown us. rd op: 1377 wrt op: 1945 read xfer: 483 write xfer: 472
+[  398.912162] print_MG_CMD_CNT: mg cmd submitted: 250 (per sec) total mg cmd: 4563 total completed mg cmd: 4429
+[  398.912163] print_GC_LOG_MEM: mem: 0 MB gc log cnt (buffer/inflight): 34427 ( 123 / 34304 ) merge ratio: 0 / 1168300 0 percent total: 1168300 discard: 49 submit: 1168128 completed: 1133824
+[  399.916721] print_GC_LATENCY: latency: 4342 (rd: 1901 wrt: 2469) us.  SW_lat: 229 us. 
+[  399.916727] print_GC_LATENCY: breakdown us. rd op: 1407 wrt op: 1987 read xfer: 494 write xfer: 482
+[  399.916730] print_MG_CMD_CNT: mg cmd submitted: 309 (per sec) total mg cmd: 4872 total completed mg cmd: 4429
+[  399.916731] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 113622 ( 214 / 113408 ) merge ratio: 0 / 1247495 0 percent total: 1247495 discard: 49 submit: 1247232 completed: 1133824
+[  401.485766] print_GC_LATENCY: latency: 4391 (rd: 1922 wrt: 2497) us.  SW_lat: 232 us. 
+[  401.485772] print_GC_LATENCY: breakdown us. rd op: 1422 wrt op: 2009 read xfer: 499 write xfer: 488
+[  401.485773] print_MG_CMD_CNT: mg cmd submitted: 229 (per sec) total mg cmd: 5101 total completed mg cmd: 5016
+[  401.485774] print_GC_LOG_MEM: mem: 0 MB gc log cnt (buffer/inflight): 21944 ( 184 / 21760 ) merge ratio: 0 / 1306089 0 percent total: 1306089 discard: 49 submit: 1305856 completed: 1284096
+[  402.489393] print_GC_LATENCY: latency: 4470 (rd: 1956 wrt: 2543) us.  SW_lat: 236 us. 
+[  402.489399] print_GC_LATENCY: breakdown us. rd op: 1448 wrt op: 2046 read xfer: 508 write xfer: 496
+[  402.489401] print_MG_CMD_CNT: mg cmd submitted: 311 (per sec) total mg cmd: 5412 total completed mg cmd: 5016
+[  402.489403] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 101518 ( 142 / 101376 ) merge ratio: 0 / 1385663 0 percent total: 1385663 discard: 49 submit: 1385472 completed: 1284096
+[  403.492149] print_GC_LATENCY: latency: 4521 (rd: 1978 wrt: 2572) us.  SW_lat: 239 us. 
+[  403.492155] print_GC_LATENCY: breakdown us. rd op: 1464 wrt op: 2069 read xfer: 514 write xfer: 502
+[  403.492157] print_MG_CMD_CNT: mg cmd submitted: 237 (per sec) total mg cmd: 5649 total completed mg cmd: 5016
+[  403.492158] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 162300 ( 252 / 162048 ) merge ratio: 0 / 1446450 0 percent total: 1446450 discard: 54 submit: 1446144 completed: 1284096
+[  403.701946] section utilization of regular region: 4294951190 / 12163 352985 % (4294963352) (data free: 3957 node free: 12150)
+[  404.496370] print_GC_LATENCY: latency: 4569 (rd: 1999 wrt: 2600) us.  SW_lat: 240 us. 
+[  404.496375] print_GC_LATENCY: breakdown us. rd op: 1479 wrt op: 2092 read xfer: 520 write xfer: 508
+[  404.496377] print_MG_CMD_CNT: mg cmd submitted: 243 (per sec) total mg cmd: 5892 total completed mg cmd: 5649
+[  404.496379] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 62363 ( 155 / 62208 ) merge ratio: 0 / 1508714 0 percent total: 1508714 discard: 207 submit: 1508352 completed: 1446144
+[  405.500134] print_GC_LATENCY: latency: 4613 (rd: 2017 wrt: 2626) us.  SW_lat: 242 us. 
+[  405.500140] print_GC_LATENCY: breakdown us. rd op: 1491 wrt op: 2113 read xfer: 525 write xfer: 513
+[  405.500141] print_MG_CMD_CNT: mg cmd submitted: 254 (per sec) total mg cmd: 6146 total completed mg cmd: 5940
+[  405.500143] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 52829 ( 93 / 52736 ) merge ratio: 0 / 1573676 0 percent total: 1573676 discard: 207 submit: 1573376 completed: 1520640
+[  406.504923] print_GC_LATENCY: latency: 4665 (rd: 2039 wrt: 2656) us.  SW_lat: 245 us. 
+[  406.504928] print_GC_LATENCY: breakdown us. rd op: 1508 wrt op: 2137 read xfer: 531 write xfer: 519
+[  406.504930] print_MG_CMD_CNT: mg cmd submitted: 271 (per sec) total mg cmd: 6417 total completed mg cmd: 6244
+[  406.504932] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 44334 ( 46 / 44288 ) merge ratio: 0 / 1643010 0 percent total: 1643010 discard: 212 submit: 1642752 completed: 1598464
+[  407.508932] print_GC_LATENCY: latency: 4747 (rd: 2074 wrt: 2703) us.  SW_lat: 249 us. 
+[  407.508938] print_GC_LATENCY: breakdown us. rd op: 1533 wrt op: 2175 read xfer: 540 write xfer: 528
+[  407.508939] print_MG_CMD_CNT: mg cmd submitted: 421 (per sec) total mg cmd: 6838 total completed mg cmd: 6244
+[  407.508941] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 152069 ( 5 / 152064 ) merge ratio: 0 / 1750745 0 percent total: 1750745 discard: 212 submit: 1750528 completed: 1598464
+[  408.512299] print_GC_LATENCY: latency: 4780 (rd: 2088 wrt: 2724) us.  SW_lat: 250 us. 
+[  408.512304] print_GC_LATENCY: breakdown us. rd op: 1543 wrt op: 2192 read xfer: 544 write xfer: 532
+[  408.512306] print_MG_CMD_CNT: mg cmd submitted: 303 (per sec) total mg cmd: 7141 total completed mg cmd: 6855
+[  408.512308] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 73231 ( 15 / 73216 ) merge ratio: 0 / 1828351 0 percent total: 1828351 discard: 240 submit: 1828096 completed: 1754880
+[  409.365459] section utilization of regular region: 4294951206 / 12163 352985 % (4294963368) (data free: 3946 node free: 12145)
+[  409.516181] print_GC_LATENCY: latency: 4830 (rd: 2109 wrt: 2753) us.  SW_lat: 253 us. 
+[  409.516186] print_GC_LATENCY: breakdown us. rd op: 1558 wrt op: 2215 read xfer: 550 write xfer: 537
+[  409.516188] print_MG_CMD_CNT: mg cmd submitted: 331 (per sec) total mg cmd: 7472 total completed mg cmd: 6855
+[  409.516190] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 158125 ( 173 / 157952 ) merge ratio: 0 / 1913286 0 percent total: 1913286 discard: 281 submit: 1912832 completed: 1754880
+[  411.041428] print_GC_LATENCY: latency: 4855 (rd: 2120 wrt: 2767) us.  SW_lat: 254 us. 
+[  411.041433] print_GC_LATENCY: breakdown us. rd op: 1566 wrt op: 2227 read xfer: 553 write xfer: 540
+[  411.041435] print_MG_CMD_CNT: mg cmd submitted: 199 (per sec) total mg cmd: 7671 total completed mg cmd: 7434
+[  411.041437] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 60875 ( 203 / 60672 ) merge ratio: 0 / 1964261 0 percent total: 1964261 discard: 282 submit: 1963776 completed: 1903104
+[  412.080897] print_GC_LATENCY: latency: 4887 (rd: 2133 wrt: 2786) us.  SW_lat: 256 us. 
+[  412.080902] print_GC_LATENCY: breakdown us. rd op: 1575 wrt op: 2242 read xfer: 557 write xfer: 544
+[  412.080904] print_MG_CMD_CNT: mg cmd submitted: 268 (per sec) total mg cmd: 7939 total completed mg cmd: 7781
+[  412.080906] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 40621 ( 173 / 40448 ) merge ratio: 0 / 2032846 0 percent total: 2032846 discard: 289 submit: 2032384 completed: 1991936
+[  413.084662] print_GC_LATENCY: latency: 4934 (rd: 2153 wrt: 2813) us.  SW_lat: 258 us. 
+[  413.084667] print_GC_LATENCY: breakdown us. rd op: 1590 wrt op: 2264 read xfer: 562 write xfer: 549
+[  413.084669] print_MG_CMD_CNT: mg cmd submitted: 317 (per sec) total mg cmd: 8256 total completed mg cmd: 7781
+[  413.084670] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 121778 ( 178 / 121600 ) merge ratio: 0 / 2114003 0 percent total: 2114003 discard: 289 submit: 2113536 completed: 1991936
+[  414.089417] print_GC_LATENCY: latency: 4959 (rd: 2162 wrt: 2829) us.  SW_lat: 260 us. 
+[  414.089423] print_GC_LATENCY: breakdown us. rd op: 1596 wrt op: 2276 read xfer: 565 write xfer: 552
+[  414.089425] print_MG_CMD_CNT: mg cmd submitted: 262 (per sec) total mg cmd: 8518 total completed mg cmd: 8367
+[  414.089427] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 38758 ( 102 / 38656 ) merge ratio: 0 / 2180999 0 percent total: 2180999 discard: 289 submit: 2180608 completed: 2141952
+[  415.093065] print_GC_LATENCY: latency: 5001 (rd: 2180 wrt: 2853) us.  SW_lat: 262 us. 
+[  415.093070] print_GC_LATENCY: breakdown us. rd op: 1610 wrt op: 2296 read xfer: 570 write xfer: 557
+[  415.093072] print_MG_CMD_CNT: mg cmd submitted: 321 (per sec) total mg cmd: 8839 total completed mg cmd: 8367
+[  415.093073] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 120918 ( 86 / 120832 ) merge ratio: 0 / 2263159 0 percent total: 2263159 discard: 289 submit: 2262784 completed: 2141952
+[  416.045224] section utilization of regular region: 4294951175 / 12163 352984 % (4294963337) (data free: 3975 node free: 12147)
+[  416.159345] print_GC_LATENCY: latency: 5025 (rd: 2191 wrt: 2867) us.  SW_lat: 263 us. 
+[  416.159349] print_GC_LATENCY: breakdown us. rd op: 1617 wrt op: 2307 read xfer: 573 write xfer: 560
+[  416.159351] print_MG_CMD_CNT: mg cmd submitted: 188 (per sec) total mg cmd: 9027 total completed mg cmd: 8367
+[  416.159352] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 169001 ( 41 / 168960 ) merge ratio: 0 / 2311242 0 percent total: 2311242 discard: 289 submit: 2310912 completed: 2141952
+[  417.161113] print_GC_LATENCY: latency: 5045 (rd: 2199 wrt: 2879) us.  SW_lat: 264 us. 
+[  417.161117] print_GC_LATENCY: breakdown us. rd op: 1623 wrt op: 2316 read xfer: 575 write xfer: 562
+[  417.161119] print_MG_CMD_CNT: mg cmd submitted: 256 (per sec) total mg cmd: 9283 total completed mg cmd: 8976
+[  417.161121] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 78694 ( 102 / 78592 ) merge ratio: 0 / 2376841 0 percent total: 2376841 discard: 291 submit: 2376448 completed: 2297856
+[  418.166032] print_GC_LATENCY: latency: 5068 (rd: 2208 wrt: 2893) us.  SW_lat: 265 us. 
+[  418.166038] print_GC_LATENCY: breakdown us. rd op: 1630 wrt op: 2327 read xfer: 578 write xfer: 565
+[  418.166040] print_MG_CMD_CNT: mg cmd submitted: 263 (per sec) total mg cmd: 9546 total completed mg cmd: 9384
+[  418.166041] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 41610 ( 138 / 41472 ) merge ratio: 0 / 2444205 0 percent total: 2444205 discard: 291 submit: 2443776 completed: 2402304
+[  419.168828] print_GC_LATENCY: latency: 5104 (rd: 2224 wrt: 2914) us.  SW_lat: 267 us. 
+[  419.168833] print_GC_LATENCY: breakdown us. rd op: 1641 wrt op: 2344 read xfer: 582 write xfer: 569
+[  419.168835] print_MG_CMD_CNT: mg cmd submitted: 313 (per sec) total mg cmd: 9859 total completed mg cmd: 9384
+[  419.168837] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 121833 ( 233 / 121600 ) merge ratio: 0 / 2524428 0 percent total: 2524428 discard: 291 submit: 2523904 completed: 2402304
+[  420.333155] print_GC_LATENCY: latency: 5109 (rd: 2226 wrt: 2917) us.  SW_lat: 267 us. 
+[  420.333160] print_GC_LATENCY: breakdown us. rd op: 1643 wrt op: 2347 read xfer: 583 write xfer: 569
+[  420.333162] print_MG_CMD_CNT: mg cmd submitted: 50 (per sec) total mg cmd: 9909 total completed mg cmd: 9384
+[  420.333163] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 134431 ( 31 / 134400 ) merge ratio: 0 / 2537026 0 percent total: 2537026 discard: 291 submit: 2536704 completed: 2402304
+[  421.337157] print_GC_LATENCY: latency: 5126 (rd: 2232 wrt: 2928) us.  SW_lat: 268 us. 
+[  421.337162] print_GC_LATENCY: breakdown us. rd op: 1646 wrt op: 2356 read xfer: 585 write xfer: 572
+[  421.337164] print_MG_CMD_CNT: mg cmd submitted: 253 (per sec) total mg cmd: 10162 total completed mg cmd: 9909
+[  421.337165] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 64781 ( 13 / 64768 ) merge ratio: 0 / 2601796 0 percent total: 2601796 discard: 311 submit: 2601472 completed: 2536704
+[  421.800576] section utilization of regular region: 4294951109 / 12163 352984 % (4294963271) (data free: 4041 node free: 12147)
+[  422.341347] print_GC_LATENCY: latency: 5147 (rd: 2241 wrt: 2940) us.  SW_lat: 268 us. 
+[  422.341353] print_GC_LATENCY: breakdown us. rd op: 1653 wrt op: 2366 read xfer: 588 write xfer: 574
+[  422.341354] print_MG_CMD_CNT: mg cmd submitted: 246 (per sec) total mg cmd: 10408 total completed mg cmd: 10249
+[  422.341356] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 40950 ( 246 / 40704 ) merge ratio: 0 / 2665006 0 percent total: 2665006 discard: 312 submit: 2664448 completed: 2623744
+[  423.345531] print_GC_LATENCY: latency: 5168 (rd: 2249 wrt: 2953) us.  SW_lat: 269 us. 
+[  423.345536] print_GC_LATENCY: breakdown us. rd op: 1659 wrt op: 2376 read xfer: 590 write xfer: 576
+[  423.345537] print_MG_CMD_CNT: mg cmd submitted: 245 (per sec) total mg cmd: 10653 total completed mg cmd: 10574
+[  423.345539] print_GC_LOG_MEM: mem: 0 MB gc log cnt (buffer/inflight): 20302 ( 78 / 20224 ) merge ratio: 0 / 2727560 0 percent total: 2727560 discard: 314 submit: 2727168 completed: 2706944
+[  424.361578] print_GC_LATENCY: latency: 5196 (rd: 2261 wrt: 2969) us.  SW_lat: 270 us. 
+[  424.361584] print_GC_LATENCY: breakdown us. rd op: 1667 wrt op: 2389 read xfer: 593 write xfer: 580
+[  424.361586] print_MG_CMD_CNT: mg cmd submitted: 277 (per sec) total mg cmd: 10930 total completed mg cmd: 10574
+[  424.361587] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 91286 ( 150 / 91136 ) merge ratio: 0 / 2798544 0 percent total: 2798544 discard: 314 submit: 2798080 completed: 2706944
+[  425.364880] print_GC_LATENCY: latency: 5216 (rd: 2269 wrt: 2981) us.  SW_lat: 271 us. 
+[  425.364885] print_GC_LATENCY: breakdown us. rd op: 1673 wrt op: 2398 read xfer: 596 write xfer: 582
+[  425.364887] print_MG_CMD_CNT: mg cmd submitted: 258 (per sec) total mg cmd: 11188 total completed mg cmd: 10903
+[  425.364889] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 73008 ( 48 / 72960 ) merge ratio: 0 / 2864491 0 percent total: 2864491 discard: 315 submit: 2864128 completed: 2791168
+[  426.368664] print_GC_LATENCY: latency: 5246 (rd: 2282 wrt: 2998) us.  SW_lat: 273 us. 
+[  426.368670] print_GC_LATENCY: breakdown us. rd op: 1682 wrt op: 2412 read xfer: 599 write xfer: 585
+[  426.368672] print_MG_CMD_CNT: mg cmd submitted: 312 (per sec) total mg cmd: 11500 total completed mg cmd: 10903
+[  426.368673] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 152835 ( 3 / 152832 ) merge ratio: 0 / 2944318 0 percent total: 2944318 discard: 315 submit: 2944000 completed: 2791168
+[  427.372590] print_GC_LATENCY: latency: 5259 (rd: 2287 wrt: 3007) us.  SW_lat: 273 us. 
+[  427.372595] print_GC_LATENCY: breakdown us. rd op: 1685 wrt op: 2419 read xfer: 601 write xfer: 587
+[  427.372597] print_MG_CMD_CNT: mg cmd submitted: 308 (per sec) total mg cmd: 11808 total completed mg cmd: 11500
+[  427.372599] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 78927 ( 79 / 78848 ) merge ratio: 0 / 3023272 0 percent total: 3023272 discard: 345 submit: 3022848 completed: 2944000
+[  428.366717] section utilization of regular region: 4294951057 / 12163 352983 % (4294963219) (data free: 4095 node free: 12145)
+[  428.474958] print_GC_LATENCY: latency: 5289 (rd: 2299 wrt: 3024) us.  SW_lat: 275 us. 
+[  428.474963] print_GC_LATENCY: breakdown us. rd op: 1694 wrt op: 2433 read xfer: 604 write xfer: 591
+[  428.474965] print_MG_CMD_CNT: mg cmd submitted: 332 (per sec) total mg cmd: 12140 total completed mg cmd: 11500
+[  428.474966] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 163957 ( 117 / 163840 ) merge ratio: 0 / 3108302 0 percent total: 3108302 discard: 345 submit: 3107840 completed: 2944000
+[  429.478262] print_GC_LATENCY: latency: 5301 (rd: 2304 wrt: 3032) us.  SW_lat: 275 us. 
+[  429.478268] print_GC_LATENCY: breakdown us. rd op: 1698 wrt op: 2440 read xfer: 606 write xfer: 592
+[  429.478270] print_MG_CMD_CNT: mg cmd submitted: 273 (per sec) total mg cmd: 12413 total completed mg cmd: 12217
+[  429.478271] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 50241 ( 65 / 50176 ) merge ratio: 0 / 3178141 0 percent total: 3178141 discard: 348 submit: 3177728 completed: 3127552
+[  430.482160] print_GC_LATENCY: latency: 5328 (rd: 2315 wrt: 3048) us.  SW_lat: 277 us. 
+[  430.482165] print_GC_LATENCY: breakdown us. rd op: 1706 wrt op: 2452 read xfer: 609 write xfer: 595
+[  430.482167] print_MG_CMD_CNT: mg cmd submitted: 322 (per sec) total mg cmd: 12735 total completed mg cmd: 12217
+[  430.482169] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 132618 ( 10 / 132608 ) merge ratio: 0 / 3260518 0 percent total: 3260518 discard: 348 submit: 3260160 completed: 3127552
+[  431.486362] print_GC_LATENCY: latency: 5339 (rd: 2319 wrt: 3055) us.  SW_lat: 278 us. 
+[  431.486367] print_GC_LATENCY: breakdown us. rd op: 1708 wrt op: 2458 read xfer: 610 write xfer: 597
+[  431.486369] print_MG_CMD_CNT: mg cmd submitted: 254 (per sec) total mg cmd: 12989 total completed mg cmd: 12829
+[  431.486371] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 41043 ( 83 / 40960 ) merge ratio: 0 / 3325615 0 percent total: 3325615 discard: 348 submit: 3325184 completed: 3284224
+[  432.488940] print_GC_LATENCY: latency: 5364 (rd: 2329 wrt: 3070) us.  SW_lat: 279 us. 
+[  432.488945] print_GC_LATENCY: breakdown us. rd op: 1716 wrt op: 2470 read xfer: 613 write xfer: 599
+[  432.488947] print_MG_CMD_CNT: mg cmd submitted: 326 (per sec) total mg cmd: 13315 total completed mg cmd: 12829
+[  432.488949] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 124520 ( 104 / 124416 ) merge ratio: 0 / 3409092 0 percent total: 3409092 discard: 348 submit: 3408640 completed: 3284224
+[  433.493705] print_GC_LATENCY: latency: 5371 (rd: 2332 wrt: 3074) us.  SW_lat: 279 us. 
+[  433.493711] print_GC_LATENCY: breakdown us. rd op: 1718 wrt op: 2473 read xfer: 614 write xfer: 600
+[  433.493713] print_MG_CMD_CNT: mg cmd submitted: 239 (per sec) total mg cmd: 13554 total completed mg cmd: 13432
+[  433.493714] print_GC_LOG_MEM: mem: 0 MB gc log cnt (buffer/inflight): 31460 ( 228 / 31232 ) merge ratio: 0 / 3470402 0 percent total: 3470402 discard: 350 submit: 3469824 completed: 3438592
+[  434.496791] print_GC_LATENCY: latency: 5394 (rd: 2342 wrt: 3088) us.  SW_lat: 281 us. 
+[  434.496797] print_GC_LATENCY: breakdown us. rd op: 1724 wrt op: 2484 read xfer: 617 write xfer: 603
+[  434.496799] print_MG_CMD_CNT: mg cmd submitted: 317 (per sec) total mg cmd: 13871 total completed mg cmd: 13432
+[  434.496800] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 112531 ( 147 / 112384 ) merge ratio: 0 / 3551473 0 percent total: 3551473 discard: 350 submit: 3550976 completed: 3438592
+[  435.137607] section utilization of regular region: 4294950997 / 12163 352983 % (4294963159) (data free: 4154 node free: 12146)
+[  436.740369] print_GC_LATENCY: latency: 5401 (rd: 2344 wrt: 3092) us.  SW_lat: 281 us. 
+[  436.740374] print_GC_LATENCY: breakdown us. rd op: 1726 wrt op: 2488 read xfer: 618 write xfer: 604
+[  436.740376] print_MG_CMD_CNT: mg cmd submitted: 231 (per sec) total mg cmd: 14102 total completed mg cmd: 14025
+[  436.740377] print_GC_LOG_MEM: mem: 0 MB gc log cnt (buffer/inflight): 19793 ( 81 / 19712 ) merge ratio: 0 / 3610543 0 percent total: 3610543 discard: 350 submit: 3610112 completed: 3590400
+[  437.742075] print_GC_LATENCY: latency: 5421 (rd: 2353 wrt: 3104) us.  SW_lat: 282 us. 
+[  437.742080] print_GC_LATENCY: breakdown us. rd op: 1732 wrt op: 2497 read xfer: 620 write xfer: 606
+[  437.742082] print_MG_CMD_CNT: mg cmd submitted: 293 (per sec) total mg cmd: 14395 total completed mg cmd: 14102
+[  437.742084] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 75211 ( 203 / 75008 ) merge ratio: 0 / 3685673 0 percent total: 3685673 discard: 350 submit: 3685120 completed: 3610112
+[  438.745373] print_GC_LATENCY: latency: 5432 (rd: 2357 wrt: 3111) us.  SW_lat: 282 us. 
+[  438.745379] print_GC_LATENCY: breakdown us. rd op: 1735 wrt op: 2503 read xfer: 621 write xfer: 607
+[  438.745380] print_MG_CMD_CNT: mg cmd submitted: 256 (per sec) total mg cmd: 14651 total completed mg cmd: 14420
+[  438.745382] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 59370 ( 234 / 59136 ) merge ratio: 0 / 3751260 0 percent total: 3751260 discard: 370 submit: 3750656 completed: 3691520
+[  439.749378] print_GC_LATENCY: latency: 5455 (rd: 2366 wrt: 3124) us.  SW_lat: 284 us. 
+[  439.749384] print_GC_LATENCY: breakdown us. rd op: 1742 wrt op: 2514 read xfer: 624 write xfer: 610
+[  439.749386] print_MG_CMD_CNT: mg cmd submitted: 328 (per sec) total mg cmd: 14979 total completed mg cmd: 14420
+[  439.749387] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 143340 ( 236 / 143104 ) merge ratio: 0 / 3835230 0 percent total: 3835230 discard: 370 submit: 3834624 completed: 3691520
+[  440.423401] section utilization of regular region: 4294950970 / 12163 352983 % (4294963132) (data free: 4182 node free: 12145)
+[  440.753253] print_GC_LATENCY: latency: 5453 (rd: 2365 wrt: 3124) us.  SW_lat: 284 us. 
+[  440.753258] print_GC_LATENCY: breakdown us. rd op: 1740 wrt op: 2514 read xfer: 624 write xfer: 610
+[  440.753260] print_MG_CMD_CNT: mg cmd submitted: 124 (per sec) total mg cmd: 15103 total completed mg cmd: 14420
+[  440.753262] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 175024 ( 176 / 174848 ) merge ratio: 0 / 3866979 0 percent total: 3866979 discard: 435 submit: 3866368 completed: 3691520
+[  441.757988] print_GC_LATENCY: latency: 5474 (rd: 2374 wrt: 3136) us.  SW_lat: 285 us. 
+[  441.757993] print_GC_LATENCY: breakdown us. rd op: 1747 wrt op: 2523 read xfer: 626 write xfer: 612
+[  441.757995] print_MG_CMD_CNT: mg cmd submitted: 326 (per sec) total mg cmd: 15429 total completed mg cmd: 15014
+[  441.757997] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 106453 ( 213 / 106240 ) merge ratio: 0 / 3950472 0 percent total: 3950472 discard: 435 submit: 3949824 completed: 3843584
+[  442.761076] print_GC_LATENCY: latency: 5483 (rd: 2377 wrt: 3142) us.  SW_lat: 285 us. 
+[  442.761082] print_GC_LATENCY: breakdown us. rd op: 1749 wrt op: 2528 read xfer: 628 write xfer: 614
+[  442.761083] print_MG_CMD_CNT: mg cmd submitted: 255 (per sec) total mg cmd: 15684 total completed mg cmd: 15014
+[  442.761085] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 171692 ( 172 / 171520 ) merge ratio: 0 / 4015816 0 percent total: 4015816 discard: 540 submit: 4015104 completed: 3843584
+[  443.765180] print_GC_LATENCY: latency: 5498 (rd: 2383 wrt: 3151) us.  SW_lat: 286 us. 
+[  443.765185] print_GC_LATENCY: breakdown us. rd op: 1753 wrt op: 2535 read xfer: 630 write xfer: 615
+[  443.765187] print_MG_CMD_CNT: mg cmd submitted: 287 (per sec) total mg cmd: 15971 total completed mg cmd: 15637
+[  443.765189] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 85701 ( 197 / 85504 ) merge ratio: 0 / 4089313 0 percent total: 4089313 discard: 540 submit: 4088576 completed: 4003072
+[  444.804504] print_GC_LATENCY: latency: 5518 (rd: 2391 wrt: 3163) us.  SW_lat: 287 us. 
+[  444.804510] print_GC_LATENCY: breakdown us. rd op: 1759 wrt op: 2545 read xfer: 632 write xfer: 618
+[  444.804512] print_MG_CMD_CNT: mg cmd submitted: 316 (per sec) total mg cmd: 16287 total completed mg cmd: 15637
+[  444.804514] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 166512 ( 112 / 166400 ) merge ratio: 0 / 4170124 0 percent total: 4170124 discard: 540 submit: 4169472 completed: 4003072
+[  445.486843] section utilization of regular region: 4294950876 / 12163 352982 % (4294963038) (data free: 4274 node free: 12147)
+[  445.805441] print_GC_LATENCY: latency: 5525 (rd: 2393 wrt: 3168) us.  SW_lat: 287 us. 
+[  445.805446] print_GC_LATENCY: breakdown us. rd op: 1760 wrt op: 2549 read xfer: 633 write xfer: 619
+[  445.805447] print_MG_CMD_CNT: mg cmd submitted: 274 (per sec) total mg cmd: 16561 total completed mg cmd: 16454
+[  445.805449] print_GC_LOG_MEM: mem: 0 MB gc log cnt (buffer/inflight): 27396 ( 4 / 27392 ) merge ratio: 0 / 4240165 0 percent total: 4240165 discard: 545 submit: 4239616 completed: 4212224
+[  446.810108] print_GC_LATENCY: latency: 5544 (rd: 2401 wrt: 3179) us.  SW_lat: 288 us. 
+[  446.810114] print_GC_LATENCY: breakdown us. rd op: 1765 wrt op: 2558 read xfer: 635 write xfer: 621
+[  446.810116] print_MG_CMD_CNT: mg cmd submitted: 330 (per sec) total mg cmd: 16891 total completed mg cmd: 16454
+[  446.810117] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 111950 ( 78 / 111872 ) merge ratio: 0 / 4324719 0 percent total: 4324719 discard: 545 submit: 4324096 completed: 4212224
+[  447.813454] print_GC_LATENCY: latency: 5551 (rd: 2403 wrt: 3184) us.  SW_lat: 289 us. 
+[  447.813459] print_GC_LATENCY: breakdown us. rd op: 1767 wrt op: 2562 read xfer: 636 write xfer: 622
+[  447.813461] print_MG_CMD_CNT: mg cmd submitted: 263 (per sec) total mg cmd: 17154 total completed mg cmd: 16454
+[  447.813463] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 179393 ( 193 / 179200 ) merge ratio: 0 / 4392162 0 percent total: 4392162 discard: 545 submit: 4391424 completed: 4212224
+[  448.818607] print_GC_LATENCY: latency: 5569 (rd: 2411 wrt: 3195) us.  SW_lat: 290 us. 
+[  448.818612] print_GC_LATENCY: breakdown us. rd op: 1772 wrt op: 2570 read xfer: 638 write xfer: 624
+[  448.818614] print_MG_CMD_CNT: mg cmd submitted: 329 (per sec) total mg cmd: 17483 total completed mg cmd: 17060
+[  448.818615] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 108476 ( 188 / 108288 ) merge ratio: 0 / 4476381 0 percent total: 4476381 discard: 545 submit: 4475648 completed: 4367360
+[  449.821238] print_GC_LATENCY: latency: 5575 (rd: 2413 wrt: 3199) us.  SW_lat: 290 us. 
+[  449.821243] print_GC_LATENCY: breakdown us. rd op: 1773 wrt op: 2573 read xfer: 639 write xfer: 625
+[  449.821245] print_MG_CMD_CNT: mg cmd submitted: 259 (per sec) total mg cmd: 17742 total completed mg cmd: 17060
+[  449.821247] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 174611 ( 19 / 174592 ) merge ratio: 0 / 4542521 0 percent total: 4542521 discard: 550 submit: 4541952 completed: 4367360
+[  450.825345] print_GC_LATENCY: latency: 5591 (rd: 2420 wrt: 3209) us.  SW_lat: 291 us. 
+[  450.825350] print_GC_LATENCY: breakdown us. rd op: 1778 wrt op: 2581 read xfer: 641 write xfer: 627
+[  450.825352] print_MG_CMD_CNT: mg cmd submitted: 325 (per sec) total mg cmd: 18067 total completed mg cmd: 17671
+[  450.825353] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 101629 ( 253 / 101376 ) merge ratio: 0 / 4625955 0 percent total: 4625955 discard: 550 submit: 4625152 completed: 4523776
+[  451.616955] section utilization of regular region: 4294950873 / 12163 352982 % (4294963035) (data free: 4278 node free: 12146)
+[  451.829287] print_GC_LATENCY: latency: 5601 (rd: 2424 wrt: 3215) us.  SW_lat: 292 us. 
+[  451.829292] print_GC_LATENCY: breakdown us. rd op: 1781 wrt op: 2586 read xfer: 642 write xfer: 628
+[  451.829294] print_MG_CMD_CNT: mg cmd submitted: 262 (per sec) total mg cmd: 18329 total completed mg cmd: 17671
+[  451.829295] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 168638 ( 190 / 168448 ) merge ratio: 0 / 4692966 0 percent total: 4692966 discard: 552 submit: 4692224 completed: 4523776
+[  453.616781] print_GC_LATENCY: latency: 5608 (rd: 2426 wrt: 3219) us.  SW_lat: 292 us. 
+[  453.616786] print_GC_LATENCY: breakdown us. rd op: 1782 wrt op: 2590 read xfer: 643 write xfer: 629
+[  453.616788] print_MG_CMD_CNT: mg cmd submitted: 190 (per sec) total mg cmd: 18519 total completed mg cmd: 18280
+[  453.616789] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 61370 ( 186 / 61184 ) merge ratio: 0 / 4741602 0 percent total: 4741602 discard: 552 submit: 4740864 completed: 4679680
+[  454.617785] print_GC_LATENCY: latency: 5619 (rd: 2430 wrt: 3226) us.  SW_lat: 292 us. 
+[  454.617790] print_GC_LATENCY: breakdown us. rd op: 1785 wrt op: 2596 read xfer: 645 write xfer: 630
+[  454.617792] print_MG_CMD_CNT: mg cmd submitted: 296 (per sec) total mg cmd: 18815 total completed mg cmd: 18519
+[  454.617793] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 75899 ( 123 / 75776 ) merge ratio: 0 / 4817315 0 percent total: 4817315 discard: 552 submit: 4816640 completed: 4740864
+[  455.621508] print_GC_LATENCY: latency: 5631 (rd: 2434 wrt: 3234) us.  SW_lat: 292 us. 
+[  455.621513] print_GC_LATENCY: breakdown us. rd op: 1788 wrt op: 2602 read xfer: 646 write xfer: 632
+[  455.621515] print_MG_CMD_CNT: mg cmd submitted: 296 (per sec) total mg cmd: 19111 total completed mg cmd: 18847
+[  455.621517] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 67764 ( 180 / 67584 ) merge ratio: 0 / 4893152 0 percent total: 4893152 discard: 556 submit: 4892416 completed: 4824832
+[  456.625668] print_GC_LATENCY: latency: 5647 (rd: 2441 wrt: 3244) us.  SW_lat: 293 us. 
+[  456.625673] print_GC_LATENCY: breakdown us. rd op: 1792 wrt op: 2610 read xfer: 648 write xfer: 633
+[  456.625675] print_MG_CMD_CNT: mg cmd submitted: 332 (per sec) total mg cmd: 19443 total completed mg cmd: 18847
+[  456.625677] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 152645 ( 69 / 152576 ) merge ratio: 0 / 4978033 0 percent total: 4978033 discard: 556 submit: 4977408 completed: 4824832
+[  456.845228] section utilization of regular region: 4294950843 / 12163 352982 % (4294963005) (data free: 4309 node free: 12145)
+[  457.629610] print_GC_LATENCY: latency: 5651 (rd: 2442 wrt: 3247) us.  SW_lat: 294 us. 
+[  457.629615] print_GC_LATENCY: breakdown us. rd op: 1792 wrt op: 2612 read xfer: 649 write xfer: 634
+[  457.629616] print_MG_CMD_CNT: mg cmd submitted: 268 (per sec) total mg cmd: 19711 total completed mg cmd: 19472
+[  457.629618] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 61387 ( 203 / 61184 ) merge ratio: 0 / 5046775 0 percent total: 5046775 discard: 556 submit: 5046016 completed: 4984832
+[  458.629482] print_GC_LATENCY: latency: 5667 (rd: 2448 wrt: 3256) us.  SW_lat: 295 us. 
+[  458.629488] print_GC_LATENCY: breakdown us. rd op: 1797 wrt op: 2620 read xfer: 651 write xfer: 636
+[  458.629490] print_MG_CMD_CNT: mg cmd submitted: 333 (per sec) total mg cmd: 20044 total completed mg cmd: 19472
+[  458.629491] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 146628 ( 196 / 146432 ) merge ratio: 0 / 5132016 0 percent total: 5132016 discard: 556 submit: 5131264 completed: 4984832
+[  459.633814] print_GC_LATENCY: latency: 5673 (rd: 2450 wrt: 3261) us.  SW_lat: 295 us. 
+[  459.633820] print_GC_LATENCY: breakdown us. rd op: 1798 wrt op: 2624 read xfer: 651 write xfer: 637
+[  459.633821] print_MG_CMD_CNT: mg cmd submitted: 263 (per sec) total mg cmd: 20307 total completed mg cmd: 20096
+[  459.633823] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 54041 ( 25 / 54016 ) merge ratio: 0 / 5199175 0 percent total: 5199175 discard: 558 submit: 5198592 completed: 5144576
+[  460.637516] print_GC_LATENCY: latency: 5689 (rd: 2456 wrt: 3270) us.  SW_lat: 296 us. 
+[  460.637522] print_GC_LATENCY: breakdown us. rd op: 1802 wrt op: 2631 read xfer: 653 write xfer: 639
+[  460.637524] print_MG_CMD_CNT: mg cmd submitted: 342 (per sec) total mg cmd: 20649 total completed mg cmd: 20096
+[  460.637526] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 141579 ( 11 / 141568 ) merge ratio: 0 / 5286713 0 percent total: 5286713 discard: 558 submit: 5286144 completed: 5144576
+[  462.246160] print_GC_LATENCY: latency: 5691 (rd: 2457 wrt: 3272) us.  SW_lat: 296 us. 
+[  462.246165] print_GC_LATENCY: breakdown us. rd op: 1802 wrt op: 2633 read xfer: 654 write xfer: 639
+[  462.246166] print_MG_CMD_CNT: mg cmd submitted: 189 (per sec) total mg cmd: 20838 total completed mg cmd: 20713
+[  462.246168] print_GC_LOG_MEM: mem: 0 MB gc log cnt (buffer/inflight): 32040 ( 40 / 32000 ) merge ratio: 0 / 5335127 0 percent total: 5335127 discard: 559 submit: 5334528 completed: 5302528
+[  462.275772] section utilization of regular region: 4294950721 / 12163 352981 % (4294962883) (data free: 4427 node free: 12149)
+[  463.250817] print_GC_LATENCY: latency: 5705 (rd: 2462 wrt: 3280) us.  SW_lat: 296 us. 
+[  463.250822] print_GC_LATENCY: breakdown us. rd op: 1806 wrt op: 2639 read xfer: 655 write xfer: 640
+[  463.250824] print_MG_CMD_CNT: mg cmd submitted: 322 (per sec) total mg cmd: 21160 total completed mg cmd: 20838
+[  463.250825] print_GC_LOG_MEM: mem: 2 MB gc log cnt (buffer/inflight): 82555 ( 123 / 82432 ) merge ratio: 0 / 5417642 0 percent total: 5417642 discard: 559 submit: 5416960 completed: 5334528
+[  464.255123] print_GC_LATENCY: latency: 5714 (rd: 2465 wrt: 3286) us.  SW_lat: 297 us. 
+[  464.255128] print_GC_LATENCY: breakdown us. rd op: 1808 wrt op: 2644 read xfer: 656 write xfer: 642
+[  464.255130] print_MG_CMD_CNT: mg cmd submitted: 290 (per sec) total mg cmd: 21450 total completed mg cmd: 21177
+[  464.255131] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 70080 ( 192 / 69888 ) merge ratio: 0 / 5491980 0 percent total: 5491980 discard: 588 submit: 5491200 completed: 5421312
+[  465.265744] print_GC_LATENCY: latency: 5729 (rd: 2471 wrt: 3295) us.  SW_lat: 298 us. 
+[  465.265749] print_GC_LATENCY: breakdown us. rd op: 1812 wrt op: 2651 read xfer: 658 write xfer: 643
+[  465.265751] print_MG_CMD_CNT: mg cmd submitted: 342 (per sec) total mg cmd: 21792 total completed mg cmd: 21177
+[  465.265753] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 157596 ( 156 / 157440 ) merge ratio: 0 / 5579496 0 percent total: 5579496 discard: 588 submit: 5578752 completed: 5421312
+[  466.270086] print_GC_LATENCY: latency: 5731 (rd: 2472 wrt: 3297) us.  SW_lat: 298 us. 
+[  466.270092] print_GC_LATENCY: breakdown us. rd op: 1812 wrt op: 2653 read xfer: 659 write xfer: 644
+[  466.270094] print_MG_CMD_CNT: mg cmd submitted: 264 (per sec) total mg cmd: 22056 total completed mg cmd: 21792
+[  466.270095] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 67647 ( 63 / 67584 ) merge ratio: 0 / 5646993 0 percent total: 5646993 discard: 594 submit: 5646336 completed: 5578752
+[  467.273809] print_GC_LATENCY: latency: 5745 (rd: 2477 wrt: 3306) us.  SW_lat: 299 us. 
+[  467.273815] print_GC_LATENCY: breakdown us. rd op: 1816 wrt op: 2660 read xfer: 660 write xfer: 646
+[  467.273817] print_MG_CMD_CNT: mg cmd submitted: 345 (per sec) total mg cmd: 22401 total completed mg cmd: 21792
+[  467.273818] print_GC_LOG_MEM: mem: 4 MB gc log cnt (buffer/inflight): 156094 ( 190 / 155904 ) merge ratio: 0 / 5735440 0 percent total: 5735440 discard: 594 submit: 5734656 completed: 5578752
+[  467.442261] section utilization of regular region: 4294950726 / 12163 352981 % (4294962888) (data free: 4425 node free: 12146)
+[  468.278113] print_GC_LATENCY: latency: 5750 (rd: 2479 wrt: 3309) us.  SW_lat: 299 us. 
+[  468.278118] print_GC_LATENCY: breakdown us. rd op: 1817 wrt op: 2662 read xfer: 661 write xfer: 646
+[  468.278119] print_MG_CMD_CNT: mg cmd submitted: 252 (per sec) total mg cmd: 22653 total completed mg cmd: 22410
+[  468.278121] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 62244 ( 36 / 62208 ) merge ratio: 0 / 5799799 0 percent total: 5799799 discard: 595 submit: 5799168 completed: 5736960
+[  469.282123] print_GC_LATENCY: latency: 5764 (rd: 2484 wrt: 3318) us.  SW_lat: 299 us. 
+[  469.282128] print_GC_LATENCY: breakdown us. rd op: 1821 wrt op: 2669 read xfer: 663 write xfer: 648
+[  469.282130] print_MG_CMD_CNT: mg cmd submitted: 341 (per sec) total mg cmd: 22994 total completed mg cmd: 22410
+[  469.282132] print_GC_LOG_MEM: mem: 3 MB gc log cnt (buffer/inflight): 149596 ( 92 / 149504 ) merge ratio: 0 / 5887151 0 percent total: 5887151 discard: 595 submit: 5886464 completed: 5736960
+[  470.818796] print_GC_LATENCY: latency: 5764 (rd: 2484 wrt: 3319) us.  SW_lat: 300 us. 
+[  470.818801] print_GC_LATENCY: breakdown us. rd op: 1820 wrt op: 2670 read xfer: 663 write xfer: 648
+[  470.818802] print_MG_CMD_CNT: mg cmd submitted: 168 (per sec) total mg cmd: 23162 total completed mg cmd: 23010
+[  470.818804] print_GC_LOG_MEM: mem: 1 MB gc log cnt (buffer/inflight): 38996 ( 84 / 38912 ) merge ratio: 0 / 5930154 0 percent total: 5930154 discard: 598 submit: 5929472 completed: 5890560
+[  471.822558] print_GC_LATENCY: latency: 5776 (rd: 2488 wrt: 3326) us.  SW_lat: 300 us. 
+[  471.822563] print_GC_LATENCY: breakdown us. rd op: 1823 wrt op: 2676 read xfer: 664 write xfer: 649
+[  471.822565] print_MG_CMD_CNT: mg cmd submitted: 322 (per sec) total mg cmd: 23484 total completed mg cmd: 23162

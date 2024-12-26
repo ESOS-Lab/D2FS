@@ -1,0 +1,3 @@
+[  152.662993] print_WAF: WAF: 100 percent gc: 0 KB write_req: 8 KB total: 8 total WAF: 100 percent
+[  152.662994] print_WAF: [KB] total_write_main_blks_host: 0 n_discard_blk: 0 W-D: 0
+[  153.255978] STARTTTTTT

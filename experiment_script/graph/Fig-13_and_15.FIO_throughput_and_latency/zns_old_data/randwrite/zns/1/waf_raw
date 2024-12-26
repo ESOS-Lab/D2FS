@@ -1,0 +1,1748 @@
+[  147.213077] STARTTTTTT
+[  151.880689] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 185604 KB total: 185604 total WAF: 100
+[  151.880695] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  152.940974] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 888704 KB total: 1074308 total WAF: 100
+[  152.940980] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  154.106628] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1098404 KB total: 2172712 total WAF: 100
+[  154.106634] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  155.571702] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1315068 KB total: 3487780 total WAF: 100
+[  155.571708] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  159.167493] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3378120 KB total: 6865900 total WAF: 100
+[  159.167499] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  160.630255] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1338740 KB total: 8204640 total WAF: 100
+[  160.630261] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  166.113926] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5302788 KB total: 13507428 total WAF: 100
+[  166.113932] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  167.318656] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1070824 KB total: 14578252 total WAF: 100
+[  167.318661] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  172.251847] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4830440 KB total: 19408692 total WAF: 100
+[  172.251853] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  173.975788] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1536732 KB total: 20945424 total WAF: 100
+[  173.975793] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  175.323118] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1256928 KB total: 22202352 total WAF: 100
+[  175.323123] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  176.647866] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1244840 KB total: 23447192 total WAF: 100
+[  176.647872] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  177.930956] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1224752 KB total: 24671944 total WAF: 100
+[  177.930961] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  180.051008] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 2051832 KB total: 26723776 total WAF: 100
+[  180.051014] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  181.327251] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1202880 KB total: 27926656 total WAF: 100
+[  181.327256] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  182.568299] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1193524 KB total: 29120180 total WAF: 100
+[  182.568305] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  187.159265] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4432348 KB total: 33552528 total WAF: 100
+[  187.159272] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  188.500911] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1212604 KB total: 34765132 total WAF: 100
+[  188.500916] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  193.451967] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4858700 KB total: 39623832 total WAF: 100
+[  193.451973] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  195.196617] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1499208 KB total: 41123040 total WAF: 100
+[  195.196623] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  196.675118] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1315896 KB total: 42438936 total WAF: 100
+[  196.675124] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  197.883600] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1278152 KB total: 43717088 total WAF: 100
+[  197.883606] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  201.261419] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 2859492 KB total: 46576580 total WAF: 100
+[  201.261424] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  202.702814] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1263188 KB total: 47839768 total WAF: 100
+[  202.702820] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  204.107183] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1254076 KB total: 49093844 total WAF: 100
+[  204.107189] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  208.870186] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4291780 KB total: 53385624 total WAF: 100
+[  208.870192] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  210.305609] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1224944 KB total: 54610568 total WAF: 100
+[  210.305615] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  215.655290] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4840476 KB total: 59451044 total WAF: 100
+[  215.655296] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  217.466876] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1536596 KB total: 60987640 total WAF: 100
+[  217.466882] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  218.918158] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1273644 KB total: 62261284 total WAF: 100
+[  218.918164] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  220.318823] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1236248 KB total: 63497532 total WAF: 100
+[  220.318828] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  223.903097] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3203344 KB total: 66700876 total WAF: 100
+[  223.903103] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  225.265439] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1177904 KB total: 67878780 total WAF: 100
+[  225.265445] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  226.593072] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1168708 KB total: 69047488 total WAF: 100
+[  226.593077] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  231.306030] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4276912 KB total: 73324400 total WAF: 100
+[  231.306037] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  237.418860] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5436020 KB total: 78760420 total WAF: 100
+[  237.418866] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  239.743604] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1974136 KB total: 80734556 total WAF: 100
+[  239.743610] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  241.196625] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1264268 KB total: 81998824 total WAF: 100
+[  241.196631] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  242.582664] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1218532 KB total: 83217356 total WAF: 100
+[  242.582670] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  246.068414] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3108776 KB total: 86326132 total WAF: 100
+[  246.068420] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  247.439249] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1186860 KB total: 87512992 total WAF: 100
+[  247.439256] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  253.382800] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5308348 KB total: 92821340 total WAF: 100
+[  253.382806] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  254.830666] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1227144 KB total: 94048484 total WAF: 100
+[  254.830672] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  256.218194] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1223284 KB total: 95271768 total WAF: 100
+[  256.218199] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  257.599807] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1203820 KB total: 96475588 total WAF: 100
+[  257.599813] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  261.362754] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3326276 KB total: 99801864 total WAF: 100
+[  261.362760] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  262.696196] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1165324 KB total: 100967188 total WAF: 100
+[  262.696201] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  268.403623] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5361220 KB total: 106328408 total WAF: 100
+[  268.403630] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  274.298841] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5014996 KB total: 111343404 total WAF: 100
+[  274.298847] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  275.889956] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1365300 KB total: 112708704 total WAF: 100
+[  275.889962] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  281.218521] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4739900 KB total: 117448604 total WAF: 100
+[  281.218527] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  282.813778] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1376744 KB total: 118825348 total WAF: 100
+[  282.813784] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  284.362950] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1358044 KB total: 120183392 total WAF: 100
+[  284.362956] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  285.865088] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1312100 KB total: 121495492 total WAF: 100
+[  285.865095] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  289.237550] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 2939588 KB total: 124435080 total WAF: 100
+[  289.237556] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  290.665210] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1236684 KB total: 125671764 total WAF: 100
+[  290.665215] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  291.782442] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1227372 KB total: 126899136 total WAF: 100
+[  291.782448] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  296.605337] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3998468 KB total: 130897604 total WAF: 100
+[  296.605343] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  298.035403] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1248772 KB total: 132146376 total WAF: 100
+[  298.035409] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  299.478041] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1257780 KB total: 133404156 total WAF: 100
+[  299.478047] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  304.079123] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4019344 KB total: 137423500 total WAF: 100
+[  304.079129] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  310.297144] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5485436 KB total: 142908936 total WAF: 100
+[  310.297149] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  312.604668] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 2011628 KB total: 144920564 total WAF: 100
+[  312.604674] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  314.092503] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1289380 KB total: 146209944 total WAF: 100
+[  314.092508] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  315.513939] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1243604 KB total: 147453548 total WAF: 100
+[  315.513945] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  318.977872] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3059360 KB total: 150512908 total WAF: 100
+[  318.977878] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  320.336602] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1199372 KB total: 151712280 total WAF: 100
+[  320.336606] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  326.336331] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5326388 KB total: 157038668 total WAF: 100
+[  326.336338] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  327.724939] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1231396 KB total: 158270064 total WAF: 100
+[  327.724945] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  329.131654] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1231656 KB total: 159501720 total WAF: 100
+[  329.131661] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  330.519251] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1203820 KB total: 160705540 total WAF: 100
+[  330.519257] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  334.337978] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3316384 KB total: 164021924 total WAF: 100
+[  334.337985] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  335.671964] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1161176 KB total: 165183100 total WAF: 100
+[  335.671969] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  341.792745] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5364336 KB total: 170547436 total WAF: 100
+[  341.792751] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  343.188480] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1219524 KB total: 171766960 total WAF: 100
+[  343.188486] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  344.583673] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1197752 KB total: 172964712 total WAF: 100
+[  344.583679] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  345.941856] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1178356 KB total: 174143068 total WAF: 100
+[  345.941862] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  349.853899] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3412280 KB total: 177555348 total WAF: 100
+[  349.853905] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  351.150995] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1140136 KB total: 178695484 total WAF: 100
+[  351.151001] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  357.286639] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5352372 KB total: 184047856 total WAF: 100
+[  357.286645] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  358.680745] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1221136 KB total: 185268992 total WAF: 100
+[  358.680750] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  360.087633] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1189504 KB total: 186458496 total WAF: 100
+[  360.087640] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  361.450600] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1170052 KB total: 187628548 total WAF: 100
+[  361.450606] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  365.402013] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3430136 KB total: 191058684 total WAF: 100
+[  365.402019] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  366.681995] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1131764 KB total: 192190448 total WAF: 100
+[  366.682000] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  372.806601] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5344048 KB total: 197534496 total WAF: 100
+[  372.806608] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  374.191146] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1234232 KB total: 198768728 total WAF: 100
+[  374.191152] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  375.557897] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1189364 KB total: 199958092 total WAF: 100
+[  375.557903] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  376.915705] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1170044 KB total: 201128136 total WAF: 100
+[  376.915710] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  380.888620] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3421776 KB total: 204549912 total WAF: 100
+[  380.888626] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  382.197724] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1131848 KB total: 205681760 total WAF: 100
+[  382.197729] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  388.304040] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5344192 KB total: 211025952 total WAF: 100
+[  388.304046] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  389.672604] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1225064 KB total: 212251016 total WAF: 100
+[  389.672611] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  391.023035] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1189448 KB total: 213440464 total WAF: 100
+[  391.023041] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  392.374595] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1170120 KB total: 214610584 total WAF: 100
+[  392.374601] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  393.701860] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1142064 KB total: 215752648 total WAF: 100
+[  393.701866] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  396.439603] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 2391156 KB total: 218143804 total WAF: 100
+[  396.439609] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  397.706995] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1118756 KB total: 219262560 total WAF: 100
+[  397.707001] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  399.009164] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1118304 KB total: 220380864 total WAF: 100
+[  399.009171] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  404.107069] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4439428 KB total: 224820292 total WAF: 100
+[  404.107076] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  410.227423] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 5383592 KB total: 230203884 total WAF: 100
+[  410.227429] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  412.514012] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 2044100 KB total: 232247984 total WAF: 100
+[  412.514019] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  413.922390] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1230240 KB total: 233478224 total WAF: 100
+[  413.922396] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  415.293975] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1193312 KB total: 234671536 total WAF: 100
+[  415.293981] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  419.079290] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 3226880 KB total: 237898416 total WAF: 100
+[  419.079296] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  420.389623] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1165648 KB total: 239064064 total WAF: 100
+[  420.389628] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  425.913538] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4796252 KB total: 243860316 total WAF: 100
+[  425.913545] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  427.048612] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1706232 KB total: 245566548 total WAF: 100
+[  427.048618] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  433.190048] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 4682524 KB total: 250249072 total WAF: 100
+[  433.190054] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  434.641312] print_WAF: FSWAF: 100 percent gc: 0 KB write_req: 1316708 KB total: 251565780 total WAF: 100
+[  434.641318] print_WAF: total transfer volumes by FSGC: write: 0 KB read: 0 KB
+[  435.750268] print_WAF: FSWAF: 100 percent gc: 8316 KB write_req: 1144572 KB total: 252710352 total WAF: 100
+[  435.750272] print_WAF: total transfer volumes by FSGC: write: 8316 KB read: 8240 KB
+[  436.825959] print_WAF: FSWAF: 126 percent gc: 164540 KB write_req: 623240 KB total: 253333592 total WAF: 100
+[  436.825964] print_WAF: total transfer volumes by FSGC: write: 172856 KB read: 171808 KB
+[  437.847690] print_WAF: FSWAF: 127 percent gc: 245772 KB write_req: 904292 KB total: 254237884 total WAF: 100
+[  437.847696] print_WAF: total transfer volumes by FSGC: write: 418628 KB read: 407484 KB
+[  438.871440] print_WAF: FSWAF: 126 percent gc: 239316 KB write_req: 900332 KB total: 255138216 total WAF: 100
+[  438.871446] print_WAF: total transfer volumes by FSGC: write: 657944 KB read: 644248 KB
+[  439.906576] print_WAF: FSWAF: 126 percent gc: 239708 KB write_req: 896460 KB total: 256034676 total WAF: 100
+[  439.906582] print_WAF: total transfer volumes by FSGC: write: 897652 KB read: 873336 KB
+[  440.933727] print_WAF: FSWAF: 126 percent gc: 239396 KB write_req: 896880 KB total: 256931556 total WAF: 100
+[  440.933734] print_WAF: total transfer volumes by FSGC: write: 1137048 KB read: 1102984 KB
+[  441.957326] print_WAF: FSWAF: 128 percent gc: 248160 KB write_req: 871512 KB total: 257803068 total WAF: 100
+[  441.957332] print_WAF: total transfer volumes by FSGC: write: 1385208 KB read: 1342396 KB
+[  444.969704] print_WAF: FSWAF: 126 percent gc: 213084 KB write_req: 797752 KB total: 258600820 total WAF: 100
+[  444.969710] print_WAF: total transfer volumes by FSGC: write: 1598292 KB read: 1546136 KB
+[  446.163835] print_WAF: FSWAF: 126 percent gc: 211372 KB write_req: 799092 KB total: 259399912 total WAF: 100
+[  446.163840] print_WAF: total transfer volumes by FSGC: write: 1809664 KB read: 1748752 KB
+[  447.341414] print_WAF: FSWAF: 127 percent gc: 204888 KB write_req: 753492 KB total: 260153404 total WAF: 100
+[  447.341419] print_WAF: total transfer volumes by FSGC: write: 2014552 KB read: 1952380 KB
+[  448.346164] print_WAF: FSWAF: 127 percent gc: 240656 KB write_req: 863008 KB total: 261016412 total WAF: 100
+[  448.346170] print_WAF: total transfer volumes by FSGC: write: 2255208 KB read: 2191332 KB
+[  449.393079] print_WAF: FSWAF: 126 percent gc: 250432 KB write_req: 940300 KB total: 261956712 total WAF: 100
+[  449.393084] print_WAF: total transfer volumes by FSGC: write: 2505640 KB read: 2421788 KB
+[  450.413921] print_WAF: FSWAF: 127 percent gc: 249564 KB write_req: 903460 KB total: 262860172 total WAF: 101
+[  450.413926] print_WAF: total transfer volumes by FSGC: write: 2755204 KB read: 2652592 KB
+[  451.429078] print_WAF: FSWAF: 126 percent gc: 239892 KB write_req: 898216 KB total: 263758388 total WAF: 101
+[  451.429084] print_WAF: total transfer volumes by FSGC: write: 2995096 KB read: 2883744 KB
+[  452.455239] print_WAF: FSWAF: 126 percent gc: 242072 KB write_req: 902288 KB total: 264660676 total WAF: 101
+[  452.455245] print_WAF: total transfer volumes by FSGC: write: 3237168 KB read: 3124544 KB
+[  453.498840] print_WAF: FSWAF: 128 percent gc: 257760 KB write_req: 917168 KB total: 265577844 total WAF: 101
+[  453.498846] print_WAF: total transfer volumes by FSGC: write: 3494928 KB read: 3364568 KB
+[  454.531914] print_WAF: FSWAF: 126 percent gc: 242100 KB write_req: 924392 KB total: 266502236 total WAF: 101
+[  454.531919] print_WAF: total transfer volumes by FSGC: write: 3737028 KB read: 3597304 KB
+[  457.597124] print_WAF: FSWAF: 129 percent gc: 133896 KB write_req: 460184 KB total: 266962420 total WAF: 101
+[  457.597129] print_WAF: total transfer volumes by FSGC: write: 3870924 KB read: 3722436 KB
+[  458.640599] print_WAF: FSWAF: 126 percent gc: 188444 KB write_req: 704600 KB total: 267667020 total WAF: 101
+[  458.640604] print_WAF: total transfer volumes by FSGC: write: 4059368 KB read: 3901092 KB
+[  459.719118] print_WAF: FSWAF: 128 percent gc: 205408 KB write_req: 723792 KB total: 268390812 total WAF: 101
+[  459.719124] print_WAF: total transfer volumes by FSGC: write: 4264776 KB read: 4088316 KB
+[  460.727952] print_WAF: FSWAF: 126 percent gc: 243068 KB write_req: 900732 KB total: 269291544 total WAF: 101
+[  460.727957] print_WAF: total transfer volumes by FSGC: write: 4507844 KB read: 4320596 KB
+[  461.730484] print_WAF: FSWAF: 127 percent gc: 243884 KB write_req: 902040 KB total: 270193584 total WAF: 101
+[  461.730490] print_WAF: total transfer volumes by FSGC: write: 4751728 KB read: 4553500 KB
+[  462.773068] print_WAF: FSWAF: 128 percent gc: 261696 KB write_req: 919356 KB total: 271112940 total WAF: 101
+[  462.773074] print_WAF: total transfer volumes by FSGC: write: 5013424 KB read: 4795716 KB
+[  463.789988] print_WAF: FSWAF: 127 percent gc: 244504 KB write_req: 903516 KB total: 272016456 total WAF: 101
+[  463.789996] print_WAF: total transfer volumes by FSGC: write: 5257928 KB read: 5029608 KB
+[  464.825821] print_WAF: FSWAF: 127 percent gc: 253276 KB write_req: 921220 KB total: 272937676 total WAF: 102
+[  464.825827] print_WAF: total transfer volumes by FSGC: write: 5511204 KB read: 5264704 KB
+[  465.897497] print_WAF: FSWAF: 127 percent gc: 262800 KB write_req: 940044 KB total: 273877720 total WAF: 102
+[  465.897503] print_WAF: total transfer volumes by FSGC: write: 5774004 KB read: 5517664 KB
+[  466.941173] print_WAF: FSWAF: 126 percent gc: 253944 KB write_req: 941220 KB total: 274818940 total WAF: 102
+[  466.941181] print_WAF: total transfer volumes by FSGC: write: 6027948 KB read: 5762048 KB
+[  469.808059] print_WAF: FSWAF: 129 percent gc: 99780 KB write_req: 340176 KB total: 275159116 total WAF: 102
+[  469.808064] print_WAF: total transfer volumes by FSGC: write: 6127728 KB read: 5852744 KB
+[  470.876779] print_WAF: FSWAF: 127 percent gc: 200248 KB write_req: 719724 KB total: 275878840 total WAF: 102
+[  470.876784] print_WAF: total transfer volumes by FSGC: write: 6327976 KB read: 6042764 KB
+[  471.964003] print_WAF: FSWAF: 127 percent gc: 200844 KB write_req: 719472 KB total: 276598312 total WAF: 102
+[  471.964010] print_WAF: total transfer volumes by FSGC: write: 6528820 KB read: 6233380 KB
+[  473.001044] print_WAF: FSWAF: 127 percent gc: 191576 KB write_req: 709360 KB total: 277307672 total WAF: 102
+[  473.001049] print_WAF: total transfer volumes by FSGC: write: 6720396 KB read: 6414468 KB
+[  474.062260] print_WAF: FSWAF: 128 percent gc: 273384 KB write_req: 965124 KB total: 278272796 total WAF: 102
+[  474.062266] print_WAF: total transfer volumes by FSGC: write: 6993780 KB read: 6659336 KB
+[  475.083954] print_WAF: FSWAF: 127 percent gc: 246036 KB write_req: 900536 KB total: 279173332 total WAF: 102
+[  475.083960] print_WAF: total transfer volumes by FSGC: write: 7239816 KB read: 6896016 KB
+[  476.140351] print_WAF: FSWAF: 128 percent gc: 264432 KB write_req: 939172 KB total: 280112504 total WAF: 102
+[  476.140357] print_WAF: total transfer volumes by FSGC: write: 7504248 KB read: 7150608 KB
+[  477.197079] print_WAF: FSWAF: 128 percent gc: 264956 KB write_req: 931804 KB total: 281044308 total WAF: 102
+[  477.197084] print_WAF: total transfer volumes by FSGC: write: 7769204 KB read: 7406076 KB
+[  478.211252] print_WAF: FSWAF: 127 percent gc: 247660 KB write_req: 904048 KB total: 281948356 total WAF: 102
+[  478.211258] print_WAF: total transfer volumes by FSGC: write: 8016864 KB read: 7643744 KB
+[  479.228081] print_WAF: FSWAF: 128 percent gc: 254428 KB write_req: 907444 KB total: 282855800 total WAF: 102
+[  479.228087] print_WAF: total transfer volumes by FSGC: write: 8271292 KB read: 7880556 KB
+[  481.817369] print_WAF: FSWAF: 127 percent gc: 91744 KB write_req: 333632 KB total: 283189432 total WAF: 102
+[  481.817375] print_WAF: total transfer volumes by FSGC: write: 8363036 KB read: 7971908 KB
+[  482.821621] print_WAF: FSWAF: 128 percent gc: 191412 KB write_req: 672088 KB total: 283861520 total WAF: 103
+[  482.821627] print_WAF: total transfer volumes by FSGC: write: 8554448 KB read: 8152612 KB
+[  483.843243] print_WAF: FSWAF: 127 percent gc: 193536 KB write_req: 709784 KB total: 284571304 total WAF: 103
+[  483.843248] print_WAF: total transfer volumes by FSGC: write: 8747984 KB read: 8335528 KB
+[  484.863539] print_WAF: FSWAF: 128 percent gc: 193684 KB write_req: 680200 KB total: 285251504 total WAF: 103
+[  484.863545] print_WAF: total transfer volumes by FSGC: write: 8941668 KB read: 8517844 KB
+[  485.899942] print_WAF: FSWAF: 128 percent gc: 202748 KB write_req: 718576 KB total: 285970080 total WAF: 103
+[  485.899948] print_WAF: total transfer volumes by FSGC: write: 9144416 KB read: 8710292 KB
+[  486.948460] print_WAF: FSWAF: 128 percent gc: 194184 KB write_req: 693292 KB total: 286663372 total WAF: 103
+[  486.948465] print_WAF: total transfer volumes by FSGC: write: 9338600 KB read: 8901868 KB
+[  488.009156] print_WAF: FSWAF: 128 percent gc: 267500 KB write_req: 942944 KB total: 287606316 total WAF: 103
+[  488.009162] print_WAF: total transfer volumes by FSGC: write: 9606100 KB read: 9157424 KB
+[  489.049114] print_WAF: FSWAF: 128 percent gc: 266616 KB write_req: 951080 KB total: 288557396 total WAF: 103
+[  489.049120] print_WAF: total transfer volumes by FSGC: write: 9872716 KB read: 9396248 KB
+[  490.058755] print_WAF: FSWAF: 127 percent gc: 250160 KB write_req: 907508 KB total: 289464904 total WAF: 103
+[  490.058760] print_WAF: total transfer volumes by FSGC: write: 10122876 KB read: 9635984 KB
+[  491.077507] print_WAF: FSWAF: 128 percent gc: 268180 KB write_req: 927832 KB total: 290392736 total WAF: 103
+[  491.077513] print_WAF: total transfer volumes by FSGC: write: 10391056 KB read: 9875324 KB
+[  492.127427] print_WAF: FSWAF: 128 percent gc: 260312 KB write_req: 918916 KB total: 291311652 total WAF: 103
+[  492.127433] print_WAF: total transfer volumes by FSGC: write: 10651368 KB read: 10133424 KB
+[  493.153544] print_WAF: FSWAF: 128 percent gc: 260232 KB write_req: 916972 KB total: 292228624 total WAF: 103
+[  493.153549] print_WAF: total transfer volumes by FSGC: write: 10911600 KB read: 10374284 KB
+[  496.131811] print_WAF: FSWAF: 128 percent gc: 167768 KB write_req: 585612 KB total: 292814236 total WAF: 103
+[  496.131816] print_WAF: total transfer volumes by FSGC: write: 11079368 KB read: 10541508 KB
+[  497.140666] print_WAF: FSWAF: 128 percent gc: 195152 KB write_req: 681408 KB total: 293495644 total WAF: 103
+[  497.140671] print_WAF: total transfer volumes by FSGC: write: 11274520 KB read: 10726592 KB
+[  498.160226] print_WAF: FSWAF: 128 percent gc: 204332 KB write_req: 723068 KB total: 294218712 total WAF: 103
+[  498.160231] print_WAF: total transfer volumes by FSGC: write: 11478852 KB read: 10892716 KB
+[  499.185564] print_WAF: FSWAF: 128 percent gc: 196140 KB write_req: 682052 KB total: 294900764 total WAF: 103
+[  499.185570] print_WAF: total transfer volumes by FSGC: write: 11674992 KB read: 11077744 KB
+[  500.195722] print_WAF: FSWAF: 127 percent gc: 251184 KB write_req: 902468 KB total: 295803232 total WAF: 104
+[  500.195728] print_WAF: total transfer volumes by FSGC: write: 11926176 KB read: 11318216 KB
+[  501.255536] print_WAF: FSWAF: 129 percent gc: 270420 KB write_req: 928000 KB total: 296731232 total WAF: 104
+[  501.255541] print_WAF: total transfer volumes by FSGC: write: 12196596 KB read: 11568164 KB
+[  502.265991] print_WAF: FSWAF: 127 percent gc: 252016 KB write_req: 906876 KB total: 297638108 total WAF: 104
+[  502.265997] print_WAF: total transfer volumes by FSGC: write: 12448612 KB read: 11799452 KB
+[  503.284903] print_WAF: FSWAF: 128 percent gc: 253812 KB write_req: 878448 KB total: 298516556 total WAF: 104
+[  503.284908] print_WAF: total transfer volumes by FSGC: write: 12702424 KB read: 12051008 KB
+[  504.343499] print_WAF: FSWAF: 128 percent gc: 263708 KB write_req: 920796 KB total: 299437352 total WAF: 104
+[  504.343505] print_WAF: total transfer volumes by FSGC: write: 12966132 KB read: 12312952 KB
+[  505.351673] print_WAF: FSWAF: 128 percent gc: 262260 KB write_req: 916236 KB total: 300353588 total WAF: 104
+[  505.351679] print_WAF: total transfer volumes by FSGC: write: 13228392 KB read: 12547012 KB
+[  507.930701] print_WAF: FSWAF: 127 percent gc: 103460 KB write_req: 379724 KB total: 300733312 total WAF: 104
+[  507.930707] print_WAF: total transfer volumes by FSGC: write: 13331852 KB read: 12649716 KB
+[  508.971825] print_WAF: FSWAF: 129 percent gc: 272920 KB write_req: 928996 KB total: 301662308 total WAF: 104
+[  508.971831] print_WAF: total transfer volumes by FSGC: write: 13604772 KB read: 12910764 KB
+[  509.995009] print_WAF: FSWAF: 128 percent gc: 180004 KB write_req: 629420 KB total: 302291728 total WAF: 104
+[  509.995015] print_WAF: total transfer volumes by FSGC: write: 13784776 KB read: 13079024 KB
+[  511.015331] print_WAF: FSWAF: 129 percent gc: 199200 KB write_req: 682320 KB total: 302974048 total WAF: 104
+[  511.025936] print_WAF: total transfer volumes by FSGC: write: 13983976 KB read: 13267348 KB
+[  512.048958] print_WAF: FSWAF: 128 percent gc: 265248 KB write_req: 921804 KB total: 303895852 total WAF: 104
+[  512.048963] print_WAF: total transfer volumes by FSGC: write: 14249224 KB read: 13521824 KB
+[  513.088931] print_WAF: FSWAF: 128 percent gc: 264596 KB write_req: 923136 KB total: 304818988 total WAF: 104
+[  513.088937] print_WAF: total transfer volumes by FSGC: write: 14513820 KB read: 13776724 KB
+[  514.099005] print_WAF: FSWAF: 129 percent gc: 256284 KB write_req: 878072 KB total: 305697060 total WAF: 104
+[  514.099010] print_WAF: total transfer volumes by FSGC: write: 14770104 KB read: 14012888 KB
+[  515.128495] print_WAF: FSWAF: 129 percent gc: 257596 KB write_req: 880356 KB total: 306577416 total WAF: 104
+[  515.128501] print_WAF: total transfer volumes by FSGC: write: 15027700 KB read: 14268536 KB
+[  516.150708] print_WAF: FSWAF: 128 percent gc: 264588 KB write_req: 921856 KB total: 307499272 total WAF: 104
+[  516.150714] print_WAF: total transfer volumes by FSGC: write: 15292288 KB read: 14505036 KB
+[  517.216433] print_WAF: FSWAF: 129 percent gc: 282368 KB write_req: 972664 KB total: 308471936 total WAF: 105
+[  517.216439] print_WAF: total transfer volumes by FSGC: write: 15574656 KB read: 14750940 KB
+[  518.248591] print_WAF: FSWAF: 128 percent gc: 257656 KB write_req: 913924 KB total: 309385860 total WAF: 105
+[  518.248596] print_WAF: total transfer volumes by FSGC: write: 15832312 KB read: 14998156 KB
+[  521.364367] print_WAF: FSWAF: 130 percent gc: 124316 KB write_req: 409080 KB total: 309794940 total WAF: 105
+[  521.364373] print_WAF: total transfer volumes by FSGC: write: 15956628 KB read: 15112860 KB
+[  522.402604] print_WAF: FSWAF: 129 percent gc: 202268 KB write_req: 693972 KB total: 310488912 total WAF: 105
+[  522.402610] print_WAF: total transfer volumes by FSGC: write: 16158896 KB read: 15312360 KB
+[  523.427090] print_WAF: FSWAF: 129 percent gc: 199788 KB write_req: 682860 KB total: 311171772 total WAF: 105
+[  523.427099] print_WAF: total transfer volumes by FSGC: write: 16358684 KB read: 15502456 KB
+[  524.436389] print_WAF: FSWAF: 129 percent gc: 259044 KB write_req: 887372 KB total: 312059144 total WAF: 105
+[  524.436395] print_WAF: total transfer volumes by FSGC: write: 16617728 KB read: 15758544 KB
+[  525.452751] print_WAF: FSWAF: 129 percent gc: 279044 KB write_req: 938212 KB total: 312997356 total WAF: 105
+[  525.452757] print_WAF: total transfer volumes by FSGC: write: 16896772 KB read: 15997344 KB
+[  526.488441] print_WAF: FSWAF: 129 percent gc: 259772 KB write_req: 883792 KB total: 313881148 total WAF: 105
+[  526.488447] print_WAF: total transfer volumes by FSGC: write: 17156544 KB read: 16254936 KB
+[  527.542157] print_WAF: FSWAF: 129 percent gc: 269860 KB write_req: 928500 KB total: 314809648 total WAF: 105
+[  527.542162] print_WAF: total transfer volumes by FSGC: write: 17426404 KB read: 16513784 KB
+[  528.613432] print_WAF: FSWAF: 129 percent gc: 279280 KB write_req: 937696 KB total: 315747344 total WAF: 105
+[  528.613438] print_WAF: total transfer volumes by FSGC: write: 17705684 KB read: 16773900 KB
+[  529.662794] print_WAF: FSWAF: 129 percent gc: 270704 KB write_req: 928364 KB total: 316675708 total WAF: 105
+[  529.662800] print_WAF: total transfer volumes by FSGC: write: 17976388 KB read: 17034676 KB
+[  530.717118] print_WAF: FSWAF: 130 percent gc: 279652 KB write_req: 931312 KB total: 317607020 total WAF: 105
+[  530.717124] print_WAF: total transfer volumes by FSGC: write: 18256040 KB read: 17294348 KB
+[  533.815063] print_WAF: FSWAF: 127 percent gc: 144524 KB write_req: 523076 KB total: 318130096 total WAF: 105
+[  533.815069] print_WAF: total transfer volumes by FSGC: write: 18400564 KB read: 17429056 KB
+[  534.854317] print_WAF: FSWAF: 129 percent gc: 212092 KB write_req: 730604 KB total: 318860700 total WAF: 105
+[  534.854322] print_WAF: total transfer volumes by FSGC: write: 18612656 KB read: 17631412 KB
+[  535.891658] print_WAF: FSWAF: 130 percent gc: 212432 KB write_req: 696196 KB total: 319556896 total WAF: 105
+[  535.891663] print_WAF: total transfer volumes by FSGC: write: 18825088 KB read: 17823940 KB
+[  536.917516] print_WAF: FSWAF: 129 percent gc: 202880 KB write_req: 685984 KB total: 320242880 total WAF: 105
+[  536.917521] print_WAF: total transfer volumes by FSGC: write: 19027968 KB read: 18016136 KB
+[  537.935870] print_WAF: FSWAF: 129 percent gc: 261948 KB write_req: 884144 KB total: 321127024 total WAF: 106
+[  537.935875] print_WAF: total transfer volumes by FSGC: write: 19289916 KB read: 18277160 KB
+[  538.979276] print_WAF: FSWAF: 129 percent gc: 270560 KB write_req: 925840 KB total: 322052864 total WAF: 106
+[  538.979282] print_WAF: total transfer volumes by FSGC: write: 19560476 KB read: 18537548 KB
+[  540.713096] print_WAF: FSWAF: 129 percent gc: 183728 KB write_req: 630920 KB total: 322683784 total WAF: 106
+[  540.713102] print_WAF: total transfer volumes by FSGC: write: 19744204 KB read: 18711332 KB
+[  541.750767] print_WAF: FSWAF: 130 percent gc: 194800 KB write_req: 642820 KB total: 323326604 total WAF: 106
+[  541.750772] print_WAF: total transfer volumes by FSGC: write: 19939004 KB read: 18903668 KB
+[  542.804927] print_WAF: FSWAF: 130 percent gc: 281692 KB write_req: 935384 KB total: 324261988 total WAF: 106
+[  542.804933] print_WAF: total transfer volumes by FSGC: write: 20220696 KB read: 19154448 KB
+[  543.821463] print_WAF: FSWAF: 129 percent gc: 263968 KB write_req: 885340 KB total: 325147328 total WAF: 106
+[  543.821469] print_WAF: total transfer volumes by FSGC: write: 20484664 KB read: 19406936 KB
+[  544.854588] print_WAF: FSWAF: 128 percent gc: 262776 KB write_req: 915424 KB total: 326062752 total WAF: 106
+[  544.854594] print_WAF: total transfer volumes by FSGC: write: 20747440 KB read: 19649348 KB
+[  545.871740] print_WAF: FSWAF: 130 percent gc: 272904 KB write_req: 895992 KB total: 326958744 total WAF: 106
+[  545.871745] print_WAF: total transfer volumes by FSGC: write: 21020344 KB read: 19910412 KB
+[  548.470577] print_WAF: FSWAF: 130 percent gc: 225280 KB write_req: 742428 KB total: 327701172 total WAF: 106
+[  548.470583] print_WAF: total transfer volumes by FSGC: write: 21245624 KB read: 20124680 KB
+[  549.491506] print_WAF: FSWAF: 128 percent gc: 177148 KB write_req: 626704 KB total: 328327876 total WAF: 106
+[  549.491512] print_WAF: total transfer volumes by FSGC: write: 21422772 KB read: 20299464 KB
+[  550.529524] print_WAF: FSWAF: 130 percent gc: 214832 KB write_req: 699076 KB total: 329026952 total WAF: 106
+[  550.529530] print_WAF: total transfer volumes by FSGC: write: 21637604 KB read: 20494204 KB
+[  551.562508] print_WAF: FSWAF: 129 percent gc: 206060 KB write_req: 690548 KB total: 329717500 total WAF: 106
+[  551.562513] print_WAF: total transfer volumes by FSGC: write: 21843664 KB read: 20689368 KB
+[  552.598953] print_WAF: FSWAF: 129 percent gc: 216156 KB write_req: 734628 KB total: 330452128 total WAF: 106
+[  552.598959] print_WAF: total transfer volumes by FSGC: write: 22059820 KB read: 20884924 KB
+[  553.625601] print_WAF: FSWAF: 129 percent gc: 206304 KB write_req: 690764 KB total: 331142892 total WAF: 106
+[  553.625608] print_WAF: total transfer volumes by FSGC: write: 22266124 KB read: 21079688 KB
+[  554.646246] print_WAF: FSWAF: 130 percent gc: 226900 KB write_req: 744520 KB total: 331887412 total WAF: 106
+[  554.646252] print_WAF: total transfer volumes by FSGC: write: 22493024 KB read: 21294136 KB
+[  555.678964] print_WAF: FSWAF: 130 percent gc: 275188 KB write_req: 895484 KB total: 332782896 total WAF: 106
+[  555.678970] print_WAF: total transfer volumes by FSGC: write: 22768212 KB read: 21558840 KB
+[  556.695297] print_WAF: FSWAF: 130 percent gc: 266552 KB write_req: 885720 KB total: 333668616 total WAF: 106
+[  556.695304] print_WAF: total transfer volumes by FSGC: write: 23034764 KB read: 21813408 KB
+[  557.711719] print_WAF: FSWAF: 128 percent gc: 266812 KB write_req: 924516 KB total: 334593132 total WAF: 106
+[  557.711725] print_WAF: total transfer volumes by FSGC: write: 23301576 KB read: 22059212 KB
+[  558.740667] print_WAF: FSWAF: 130 percent gc: 278092 KB write_req: 898412 KB total: 335491544 total WAF: 107
+[  558.740672] print_WAF: total transfer volumes by FSGC: write: 23579668 KB read: 22306576 KB
+[  559.769969] print_WAF: FSWAF: 131 percent gc: 267740 KB write_req: 857404 KB total: 336348948 total WAF: 107
+[  559.769975] print_WAF: total transfer volumes by FSGC: write: 23847408 KB read: 22563876 KB
+[  560.785623] print_WAF: FSWAF: 128 percent gc: 246456 KB write_req: 865380 KB total: 337214328 total WAF: 107
+[  560.785629] print_WAF: total transfer volumes by FSGC: write: 24093864 KB read: 22810048 KB
+[  563.211746] print_WAF: FSWAF: 135 percent gc: 59336 KB write_req: 165060 KB total: 337379388 total WAF: 107
+[  563.211752] print_WAF: total transfer volumes by FSGC: write: 24153200 KB read: 22869300 KB
+[  564.217715] print_WAF: FSWAF: 130 percent gc: 208852 KB write_req: 693052 KB total: 338072440 total WAF: 107
+[  564.217721] print_WAF: total transfer volumes by FSGC: write: 24362052 KB read: 23066248 KB
+[  565.263231] print_WAF: FSWAF: 129 percent gc: 217112 KB write_req: 733552 KB total: 338805992 total WAF: 107
+[  565.263236] print_WAF: total transfer volumes by FSGC: write: 24579164 KB read: 23253580 KB
+[  566.297090] print_WAF: FSWAF: 131 percent gc: 218632 KB write_req: 702076 KB total: 339508068 total WAF: 107
+[  566.297096] print_WAF: total transfer volumes by FSGC: write: 24797796 KB read: 23450728 KB
+[  567.320828] print_WAF: FSWAF: 130 percent gc: 270020 KB write_req: 896192 KB total: 340404260 total WAF: 107
+[  567.320834] print_WAF: total transfer volumes by FSGC: write: 25067816 KB read: 23708300 KB
+[  568.359674] print_WAF: FSWAF: 130 percent gc: 269560 KB write_req: 892044 KB total: 341296304 total WAF: 107
+[  568.359679] print_WAF: total transfer volumes by FSGC: write: 25337376 KB read: 23976304 KB
+[  569.408376] print_WAF: FSWAF: 130 percent gc: 270392 KB write_req: 892252 KB total: 342188556 total WAF: 107
+[  569.408387] print_WAF: total transfer volumes by FSGC: write: 25607768 KB read: 24234588 KB
+[  570.445891] print_WAF: FSWAF: 130 percent gc: 279664 KB write_req: 903960 KB total: 343092516 total WAF: 107
+[  570.445897] print_WAF: total transfer volumes by FSGC: write: 25887432 KB read: 24493028 KB
+[  571.451020] print_WAF: FSWAF: 130 percent gc: 270120 KB write_req: 890028 KB total: 343982544 total WAF: 107
+[  571.451025] print_WAF: total transfer volumes by FSGC: write: 26157552 KB read: 24742844 KB
+[  572.471135] print_WAF: FSWAF: 131 percent gc: 270716 KB write_req: 861584 KB total: 344844128 total WAF: 107
+[  572.471141] print_WAF: total transfer volumes by FSGC: write: 26428268 KB read: 25002932 KB
+[  575.328494] print_WAF: FSWAF: 129 percent gc: 162024 KB write_req: 544052 KB total: 345388180 total WAF: 107
+[  575.328499] print_WAF: total transfer volumes by FSGC: write: 26590292 KB read: 25163548 KB
+[  576.344024] print_WAF: FSWAF: 131 percent gc: 281544 KB write_req: 902344 KB total: 346290524 total WAF: 107
+[  576.344029] print_WAF: total transfer volumes by FSGC: write: 26871836 KB read: 25423740 KB
+[  577.358818] print_WAF: FSWAF: 130 percent gc: 151444 KB write_req: 494948 KB total: 346785472 total WAF: 107
+[  577.358824] print_WAF: total transfer volumes by FSGC: write: 27023280 KB read: 25553704 KB
+[  578.370593] print_WAF: FSWAF: 130 percent gc: 202188 KB write_req: 653024 KB total: 347438496 total WAF: 107
+[  578.370599] print_WAF: total transfer volumes by FSGC: write: 27225468 KB read: 25753964 KB
+[  579.391663] print_WAF: FSWAF: 130 percent gc: 210980 KB write_req: 691584 KB total: 348130080 total WAF: 107
+[  579.391669] print_WAF: total transfer volumes by FSGC: write: 27436448 KB read: 25944220 KB
+[  580.443211] print_WAF: FSWAF: 130 percent gc: 273784 KB write_req: 897664 KB total: 349027744 total WAF: 107
+[  580.443216] print_WAF: total transfer volumes by FSGC: write: 27710232 KB read: 26215832 KB
+[  581.474902] print_WAF: FSWAF: 131 percent gc: 283252 KB write_req: 904960 KB total: 349932704 total WAF: 107
+[  581.474908] print_WAF: total transfer volumes by FSGC: write: 27993484 KB read: 26467384 KB
+[  582.519533] print_WAF: FSWAF: 131 percent gc: 283724 KB write_req: 908636 KB total: 350841340 total WAF: 108
+[  582.519538] print_WAF: total transfer volumes by FSGC: write: 28277208 KB read: 26729124 KB
+[  583.564549] print_WAF: FSWAF: 130 percent gc: 284788 KB write_req: 939252 KB total: 351780592 total WAF: 108
+[  583.564554] print_WAF: total transfer volumes by FSGC: write: 28561996 KB read: 26992176 KB
+[  584.630809] print_WAF: FSWAF: 131 percent gc: 286592 KB write_req: 920260 KB total: 352700852 total WAF: 108
+[  584.630815] print_WAF: total transfer volumes by FSGC: write: 28848588 KB read: 27276312 KB
+[  585.655639] print_WAF: FSWAF: 131 percent gc: 286708 KB write_req: 900000 KB total: 353600852 total WAF: 108
+[  585.655645] print_WAF: total transfer volumes by FSGC: write: 29135296 KB read: 27541596 KB
+[  586.693570] print_WAF: FSWAF: 130 percent gc: 285032 KB write_req: 936644 KB total: 354537496 total WAF: 108
+[  586.693575] print_WAF: total transfer volumes by FSGC: write: 29420328 KB read: 27816396 KB
+[  590.340622] print_WAF: FSWAF: 132 percent gc: 267072 KB write_req: 829440 KB total: 355366936 total WAF: 108
+[  590.340628] print_WAF: total transfer volumes by FSGC: write: 29687400 KB read: 28072900 KB
+[  591.358287] print_WAF: FSWAF: 131 percent gc: 204756 KB write_req: 652332 KB total: 356019268 total WAF: 108
+[  591.358292] print_WAF: total transfer volumes by FSGC: write: 29892156 KB read: 28256332 KB
+[  592.363418] print_WAF: FSWAF: 131 percent gc: 205164 KB write_req: 656488 KB total: 356675756 total WAF: 108
+[  592.363423] print_WAF: total transfer volumes by FSGC: write: 30097320 KB read: 28459648 KB
+[  593.393190] print_WAF: FSWAF: 130 percent gc: 275156 KB write_req: 897656 KB total: 357573412 total WAF: 108
+[  593.393195] print_WAF: total transfer volumes by FSGC: write: 30372476 KB read: 28714004 KB
+[  594.402702] print_WAF: FSWAF: 131 percent gc: 267132 KB write_req: 857588 KB total: 358431000 total WAF: 108
+[  594.402707] print_WAF: total transfer volumes by FSGC: write: 30639608 KB read: 28979320 KB
+[  595.437936] print_WAF: FSWAF: 132 percent gc: 277572 KB write_req: 866772 KB total: 359297772 total WAF: 108
+[  595.437944] print_WAF: total transfer volumes by FSGC: write: 30917180 KB read: 29235564 KB
+[  596.469859] print_WAF: FSWAF: 131 percent gc: 268772 KB write_req: 860812 KB total: 360158584 total WAF: 108
+[  596.469865] print_WAF: total transfer volumes by FSGC: write: 31185952 KB read: 29503008 KB
+[  597.485952] print_WAF: FSWAF: 131 percent gc: 268340 KB write_req: 859056 KB total: 361017640 total WAF: 108
+[  597.485963] print_WAF: total transfer volumes by FSGC: write: 31454292 KB read: 29759484 KB
+[  598.527686] print_WAF: FSWAF: 131 percent gc: 287920 KB write_req: 914352 KB total: 361931992 total WAF: 108
+[  598.527692] print_WAF: total transfer volumes by FSGC: write: 31742212 KB read: 30026980 KB
+[  599.546422] print_WAF: FSWAF: 131 percent gc: 277948 KB write_req: 869512 KB total: 362801504 total WAF: 108
+[  599.546428] print_WAF: total transfer volumes by FSGC: write: 32020160 KB read: 30283800 KB
+[  601.948971] print_WAF: FSWAF: 130 percent gc: 31064 KB write_req: 101544 KB total: 362903048 total WAF: 108
+[  601.948979] print_WAF: total transfer volumes by FSGC: write: 32051224 KB read: 30314468 KB
+[  602.960151] print_WAF: FSWAF: 130 percent gc: 279400 KB write_req: 903372 KB total: 363806420 total WAF: 108
+[  602.960157] print_WAF: total transfer volumes by FSGC: write: 32330624 KB read: 30570332 KB
+[  604.058979] print_WAF: FSWAF: 130 percent gc: 154284 KB write_req: 498716 KB total: 364305136 total WAF: 108
+[  604.058985] print_WAF: total transfer volumes by FSGC: write: 32484908 KB read: 30713340 KB
+[  605.094750] print_WAF: FSWAF: 132 percent gc: 217736 KB write_req: 670888 KB total: 364976024 total WAF: 108
+[  605.094756] print_WAF: total transfer volumes by FSGC: write: 32702644 KB read: 30929248 KB
+[  606.110429] print_WAF: FSWAF: 130 percent gc: 206380 KB write_req: 678464 KB total: 365654488 total WAF: 109
+[  606.110435] print_WAF: total transfer volumes by FSGC: write: 32909024 KB read: 31114580 KB
+[  607.135234] print_WAF: FSWAF: 132 percent gc: 206808 KB write_req: 632508 KB total: 366286996 total WAF: 109
+[  607.135239] print_WAF: total transfer volumes by FSGC: write: 33115832 KB read: 31320456 KB
+[  608.152902] print_WAF: FSWAF: 132 percent gc: 280164 KB write_req: 871032 KB total: 367158028 total WAF: 109
+[  608.152907] print_WAF: total transfer volumes by FSGC: write: 33395996 KB read: 31578840 KB
+[  609.226004] print_WAF: FSWAF: 131 percent gc: 303652 KB write_req: 968872 KB total: 368126900 total WAF: 109
+[  609.226011] print_WAF: total transfer volumes by FSGC: write: 33699648 KB read: 31837472 KB
+[  610.236144] print_WAF: FSWAF: 132 percent gc: 281332 KB write_req: 875432 KB total: 369002332 total WAF: 109
+[  610.236150] print_WAF: total transfer volumes by FSGC: write: 33980980 KB read: 32096696 KB
+[  611.272571] print_WAF: FSWAF: 131 percent gc: 283276 KB write_req: 908648 KB total: 369910980 total WAF: 109
+[  611.272577] print_WAF: total transfer volumes by FSGC: write: 34264256 KB read: 32366948 KB
+[  612.315937] print_WAF: FSWAF: 133 percent gc: 294992 KB write_req: 888624 KB total: 370799604 total WAF: 109
+[  612.315943] print_WAF: total transfer volumes by FSGC: write: 34559248 KB read: 32648552 KB
+[  613.327920] print_WAF: FSWAF: 131 percent gc: 274120 KB write_req: 865476 KB total: 371665080 total WAF: 109
+[  613.327926] print_WAF: total transfer volumes by FSGC: write: 34833368 KB read: 32920376 KB
+[  614.372370] print_WAF: FSWAF: 132 percent gc: 295540 KB write_req: 920888 KB total: 372585968 total WAF: 109
+[  614.372378] print_WAF: total transfer volumes by FSGC: write: 35128908 KB read: 33182284 KB
+[  617.901685] print_WAF: FSWAF: 133 percent gc: 273680 KB write_req: 828540 KB total: 373414508 total WAF: 109
+[  617.901692] print_WAF: total transfer volumes by FSGC: write: 35402588 KB read: 33424780 KB
+[  618.929569] print_WAF: FSWAF: 131 percent gc: 223008 KB write_req: 710488 KB total: 374124996 total WAF: 109
+[  618.929575] print_WAF: total transfer volumes by FSGC: write: 35625596 KB read: 33634704 KB
+[  619.990513] print_WAF: FSWAF: 132 percent gc: 232472 KB write_req: 717384 KB total: 374842380 total WAF: 109
+[  619.990520] print_WAF: total transfer volumes by FSGC: write: 35858068 KB read: 33844596 KB
+[  621.005718] print_WAF: FSWAF: 132 percent gc: 213372 KB write_req: 665788 KB total: 375508168 total WAF: 109
+[  621.005723] print_WAF: total transfer volumes by FSGC: write: 36071440 KB read: 34055140 KB
+[  622.020821] print_WAF: FSWAF: 132 percent gc: 287460 KB write_req: 877020 KB total: 376385188 total WAF: 109
+[  622.020827] print_WAF: total transfer volumes by FSGC: write: 36358900 KB read: 34319268 KB
+[  623.056379] print_WAF: FSWAF: 132 percent gc: 288672 KB write_req: 877180 KB total: 377262368 total WAF: 109
+[  623.056385] print_WAF: total transfer volumes by FSGC: write: 36647572 KB read: 34604836 KB
+[  624.062905] print_WAF: FSWAF: 132 percent gc: 286808 KB write_req: 875544 KB total: 378137912 total WAF: 109
+[  624.062911] print_WAF: total transfer volumes by FSGC: write: 36934380 KB read: 34859092 KB
+[  625.066291] print_WAF: FSWAF: 132 percent gc: 276876 KB write_req: 863612 KB total: 379001524 total WAF: 109
+[  625.066297] print_WAF: total transfer volumes by FSGC: write: 37211256 KB read: 35123988 KB
+[  626.138963] print_WAF: FSWAF: 132 percent gc: 298704 KB write_req: 918424 KB total: 379919948 total WAF: 109
+[  626.138969] print_WAF: total transfer volumes by FSGC: write: 37509960 KB read: 35410752 KB
+[  627.154657] print_WAF: FSWAF: 132 percent gc: 276272 KB write_req: 861580 KB total: 380781528 total WAF: 109
+[  627.154663] print_WAF: total transfer volumes by FSGC: write: 37786232 KB read: 35675712 KB
+[  628.203746] print_WAF: FSWAF: 132 percent gc: 288164 KB write_req: 875388 KB total: 381656916 total WAF: 109
+[  628.203752] print_WAF: total transfer volumes by FSGC: write: 38074396 KB read: 35962864 KB
+[  630.531305] print_WAF: FSWAF: 123 percent gc: 10792 KB write_req: 45264 KB total: 381702180 total WAF: 109
+[  630.531310] print_WAF: total transfer volumes by FSGC: write: 38085188 KB read: 35973480 KB
+[  631.537589] print_WAF: FSWAF: 132 percent gc: 234724 KB write_req: 716772 KB total: 382418952 total WAF: 110
+[  631.537593] print_WAF: total transfer volumes by FSGC: write: 38319912 KB read: 36174376 KB
+[  632.582752] print_WAF: FSWAF: 132 percent gc: 256320 KB write_req: 777868 KB total: 383196820 total WAF: 110
+[  632.582757] print_WAF: total transfer volumes by FSGC: write: 38576232 KB read: 36418468 KB
+[  633.604746] print_WAF: FSWAF: 132 percent gc: 204044 KB write_req: 620780 KB total: 383817600 total WAF: 110
+[  633.604751] print_WAF: total transfer volumes by FSGC: write: 38780276 KB read: 36620656 KB
+[  634.634475] print_WAF: FSWAF: 131 percent gc: 223604 KB write_req: 704752 KB total: 384522352 total WAF: 110
+[  634.634481] print_WAF: total transfer volumes by FSGC: write: 39003880 KB read: 36822824 KB
+[  635.667555] print_WAF: FSWAF: 133 percent gc: 225584 KB write_req: 677264 KB total: 385199616 total WAF: 110
+[  635.667561] print_WAF: total transfer volumes by FSGC: write: 39229464 KB read: 37047036 KB
+[  636.675415] print_WAF: FSWAF: 132 percent gc: 212760 KB write_req: 662384 KB total: 385862000 total WAF: 110
+[  636.675420] print_WAF: total transfer volumes by FSGC: write: 39442224 KB read: 37249132 KB
+[  637.727035] print_WAF: FSWAF: 132 percent gc: 288100 KB write_req: 875648 KB total: 386737648 total WAF: 110
+[  637.727041] print_WAF: total transfer volumes by FSGC: write: 39730324 KB read: 37525636 KB
+[  638.761912] print_WAF: FSWAF: 132 percent gc: 290516 KB write_req: 880728 KB total: 387618376 total WAF: 110
+[  638.761918] print_WAF: total transfer volumes by FSGC: write: 40020840 KB read: 37792564 KB
+[  640.304612] print_WAF: FSWAF: 131 percent gc: 97200 KB write_req: 304352 KB total: 387922728 total WAF: 110
+[  640.304621] print_WAF: total transfer volumes by FSGC: write: 40118040 KB read: 37889032 KB
+[  641.330683] print_WAF: FSWAF: 132 percent gc: 216492 KB write_req: 664732 KB total: 388587460 total WAF: 110
+[  641.330688] print_WAF: total transfer volumes by FSGC: write: 40334532 KB read: 38092180 KB
+[  642.347057] print_WAF: FSWAF: 133 percent gc: 302160 KB write_req: 890272 KB total: 389477732 total WAF: 110
+[  642.347063] print_WAF: total transfer volumes by FSGC: write: 40636692 KB read: 38369368 KB
+[  643.362126] print_WAF: FSWAF: 132 percent gc: 281436 KB write_req: 868148 KB total: 390345880 total WAF: 110
+[  643.362132] print_WAF: total transfer volumes by FSGC: write: 40918128 KB read: 38638252 KB
+[  644.401173] print_WAF: FSWAF: 133 percent gc: 293268 KB write_req: 881028 KB total: 391226908 total WAF: 110
+[  644.401179] print_WAF: total transfer volumes by FSGC: write: 41211396 KB read: 38918056 KB
+[  645.421203] print_WAF: FSWAF: 133 percent gc: 292084 KB write_req: 880664 KB total: 392107572 total WAF: 110
+[  645.421209] print_WAF: total transfer volumes by FSGC: write: 41503480 KB read: 39186640 KB
+[  646.425909] print_WAF: FSWAF: 132 percent gc: 282364 KB write_req: 868744 KB total: 392976316 total WAF: 110
+[  646.425915] print_WAF: total transfer volumes by FSGC: write: 41785844 KB read: 39446296 KB
+[  647.454695] print_WAF: FSWAF: 133 percent gc: 282464 KB write_req: 839700 KB total: 393816016 total WAF: 110
+[  647.454701] print_WAF: total transfer volumes by FSGC: write: 42068308 KB read: 39696336 KB
+[  648.457165] print_WAF: FSWAF: 133 percent gc: 283256 KB write_req: 842800 KB total: 394658816 total WAF: 110
+[  648.457171] print_WAF: total transfer volumes by FSGC: write: 42351564 KB read: 39956824 KB
+[  649.488785] print_WAF: FSWAF: 132 percent gc: 274488 KB write_req: 840120 KB total: 395498936 total WAF: 110
+[  649.488790] print_WAF: total transfer volumes by FSGC: write: 42626052 KB read: 40229736 KB
+[  650.533664] print_WAF: FSWAF: 134 percent gc: 293796 KB write_req: 860296 KB total: 396359232 total WAF: 110
+[  650.533669] print_WAF: total transfer volumes by FSGC: write: 42919848 KB read: 40492056 KB
+[  651.589032] print_WAF: FSWAF: 132 percent gc: 284456 KB write_req: 883276 KB total: 397242508 total WAF: 110
+[  651.589038] print_WAF: total transfer volumes by FSGC: write: 43204304 KB read: 40755096 KB
+[  652.626640] print_WAF: FSWAF: 134 percent gc: 285456 KB write_req: 828780 KB total: 398071288 total WAF: 110
+[  652.626649] print_WAF: total transfer volumes by FSGC: write: 43489760 KB read: 41019212 KB
+[  656.821728] print_WAF: FSWAF: 133 percent gc: 220128 KB write_req: 655132 KB total: 398726420 total WAF: 110
+[  656.821733] print_WAF: total transfer volumes by FSGC: write: 43709888 KB read: 41217456 KB
+[  657.851968] print_WAF: FSWAF: 133 percent gc: 231972 KB write_req: 687200 KB total: 399413620 total WAF: 111
+[  657.851973] print_WAF: total transfer volumes by FSGC: write: 43941860 KB read: 41436044 KB
+[  658.858316] print_WAF: FSWAF: 134 percent gc: 221444 KB write_req: 641652 KB total: 400055272 total WAF: 111
+[  658.858325] print_WAF: total transfer volumes by FSGC: write: 44163304 KB read: 41655176 KB
+[  659.876469] print_WAF: FSWAF: 132 percent gc: 220752 KB write_req: 673344 KB total: 400728616 total WAF: 111
+[  659.876475] print_WAF: total transfer volumes by FSGC: write: 44384056 KB read: 41862696 KB
+[  660.910638] print_WAF: FSWAF: 134 percent gc: 232836 KB write_req: 682428 KB total: 401411044 total WAF: 111
+[  660.910643] print_WAF: total transfer volumes by FSGC: write: 44616892 KB read: 42082028 KB
+[  661.957729] print_WAF: FSWAF: 133 percent gc: 243300 KB write_req: 729000 KB total: 402140044 total WAF: 111
+[  661.957734] print_WAF: total transfer volumes by FSGC: write: 44860192 KB read: 42302048 KB
+[  663.026891] print_WAF: FSWAF: 133 percent gc: 244140 KB write_req: 728040 KB total: 402868084 total WAF: 111
+[  663.026897] print_WAF: total transfer volumes by FSGC: write: 45104332 KB read: 42532452 KB
+[  664.039999] print_WAF: FSWAF: 134 percent gc: 288820 KB write_req: 841252 KB total: 403709336 total WAF: 111
+[  664.040004] print_WAF: total transfer volumes by FSGC: write: 45393152 KB read: 42819360 KB
+[  665.076586] print_WAF: FSWAF: 132 percent gc: 286832 KB write_req: 872296 KB total: 404581632 total WAF: 111
+[  665.076596] print_WAF: total transfer volumes by FSGC: write: 45679984 KB read: 43094852 KB
+[  666.110740] print_WAF: FSWAF: 135 percent gc: 301392 KB write_req: 855076 KB total: 405436708 total WAF: 111
+[  666.110745] print_WAF: total transfer volumes by FSGC: write: 45981376 KB read: 43383160 KB
+[  667.159477] print_WAF: FSWAF: 133 percent gc: 300640 KB write_req: 887164 KB total: 406323872 total WAF: 111
+[  667.159482] print_WAF: total transfer volumes by FSGC: write: 46282016 KB read: 43671704 KB
+[  668.210321] print_WAF: FSWAF: 134 percent gc: 311792 KB write_req: 899768 KB total: 407223640 total WAF: 111
+[  668.210326] print_WAF: total transfer volumes by FSGC: write: 46593808 KB read: 43958636 KB
+[  669.228190] print_WAF: FSWAF: 133 percent gc: 288504 KB write_req: 871832 KB total: 408095472 total WAF: 111
+[  669.228195] print_WAF: total transfer volumes by FSGC: write: 46882312 KB read: 44234660 KB
+[  671.771925] print_WAF: FSWAF: 134 percent gc: 145192 KB write_req: 422140 KB total: 408517612 total WAF: 111
+[  671.771931] print_WAF: total transfer volumes by FSGC: write: 47027504 KB read: 44356800 KB
+[  672.796011] print_WAF: FSWAF: 134 percent gc: 234340 KB write_req: 682820 KB total: 409200432 total WAF: 111
+[  672.796016] print_WAF: total transfer volumes by FSGC: write: 47261844 KB read: 44578584 KB
+[  673.838841] print_WAF: FSWAF: 134 percent gc: 235176 KB write_req: 685572 KB total: 409886004 total WAF: 111
+[  673.838846] print_WAF: total transfer volumes by FSGC: write: 47497020 KB read: 44799792 KB
+[  674.885868] print_WAF: FSWAF: 134 percent gc: 235472 KB write_req: 685768 KB total: 410571772 total WAF: 111
+[  674.885873] print_WAF: total transfer volumes by FSGC: write: 47732492 KB read: 45033004 KB
+[  675.934553] print_WAF: FSWAF: 132 percent gc: 235568 KB write_req: 717624 KB total: 411289396 total WAF: 111
+[  675.934558] print_WAF: total transfer volumes by FSGC: write: 47968060 KB read: 45244160 KB
+[  676.970244] print_WAF: FSWAF: 134 percent gc: 236588 KB write_req: 687684 KB total: 411977080 total WAF: 111
+[  676.970251] print_WAF: total transfer volumes by FSGC: write: 48204648 KB read: 45466624 KB
+[  678.014488] print_WAF: FSWAF: 133 percent gc: 245784 KB write_req: 727200 KB total: 412704280 total WAF: 111
+[  678.014494] print_WAF: total transfer volumes by FSGC: write: 48450432 KB read: 45689428 KB
+[  679.024203] print_WAF: FSWAF: 134 percent gc: 303836 KB write_req: 888544 KB total: 413592824 total WAF: 111
+[  679.024209] print_WAF: total transfer volumes by FSGC: write: 48754268 KB read: 45956928 KB
+[  680.055978] print_WAF: FSWAF: 134 percent gc: 294460 KB write_req: 851888 KB total: 414444712 total WAF: 111
+[  680.055983] print_WAF: total transfer volumes by FSGC: write: 49048728 KB read: 46248612 KB
+[  681.102199] print_WAF: FSWAF: 135 percent gc: 317280 KB write_req: 904316 KB total: 415349028 total WAF: 111
+[  681.102204] print_WAF: total transfer volumes by FSGC: write: 49366008 KB read: 46530724 KB
+[  682.167145] print_WAF: FSWAF: 135 percent gc: 317728 KB write_req: 904240 KB total: 416253268 total WAF: 111
+[  682.167150] print_WAF: total transfer volumes by FSGC: write: 49683736 KB read: 46823952 KB
+[  683.231467] print_WAF: FSWAF: 134 percent gc: 308684 KB write_req: 898636 KB total: 417151904 total WAF: 111
+[  683.231473] print_WAF: total transfer volumes by FSGC: write: 49992420 KB read: 47118948 KB
+[  684.277198] print_WAF: FSWAF: 134 percent gc: 307392 KB write_req: 893904 KB total: 418045808 total WAF: 112
+[  684.277204] print_WAF: total transfer volumes by FSGC: write: 50299812 KB read: 47412732 KB
+[  687.233397] print_WAF: FSWAF: 135 percent gc: 227736 KB write_req: 644320 KB total: 418690128 total WAF: 112
+[  687.233402] print_WAF: total transfer volumes by FSGC: write: 50527548 KB read: 47638888 KB
+[  688.262059] print_WAF: FSWAF: 135 percent gc: 249968 KB write_req: 699700 KB total: 419389828 total WAF: 112
+[  688.262064] print_WAF: total transfer volumes by FSGC: write: 50777516 KB read: 47865588 KB
+[  689.289009] print_WAF: FSWAF: 133 percent gc: 263216 KB write_req: 781392 KB total: 420171220 total WAF: 112
+[  689.289015] print_WAF: total transfer volumes by FSGC: write: 51040732 KB read: 48126588 KB
+[  690.312402] print_WAF: FSWAF: 135 percent gc: 307884 KB write_req: 860532 KB total: 421031752 total WAF: 112
+[  690.312408] print_WAF: total transfer volumes by FSGC: write: 51348616 KB read: 48410168 KB
+[  691.388132] print_WAF: FSWAF: 134 percent gc: 309652 KB write_req: 900664 KB total: 421932416 total WAF: 112
+[  691.388137] print_WAF: total transfer volumes by FSGC: write: 51658268 KB read: 48705760 KB
+[  692.392597] print_WAF: FSWAF: 134 percent gc: 297912 KB write_req: 852048 KB total: 422784464 total WAF: 112
+[  692.392604] print_WAF: total transfer volumes by FSGC: write: 51956180 KB read: 48979900 KB
+[  693.432764] print_WAF: FSWAF: 135 percent gc: 299256 KB write_req: 854248 KB total: 423638712 total WAF: 112
+[  693.432771] print_WAF: total transfer volumes by FSGC: write: 52255436 KB read: 49266064 KB
+[  694.448053] print_WAF: FSWAF: 135 percent gc: 299136 KB write_req: 852924 KB total: 424491636 total WAF: 112
+[  694.448064] print_WAF: total transfer volumes by FSGC: write: 52554572 KB read: 49552168 KB
+[  695.473181] print_WAF: FSWAF: 135 percent gc: 311312 KB write_req: 870148 KB total: 425361784 total WAF: 112
+[  695.473187] print_WAF: total transfer volumes by FSGC: write: 52865884 KB read: 49839788 KB
+[  696.488468] print_WAF: FSWAF: 134 percent gc: 288796 KB write_req: 844432 KB total: 426206216 total WAF: 112
+[  696.488474] print_WAF: total transfer volumes by FSGC: write: 53154680 KB read: 50115736 KB
+[  697.531100] print_WAF: FSWAF: 136 percent gc: 324300 KB write_req: 884092 KB total: 427090308 total WAF: 112
+[  697.531106] print_WAF: total transfer volumes by FSGC: write: 53478980 KB read: 50404344 KB
+[  700.931919] print_WAF: FSWAF: 134 percent gc: 186316 KB write_req: 534400 KB total: 427624708 total WAF: 112
+[  700.931924] print_WAF: total transfer volumes by FSGC: write: 53665296 KB read: 50589560 KB
+[  701.953180] print_WAF: FSWAF: 136 percent gc: 254652 KB write_req: 705252 KB total: 428329960 total WAF: 112
+[  701.953186] print_WAF: total transfer volumes by FSGC: write: 53919948 KB read: 50819756 KB
+[  702.959446] print_WAF: FSWAF: 133 percent gc: 278280 KB write_req: 832692 KB total: 429162652 total WAF: 112
+[  702.959451] print_WAF: total transfer volumes by FSGC: write: 54198228 KB read: 51096692 KB
+[  704.005228] print_WAF: FSWAF: 136 percent gc: 315004 KB write_req: 869048 KB total: 430031700 total WAF: 112
+[  704.005233] print_WAF: total transfer volumes by FSGC: write: 54513232 KB read: 51385400 KB
+[  705.033585] print_WAF: FSWAF: 136 percent gc: 312608 KB write_req: 868092 KB total: 430899792 total WAF: 112
+[  705.033590] print_WAF: total transfer volumes by FSGC: write: 54825840 KB read: 51664016 KB
+[  706.056322] print_WAF: FSWAF: 135 percent gc: 302588 KB write_req: 858164 KB total: 431757956 total WAF: 112
+[  706.056328] print_WAF: total transfer volumes by FSGC: write: 55128428 KB read: 51941796 KB
+[  707.093548] print_WAF: FSWAF: 135 percent gc: 303256 KB write_req: 857792 KB total: 432615748 total WAF: 112
+[  707.093553] print_WAF: total transfer volumes by FSGC: write: 55431684 KB read: 52232736 KB
+[  708.165781] print_WAF: FSWAF: 136 percent gc: 316384 KB write_req: 871560 KB total: 433487308 total WAF: 112
+[  708.165786] print_WAF: total transfer volumes by FSGC: write: 55748068 KB read: 52547012 KB
+[  710.265987] print_WAF: FSWAF: 133 percent gc: 70484 KB write_req: 209496 KB total: 433696804 total WAF: 112
+[  710.265993] print_WAF: total transfer volumes by FSGC: write: 55818552 KB read: 52617156 KB
+[  711.300317] print_WAF: FSWAF: 135 percent gc: 245192 KB write_req: 692644 KB total: 434389448 total WAF: 112
+[  711.300323] print_WAF: total transfer volumes by FSGC: write: 56063744 KB read: 52849512 KB
+[  712.364675] print_WAF: FSWAF: 136 percent gc: 257544 KB write_req: 704088 KB total: 435093536 total WAF: 112
+[  712.364680] print_WAF: total transfer volumes by FSGC: write: 56321288 KB read: 53070144 KB
+[  713.415164] print_WAF: FSWAF: 135 percent gc: 243548 KB write_req: 686340 KB total: 435779876 total WAF: 112
+[  713.415170] print_WAF: total transfer volumes by FSGC: write: 56564836 KB read: 53301692 KB
+[  714.426457] print_WAF: FSWAF: 134 percent gc: 222784 KB write_req: 637000 KB total: 436416876 total WAF: 113
+[  714.426463] print_WAF: total transfer volumes by FSGC: write: 56787620 KB read: 53522276 KB
+[  715.460399] print_WAF: FSWAF: 136 percent gc: 235176 KB write_req: 648632 KB total: 437065508 total WAF: 113
+[  715.460404] print_WAF: total transfer volumes by FSGC: write: 57022796 KB read: 53754740 KB
+[  716.467662] print_WAF: FSWAF: 135 percent gc: 270944 KB write_req: 755736 KB total: 437821244 total WAF: 113
+[  716.467667] print_WAF: total transfer volumes by FSGC: write: 57293740 KB read: 54010348 KB
+[  717.529963] print_WAF: FSWAF: 136 percent gc: 234616 KB write_req: 649244 KB total: 438470488 total WAF: 113
+[  717.529968] print_WAF: total transfer volumes by FSGC: write: 57528356 KB read: 54232484 KB
+[  718.566739] print_WAF: FSWAF: 136 percent gc: 237436 KB write_req: 657444 KB total: 439127932 total WAF: 113
+[  718.566745] print_WAF: total transfer volumes by FSGC: write: 57765792 KB read: 54466084 KB
+[  719.614674] print_WAF: FSWAF: 135 percent gc: 246548 KB write_req: 702936 KB total: 439830868 total WAF: 113
+[  719.614679] print_WAF: total transfer volumes by FSGC: write: 58012340 KB read: 54688784 KB
+[  720.670094] print_WAF: FSWAF: 136 percent gc: 259804 KB write_req: 702848 KB total: 440533716 total WAF: 113
+[  720.670099] print_WAF: total transfer volumes by FSGC: write: 58272144 KB read: 54923748 KB
+[  721.719596] print_WAF: FSWAF: 135 percent gc: 248564 KB write_req: 694336 KB total: 441228052 total WAF: 113
+[  721.719602] print_WAF: total transfer volumes by FSGC: write: 58520708 KB read: 55147080 KB
+[  722.727955] print_WAF: FSWAF: 135 percent gc: 306348 KB write_req: 860292 KB total: 442088344 total WAF: 113
+[  722.727960] print_WAF: total transfer volumes by FSGC: write: 58827056 KB read: 55439508 KB
+[  723.797190] print_WAF: FSWAF: 136 percent gc: 321660 KB write_req: 877128 KB total: 442965472 total WAF: 113
+[  723.797197] print_WAF: total transfer volumes by FSGC: write: 59148716 KB read: 55758652 KB
+[  724.859526] print_WAF: FSWAF: 135 percent gc: 309700 KB write_req: 884444 KB total: 443849916 total WAF: 113
+[  724.859532] print_WAF: total transfer volumes by FSGC: write: 59458416 KB read: 56053792 KB
+[  725.900816] print_WAF: FSWAF: 136 percent gc: 331160 KB write_req: 895268 KB total: 444745184 total WAF: 113
+[  725.900822] print_WAF: total transfer volumes by FSGC: write: 59789576 KB read: 56348544 KB
+[  726.965559] print_WAF: FSWAF: 136 percent gc: 322956 KB write_req: 877856 KB total: 445623040 total WAF: 113
+[  726.965565] print_WAF: total transfer volumes by FSGC: write: 60112532 KB read: 56669216 KB
+[  727.981964] print_WAF: FSWAF: 135 percent gc: 309636 KB write_req: 863196 KB total: 446486236 total WAF: 113
+[  727.981970] print_WAF: total transfer volumes by FSGC: write: 60422168 KB read: 56943024 KB
+[  728.991870] print_WAF: FSWAF: 137 percent gc: 310024 KB write_req: 832920 KB total: 447319156 total WAF: 113
+[  728.991876] print_WAF: total transfer volumes by FSGC: write: 60732192 KB read: 57228884 KB
+[  731.409258] print_WAF: FSWAF: 133 percent gc: 35908 KB write_req: 105684 KB total: 447424840 total WAF: 113
+[  731.409264] print_WAF: total transfer volumes by FSGC: write: 60768100 KB read: 57264464 KB
+[  732.449756] print_WAF: FSWAF: 136 percent gc: 275808 KB write_req: 761000 KB total: 448185840 total WAF: 113
+[  732.449762] print_WAF: total transfer volumes by FSGC: write: 61043908 KB read: 57526180 KB
+[  733.476978] print_WAF: FSWAF: 136 percent gc: 240212 KB write_req: 656028 KB total: 448841868 total WAF: 113
+[  733.476984] print_WAF: total transfer volumes by FSGC: write: 61284120 KB read: 57752352 KB
+[  734.513673] print_WAF: FSWAF: 137 percent gc: 253460 KB write_req: 669304 KB total: 449511172 total WAF: 113
+[  734.513679] print_WAF: total transfer volumes by FSGC: write: 61537580 KB read: 58003092 KB
+[  735.520974] print_WAF: FSWAF: 136 percent gc: 240248 KB write_req: 654220 KB total: 450165392 total WAF: 113
+[  735.520980] print_WAF: total transfer volumes by FSGC: write: 61777828 KB read: 58229892 KB
+[  736.560310] print_WAF: FSWAF: 135 percent gc: 251676 KB write_req: 699988 KB total: 450865380 total WAF: 113
+[  736.560316] print_WAF: total transfer volumes by FSGC: write: 62029504 KB read: 58456256 KB
+[  737.585191] print_WAF: FSWAF: 137 percent gc: 253360 KB write_req: 670200 KB total: 451535580 total WAF: 113
+[  737.585196] print_WAF: total transfer volumes by FSGC: write: 62282864 KB read: 58683624 KB
+[  738.635593] print_WAF: FSWAF: 136 percent gc: 314276 KB write_req: 868704 KB total: 452404284 total WAF: 113
+[  738.635598] print_WAF: total transfer volumes by FSGC: write: 62597140 KB read: 58982476 KB
+[  739.653544] print_WAF: FSWAF: 136 percent gc: 303924 KB write_req: 825356 KB total: 453229640 total WAF: 113
+[  739.653549] print_WAF: total transfer volumes by FSGC: write: 62901064 KB read: 59282920 KB
+[  740.672390] print_WAF: FSWAF: 136 percent gc: 305260 KB write_req: 828000 KB total: 454057640 total WAF: 113
+[  740.672396] print_WAF: total transfer volumes by FSGC: write: 63206324 KB read: 59573400 KB
+[  741.685071] print_WAF: FSWAF: 137 percent gc: 304992 KB write_req: 823432 KB total: 454881072 total WAF: 113
+[  741.685077] print_WAF: total transfer volumes by FSGC: write: 63511316 KB read: 59864100 KB
+[  742.692481] print_WAF: FSWAF: 138 percent gc: 328884 KB write_req: 850524 KB total: 455731596 total WAF: 114
+[  742.692487] print_WAF: total transfer volumes by FSGC: write: 63840200 KB read: 60142644 KB
+[  743.714213] print_WAF: FSWAF: 137 percent gc: 318376 KB write_req: 841276 KB total: 456572872 total WAF: 114
+[  743.714218] print_WAF: total transfer volumes by FSGC: write: 64158576 KB read: 60434508 KB
+[  744.716459] print_WAF: FSWAF: 136 percent gc: 295272 KB write_req: 817212 KB total: 457390084 total WAF: 114
+[  744.716469] print_WAF: total transfer volumes by FSGC: write: 64453848 KB read: 60727452 KB
+[  748.109042] print_WAF: FSWAF: 137 percent gc: 306472 KB write_req: 826264 KB total: 458216348 total WAF: 114
+[  748.109052] print_WAF: total transfer volumes by FSGC: write: 64760320 KB read: 61031968 KB
+[  749.114361] print_WAF: FSWAF: 137 percent gc: 243840 KB write_req: 657464 KB total: 458873812 total WAF: 114
+[  749.114366] print_WAF: total transfer volumes by FSGC: write: 65004160 KB read: 61263172 KB
+[  750.158324] print_WAF: FSWAF: 138 percent gc: 258144 KB write_req: 674820 KB total: 459548632 total WAF: 114
+[  750.158329] print_WAF: total transfer volumes by FSGC: write: 65262304 KB read: 61494596 KB
+[  751.159245] print_WAF: FSWAF: 137 percent gc: 305528 KB write_req: 823080 KB total: 460371712 total WAF: 114
+[  751.159250] print_WAF: total transfer volumes by FSGC: write: 65567832 KB read: 61774904 KB
+[  752.188627] print_WAF: FSWAF: 137 percent gc: 307124 KB write_req: 826632 KB total: 461198344 total WAF: 114
+[  752.188633] print_WAF: total transfer volumes by FSGC: write: 65874956 KB read: 62067636 KB
+[  753.242851] print_WAF: FSWAF: 137 percent gc: 319856 KB write_req: 862928 KB total: 462061272 total WAF: 114
+[  753.242857] print_WAF: total transfer volumes by FSGC: write: 66194812 KB read: 62360740 KB
+[  754.324893] print_WAF: FSWAF: 138 percent gc: 333204 KB write_req: 865276 KB total: 462926548 total WAF: 114
+[  754.324903] print_WAF: total transfer volumes by FSGC: write: 66528016 KB read: 62680328 KB
+[  755.374811] print_WAF: FSWAF: 138 percent gc: 320440 KB write_req: 841440 KB total: 463767988 total WAF: 114
+[  755.374817] print_WAF: total transfer volumes by FSGC: write: 66848456 KB read: 62987692 KB
+[  756.431668] print_WAF: FSWAF: 138 percent gc: 322584 KB write_req: 845868 KB total: 464613856 total WAF: 114
+[  756.431673] print_WAF: total transfer volumes by FSGC: write: 67171040 KB read: 63307164 KB
+[  757.470235] print_WAF: FSWAF: 137 percent gc: 332308 KB write_req: 885612 KB total: 465499468 total WAF: 114
+[  757.470240] print_WAF: total transfer volumes by FSGC: write: 67503348 KB read: 63601812 KB
+[  760.640140] print_WAF: FSWAF: 137 percent gc: 296472 KB write_req: 785040 KB total: 466284508 total WAF: 114
+[  760.640145] print_WAF: total transfer volumes by FSGC: write: 67799820 KB read: 63860740 KB
+[  761.686329] print_WAF: FSWAF: 137 percent gc: 335232 KB write_req: 890520 KB total: 467175028 total WAF: 114
+[  761.686335] print_WAF: total transfer volumes by FSGC: write: 68135052 KB read: 64179568 KB
+[  762.737398] print_WAF: FSWAF: 138 percent gc: 324424 KB write_req: 845020 KB total: 468020048 total WAF: 114
+[  762.737404] print_WAF: total transfer volumes by FSGC: write: 68459476 KB read: 64500652 KB
+[  763.761277] print_WAF: FSWAF: 138 percent gc: 112744 KB write_req: 292012 KB total: 468312060 total WAF: 114
+[  763.761289] print_WAF: total transfer volumes by FSGC: write: 68572220 KB read: 64599620 KB
+[  764.762912] print_WAF: FSWAF: 137 percent gc: 312636 KB write_req: 826660 KB total: 469138720 total WAF: 114
+[  764.762917] print_WAF: total transfer volumes by FSGC: write: 68884856 KB read: 64896316 KB
+[  765.812802] print_WAF: FSWAF: 136 percent gc: 324408 KB write_req: 880056 KB total: 470018776 total WAF: 114
+[  765.812808] print_WAF: total transfer volumes by FSGC: write: 69209264 KB read: 65194844 KB
+[  766.874146] print_WAF: FSWAF: 139 percent gc: 338704 KB write_req: 863140 KB total: 470881916 total WAF: 114
+[  766.874152] print_WAF: total transfer volumes by FSGC: write: 69547968 KB read: 65507196 KB
+[  767.923384] print_WAF: FSWAF: 138 percent gc: 326508 KB write_req: 849380 KB total: 471731296 total WAF: 114
+[  767.923389] print_WAF: total transfer volumes by FSGC: write: 69874476 KB read: 65806244 KB
+[  769.003173] print_WAF: FSWAF: 138 percent gc: 328348 KB write_req: 851664 KB total: 472582960 total WAF: 114
+[  769.003179] print_WAF: total transfer volumes by FSGC: write: 70202824 KB read: 66131724 KB
+[  770.031950] print_WAF: FSWAF: 138 percent gc: 327792 KB write_req: 849828 KB total: 473432788 total WAF: 114
+[  770.031956] print_WAF: total transfer volumes by FSGC: write: 70530616 KB read: 66432316 KB
+[  771.083366] print_WAF: FSWAF: 137 percent gc: 316556 KB write_req: 842084 KB total: 474274872 total WAF: 114
+[  771.083371] print_WAF: total transfer volumes by FSGC: write: 70847172 KB read: 66747964 KB
+[  772.095697] print_WAF: FSWAF: 139 percent gc: 328344 KB write_req: 840716 KB total: 475115588 total WAF: 114
+[  772.095704] print_WAF: total transfer volumes by FSGC: write: 71175516 KB read: 67050596 KB
+[  774.530136] print_WAF: FSWAF: 135 percent gc: 37280 KB write_req: 106060 KB total: 475221648 total WAF: 114
+[  774.530142] print_WAF: total transfer volumes by FSGC: write: 71212796 KB read: 67075272 KB
+[  775.581355] print_WAF: FSWAF: 139 percent gc: 342652 KB write_req: 860068 KB total: 476081716 total WAF: 115
+[  775.581361] print_WAF: total transfer volumes by FSGC: write: 71555448 KB read: 67402392 KB
+[  776.596765] print_WAF: FSWAF: 137 percent gc: 317016 KB write_req: 836040 KB total: 476917756 total WAF: 115
+[  776.596770] print_WAF: total transfer volumes by FSGC: write: 71872464 KB read: 67692844 KB
+[  777.641234] print_WAF: FSWAF: 137 percent gc: 316404 KB write_req: 834960 KB total: 477752716 total WAF: 115
+[  777.641239] print_WAF: total transfer volumes by FSGC: write: 72188868 KB read: 67995928 KB
+[  778.998812] print_WAF: FSWAF: 140 percent gc: 165084 KB write_req: 408072 KB total: 478160788 total WAF: 115
+[  778.998818] print_WAF: total transfer volumes by FSGC: write: 72353952 KB read: 68147356 KB
+[  780.014235] print_WAF: FSWAF: 138 percent gc: 319136 KB write_req: 839764 KB total: 479000552 total WAF: 115
+[  780.014243] print_WAF: total transfer volumes by FSGC: write: 72673088 KB read: 68450556 KB
+[  781.046506] print_WAF: FSWAF: 138 percent gc: 331212 KB write_req: 850412 KB total: 479850964 total WAF: 115
+[  781.046512] print_WAF: total transfer volumes by FSGC: write: 73004300 KB read: 68742236 KB
+[  782.119095] print_WAF: FSWAF: 140 percent gc: 333064 KB write_req: 819184 KB total: 480670148 total WAF: 115
+[  782.119101] print_WAF: total transfer volumes by FSGC: write: 73337364 KB read: 69059720 KB
+[  783.172589] print_WAF: FSWAF: 139 percent gc: 320784 KB write_req: 809552 KB total: 481479700 total WAF: 115
+[  783.172595] print_WAF: total transfer volumes by FSGC: write: 73658148 KB read: 69378768 KB
+[  784.184504] print_WAF: FSWAF: 138 percent gc: 320036 KB write_req: 837752 KB total: 482317452 total WAF: 115
+[  784.184509] print_WAF: total transfer volumes by FSGC: write: 73978184 KB read: 69684644 KB
+[  785.249359] print_WAF: FSWAF: 138 percent gc: 333712 KB write_req: 858412 KB total: 483175864 total WAF: 115
+[  785.249364] print_WAF: total transfer volumes by FSGC: write: 74311896 KB read: 70003764 KB
+[  786.283874] print_WAF: FSWAF: 140 percent gc: 334796 KB write_req: 827112 KB total: 484002976 total WAF: 115
+[  786.283879] print_WAF: total transfer volumes by FSGC: write: 74646692 KB read: 70323444 KB
+[  787.309244] print_WAF: FSWAF: 138 percent gc: 321828 KB write_req: 846708 KB total: 484849684 total WAF: 115
+[  787.309249] print_WAF: total transfer volumes by FSGC: write: 74968520 KB read: 70618264 KB
+[  788.340678] print_WAF: FSWAF: 140 percent gc: 336080 KB write_req: 832024 KB total: 485681708 total WAF: 115
+[  788.340687] print_WAF: total transfer volumes by FSGC: write: 75304600 KB read: 70914828 KB
+[  789.419203] print_WAF: FSWAF: 139 percent gc: 325552 KB write_req: 828684 KB total: 486510392 total WAF: 115
+[  789.419208] print_WAF: total transfer volumes by FSGC: write: 75630152 KB read: 71237984 KB
+[  792.759420] print_WAF: FSWAF: 139 percent gc: 114876 KB write_req: 288996 KB total: 486799388 total WAF: 115
+[  792.759425] print_WAF: total transfer volumes by FSGC: write: 75745028 KB read: 71341248 KB
+[  793.778954] print_WAF: FSWAF: 138 percent gc: 258580 KB write_req: 675472 KB total: 487474860 total WAF: 115
+[  793.778959] print_WAF: total transfer volumes by FSGC: write: 76003608 KB read: 71573388 KB
+[  794.892809] print_WAF: FSWAF: 140 percent gc: 309432 KB write_req: 761900 KB total: 488236760 total WAF: 115
+[  794.892814] print_WAF: total transfer volumes by FSGC: write: 76313040 KB read: 71817392 KB
+[  795.988386] print_WAF: FSWAF: 139 percent gc: 272816 KB write_req: 692504 KB total: 488929264 total WAF: 115
+[  795.988391] print_WAF: total transfer volumes by FSGC: write: 76585856 KB read: 72087140 KB
+[  797.070232] print_WAF: FSWAF: 139 percent gc: 273736 KB write_req: 694544 KB total: 489623808 total WAF: 115
+[  797.070242] print_WAF: total transfer volumes by FSGC: write: 76859592 KB read: 72344684 KB
+[  798.280593] print_WAF: FSWAF: 139 percent gc: 300264 KB write_req: 751368 KB total: 490375176 total WAF: 115
+[  798.280598] print_WAF: total transfer volumes by FSGC: write: 77159856 KB read: 72642144 KB
+[  799.328370] print_WAF: FSWAF: 139 percent gc: 338896 KB write_req: 855560 KB total: 491230736 total WAF: 115
+[  799.328375] print_WAF: total transfer volumes by FSGC: write: 77498752 KB read: 72951868 KB
+[  800.331676] print_WAF: FSWAF: 140 percent gc: 327564 KB write_req: 816032 KB total: 492046768 total WAF: 115
+[  800.331681] print_WAF: total transfer volumes by FSGC: write: 77826316 KB read: 73249668 KB
+[  801.364200] print_WAF: FSWAF: 138 percent gc: 327180 KB write_req: 844700 KB total: 492891468 total WAF: 115
+[  801.364205] print_WAF: total transfer volumes by FSGC: write: 78153496 KB read: 73548508 KB
+[  802.404125] print_WAF: FSWAF: 140 percent gc: 328512 KB write_req: 814508 KB total: 493705976 total WAF: 115
+[  802.404131] print_WAF: total transfer volumes by FSGC: write: 78482008 KB read: 73874440 KB
+[  803.409308] print_WAF: FSWAF: 140 percent gc: 314456 KB write_req: 783932 KB total: 494489908 total WAF: 115
+[  803.409314] print_WAF: total transfer volumes by FSGC: write: 78796464 KB read: 74187496 KB
+[  804.480239] print_WAF: FSWAF: 141 percent gc: 354968 KB write_req: 853344 KB total: 495343252 total WAF: 115
+[  804.480249] print_WAF: total transfer volumes by FSGC: write: 79151432 KB read: 74514404 KB
+[  805.486271] print_WAF: FSWAF: 138 percent gc: 316684 KB write_req: 816576 KB total: 496159828 total WAF: 116
+[  805.486276] print_WAF: total transfer volumes by FSGC: write: 79468116 KB read: 74814848 KB
+[  806.550029] print_WAF: FSWAF: 141 percent gc: 355480 KB write_req: 864364 KB total: 497024192 total WAF: 116
+[  806.550034] print_WAF: total transfer volumes by FSGC: write: 79823596 KB read: 75128992 KB
+[  808.188858] print_WAF: FSWAF: 139 percent gc: 158940 KB write_req: 401820 KB total: 497426012 total WAF: 116
+[  808.188863] print_WAF: total transfer volumes by FSGC: write: 79982536 KB read: 75273676 KB
+[  809.235705] print_WAF: FSWAF: 141 percent gc: 344412 KB write_req: 833868 KB total: 498259880 total WAF: 116
+[  809.235710] print_WAF: total transfer volumes by FSGC: write: 80326948 KB read: 75615268 KB
+[  810.265014] print_WAF: FSWAF: 139 percent gc: 318448 KB write_req: 807492 KB total: 499067372 total WAF: 116
+[  810.265020] print_WAF: total transfer volumes by FSGC: write: 80645396 KB read: 75918612 KB
+[  811.324048] print_WAF: FSWAF: 140 percent gc: 330716 KB write_req: 816276 KB total: 499883648 total WAF: 116
+[  811.324054] print_WAF: total transfer volumes by FSGC: write: 80976112 KB read: 76236124 KB
+[  812.390212] print_WAF: FSWAF: 140 percent gc: 356120 KB write_req: 885248 KB total: 500768896 total WAF: 116
+[  812.390217] print_WAF: total transfer volumes by FSGC: write: 81332232 KB read: 76527324 KB
+[  813.434849] print_WAF: FSWAF: 140 percent gc: 332644 KB write_req: 826240 KB total: 501595136 total WAF: 116
+[  813.434854] print_WAF: total transfer volumes by FSGC: write: 81664876 KB read: 76833520 KB
+[  814.499327] print_WAF: FSWAF: 140 percent gc: 320960 KB write_req: 784056 KB total: 502379192 total WAF: 116
+[  814.499333] print_WAF: total transfer volumes by FSGC: write: 81985836 KB read: 77152932 KB
+[  815.566478] print_WAF: FSWAF: 140 percent gc: 348460 KB write_req: 853108 KB total: 503232300 total WAF: 116
+[  815.566484] print_WAF: total transfer volumes by FSGC: write: 82334296 KB read: 77473384 KB
+[  816.621745] print_WAF: FSWAF: 140 percent gc: 334960 KB write_req: 834544 KB total: 504066844 total WAF: 116
+[  816.621751] print_WAF: total transfer volumes by FSGC: write: 82669256 KB read: 77781836 KB
+[  820.332598] print_WAF: FSWAF: 143 percent gc: 187048 KB write_req: 433336 KB total: 504500180 total WAF: 116
+[  820.332606] print_WAF: total transfer volumes by FSGC: write: 82856304 KB read: 77942444 KB
+[  821.439942] print_WAF: FSWAF: 141 percent gc: 296004 KB write_req: 717312 KB total: 505217492 total WAF: 116
+[  821.439948] print_WAF: total transfer volumes by FSGC: write: 83152308 KB read: 78222260 KB
+[  822.597457] print_WAF: FSWAF: 140 percent gc: 295200 KB write_req: 721468 KB total: 505938960 total WAF: 116
+[  822.597462] print_WAF: total transfer volumes by FSGC: write: 83447508 KB read: 78516012 KB
+[  823.729154] print_WAF: FSWAF: 140 percent gc: 295696 KB write_req: 739032 KB total: 506677992 total WAF: 116
+[  823.729159] print_WAF: total transfer volumes by FSGC: write: 83743204 KB read: 78783592 KB
+[  824.916719] print_WAF: FSWAF: 142 percent gc: 310112 KB write_req: 728928 KB total: 507406920 total WAF: 116
+[  824.916727] print_WAF: total transfer volumes by FSGC: write: 84053316 KB read: 79078652 KB
+[  826.012548] print_WAF: FSWAF: 140 percent gc: 283640 KB write_req: 704204 KB total: 508111124 total WAF: 116
+[  826.012554] print_WAF: total transfer volumes by FSGC: write: 84336956 KB read: 79345916 KB
+[  827.055785] print_WAF: FSWAF: 141 percent gc: 351460 KB write_req: 846832 KB total: 508957956 total WAF: 116
+[  827.055790] print_WAF: total transfer volumes by FSGC: write: 84688416 KB read: 79654320 KB
+[  828.107036] print_WAF: FSWAF: 141 percent gc: 351816 KB write_req: 843672 KB total: 509801628 total WAF: 116
+[  828.107041] print_WAF: total transfer volumes by FSGC: write: 85040232 KB read: 79977108 KB
+[  829.151428] print_WAF: FSWAF: 141 percent gc: 353520 KB write_req: 848024 KB total: 510649652 total WAF: 116
+[  829.151433] print_WAF: total transfer volumes by FSGC: write: 85393752 KB read: 80301412 KB
+[  830.234798] print_WAF: FSWAF: 139 percent gc: 353852 KB write_req: 888776 KB total: 511538428 total WAF: 116
+[  830.234804] print_WAF: total transfer volumes by FSGC: write: 85747604 KB read: 80638180 KB
+[  831.302127] print_WAF: FSWAF: 142 percent gc: 365752 KB write_req: 860864 KB total: 512399292 total WAF: 116
+[  831.302132] print_WAF: total transfer volumes by FSGC: write: 86113356 KB read: 80961888 KB
+[  832.325037] print_WAF: FSWAF: 141 percent gc: 326180 KB write_req: 786884 KB total: 513186176 total WAF: 116
+[  832.325042] print_WAF: total transfer volumes by FSGC: write: 86439536 KB read: 81286032 KB
+[  833.377600] print_WAF: FSWAF: 141 percent gc: 352808 KB write_req: 848128 KB total: 514034304 total WAF: 116
+[  833.377606] print_WAF: total transfer volumes by FSGC: write: 86792344 KB read: 81610332 KB
+[  834.457900] print_WAF: FSWAF: 140 percent gc: 364932 KB write_req: 891112 KB total: 514925416 total WAF: 116
+[  834.457905] print_WAF: total transfer volumes by FSGC: write: 87157276 KB read: 81934700 KB
+[  835.677394] print_WAF: FSWAF: 141 percent gc: 232136 KB write_req: 553828 KB total: 515479244 total WAF: 116
+[  835.677399] print_WAF: total transfer volumes by FSGC: write: 87389412 KB read: 82138452 KB
+[  836.717679] print_WAF: FSWAF: 140 percent gc: 342004 KB write_req: 845368 KB total: 516324612 total WAF: 116
+[  836.717684] print_WAF: total transfer volumes by FSGC: write: 87731416 KB read: 82465044 KB
+[  837.748379] print_WAF: FSWAF: 142 percent gc: 355144 KB write_req: 827572 KB total: 517152184 total WAF: 117
+[  837.748385] print_WAF: total transfer volumes by FSGC: write: 88086560 KB read: 82779028 KB
+[  838.758613] print_WAF: FSWAF: 140 percent gc: 329692 KB write_req: 806168 KB total: 517958352 total WAF: 117
+[  838.758619] print_WAF: total transfer volumes by FSGC: write: 88416252 KB read: 83079820 KB
+[  839.802901] print_WAF: FSWAF: 143 percent gc: 354744 KB write_req: 821964 KB total: 518780316 total WAF: 117
+[  839.802907] print_WAF: total transfer volumes by FSGC: write: 88770996 KB read: 83394500 KB
+[  840.821158] print_WAF: FSWAF: 141 percent gc: 342924 KB write_req: 817036 KB total: 519597352 total WAF: 117
+[  840.821166] print_WAF: total transfer volumes by FSGC: write: 89113920 KB read: 83696180 KB
+[  841.882637] print_WAF: FSWAF: 141 percent gc: 344140 KB write_req: 829980 KB total: 520427332 total WAF: 117
+[  841.882643] print_WAF: total transfer volumes by FSGC: write: 89458060 KB read: 84025736 KB
+[  842.890835] print_WAF: FSWAF: 141 percent gc: 341584 KB write_req: 827248 KB total: 521254580 total WAF: 117
+[  842.890841] print_WAF: total transfer volumes by FSGC: write: 89799644 KB read: 84314148 KB
+[  843.985863] print_WAF: FSWAF: 141 percent gc: 356208 KB write_req: 851784 KB total: 522106364 total WAF: 117
+[  843.985868] print_WAF: total transfer volumes by FSGC: write: 90155852 KB read: 84617152 KB
+[  845.010700] print_WAF: FSWAF: 141 percent gc: 339824 KB write_req: 813268 KB total: 522919632 total WAF: 117
+[  845.010706] print_WAF: total transfer volumes by FSGC: write: 90495676 KB read: 84879100 KB
+[  849.266507] print_WAF: FSWAF: 139 percent gc: 137056 KB write_req: 347556 KB total: 523267188 total WAF: 117
+[  849.266512] print_WAF: total transfer volumes by FSGC: write: 90632732 KB read: 85002884 KB
+[  850.275878] print_WAF: FSWAF: 143 percent gc: 356628 KB write_req: 824680 KB total: 524091868 total WAF: 117
+[  850.275883] print_WAF: total transfer volumes by FSGC: write: 90989360 KB read: 85330752 KB
+[  851.334991] print_WAF: FSWAF: 141 percent gc: 356468 KB write_req: 853932 KB total: 524945800 total WAF: 117
+[  851.334996] print_WAF: total transfer volumes by FSGC: write: 91345828 KB read: 85658368 KB
+[  852.461105] print_WAF: FSWAF: 139 percent gc: 165068 KB write_req: 414344 KB total: 525360144 total WAF: 117
+[  852.461111] print_WAF: total transfer volumes by FSGC: write: 91510896 KB read: 85821296 KB
+[  853.504796] print_WAF: FSWAF: 142 percent gc: 369680 KB write_req: 866500 KB total: 526226644 total WAF: 117
+[  853.504801] print_WAF: total transfer volumes by FSGC: write: 91880576 KB read: 86134488 KB
+[  854.563202] print_WAF: FSWAF: 141 percent gc: 345680 KB write_req: 825840 KB total: 527052484 total WAF: 117
+[  854.563208] print_WAF: total transfer volumes by FSGC: write: 92226256 KB read: 86462364 KB
+[  855.599370] print_WAF: FSWAF: 142 percent gc: 343800 KB write_req: 805940 KB total: 527858424 total WAF: 117
+[  855.599376] print_WAF: total transfer volumes by FSGC: write: 92570056 KB read: 86789560 KB
+[  856.683771] print_WAF: FSWAF: 140 percent gc: 344864 KB write_req: 847408 KB total: 528705832 total WAF: 117
+[  856.683782] print_WAF: total transfer volumes by FSGC: write: 92914920 KB read: 87118244 KB
+[  857.761277] print_WAF: FSWAF: 143 percent gc: 384132 KB write_req: 884948 KB total: 529590780 total WAF: 117
+[  857.761283] print_WAF: total transfer volumes by FSGC: write: 93299052 KB read: 87433172 KB
+[  858.812933] print_WAF: FSWAF: 141 percent gc: 359096 KB write_req: 860624 KB total: 530451404 total WAF: 117
+[  858.812938] print_WAF: total transfer volumes by FSGC: write: 93658148 KB read: 87760876 KB
+[  859.857829] print_WAF: FSWAF: 141 percent gc: 358464 KB write_req: 856840 KB total: 531308244 total WAF: 117
+[  859.857835] print_WAF: total transfer volumes by FSGC: write: 94016612 KB read: 88090272 KB
+[  862.818105] print_WAF: FSWAF: 140 percent gc: 317504 KB write_req: 776696 KB total: 532084940 total WAF: 117
+[  862.818111] print_WAF: total transfer volumes by FSGC: write: 94334116 KB read: 88392316 KB
+[  863.990341] print_WAF: FSWAF: 143 percent gc: 332604 KB write_req: 761432 KB total: 532846372 total WAF: 117
+[  863.990347] print_WAF: total transfer volumes by FSGC: write: 94666720 KB read: 88706304 KB
+[  865.122028] print_WAF: FSWAF: 141 percent gc: 304824 KB write_req: 733316 KB total: 533579688 total WAF: 117
+[  865.122034] print_WAF: total transfer volumes by FSGC: write: 94971544 KB read: 89007980 KB
+[  866.308103] print_WAF: FSWAF: 141 percent gc: 331104 KB write_req: 794684 KB total: 534374372 total WAF: 117
+[  866.308109] print_WAF: total transfer volumes by FSGC: write: 95302648 KB read: 89321736 KB
+[  867.338039] print_WAF: FSWAF: 143 percent gc: 372172 KB write_req: 863788 KB total: 535238160 total WAF: 117
+[  867.338045] print_WAF: total transfer volumes by FSGC: write: 95674820 KB read: 89637296 KB
+[  868.407486] print_WAF: FSWAF: 142 percent gc: 358948 KB write_req: 853524 KB total: 536091684 total WAF: 117
+[  868.407491] print_WAF: total transfer volumes by FSGC: write: 96033768 KB read: 89967056 KB
+[  870.039761] print_WAF: FSWAF: 141 percent gc: 305920 KB write_req: 732456 KB total: 536824140 total WAF: 117
+[  870.039766] print_WAF: total transfer volumes by FSGC: write: 96339688 KB read: 90227448 KB
+[  871.150229] print_WAF: FSWAF: 143 percent gc: 319696 KB write_req: 742536 KB total: 537566676 total WAF: 117
+[  871.150234] print_WAF: total transfer volumes by FSGC: write: 96659384 KB read: 90515472 KB
+[  872.390290] print_WAF: FSWAF: 142 percent gc: 347708 KB write_req: 820328 KB total: 538387004 total WAF: 118
+[  872.390296] print_WAF: total transfer volumes by FSGC: write: 97007092 KB read: 90844916 KB
+[  873.421495] print_WAF: FSWAF: 142 percent gc: 348624 KB write_req: 818940 KB total: 539205944 total WAF: 118
+[  873.421500] print_WAF: total transfer volumes by FSGC: write: 97355716 KB read: 91176088 KB
+[  874.443774] print_WAF: FSWAF: 141 percent gc: 359108 KB write_req: 861880 KB total: 540067824 total WAF: 118
+[  874.443779] print_WAF: total transfer volumes by FSGC: write: 97714824 KB read: 91466292 KB
+[  875.453901] print_WAF: FSWAF: 142 percent gc: 344852 KB write_req: 810476 KB total: 540878300 total WAF: 118
+[  875.453906] print_WAF: total transfer volumes by FSGC: write: 98059676 KB read: 91783424 KB
+[  876.532726] print_WAF: FSWAF: 142 percent gc: 361952 KB write_req: 854584 KB total: 541732884 total WAF: 118
+[  876.532732] print_WAF: total transfer volumes by FSGC: write: 98421628 KB read: 92142100 KB
+[  877.609888] print_WAF: FSWAF: 142 percent gc: 373740 KB write_req: 874832 KB total: 542607716 total WAF: 118
+[  877.609893] print_WAF: total transfer volumes by FSGC: write: 98795368 KB read: 92472580 KB
+[  878.633930] print_WAF: FSWAF: 141 percent gc: 333724 KB write_req: 795072 KB total: 543402788 total WAF: 118
+[  878.633935] print_WAF: total transfer volumes by FSGC: write: 99129092 KB read: 92804368 KB
+[  879.678911] print_WAF: FSWAF: 142 percent gc: 360696 KB write_req: 851316 KB total: 544254104 total WAF: 118
+[  879.678917] print_WAF: total transfer volumes by FSGC: write: 99489788 KB read: 93122380 KB
+[  880.728675] print_WAF: FSWAF: 143 percent gc: 361584 KB write_req: 838988 KB total: 545093092 total WAF: 118
+[  880.728681] print_WAF: total transfer volumes by FSGC: write: 99851372 KB read: 93442412 KB
+[  884.052840] print_WAF: FSWAF: 141 percent gc: 361152 KB write_req: 862732 KB total: 545955824 total WAF: 118
+[  884.052845] print_WAF: total transfer volumes by FSGC: write: 100212524 KB read: 93734976 KB
+[  885.059743] print_WAF: FSWAF: 142 percent gc: 347844 KB write_req: 813988 KB total: 546769812 total WAF: 118
+[  885.059748] print_WAF: total transfer volumes by FSGC: write: 100560368 KB read: 94067048 KB
+[  886.098438] print_WAF: FSWAF: 141 percent gc: 347560 KB write_req: 840108 KB total: 547609920 total WAF: 118
+[  886.098444] print_WAF: total transfer volumes by FSGC: write: 100907928 KB read: 94399572 KB
+[  887.164656] print_WAF: FSWAF: 143 percent gc: 361008 KB write_req: 822824 KB total: 548432744 total WAF: 118
+[  887.164661] print_WAF: total transfer volumes by FSGC: write: 101268936 KB read: 94745000 KB
+[  888.234110] print_WAF: FSWAF: 141 percent gc: 97532 KB write_req: 236780 KB total: 548669524 total WAF: 118
+[  888.234115] print_WAF: total transfer volumes by FSGC: write: 101366468 KB read: 94842368 KB
+[  889.281376] print_WAF: FSWAF: 142 percent gc: 293104 KB write_req: 687948 KB total: 549357472 total WAF: 118
+[  889.281381] print_WAF: total transfer volumes by FSGC: write: 101659572 KB read: 95105480 KB
+[  890.311930] print_WAF: FSWAF: 143 percent gc: 363556 KB write_req: 834096 KB total: 550191568 total WAF: 118
+[  890.311936] print_WAF: total transfer volumes by FSGC: write: 102023128 KB read: 95423964 KB
+[  891.318976] print_WAF: FSWAF: 141 percent gc: 348836 KB write_req: 848228 KB total: 551039796 total WAF: 118
+[  891.318982] print_WAF: total transfer volumes by FSGC: write: 102371964 KB read: 95729096 KB
+[  892.381838] print_WAF: FSWAF: 143 percent gc: 363264 KB write_req: 830104 KB total: 551869900 total WAF: 118
+[  892.381843] print_WAF: total transfer volumes by FSGC: write: 102735228 KB read: 96076460 KB
+[  893.460801] print_WAF: FSWAF: 141 percent gc: 376760 KB write_req: 905172 KB total: 552775072 total WAF: 118
+[  893.460812] print_WAF: total transfer volumes by FSGC: write: 103111988 KB read: 96410512 KB
+[  894.527477] print_WAF: FSWAF: 143 percent gc: 364908 KB write_req: 837204 KB total: 553612276 total WAF: 118
+[  894.527482] print_WAF: total transfer volumes by FSGC: write: 103476896 KB read: 96757732 KB
+[  895.568025] print_WAF: FSWAF: 142 percent gc: 351516 KB write_req: 819308 KB total: 554431584 total WAF: 118
+[  895.568037] print_WAF: total transfer volumes by FSGC: write: 103828412 KB read: 97092544 KB
+[  896.594845] print_WAF: FSWAF: 141 percent gc: 376028 KB write_req: 903944 KB total: 555335528 total WAF: 118
+[  896.594850] print_WAF: total transfer volumes by FSGC: write: 104204440 KB read: 97384748 KB
+[  897.649242] print_WAF: FSWAF: 143 percent gc: 364644 KB write_req: 832796 KB total: 556168324 total WAF: 118
+[  897.649247] print_WAF: total transfer volumes by FSGC: write: 104569084 KB read: 97734196 KB
+[  898.708582] print_WAF: FSWAF: 141 percent gc: 323076 KB write_req: 785028 KB total: 556953352 total WAF: 118
+[  898.708588] print_WAF: total transfer volumes by FSGC: write: 104892160 KB read: 98041924 KB
+[  899.765970] print_WAF: FSWAF: 144 percent gc: 351784 KB write_req: 793296 KB total: 557746648 total WAF: 118
+[  899.765976] print_WAF: total transfer volumes by FSGC: write: 105243944 KB read: 98391436 KB
+[  900.778072] print_WAF: FSWAF: 142 percent gc: 374472 KB write_req: 890184 KB total: 558636832 total WAF: 118
+[  900.778083] print_WAF: total transfer volumes by FSGC: write: 105618416 KB read: 98658744 KB
+[  903.889847] print_WAF: FSWAF: 140 percent gc: 99080 KB write_req: 244616 KB total: 558881448 total WAF: 118
+[  903.889853] print_WAF: total transfer volumes by FSGC: write: 105717496 KB read: 98756980 KB
+[  905.052936] print_WAF: FSWAF: 143 percent gc: 335940 KB write_req: 766160 KB total: 559647608 total WAF: 118
+[  905.052942] print_WAF: total transfer volumes by FSGC: write: 106053436 KB read: 99078236 KB
+[  906.277568] print_WAF: FSWAF: 142 percent gc: 339136 KB write_req: 803332 KB total: 560450940 total WAF: 118
+[  906.277574] print_WAF: total transfer volumes by FSGC: write: 106392572 KB read: 99399116 KB
+[  907.351448] print_WAF: FSWAF: 143 percent gc: 367000 KB write_req: 835988 KB total: 561286928 total WAF: 119
+[  907.351454] print_WAF: total transfer volumes by FSGC: write: 106759572 KB read: 99750672 KB
+[  908.365720] print_WAF: FSWAF: 142 percent gc: 352220 KB write_req: 825420 KB total: 562112348 total WAF: 119
+[  908.365725] print_WAF: total transfer volumes by FSGC: write: 107111792 KB read: 100045204 KB
+[  909.438880] print_WAF: FSWAF: 142 percent gc: 366592 KB write_req: 858620 KB total: 562970968 total WAF: 119
+[  909.438886] print_WAF: total transfer volumes by FSGC: write: 107478384 KB read: 100382240 KB
+[  910.451096] print_WAF: FSWAF: 143 percent gc: 339048 KB write_req: 771192 KB total: 563742160 total WAF: 119
+[  910.451102] print_WAF: total transfer volumes by FSGC: write: 107817432 KB read: 100705100 KB
+[  911.453953] print_WAF: FSWAF: 141 percent gc: 349752 KB write_req: 847764 KB total: 564589924 total WAF: 119
+[  911.453960] print_WAF: total transfer volumes by FSGC: write: 108167184 KB read: 100999436 KB
+[  912.528754] print_WAF: FSWAF: 144 percent gc: 367692 KB write_req: 834448 KB total: 565424372 total WAF: 119
+[  912.528759] print_WAF: total transfer volumes by FSGC: write: 108534876 KB read: 101351264 KB
+[  913.556758] print_WAF: FSWAF: 142 percent gc: 353068 KB write_req: 823436 KB total: 566247808 total WAF: 119
+[  913.556764] print_WAF: total transfer volumes by FSGC: write: 108887944 KB read: 101675196 KB
+[  914.557256] print_WAF: FSWAF: 143 percent gc: 325868 KB write_req: 750996 KB total: 566998804 total WAF: 119
+[  914.557261] print_WAF: total transfer volumes by FSGC: write: 109213812 KB read: 101999248 KB
+[  915.605311] print_WAF: FSWAF: 143 percent gc: 368948 KB write_req: 842124 KB total: 567840928 total WAF: 119
+[  915.605319] print_WAF: total transfer volumes by FSGC: write: 109582760 KB read: 102323000 KB
+[  918.285901] print_WAF: FSWAF: 142 percent gc: 127320 KB write_req: 302324 KB total: 568143252 total WAF: 119
+[  918.285913] print_WAF: total transfer volumes by FSGC: write: 109710080 KB read: 102435372 KB
+[  919.303406] print_WAF: FSWAF: 142 percent gc: 365604 KB write_req: 858964 KB total: 569002216 total WAF: 119
+[  919.303411] print_WAF: total transfer volumes by FSGC: write: 110075684 KB read: 102755952 KB
+[  920.376321] print_WAF: FSWAF: 143 percent gc: 367812 KB write_req: 839940 KB total: 569842156 total WAF: 119
+[  920.376326] print_WAF: total transfer volumes by FSGC: write: 110443496 KB read: 103105940 KB
+[  921.430457] print_WAF: FSWAF: 142 percent gc: 184956 KB write_req: 439104 KB total: 570281260 total WAF: 119
+[  921.430463] print_WAF: total transfer volumes by FSGC: write: 110628452 KB read: 103274020 KB
+[  922.491600] print_WAF: FSWAF: 144 percent gc: 310012 KB write_req: 698740 KB total: 570980000 total WAF: 119
+[  922.491606] print_WAF: total transfer volumes by FSGC: write: 110938464 KB read: 103527184 KB
+[  923.505151] print_WAF: FSWAF: 142 percent gc: 269300 KB write_req: 629348 KB total: 571609348 total WAF: 119
+[  923.505157] print_WAF: total transfer volumes by FSGC: write: 111207764 KB read: 103766496 KB
+[  924.580207] print_WAF: FSWAF: 143 percent gc: 356060 KB write_req: 822684 KB total: 572432032 total WAF: 119
+[  924.580213] print_WAF: total transfer volumes by FSGC: write: 111563824 KB read: 104119980 KB
+[  925.590978] print_WAF: FSWAF: 144 percent gc: 341296 KB write_req: 775452 KB total: 573207484 total WAF: 119
+[  925.590983] print_WAF: total transfer volumes by FSGC: write: 111905120 KB read: 104443900 KB
+[  926.604213] print_WAF: FSWAF: 141 percent gc: 354864 KB write_req: 854500 KB total: 574061984 total WAF: 119
+[  926.604219] print_WAF: total transfer volumes by FSGC: write: 112259984 KB read: 104740080 KB
+[  927.615680] print_WAF: FSWAF: 144 percent gc: 355376 KB write_req: 792384 KB total: 574854368 total WAF: 119
+[  927.615686] print_WAF: total transfer volumes by FSGC: write: 112615360 KB read: 105064892 KB
+[  928.647984] print_WAF: FSWAF: 144 percent gc: 367436 KB write_req: 834216 KB total: 575688584 total WAF: 119
+[  928.647989] print_WAF: total transfer volumes by FSGC: write: 112982796 KB read: 105373784 KB
+[  930.723898] print_WAF: FSWAF: 141 percent gc: 227352 KB write_req: 545792 KB total: 576234376 total WAF: 119
+[  930.723906] print_WAF: total transfer volumes by FSGC: write: 113210148 KB read: 105585832 KB
+[  932.001880] print_WAF: FSWAF: 143 percent gc: 355968 KB write_req: 822280 KB total: 577056656 total WAF: 119
+[  932.001885] print_WAF: total transfer volumes by FSGC: write: 113566116 KB read: 105937384 KB
+[  933.141274] print_WAF: FSWAF: 143 percent gc: 326268 KB write_req: 753876 KB total: 577810532 total WAF: 119
+[  933.141281] print_WAF: total transfer volumes by FSGC: write: 113892384 KB read: 106233680 KB
+[  934.323375] print_WAF: FSWAF: 144 percent gc: 341328 KB write_req: 769764 KB total: 578580296 total WAF: 119
+[  934.323380] print_WAF: total transfer volumes by FSGC: write: 114233712 KB read: 106543332 KB
+[  935.459070] print_WAF: FSWAF: 143 percent gc: 329256 KB write_req: 751392 KB total: 579331688 total WAF: 119
+[  935.459075] print_WAF: total transfer volumes by FSGC: write: 114562968 KB read: 106840424 KB
+[  936.643696] print_WAF: FSWAF: 143 percent gc: 329060 KB write_req: 756580 KB total: 580088268 total WAF: 119
+[  936.643701] print_WAF: total transfer volumes by FSGC: write: 114892028 KB read: 107164496 KB
+[  937.730405] print_WAF: FSWAF: 141 percent gc: 384468 KB write_req: 918572 KB total: 581006840 total WAF: 119
+[  937.730410] print_WAF: total transfer volumes by FSGC: write: 115276496 KB read: 107488356 KB
+[  938.758193] print_WAF: FSWAF: 144 percent gc: 358276 KB write_req: 813076 KB total: 581819916 total WAF: 119
+[  938.758198] print_WAF: total transfer volumes by FSGC: write: 115634772 KB read: 107813780 KB
+[  940.488801] print_WAF: FSWAF: 144 percent gc: 344168 KB write_req: 776348 KB total: 582596264 total WAF: 119
+[  940.488813] print_WAF: total transfer volumes by FSGC: write: 115978940 KB read: 108125556 KB
+[  941.585282] print_WAF: FSWAF: 144 percent gc: 316044 KB write_req: 707560 KB total: 583303824 total WAF: 119
+[  941.585288] print_WAF: total transfer volumes by FSGC: write: 116294984 KB read: 108423560 KB
+[  942.742042] print_WAF: FSWAF: 143 percent gc: 329876 KB write_req: 756336 KB total: 584060160 total WAF: 119
+[  942.742051] print_WAF: total transfer volumes by FSGC: write: 116624860 KB read: 108721240 KB
+[  943.780863] print_WAF: FSWAF: 143 percent gc: 358212 KB write_req: 820464 KB total: 584880624 total WAF: 120
+[  943.780868] print_WAF: total transfer volumes by FSGC: write: 116983072 KB read: 109047780 KB
+[  944.816075] print_WAF: FSWAF: 143 percent gc: 372828 KB write_req: 864788 KB total: 585745412 total WAF: 120
+[  944.816080] print_WAF: total transfer volumes by FSGC: write: 117355900 KB read: 109360892 KB
+[  945.896092] print_WAF: FSWAF: 144 percent gc: 373912 KB write_req: 843544 KB total: 586588956 total WAF: 120
+[  945.896097] print_WAF: total transfer volumes by FSGC: write: 117729812 KB read: 109716564 KB
+[  946.930661] print_WAF: FSWAF: 143 percent gc: 358216 KB write_req: 829948 KB total: 587418904 total WAF: 120
+[  946.930667] print_WAF: total transfer volumes by FSGC: write: 118088028 KB read: 110043104 KB
+[  948.702208] print_WAF: FSWAF: 145 percent gc: 216260 KB write_req: 471348 KB total: 587890252 total WAF: 120
+[  948.702214] print_WAF: total transfer volumes by FSGC: write: 118304288 KB read: 110241700 KB
+[  949.779437] print_WAF: FSWAF: 142 percent gc: 373448 KB write_req: 869764 KB total: 588760016 total WAF: 120
+[  949.779443] print_WAF: total transfer volumes by FSGC: write: 118677736 KB read: 110596056 KB
+[  950.902459] print_WAF: FSWAF: 143 percent gc: 243940 KB write_req: 560948 KB total: 589320964 total WAF: 120
+[  950.902464] print_WAF: total transfer volumes by FSGC: write: 118921676 KB read: 110795460 KB
+[  952.102173] print_WAF: FSWAF: 145 percent gc: 361100 KB write_req: 793420 KB total: 590114384 total WAF: 120
+[  952.102178] print_WAF: total transfer volumes by FSGC: write: 119282776 KB read: 111107784 KB
+[  953.253169] print_WAF: FSWAF: 143 percent gc: 314596 KB write_req: 729208 KB total: 590843592 total WAF: 120
+[  953.253175] print_WAF: total transfer volumes by FSGC: write: 119597372 KB read: 111406636 KB
+[  954.418249] print_WAF: FSWAF: 143 percent gc: 330656 KB write_req: 757748 KB total: 591601340 total WAF: 120
+[  954.418254] print_WAF: total transfer volumes by FSGC: write: 119928028 KB read: 111720048 KB
+[  955.505790] print_WAF: FSWAF: 143 percent gc: 374800 KB write_req: 867568 KB total: 592468908 total WAF: 120
+[  955.505796] print_WAF: total transfer volumes by FSGC: write: 120302828 KB read: 112077704 KB
+[  956.567239] print_WAF: FSWAF: 144 percent gc: 373432 KB write_req: 841076 KB total: 593309984 total WAF: 120
+[  956.567245] print_WAF: total transfer volumes by FSGC: write: 120676260 KB read: 112406840 KB
+[  957.593509] print_WAF: FSWAF: 143 percent gc: 360260 KB write_req: 828980 KB total: 594138964 total WAF: 120
+[  957.593515] print_WAF: total transfer volumes by FSGC: write: 121036520 KB read: 112736664 KB
+[  958.600456] print_WAF: FSWAF: 143 percent gc: 359508 KB write_req: 821036 KB total: 594960000 total WAF: 120
+[  958.600461] print_WAF: total transfer volumes by FSGC: write: 121396028 KB read: 113065492 KB
+[  959.647683] print_WAF: FSWAF: 145 percent gc: 360080 KB write_req: 795548 KB total: 595755548 total WAF: 120
+[  959.647688] print_WAF: total transfer volumes by FSGC: write: 121756108 KB read: 113422680 KB
+[  960.787477] print_WAF: FSWAF: 145 percent gc: 28252 KB write_req: 62028 KB total: 595817576 total WAF: 120
+[  960.787481] print_WAF: total transfer volumes by FSGC: write: 121784360 KB read: 113436664 KB
+[  961.821799] print_WAF: FSWAF: 142 percent gc: 388692 KB write_req: 914440 KB total: 596732016 total WAF: 120
+[  961.821805] print_WAF: total transfer volumes by FSGC: write: 122173052 KB read: 113750872 KB
+[  962.859728] print_WAF: FSWAF: 145 percent gc: 362404 KB write_req: 794772 KB total: 597526788 total WAF: 120
+[  962.859734] print_WAF: total transfer volumes by FSGC: write: 122535456 KB read: 114092908 KB
+[  963.871645] print_WAF: FSWAF: 143 percent gc: 346484 KB write_req: 804284 KB total: 598331072 total WAF: 120
+[  963.871650] print_WAF: total transfer volumes by FSGC: write: 122881940 KB read: 114422944 KB
+[  964.924211] print_WAF: FSWAF: 144 percent gc: 375964 KB write_req: 835884 KB total: 599166956 total WAF: 120
+[  964.924216] print_WAF: total transfer volumes by FSGC: write: 123257904 KB read: 114753872 KB
+[  965.936103] print_WAF: FSWAF: 143 percent gc: 362080 KB write_req: 825092 KB total: 599992048 total WAF: 120
+[  965.936107] print_WAF: total transfer volumes by FSGC: write: 123619984 KB read: 115070340 KB
+[  967.012690] print_WAF: FSWAF: 144 percent gc: 361464 KB write_req: 818452 KB total: 600810500 total WAF: 120
+[  967.012695] print_WAF: total transfer volumes by FSGC: write: 123981448 KB read: 115430220 KB
+[  968.030552] print_WAF: FSWAF: 144 percent gc: 347232 KB write_req: 785516 KB total: 601596016 total WAF: 120
+[  968.030557] print_WAF: total transfer volumes by FSGC: write: 124328680 KB read: 115760360 KB
+[  969.088550] print_WAF: FSWAF: 144 percent gc: 363356 KB write_req: 821292 KB total: 602417308 total WAF: 120
+[  969.088562] print_WAF: total transfer volumes by FSGC: write: 124692036 KB read: 116107828 KB
+[  970.158228] print_WAF: FSWAF: 144 percent gc: 377804 KB write_req: 850836 KB total: 603268144 total WAF: 120
+[  970.158234] print_WAF: total transfer volumes by FSGC: write: 125069840 KB read: 116440784 KB
+[  971.214814] print_WAF: FSWAF: 144 percent gc: 377096 KB write_req: 846076 KB total: 604114220 total WAF: 120
+[  971.214819] print_WAF: total transfer volumes by FSGC: write: 125446936 KB read: 116775464 KB
+[  972.227127] print_WAF: FSWAF: 144 percent gc: 346688 KB write_req: 785368 KB total: 604899588 total WAF: 120
+[  972.227133] print_WAF: total transfer volumes by FSGC: write: 125793624 KB read: 117094760 KB
+[  975.309976] print_WAF: FSWAF: 143 percent gc: 334600 KB write_req: 772264 KB total: 605671852 total WAF: 120
+[  975.309981] print_WAF: total transfer volumes by FSGC: write: 126128224 KB read: 117385628 KB
+[  976.381877] print_WAF: FSWAF: 145 percent gc: 391828 KB write_req: 870372 KB total: 606542224 total WAF: 120
+[  976.381883] print_WAF: total transfer volumes by FSGC: write: 126520052 KB read: 117748596 KB
+[  977.415780] print_WAF: FSWAF: 143 percent gc: 364000 KB write_req: 831180 KB total: 607373404 total WAF: 120
+[  977.415786] print_WAF: total transfer volumes by FSGC: write: 126884052 KB read: 118068588 KB
+[  978.454045] print_WAF: FSWAF: 145 percent gc: 364100 KB write_req: 804620 KB total: 608178024 total WAF: 120
+[  978.454052] print_WAF: total transfer volumes by FSGC: write: 127248152 KB read: 118402864 KB
+[  979.499869] print_WAF: FSWAF: 143 percent gc: 364212 KB write_req: 832072 KB total: 609010096 total WAF: 120
+[  979.499875] print_WAF: total transfer volumes by FSGC: write: 127612364 KB read: 118722540 KB
+[  980.548262] print_WAF: FSWAF: 144 percent gc: 363804 KB write_req: 824980 KB total: 609835076 total WAF: 120
+[  980.548268] print_WAF: total transfer volumes by FSGC: write: 127976168 KB read: 119056876 KB
+[  981.588048] print_WAF: FSWAF: 144 percent gc: 378720 KB write_req: 849508 KB total: 610684584 total WAF: 121
+[  981.588056] print_WAF: total transfer volumes by FSGC: write: 128354888 KB read: 119376640 KB
+[  982.609903] print_WAF: FSWAF: 145 percent gc: 336652 KB write_req: 737868 KB total: 611422452 total WAF: 121
+[  982.609909] print_WAF: total transfer volumes by FSGC: write: 128691540 KB read: 119711800 KB
+[  983.699682] print_WAF: FSWAF: 143 percent gc: 391976 KB write_req: 897644 KB total: 612320096 total WAF: 121
+[  983.699688] print_WAF: total transfer volumes by FSGC: write: 129083516 KB read: 120031720 KB
+[  984.747683] print_WAF: FSWAF: 146 percent gc: 352028 KB write_req: 763452 KB total: 613083548 total WAF: 121
+[  984.747689] print_WAF: total transfer volumes by FSGC: write: 129435544 KB read: 120382244 KB
+[  987.946399] print_WAF: FSWAF: 143 percent gc: 274684 KB write_req: 634356 KB total: 613717904 total WAF: 121
+[  987.946404] print_WAF: total transfer volumes by FSGC: write: 129710228 KB read: 120628772 KB
+[  988.983047] print_WAF: FSWAF: 143 percent gc: 394476 KB write_req: 903152 KB total: 614621056 total WAF: 121
+[  988.983053] print_WAF: total transfer volumes by FSGC: write: 130104704 KB read: 120947444 KB
+[  990.058358] print_WAF: FSWAF: 145 percent gc: 393284 KB write_req: 868384 KB total: 615489440 total WAF: 121
+[  990.058363] print_WAF: total transfer volumes by FSGC: write: 130497988 KB read: 121296652 KB
+[  991.155576] print_WAF: FSWAF: 143 percent gc: 366316 KB write_req: 834604 KB total: 616324044 total WAF: 121
+[  991.155581] print_WAF: total transfer volumes by FSGC: write: 130864304 KB read: 121660288 KB
+[  992.212944] print_WAF: FSWAF: 144 percent gc: 378532 KB write_req: 842552 KB total: 617166596 total WAF: 121
+[  992.212949] print_WAF: total transfer volumes by FSGC: write: 131242836 KB read: 121994788 KB
+[  993.232452] print_WAF: FSWAF: 144 percent gc: 351404 KB write_req: 785068 KB total: 617951664 total WAF: 121
+[  993.232457] print_WAF: total transfer volumes by FSGC: write: 131594240 KB read: 122315204 KB
+[  994.283562] print_WAF: FSWAF: 145 percent gc: 365564 KB write_req: 800448 KB total: 618752112 total WAF: 121
+[  994.283568] print_WAF: total transfer volumes by FSGC: write: 131959804 KB read: 122663972 KB
+[  995.308361] print_WAF: FSWAF: 143 percent gc: 350860 KB write_req: 814816 KB total: 619566928 total WAF: 121
+[  995.308367] print_WAF: total transfer volumes by FSGC: write: 132310664 KB read: 122970372 KB
+[  996.335750] print_WAF: FSWAF: 145 percent gc: 363988 KB write_req: 797248 KB total: 620364176 total WAF: 121
+[  996.335755] print_WAF: total transfer volumes by FSGC: write: 132674652 KB read: 123292120 KB
+[  997.349531] print_WAF: FSWAF: 144 percent gc: 336984 KB write_req: 765552 KB total: 621129728 total WAF: 121
+[  997.349536] print_WAF: total transfer volumes by FSGC: write: 133011636 KB read: 123613680 KB
+[  998.356564] print_WAF: FSWAF: 144 percent gc: 353220 KB write_req: 794184 KB total: 621923912 total WAF: 121
+[  998.356569] print_WAF: total transfer volumes by FSGC: write: 133364856 KB read: 123936700 KB
+[ 1001.684695] print_WAF: FSWAF: 144 percent gc: 117896 KB write_req: 262060 KB total: 622185972 total WAF: 121
+[ 1001.684703] print_WAF: total transfer volumes by FSGC: write: 133482752 KB read: 124039276 KB
+[ 1002.910707] print_WAF: FSWAF: 145 percent gc: 393972 KB write_req: 859880 KB total: 623045852 total WAF: 121
+[ 1002.910713] print_WAF: total transfer volumes by FSGC: write: 133876724 KB read: 124389012 KB
+[ 1003.937906] print_WAF: FSWAF: 143 percent gc: 351904 KB write_req: 817020 KB total: 623862872 total WAF: 121
+[ 1003.937911] print_WAF: total transfer volumes by FSGC: write: 134228628 KB read: 124725752 KB
+[ 1005.000142] print_WAF: FSWAF: 145 percent gc: 382692 KB write_req: 844528 KB total: 624707400 total WAF: 121
+[ 1005.000147] print_WAF: total transfer volumes by FSGC: write: 134611320 KB read: 125076672 KB
+[ 1006.012012] print_WAF: FSWAF: 146 percent gc: 380140 KB write_req: 822856 KB total: 625530256 total WAF: 121
+[ 1006.012018] print_WAF: total transfer volumes by FSGC: write: 134991460 KB read: 125396932 KB
+[ 1007.030665] print_WAF: FSWAF: 143 percent gc: 339912 KB write_req: 780816 KB total: 626311072 total WAF: 121
+[ 1007.030671] print_WAF: total transfer volumes by FSGC: write: 135331372 KB read: 125733300 KB
+[ 1008.043812] print_WAF: FSWAF: 145 percent gc: 352584 KB write_req: 782404 KB total: 627093476 total WAF: 121
+[ 1008.043821] print_WAF: total transfer volumes by FSGC: write: 135683956 KB read: 126054908 KB
+[ 1009.049760] print_WAF: FSWAF: 145 percent gc: 367476 KB write_req: 804448 KB total: 627897924 total WAF: 121
+[ 1009.049766] print_WAF: total transfer volumes by FSGC: write: 136051432 KB read: 126378232 KB
+[ 1010.079178] print_WAF: FSWAF: 144 percent gc: 381376 KB write_req: 848084 KB total: 628746008 total WAF: 121
+[ 1010.079183] print_WAF: total transfer volumes by FSGC: write: 136432808 KB read: 126701512 KB
+[ 1011.113146] print_WAF: FSWAF: 144 percent gc: 369472 KB write_req: 834292 KB total: 629580300 total WAF: 121
+[ 1011.113156] print_WAF: total transfer volumes by FSGC: write: 136802280 KB read: 127039532 KB
+[ 1012.199335] print_WAF: FSWAF: 144 percent gc: 369340 KB write_req: 836560 KB total: 630416860 total WAF: 121
+[ 1012.199347] print_WAF: total transfer volumes by FSGC: write: 137171620 KB read: 127392560 KB
+[ 1013.262452] print_WAF: FSWAF: 146 percent gc: 384708 KB write_req: 818700 KB total: 631235560 total WAF: 121
+[ 1013.262463] print_WAF: total transfer volumes by FSGC: write: 137556328 KB read: 127746220 KB
+[ 1014.301577] print_WAF: FSWAF: 143 percent gc: 367884 KB write_req: 836300 KB total: 632071860 total WAF: 121
+[ 1014.301583] print_WAF: total transfer volumes by FSGC: write: 137924212 KB read: 128070148 KB
+[ 1017.768184] print_WAF: FSWAF: 143 percent gc: 221092 KB write_req: 503608 KB total: 632575468 total WAF: 121
+[ 1017.768190] print_WAF: total transfer volumes by FSGC: write: 138145304 KB read: 128275684 KB
+[ 1019.025636] print_WAF: FSWAF: 146 percent gc: 385988 KB write_req: 826852 KB total: 633402320 total WAF: 121
+[ 1019.025641] print_WAF: total transfer volumes by FSGC: write: 138531292 KB read: 128629452 KB
+[ 1020.042901] print_WAF: FSWAF: 144 percent gc: 371184 KB write_req: 842872 KB total: 634245192 total WAF: 121
+[ 1020.042907] print_WAF: total transfer volumes by FSGC: write: 138902476 KB read: 128953472 KB
+[ 1021.072522] print_WAF: FSWAF: 146 percent gc: 385192 KB write_req: 823448 KB total: 635068640 total WAF: 121
+[ 1021.072533] print_WAF: total transfer volumes by FSGC: write: 139287668 KB read: 129276896 KB
+[ 1022.156833] print_WAF: FSWAF: 145 percent gc: 384908 KB write_req: 850516 KB total: 635919156 total WAF: 121
+[ 1022.156838] print_WAF: total transfer volumes by FSGC: write: 139672576 KB read: 129629156 KB
+[ 1023.177020] print_WAF: FSWAF: 144 percent gc: 342400 KB write_req: 774500 KB total: 636693656 total WAF: 121
+[ 1023.177026] print_WAF: total transfer volumes by FSGC: write: 140014976 KB read: 129969100 KB
+[ 1024.219767] print_WAF: FSWAF: 144 percent gc: 369268 KB write_req: 825792 KB total: 637519448 total WAF: 122
+[ 1024.219772] print_WAF: total transfer volumes by FSGC: write: 140384244 KB read: 130293156 KB
+[ 1025.272326] print_WAF: FSWAF: 145 percent gc: 370420 KB write_req: 805656 KB total: 638325104 total WAF: 122
+[ 1025.272332] print_WAF: total transfer volumes by FSGC: write: 140754664 KB read: 130647124 KB
+[ 1026.320331] print_WAF: FSWAF: 145 percent gc: 384772 KB write_req: 850028 KB total: 639175132 total WAF: 122
+[ 1026.320336] print_WAF: total transfer volumes by FSGC: write: 141139436 KB read: 130972428 KB
+[ 1027.337862] print_WAF: FSWAF: 144 percent gc: 371640 KB write_req: 827740 KB total: 640002872 total WAF: 122
+[ 1027.337867] print_WAF: total transfer volumes by FSGC: write: 141511076 KB read: 131298384 KB
+[ 1028.364508] print_WAF: FSWAF: 145 percent gc: 357856 KB write_req: 790708 KB total: 640793580 total WAF: 122
+[ 1028.364513] print_WAF: total transfer volumes by FSGC: write: 141868932 KB read: 131654992 KB
+[ 1029.428722] print_WAF: FSWAF: 145 percent gc: 372936 KB write_req: 812144 KB total: 641605724 total WAF: 122
+[ 1029.428727] print_WAF: total transfer volumes by FSGC: write: 142241868 KB read: 132010056 KB
+[ 1030.506407] print_WAF: FSWAF: 146 percent gc: 402292 KB write_req: 869728 KB total: 642475452 total WAF: 122
+[ 1030.506412] print_WAF: total transfer volumes by FSGC: write: 142644160 KB read: 132366232 KB
+[ 1034.259037] print_WAF: FSWAF: 144 percent gc: 344244 KB write_req: 776080 KB total: 643251532 total WAF: 122
+[ 1034.259042] print_WAF: total transfer volumes by FSGC: write: 142988404 KB read: 132693048 KB
+[ 1035.394009] print_WAF: FSWAF: 145 percent gc: 358112 KB write_req: 781652 KB total: 644033184 total WAF: 122
+[ 1035.394015] print_WAF: total transfer volumes by FSGC: write: 143346516 KB read: 132989320 KB
+[ 1036.594376] print_WAF: FSWAF: 145 percent gc: 356632 KB write_req: 788848 KB total: 644822032 total WAF: 122
+[ 1036.594385] print_WAF: total transfer volumes by FSGC: write: 143703148 KB read: 133315224 KB
+[ 1037.671822] print_WAF: FSWAF: 145 percent gc: 388420 KB write_req: 850784 KB total: 645672816 total WAF: 122
+[ 1037.671828] print_WAF: total transfer volumes by FSGC: write: 144091568 KB read: 133671512 KB
+[ 1038.682412] print_WAF: FSWAF: 145 percent gc: 358832 KB write_req: 787008 KB total: 646459824 total WAF: 122
+[ 1038.682417] print_WAF: total transfer volumes by FSGC: write: 144450400 KB read: 133998844 KB
+[ 1039.754040] print_WAF: FSWAF: 146 percent gc: 374040 KB write_req: 809032 KB total: 647268856 total WAF: 122
+[ 1039.754045] print_WAF: total transfer volumes by FSGC: write: 144824440 KB read: 134356820 KB
+[ 1040.754282] print_WAF: FSWAF: 144 percent gc: 343364 KB write_req: 770764 KB total: 648039620 total WAF: 122
+[ 1040.754288] print_WAF: total transfer volumes by FSGC: write: 145167804 KB read: 134683280 KB
+[ 1041.780116] print_WAF: FSWAF: 146 percent gc: 372212 KB write_req: 802636 KB total: 648842256 total WAF: 122
+[ 1041.780122] print_WAF: total transfer volumes by FSGC: write: 145540016 KB read: 135009996 KB
+[ 1042.861930] print_WAF: FSWAF: 145 percent gc: 389016 KB write_req: 856440 KB total: 649698696 total WAF: 122
+[ 1042.861935] print_WAF: total transfer volumes by FSGC: write: 145929032 KB read: 135367316 KB
+[ 1043.914504] print_WAF: FSWAF: 145 percent gc: 389144 KB write_req: 854488 KB total: 650553184 total WAF: 122
+[ 1043.914509] print_WAF: total transfer volumes by FSGC: write: 146318176 KB read: 135694268 KB
+[ 1044.950584] print_WAF: FSWAF: 144 percent gc: 375200 KB write_req: 837936 KB total: 651391120 total WAF: 122
+[ 1044.950589] print_WAF: total transfer volumes by FSGC: write: 146693376 KB read: 136021996 KB
+[ 1045.986692] print_WAF: FSWAF: 146 percent gc: 375728 KB write_req: 806480 KB total: 652197600 total WAF: 122
+[ 1045.986697] print_WAF: total transfer volumes by FSGC: write: 147069104 KB read: 136366228 KB
+[ 1049.220536] print_WAF: FSWAF: 144 percent gc: 328484 KB write_req: 734216 KB total: 652931816 total WAF: 122
+[ 1049.220541] print_WAF: total transfer volumes by FSGC: write: 147397588 KB read: 136692988 KB
+[ 1050.257890] print_WAF: FSWAF: 146 percent gc: 389668 KB write_req: 835112 KB total: 653766928 total WAF: 122
+[ 1050.257896] print_WAF: total transfer volumes by FSGC: write: 147787256 KB read: 137048968 KB
+[ 1051.278182] print_WAF: FSWAF: 144 percent gc: 371956 KB write_req: 831732 KB total: 654598660 total WAF: 122
+[ 1051.278188] print_WAF: total transfer volumes by FSGC: write: 148159212 KB read: 137388904 KB
+[ 1052.288056] print_WAF: FSWAF: 147 percent gc: 163760 KB write_req: 347716 KB total: 654946376 total WAF: 122
+[ 1052.288061] print_WAF: total transfer volumes by FSGC: write: 148322972 KB read: 137552076 KB
+[ 1053.398128] print_WAF: FSWAF: 145 percent gc: 328160 KB write_req: 719312 KB total: 655665688 total WAF: 122
+[ 1053.398133] print_WAF: total transfer volumes by FSGC: write: 148651132 KB read: 137833464 KB
+[ 1054.639795] print_WAF: FSWAF: 145 percent gc: 359300 KB write_req: 792508 KB total: 656458196 total WAF: 122
+[ 1054.639801] print_WAF: total transfer volumes by FSGC: write: 149010432 KB read: 138160492 KB
+[ 1055.837052] print_WAF: FSWAF: 145 percent gc: 357336 KB write_req: 786636 KB total: 657244832 total WAF: 122
+[ 1055.837058] print_WAF: total transfer volumes by FSGC: write: 149367768 KB read: 138457348 KB
+[ 1057.116725] print_WAF: FSWAF: 144 percent gc: 359856 KB write_req: 800060 KB total: 658044892 total WAF: 122
+[ 1057.116730] print_WAF: total transfer volumes by FSGC: write: 149727624 KB read: 138813692 KB
+[ 1058.388387] print_WAF: FSWAF: 146 percent gc: 374760 KB write_req: 811596 KB total: 658856488 total WAF: 122
+[ 1058.388392] print_WAF: total transfer volumes by FSGC: write: 150102384 KB read: 139170044 KB
+[ 1059.542810] print_WAF: FSWAF: 145 percent gc: 359472 KB write_req: 787328 KB total: 659643816 total WAF: 122
+[ 1059.542815] print_WAF: total transfer volumes by FSGC: write: 150461856 KB read: 139467288 KB
+[ 1060.789566] print_WAF: FSWAF: 146 percent gc: 388960 KB write_req: 828120 KB total: 660471936 total WAF: 122
+[ 1060.789572] print_WAF: total transfer volumes by FSGC: write: 150850816 KB read: 139808996 KB
+[ 1061.844555] print_WAF: FSWAF: 146 percent gc: 377152 KB write_req: 810556 KB total: 661282492 total WAF: 122
+[ 1061.844561] print_WAF: total transfer volumes by FSGC: write: 151227968 KB read: 140164916 KB
+[ 1062.883471] print_WAF: FSWAF: 144 percent gc: 374800 KB write_req: 840012 KB total: 662122504 total WAF: 122
+[ 1062.883476] print_WAF: total transfer volumes by FSGC: write: 151602768 KB read: 140492248 KB
+[ 1063.922832] print_WAF: FSWAF: 145 percent gc: 392116 KB write_req: 853524 KB total: 662976028 total WAF: 122
+[ 1063.922837] print_WAF: total transfer volumes by FSGC: write: 151994884 KB read: 140818548 KB
+[ 1064.986481] print_WAF: FSWAF: 146 percent gc: 377412 KB write_req: 814732 KB total: 663790760 total WAF: 122
+[ 1064.986487] print_WAF: total transfer volumes by FSGC: write: 152372296 KB read: 141177136 KB
+[ 1066.013141] print_WAF: FSWAF: 147 percent gc: 364104 KB write_req: 766984 KB total: 664557744 total WAF: 122
+[ 1066.013154] print_WAF: total transfer volumes by FSGC: write: 152736400 KB read: 141521676 KB
+[ 1067.087494] print_WAF: FSWAF: 144 percent gc: 375768 KB write_req: 841988 KB total: 665399732 total WAF: 123
+[ 1067.087499] print_WAF: total transfer volumes by FSGC: write: 153112168 KB read: 141880720 KB
+[ 1068.173872] print_WAF: FSWAF: 146 percent gc: 405372 KB write_req: 876592 KB total: 666276324 total WAF: 123
+[ 1068.173877] print_WAF: total transfer volumes by FSGC: write: 153517540 KB read: 142211060 KB
+[ 1069.241222] print_WAF: FSWAF: 146 percent gc: 378352 KB write_req: 812636 KB total: 667088960 total WAF: 123
+[ 1069.241228] print_WAF: total transfer volumes by FSGC: write: 153895892 KB read: 142572512 KB
+[ 1071.329743] print_WAF: FSWAF: 145 percent gc: 331668 KB write_req: 732588 KB total: 667821548 total WAF: 123
+[ 1071.329749] print_WAF: total transfer volumes by FSGC: write: 154227560 KB read: 142859584 KB
+[ 1072.396228] print_WAF: FSWAF: 146 percent gc: 408580 KB write_req: 876980 KB total: 668698528 total WAF: 123
+[ 1072.396234] print_WAF: total transfer volumes by FSGC: write: 154636140 KB read: 143220320 KB
+[ 1073.472472] print_WAF: FSWAF: 145 percent gc: 394256 KB write_req: 864360 KB total: 669562888 total WAF: 123
+[ 1073.472478] print_WAF: total transfer volumes by FSGC: write: 155030396 KB read: 143581752 KB
+[ 1074.510230] print_WAF: FSWAF: 146 percent gc: 380912 KB write_req: 814000 KB total: 670376888 total WAF: 123
+[ 1074.510236] print_WAF: total transfer volumes by FSGC: write: 155411308 KB read: 143928888 KB
+[ 1075.532923] print_WAF: FSWAF: 146 percent gc: 380184 KB write_req: 814240 KB total: 671191128 total WAF: 123
+[ 1075.532928] print_WAF: total transfer volumes by FSGC: write: 155791492 KB read: 144260604 KB
+[ 1076.583675] print_WAF: FSWAF: 145 percent gc: 364792 KB write_req: 797376 KB total: 671988504 total WAF: 123
+[ 1076.583680] print_WAF: total transfer volumes by FSGC: write: 156156284 KB read: 144608560 KB
+[ 1077.599110] print_WAF: FSWAF: 147 percent gc: 365728 KB write_req: 772056 KB total: 672760560 total WAF: 123
+[ 1077.599116] print_WAF: total transfer volumes by FSGC: write: 156522012 KB read: 144942836 KB
+[ 1078.602774] print_WAF: FSWAF: 146 percent gc: 363588 KB write_req: 789920 KB total: 673550480 total WAF: 123
+[ 1078.602779] print_WAF: total transfer volumes by FSGC: write: 156885600 KB read: 145260924 KB
+[ 1079.667772] print_WAF: FSWAF: 146 percent gc: 380208 KB write_req: 821280 KB total: 674371760 total WAF: 123
+[ 1079.667778] print_WAF: total transfer volumes by FSGC: write: 157265808 KB read: 145595520 KB
+[ 1080.741319] print_WAF: FSWAF: 147 percent gc: 396784 KB write_req: 836212 KB total: 675207972 total WAF: 123
+[ 1080.741323] print_WAF: total transfer volumes by FSGC: write: 157662592 KB read: 145945568 KB
+[ 1081.778888] print_WAF: FSWAF: 144 percent gc: 380524 KB write_req: 850000 KB total: 676057972 total WAF: 123
+[ 1081.778892] print_WAF: total transfer volumes by FSGC: write: 158043116 KB read: 146250028 KB
+[ 1085.421036] print_WAF: FSWAF: 147 percent gc: 168352 KB write_req: 353556 KB total: 676411528 total WAF: 123
+[ 1085.421042] print_WAF: total transfer volumes by FSGC: write: 158211468 KB read: 146417564 KB
+[ 1086.685607] print_WAF: FSWAF: 146 percent gc: 383212 KB write_req: 821132 KB total: 677232660 total WAF: 123
+[ 1086.685613] print_WAF: total transfer volumes by FSGC: write: 158594680 KB read: 146795072 KB
+[ 1087.908326] print_WAF: FSWAF: 145 percent gc: 367208 KB write_req: 800236 KB total: 678032896 total WAF: 123
+[ 1087.908333] print_WAF: total transfer volumes by FSGC: write: 158961888 KB read: 147128360 KB
+[ 1088.949099] print_WAF: FSWAF: 147 percent gc: 395796 KB write_req: 826244 KB total: 678859140 total WAF: 123
+[ 1088.949105] print_WAF: total transfer volumes by FSGC: write: 159357684 KB read: 147476060 KB
+[ 1089.957356] print_WAF: FSWAF: 144 percent gc: 350632 KB write_req: 781468 KB total: 679640608 total WAF: 123
+[ 1089.957368] print_WAF: total transfer volumes by FSGC: write: 159708316 KB read: 147809208 KB
+[ 1091.031969] print_WAF: FSWAF: 148 percent gc: 395520 KB write_req: 823968 KB total: 680464576 total WAF: 123
+[ 1091.031974] print_WAF: total transfer volumes by FSGC: write: 160103836 KB read: 148158700 KB
+[ 1092.104175] print_WAF: FSWAF: 146 percent gc: 382244 KB write_req: 818104 KB total: 681282680 total WAF: 123
+[ 1092.104180] print_WAF: total transfer volumes by FSGC: write: 160486080 KB read: 148523112 KB
+[ 1093.719451] print_WAF: FSWAF: 146 percent gc: 397392 KB write_req: 859652 KB total: 682142332 total WAF: 123
+[ 1093.719456] print_WAF: total transfer volumes by FSGC: write: 160883472 KB read: 148871816 KB
+[ 1094.744022] print_WAF: FSWAF: 145 percent gc: 380248 KB write_req: 839048 KB total: 682981380 total WAF: 123
+[ 1094.744028] print_WAF: total transfer volumes by FSGC: write: 161263720 KB read: 149205416 KB
+[ 1095.759057] print_WAF: FSWAF: 147 percent gc: 367864 KB write_req: 766544 KB total: 683747924 total WAF: 123
+[ 1095.759062] print_WAF: total transfer volumes by FSGC: write: 161631584 KB read: 149554040 KB
+[ 1096.856628] print_WAF: FSWAF: 146 percent gc: 382188 KB write_req: 830028 KB total: 684577952 total WAF: 123
+[ 1096.856633] print_WAF: total transfer volumes by FSGC: write: 162013772 KB read: 149918584 KB
+[ 1097.930734] print_WAF: FSWAF: 146 percent gc: 397552 KB write_req: 848240 KB total: 685426192 total WAF: 123
+[ 1097.930740] print_WAF: total transfer volumes by FSGC: write: 162411324 KB read: 150269152 KB
+[ 1098.932464] print_WAF: FSWAF: 147 percent gc: 365988 KB write_req: 768456 KB total: 686194648 total WAF: 123
+[ 1098.932469] print_WAF: total transfer volumes by FSGC: write: 162777312 KB read: 150603644 KB
+[ 1099.997954] print_WAF: FSWAF: 146 percent gc: 394652 KB write_req: 854492 KB total: 687049140 total WAF: 123
+[ 1099.997961] print_WAF: total transfer volumes by FSGC: write: 163171964 KB read: 150953128 KB
+[ 1101.086060] print_WAF: FSWAF: 146 percent gc: 396476 KB write_req: 859552 KB total: 687908692 total WAF: 123
+[ 1101.086065] print_WAF: total transfer volumes by FSGC: write: 163568440 KB read: 151318680 KB
+[ 1102.120225] print_WAF: FSWAF: 147 percent gc: 398176 KB write_req: 833636 KB total: 688742328 total WAF: 123
+[ 1102.120230] print_WAF: total transfer volumes by FSGC: write: 163966616 KB read: 151669856 KB
+[ 1103.167726] print_WAF: FSWAF: 145 percent gc: 367276 KB write_req: 801632 KB total: 689543960 total WAF: 123
+[ 1103.167731] print_WAF: total transfer volumes by FSGC: write: 164333892 KB read: 152007240 KB
+[ 1104.228079] print_WAF: FSWAF: 146 percent gc: 383148 KB write_req: 815604 KB total: 690359564 total WAF: 123
+[ 1104.228085] print_WAF: total transfer volumes by FSGC: write: 164717040 KB read: 152359468 KB
+[ 1105.250791] print_WAF: FSWAF: 145 percent gc: 367104 KB write_req: 798560 KB total: 691158124 total WAF: 123
+[ 1105.250797] print_WAF: total transfer volumes by FSGC: write: 165084144 KB read: 152696684 KB
+[ 1106.338743] print_WAF: FSWAF: 147 percent gc: 398320 KB write_req: 844760 KB total: 692002884 total WAF: 123
+[ 1106.338749] print_WAF: total transfer volumes by FSGC: write: 165482464 KB read: 153050280 KB
+[ 1108.045052] print_WAF: FSWAF: 146 percent gc: 61632 KB write_req: 133684 KB total: 692136568 total WAF: 123
+[ 1108.045058] print_WAF: total transfer volumes by FSGC: write: 165544096 KB read: 153111644 KB
+[ 1109.063847] print_WAF: FSWAF: 146 percent gc: 381176 KB write_req: 815904 KB total: 692952472 total WAF: 123
+[ 1109.063852] print_WAF: total transfer volumes by FSGC: write: 165925272 KB read: 153448596 KB
+[ 1110.076671] print_WAF: FSWAF: 146 percent gc: 354352 KB write_req: 763132 KB total: 693715604 total WAF: 123
+[ 1110.076677] print_WAF: total transfer volumes by FSGC: write: 166279624 KB read: 153770480 KB
+[ 1111.616274] print_WAF: FSWAF: 147 percent gc: 337272 KB write_req: 710864 KB total: 694426468 total WAF: 123
+[ 1111.616283] print_WAF: total transfer volumes by FSGC: write: 166616896 KB read: 154061756 KB
+[ 1112.622921] print_WAF: FSWAF: 145 percent gc: 368316 KB write_req: 801596 KB total: 695228064 total WAF: 124
+[ 1112.622927] print_WAF: total transfer volumes by FSGC: write: 166985212 KB read: 154382956 KB
+[ 1113.698680] print_WAF: FSWAF: 147 percent gc: 370500 KB write_req: 774252 KB total: 696002316 total WAF: 124
+[ 1113.698686] print_WAF: total transfer volumes by FSGC: write: 167355712 KB read: 154736616 KB
+[ 1114.760887] print_WAF: FSWAF: 145 percent gc: 370096 KB write_req: 807440 KB total: 696809756 total WAF: 124
+[ 1114.760892] print_WAF: total transfer volumes by FSGC: write: 167725808 KB read: 155075580 KB
+[ 1115.793879] print_WAF: FSWAF: 149 percent gc: 399336 KB write_req: 800180 KB total: 697609936 total WAF: 124
+[ 1115.793885] print_WAF: total transfer volumes by FSGC: write: 168125144 KB read: 155399116 KB
+[ 1118.504946] print_WAF: FSWAF: 130 percent gc: 30928 KB write_req: 101056 KB total: 697710992 total WAF: 124
+[ 1118.504952] print_WAF: total transfer volumes by FSGC: write: 168156072 KB read: 155429460 KB
+[ 1119.807378] print_WAF: FSWAF: 148 percent gc: 401868 KB write_req: 837028 KB total: 698548020 total WAF: 124
+[ 1119.807382] print_WAF: total transfer volumes by FSGC: write: 168557940 KB read: 155811284 KB
+[ 1121.062302] print_WAF: FSWAF: 147 percent gc: 387520 KB write_req: 823828 KB total: 699371848 total WAF: 124
+[ 1121.062307] print_WAF: total transfer volumes by FSGC: write: 168945460 KB read: 156145792 KB
+[ 1122.317306] print_WAF: FSWAF: 147 percent gc: 387012 KB write_req: 818512 KB total: 700190360 total WAF: 124
+[ 1122.317317] print_WAF: total transfer volumes by FSGC: write: 169332472 KB read: 156497996 KB
+[ 1123.603938] print_WAF: FSWAF: 147 percent gc: 387080 KB write_req: 814048 KB total: 701004408 total WAF: 124
+[ 1123.603943] print_WAF: total transfer volumes by FSGC: write: 169719552 KB read: 156850104 KB
+[ 1124.649465] print_WAF: FSWAF: 146 percent gc: 369868 KB write_req: 791236 KB total: 701795644 total WAF: 124
+[ 1124.649471] print_WAF: total transfer volumes by FSGC: write: 170089420 KB read: 157203400 KB
+[ 1125.675364] print_WAF: FSWAF: 145 percent gc: 355308 KB write_req: 776284 KB total: 702571928 total WAF: 124
+[ 1125.675370] print_WAF: total transfer volumes by FSGC: write: 170444728 KB read: 157541860 KB
+[ 1126.712383] print_WAF: FSWAF: 148 percent gc: 369536 KB write_req: 764504 KB total: 703336432 total WAF: 124
+[ 1126.712390] print_WAF: total transfer volumes by FSGC: write: 170814264 KB read: 157895992 KB
+[ 1127.765909] print_WAF: FSWAF: 147 percent gc: 385552 KB write_req: 810700 KB total: 704147132 total WAF: 124
+[ 1127.765915] print_WAF: total transfer volumes by FSGC: write: 171199816 KB read: 158249612 KB
+[ 1128.770656] print_WAF: FSWAF: 146 percent gc: 369768 KB write_req: 795972 KB total: 704943104 total WAF: 124
+[ 1128.770661] print_WAF: total transfer volumes by FSGC: write: 171569584 KB read: 158571696 KB
+[ 1129.811673] print_WAF: FSWAF: 146 percent gc: 370660 KB write_req: 802420 KB total: 705745524 total WAF: 124
+[ 1129.811679] print_WAF: total transfer volumes by FSGC: write: 171940244 KB read: 158910720 KB
+[ 1130.868538] print_WAF: FSWAF: 148 percent gc: 402556 KB write_req: 833964 KB total: 706579488 total WAF: 124
+[ 1130.868543] print_WAF: total transfer volumes by FSGC: write: 172342800 KB read: 159249820 KB
+[ 1131.913584] print_WAF: FSWAF: 146 percent gc: 370480 KB write_req: 798708 KB total: 707378196 total WAF: 124
+[ 1131.913589] print_WAF: total transfer volumes by FSGC: write: 172713280 KB read: 159588440 KB
+[ 1132.958536] print_WAF: FSWAF: 148 percent gc: 371936 KB write_req: 769436 KB total: 708147632 total WAF: 124
+[ 1132.958543] print_WAF: total transfer volumes by FSGC: write: 173085216 KB read: 159943112 KB
+[ 1134.017611] print_WAF: FSWAF: 146 percent gc: 372204 KB write_req: 798632 KB total: 708946264 total WAF: 124
+[ 1134.017617] print_WAF: total transfer volumes by FSGC: write: 173457420 KB read: 160298700 KB
+[ 1135.035634] print_WAF: FSWAF: 146 percent gc: 371384 KB write_req: 792996 KB total: 709739260 total WAF: 124
+[ 1135.035640] print_WAF: total transfer volumes by FSGC: write: 173828804 KB read: 160638060 KB
+[ 1136.090796] print_WAF: FSWAF: 148 percent gc: 373588 KB write_req: 773648 KB total: 710512908 total WAF: 124
+[ 1136.090802] print_WAF: total transfer volumes by FSGC: write: 174202392 KB read: 160994460 KB
+[ 1137.108311] print_WAF: FSWAF: 147 percent gc: 387488 KB write_req: 815964 KB total: 711328872 total WAF: 124
+[ 1137.108317] print_WAF: total transfer volumes by FSGC: write: 174589880 KB read: 161320804 KB
+[ 1138.188319] print_WAF: FSWAF: 146 percent gc: 388856 KB write_req: 834256 KB total: 712163128 total WAF: 124
+[ 1138.188323] print_WAF: total transfer volumes by FSGC: write: 174978736 KB read: 161678700 KB
+[ 1139.261999] print_WAF: FSWAF: 147 percent gc: 403028 KB write_req: 847728 KB total: 713010856 total WAF: 124
+[ 1139.262005] print_WAF: total transfer volumes by FSGC: write: 175381764 KB read: 162006028 KB
+[ 1142.969468] print_WAF: FSWAF: 150 percent gc: 156488 KB write_req: 310660 KB total: 713321516 total WAF: 124
+[ 1142.969474] print_WAF: total transfer volumes by FSGC: write: 175538252 KB read: 162161524 KB
+[ 1144.217768] print_WAF: FSWAF: 147 percent gc: 389216 KB write_req: 815840 KB total: 714137356 total WAF: 124
+[ 1144.217772] print_WAF: total transfer volumes by FSGC: write: 175927468 KB read: 162516704 KB
+[ 1145.437329] print_WAF: FSWAF: 146 percent gc: 372536 KB write_req: 803756 KB total: 714941112 total WAF: 124
+[ 1145.437335] print_WAF: total transfer volumes by FSGC: write: 176300004 KB read: 162856608 KB
+[ 1146.567170] print_WAF: FSWAF: 146 percent gc: 343568 KB write_req: 734212 KB total: 715675324 total WAF: 124
+[ 1146.567177] print_WAF: total transfer volumes by FSGC: write: 176643572 KB read: 163181280 KB
+[ 1147.877011] print_WAF: FSWAF: 148 percent gc: 404808 KB write_req: 835872 KB total: 716511196 total WAF: 124
+[ 1147.877017] print_WAF: total transfer volumes by FSGC: write: 177048380 KB read: 163566836 KB
+[ 1149.059349] print_WAF: FSWAF: 146 percent gc: 372044 KB write_req: 798064 KB total: 717309260 total WAF: 124
+[ 1149.059355] print_WAF: total transfer volumes by FSGC: write: 177420424 KB read: 163891604 KB
+[ 1150.160660] print_WAF: FSWAF: 146 percent gc: 341556 KB write_req: 726840 KB total: 718036100 total WAF: 124
+[ 1150.160665] print_WAF: total transfer volumes by FSGC: write: 177761980 KB read: 164184828 KB
+[ 1151.167469] print_WAF: FSWAF: 148 percent gc: 374780 KB write_req: 769564 KB total: 718805664 total WAF: 124
+[ 1151.167476] print_WAF: total transfer volumes by FSGC: write: 178136760 KB read: 164542544 KB
+[ 1152.171801] print_WAF: FSWAF: 147 percent gc: 295636 KB write_req: 617680 KB total: 719423344 total WAF: 124
+[ 1152.171807] print_WAF: total transfer volumes by FSGC: write: 178432396 KB read: 164804600 KB
+[ 1153.239667] print_WAF: FSWAF: 146 percent gc: 311176 KB write_req: 667248 KB total: 720090592 total WAF: 124
+[ 1153.239673] print_WAF: total transfer volumes by FSGC: write: 178743572 KB read: 165097640 KB
+[ 1154.249945] print_WAF: FSWAF: 146 percent gc: 312320 KB write_req: 667316 KB total: 720757908 total WAF: 124
+[ 1154.249951] print_WAF: total transfer volumes by FSGC: write: 179055892 KB read: 165392312 KB
+[ 1155.269815] print_WAF: FSWAF: 148 percent gc: 374228 KB write_req: 776380 KB total: 721534288 total WAF: 124
+[ 1155.269819] print_WAF: total transfer volumes by FSGC: write: 179430120 KB read: 165747452 KB
+[ 1156.344212] print_WAF: FSWAF: 146 percent gc: 403380 KB write_req: 860996 KB total: 722395284 total WAF: 124
+[ 1156.344218] print_WAF: total transfer volumes by FSGC: write: 179833500 KB read: 166102896 KB
+[ 1157.410533] print_WAF: FSWAF: 148 percent gc: 404804 KB write_req: 833248 KB total: 723228532 total WAF: 124
+[ 1157.410538] print_WAF: total transfer volumes by FSGC: write: 180238304 KB read: 166457816 KB
+[ 1158.626268] print_WAF: FSWAF: 147 percent gc: 93984 KB write_req: 198412 KB total: 723426944 total WAF: 124
+[ 1158.626280] print_WAF: total transfer volumes by FSGC: write: 180332288 KB read: 166551224 KB
+[ 1159.874687] print_WAF: FSWAF: 147 percent gc: 389520 KB write_req: 816164 KB total: 724243108 total WAF: 124
+[ 1159.874693] print_WAF: total transfer volumes by FSGC: write: 180721808 KB read: 166905648 KB
+[ 1161.110617] print_WAF: FSWAF: 147 percent gc: 359332 KB write_req: 752764 KB total: 724995872 total WAF: 124
+[ 1161.110623] print_WAF: total transfer volumes by FSGC: write: 181081140 KB read: 167228696 KB
+[ 1162.338350] print_WAF: FSWAF: 147 percent gc: 389632 KB write_req: 814000 KB total: 725809872 total WAF: 125
+[ 1162.338355] print_WAF: total transfer volumes by FSGC: write: 181470772 KB read: 167550700 KB
+[ 1163.467772] print_WAF: FSWAF: 147 percent gc: 357952 KB write_req: 750460 KB total: 726560332 total WAF: 125
+[ 1163.467778] print_WAF: total transfer volumes by FSGC: write: 181828724 KB read: 167902828 KB
+[ 1164.476947] print_WAF: FSWAF: 147 percent gc: 298472 KB write_req: 624464 KB total: 727184796 total WAF: 125
+[ 1164.476952] print_WAF: total transfer volumes by FSGC: write: 182127196 KB read: 168180940 KB
+[ 1165.503714] print_WAF: FSWAF: 146 percent gc: 280004 KB write_req: 601668 KB total: 727786464 total WAF: 125
+[ 1165.503720] print_WAF: total transfer volumes by FSGC: write: 182407200 KB read: 168459528 KB
+[ 1166.605083] print_WAF: FSWAF: 146 percent gc: 312924 KB write_req: 668140 KB total: 728454604 total WAF: 125
+[ 1166.605088] print_WAF: total transfer volumes by FSGC: write: 182720124 KB read: 168753268 KB
+[ 1167.747768] print_WAF: FSWAF: 147 percent gc: 354992 KB write_req: 745220 KB total: 729199824 total WAF: 125
+[ 1167.747774] print_WAF: total transfer volumes by FSGC: write: 183075116 KB read: 169046504 KB
+[ 1168.857356] print_WAF: FSWAF: 147 percent gc: 327008 KB write_req: 687084 KB total: 729886908 total WAF: 125
+[ 1168.857370] print_WAF: total transfer volumes by FSGC: write: 183402124 KB read: 169340704 KB
+[ 1170.053013] print_WAF: FSWAF: 146 percent gc: 343172 KB write_req: 733152 KB total: 730620060 total WAF: 125
+[ 1170.053018] print_WAF: total transfer volumes by FSGC: write: 183745296 KB read: 169665340 KB
+[ 1171.116508] print_WAF: FSWAF: 148 percent gc: 406832 KB write_req: 836532 KB total: 731456592 total WAF: 125
+[ 1171.116513] print_WAF: total transfer volumes by FSGC: write: 184152128 KB read: 170022744 KB
+[ 1172.167066] print_WAF: FSWAF: 146 percent gc: 376752 KB write_req: 807940 KB total: 732264532 total WAF: 125
+[ 1172.167071] print_WAF: total transfer volumes by FSGC: write: 184528880 KB read: 170380012 KB
+[ 1173.207407] print_WAF: FSWAF: 148 percent gc: 391728 KB write_req: 809764 KB total: 733074296 total WAF: 125
+[ 1173.207413] print_WAF: total transfer volumes by FSGC: write: 184920608 KB read: 170738004 KB
+[ 1174.232461] print_WAF: FSWAF: 149 percent gc: 392160 KB write_req: 786124 KB total: 733860420 total WAF: 125
+[ 1174.232468] print_WAF: total transfer volumes by FSGC: write: 185312768 KB read: 171080808 KB
+[ 1175.277678] print_WAF: FSWAF: 147 percent gc: 391904 KB write_req: 819584 KB total: 734680004 total WAF: 125
+[ 1175.277684] print_WAF: total transfer volumes by FSGC: write: 185704672 KB read: 171439648 KB
+[ 1176.311421] print_WAF: FSWAF: 147 percent gc: 361148 KB write_req: 758212 KB total: 735438216 total WAF: 125
+[ 1176.311427] print_WAF: total transfer volumes by FSGC: write: 186065820 KB read: 171798168 KB
+[ 1177.351738] print_WAF: FSWAF: 147 percent gc: 392588 KB write_req: 823840 KB total: 736262056 total WAF: 125
+[ 1177.351744] print_WAF: total transfer volumes by FSGC: write: 186458408 KB read: 172126016 KB
+[ 1178.441514] print_WAF: FSWAF: 146 percent gc: 377316 KB write_req: 811028 KB total: 737073084 total WAF: 125
+[ 1178.441524] print_WAF: total transfer volumes by FSGC: write: 186835724 KB read: 172484768 KB
+[ 1179.526030] print_WAF: FSWAF: 148 percent gc: 409044 KB write_req: 841796 KB total: 737914880 total WAF: 125
+[ 1179.526035] print_WAF: total transfer volumes by FSGC: write: 187244768 KB read: 172843676 KB
+[ 1180.556319] print_WAF: FSWAF: 147 percent gc: 389604 KB write_req: 814064 KB total: 738728944 total WAF: 125
+[ 1180.556330] print_WAF: total transfer volumes by FSGC: write: 187634372 KB read: 173172748 KB
+[ 1181.615440] print_WAF: FSWAF: 147 percent gc: 361248 KB write_req: 756752 KB total: 739485696 total WAF: 125
+[ 1181.615446] print_WAF: total transfer volumes by FSGC: write: 187995620 KB read: 173532368 KB
+[ 1182.635925] print_WAF: FSWAF: 148 percent gc: 377992 KB write_req: 777864 KB total: 740263560 total WAF: 125
+[ 1182.635936] print_WAF: total transfer volumes by FSGC: write: 188373612 KB read: 173862168 KB
+[ 1185.700593] print_WAF: FSWAF: 146 percent gc: 63280 KB write_req: 137328 KB total: 740400888 total WAF: 125
+[ 1185.700603] print_WAF: total transfer volumes by FSGC: write: 188436892 KB read: 173924388 KB
+[ 1186.876637] print_WAF: FSWAF: 147 percent gc: 361152 KB write_req: 755568 KB total: 741156456 total WAF: 125
+[ 1186.876642] print_WAF: total transfer volumes by FSGC: write: 188798044 KB read: 174251500 KB
+[ 1188.065885] print_WAF: FSWAF: 148 percent gc: 361180 KB write_req: 749480 KB total: 741905936 total WAF: 125
+[ 1188.065891] print_WAF: total transfer volumes by FSGC: write: 189159224 KB read: 174579144 KB
+[ 1189.123799] print_WAF: FSWAF: 147 percent gc: 393748 KB write_req: 825228 KB total: 742731164 total WAF: 125
+[ 1189.123809] print_WAF: total transfer volumes by FSGC: write: 189552972 KB read: 174954312 KB
+[ 1190.189218] print_WAF: FSWAF: 147 percent gc: 392188 KB write_req: 818792 KB total: 743549956 total WAF: 125
+[ 1190.189224] print_WAF: total transfer volumes by FSGC: write: 189945160 KB read: 175312904 KB
+[ 1191.192800] print_WAF: FSWAF: 147 percent gc: 361172 KB write_req: 762560 KB total: 744312516 total WAF: 125
+[ 1191.192806] print_WAF: total transfer volumes by FSGC: write: 190306332 KB read: 175642080 KB
+[ 1192.196949] print_WAF: FSWAF: 148 percent gc: 378376 KB write_req: 777440 KB total: 745089956 total WAF: 125
+[ 1192.196955] print_WAF: total transfer volumes by FSGC: write: 190684708 KB read: 175970788 KB
+[ 1193.259415] print_WAF: FSWAF: 148 percent gc: 378644 KB write_req: 777060 KB total: 745867016 total WAF: 125
+[ 1193.259420] print_WAF: total transfer volumes by FSGC: write: 191063352 KB read: 176331120 KB
+[ 1194.263153] print_WAF: FSWAF: 146 percent gc: 377380 KB write_req: 807364 KB total: 746674380 total WAF: 125
+[ 1194.263159] print_WAF: total transfer volumes by FSGC: write: 191440732 KB read: 176660364 KB
+[ 1195.291840] print_WAF: FSWAF: 148 percent gc: 379928 KB write_req: 777776 KB total: 747452156 total WAF: 125
+[ 1195.291846] print_WAF: total transfer volumes by FSGC: write: 191820660 KB read: 177004944 KB
+[ 1196.290671] print_WAF: FSWAF: 148 percent gc: 361172 KB write_req: 751720 KB total: 748203876 total WAF: 125
+[ 1196.290677] print_WAF: total transfer volumes by FSGC: write: 192181832 KB read: 177332700 KB
+[ 1197.331597] print_WAF: FSWAF: 148 percent gc: 377952 KB write_req: 775252 KB total: 748979128 total WAF: 125
+[ 1197.331603] print_WAF: total transfer volumes by FSGC: write: 192559784 KB read: 177692372 KB
+[ 1198.352489] print_WAF: FSWAF: 146 percent gc: 377688 KB write_req: 808716 KB total: 749787844 total WAF: 125
+[ 1198.352495] print_WAF: total transfer volumes by FSGC: write: 192937472 KB read: 178022236 KB
+[ 1201.888313] print_WAF: FSWAF: 147 percent gc: 391904 KB write_req: 820424 KB total: 750608268 total WAF: 125
+[ 1201.888323] print_WAF: total transfer volumes by FSGC: write: 193329376 KB read: 178381992 KB
+[ 1203.068953] print_WAF: FSWAF: 147 percent gc: 392736 KB write_req: 820164 KB total: 751428432 total WAF: 125
+[ 1203.068958] print_WAF: total transfer volumes by FSGC: write: 193722112 KB read: 178708480 KB
+[ 1204.288881] print_WAF: FSWAF: 148 percent gc: 377812 KB write_req: 773080 KB total: 752201512 total WAF: 125
+[ 1204.288886] print_WAF: total transfer volumes by FSGC: write: 194099924 KB read: 179082544 KB
+[ 1205.509334] print_WAF: FSWAF: 148 percent gc: 380128 KB write_req: 785084 KB total: 752986596 total WAF: 125
+[ 1205.509340] print_WAF: total transfer volumes by FSGC: write: 194480052 KB read: 179411080 KB
+[ 1206.513323] print_WAF: FSWAF: 149 percent gc: 379688 KB write_req: 774268 KB total: 753760864 total WAF: 125
+[ 1206.513331] print_WAF: total transfer volumes by FSGC: write: 194859740 KB read: 179739652 KB
+[ 1207.592875] print_WAF: FSWAF: 146 percent gc: 380076 KB write_req: 810964 KB total: 754571828 total WAF: 125
+[ 1207.592881] print_WAF: total transfer volumes by FSGC: write: 195239816 KB read: 180100036 KB
+[ 1208.634679] print_WAF: FSWAF: 150 percent gc: 395696 KB write_req: 786320 KB total: 755358148 total WAF: 125
+[ 1208.634685] print_WAF: total transfer volumes by FSGC: write: 195635512 KB read: 180446432 KB
+[ 1209.703869] print_WAF: FSWAF: 146 percent gc: 379984 KB write_req: 809096 KB total: 756167244 total WAF: 125
+[ 1209.703874] print_WAF: total transfer volumes by FSGC: write: 196015496 KB read: 180808676 KB
+[ 1210.782488] print_WAF: FSWAF: 148 percent gc: 410348 KB write_req: 839800 KB total: 757007044 total WAF: 125
+[ 1210.782494] print_WAF: total transfer volumes by FSGC: write: 196425844 KB read: 181171004 KB
+[ 1211.791374] print_WAF: FSWAF: 148 percent gc: 380368 KB write_req: 778140 KB total: 757785184 total WAF: 125
+[ 1211.791380] print_WAF: total transfer volumes by FSGC: write: 196806212 KB read: 181517984 KB
+[ 1212.803359] print_WAF: FSWAF: 147 percent gc: 379608 KB write_req: 806956 KB total: 758592140 total WAF: 125
+[ 1212.803365] print_WAF: total transfer volumes by FSGC: write: 197185820 KB read: 181849992 KB
+[ 1213.822128] print_WAF: FSWAF: 149 percent gc: 379728 KB write_req: 774860 KB total: 759367000 total WAF: 126
+[ 1213.822134] print_WAF: total transfer volumes by FSGC: write: 197565548 KB read: 182212480 KB
+[ 1214.826001] print_WAF: FSWAF: 148 percent gc: 381484 KB write_req: 783924 KB total: 760150924 total WAF: 126
+[ 1214.826006] print_WAF: total transfer volumes by FSGC: write: 197947032 KB read: 182560376 KB
+[ 1215.863605] print_WAF: FSWAF: 147 percent gc: 380488 KB write_req: 808476 KB total: 760959400 total WAF: 126
+[ 1215.863610] print_WAF: total transfer volumes by FSGC: write: 198327520 KB read: 182924468 KB
+[ 1216.928242] print_WAF: FSWAF: 148 percent gc: 413900 KB write_req: 849720 KB total: 761809120 total WAF: 126
+[ 1216.928247] print_WAF: total transfer volumes by FSGC: write: 198741420 KB read: 183288760 KB
+[ 1217.935788] print_WAF: FSWAF: 149 percent gc: 396196 KB write_req: 794124 KB total: 762603244 total WAF: 126
+[ 1217.935793] print_WAF: total transfer volumes by FSGC: write: 199137616 KB read: 183637752 KB
+[ 1221.020831] print_WAF: FSWAF: 144 percent gc: 142428 KB write_req: 318540 KB total: 762921784 total WAF: 126
+[ 1221.020837] print_WAF: total transfer volumes by FSGC: write: 199280044 KB read: 183779320 KB
+[ 1222.274401] print_WAF: FSWAF: 148 percent gc: 395212 KB write_req: 822728 KB total: 763744512 total WAF: 126
+[ 1222.274406] print_WAF: total transfer volumes by FSGC: write: 199675256 KB read: 184140712 KB
+[ 1223.477550] print_WAF: FSWAF: 148 percent gc: 379672 KB write_req: 779240 KB total: 764523752 total WAF: 126
+[ 1223.477555] print_WAF: total transfer volumes by FSGC: write: 200054928 KB read: 184487636 KB
+[ 1224.500663] print_WAF: FSWAF: 147 percent gc: 394268 KB write_req: 824424 KB total: 765348176 total WAF: 126
+[ 1224.500671] print_WAF: total transfer volumes by FSGC: write: 200449196 KB read: 184817540 KB
+[ 1225.513282] print_WAF: FSWAF: 148 percent gc: 365676 KB write_req: 760860 KB total: 766109036 total WAF: 126
+[ 1225.513288] print_WAF: total transfer volumes by FSGC: write: 200814872 KB read: 185179684 KB
+[ 1226.522661] print_WAF: FSWAF: 149 percent gc: 397340 KB write_req: 795196 KB total: 766904232 total WAF: 126
+[ 1226.522667] print_WAF: total transfer volumes by FSGC: write: 201212212 KB read: 185509840 KB
+[ 1227.571084] print_WAF: FSWAF: 147 percent gc: 382648 KB write_req: 814072 KB total: 767718304 total WAF: 126
+[ 1227.571090] print_WAF: total transfer volumes by FSGC: write: 201594860 KB read: 185856820 KB
+[ 1228.654092] print_WAF: FSWAF: 150 percent gc: 412972 KB write_req: 814936 KB total: 768533240 total WAF: 126
+[ 1228.654098] print_WAF: total transfer volumes by FSGC: write: 202007832 KB read: 186234792 KB
+[ 1229.682525] print_WAF: FSWAF: 146 percent gc: 381484 KB write_req: 815264 KB total: 769348504 total WAF: 126
+[ 1229.682534] print_WAF: total transfer volumes by FSGC: write: 202389316 KB read: 186566336 KB
+[ 1230.747162] print_WAF: FSWAF: 149 percent gc: 398288 KB write_req: 806644 KB total: 770155148 total WAF: 126
+[ 1230.747168] print_WAF: total transfer volumes by FSGC: write: 202787604 KB read: 186929212 KB
+[ 1231.753690] print_WAF: FSWAF: 148 percent gc: 366408 KB write_req: 761296 KB total: 770916444 total WAF: 126
+[ 1231.753696] print_WAF: total transfer volumes by FSGC: write: 203154012 KB read: 187276132 KB
+[ 1232.826436] print_WAF: FSWAF: 148 percent gc: 414612 KB write_req: 850028 KB total: 771766472 total WAF: 126
+[ 1232.826441] print_WAF: total transfer volumes by FSGC: write: 203568624 KB read: 187639460 KB
+[ 1233.832119] print_WAF: FSWAF: 148 percent gc: 382240 KB write_req: 780288 KB total: 772546760 total WAF: 126
+[ 1233.832124] print_WAF: total transfer volumes by FSGC: write: 203950864 KB read: 187988400 KB
+[ 1235.715079] print_WAF: FSWAF: 147 percent gc: 302080 KB write_req: 629980 KB total: 773176740 total WAF: 126
+[ 1235.715085] print_WAF: total transfer volumes by FSGC: write: 204252944 KB read: 188258396 KB
+[ 1236.714462] print_WAF: FSWAF: 150 percent gc: 400824 KB write_req: 799396 KB total: 773976136 total WAF: 126
+[ 1236.714468] print_WAF: total transfer volumes by FSGC: write: 204653768 KB read: 188606988 KB
+[ 1237.783563] print_WAF: FSWAF: 147 percent gc: 400496 KB write_req: 835636 KB total: 774811772 total WAF: 126
+[ 1237.783570] print_WAF: total transfer volumes by FSGC: write: 205054264 KB read: 188971784 KB
+[ 1239.871315] print_WAF: FSWAF: 149 percent gc: 143984 KB write_req: 289688 KB total: 775101460 total WAF: 126
+[ 1239.871321] print_WAF: total transfer volumes by FSGC: write: 205198248 KB read: 189098504 KB
+[ 1240.892711] print_WAF: FSWAF: 149 percent gc: 399256 KB write_req: 799504 KB total: 775900964 total WAF: 126
+[ 1240.892717] print_WAF: total transfer volumes by FSGC: write: 205597504 KB read: 189479096 KB
+[ 1241.912722] print_WAF: FSWAF: 146 percent gc: 286188 KB write_req: 609456 KB total: 776510420 total WAF: 126
+[ 1241.912726] print_WAF: total transfer volumes by FSGC: write: 205883692 KB read: 189748584 KB
+[ 1242.940684] print_WAF: FSWAF: 149 percent gc: 317604 KB write_req: 646324 KB total: 777156744 total WAF: 126
+[ 1242.940690] print_WAF: total transfer volumes by FSGC: write: 206201296 KB read: 190034656 KB
+[ 1243.975913] print_WAF: FSWAF: 146 percent gc: 317540 KB write_req: 676496 KB total: 777833240 total WAF: 126
+[ 1243.975918] print_WAF: total transfer volumes by FSGC: write: 206518836 KB read: 190303332 KB
+[ 1245.070064] print_WAF: FSWAF: 148 percent gc: 412812 KB write_req: 845364 KB total: 778678604 total WAF: 126
+[ 1245.070070] print_WAF: total transfer volumes by FSGC: write: 206931648 KB read: 190682840 KB
+[ 1246.077994] print_WAF: FSWAF: 149 percent gc: 382112 KB write_req: 777332 KB total: 779455936 total WAF: 126
+[ 1246.078000] print_WAF: total transfer volumes by FSGC: write: 207313760 KB read: 191015792 KB
+[ 1247.108853] print_WAF: FSWAF: 147 percent gc: 397120 KB write_req: 829068 KB total: 780285004 total WAF: 126
+[ 1247.108857] print_WAF: total transfer volumes by FSGC: write: 207710880 KB read: 191348252 KB
+[ 1248.117959] print_WAF: FSWAF: 148 percent gc: 349932 KB write_req: 721448 KB total: 781006452 total WAF: 126
+[ 1248.117964] print_WAF: total transfer volumes by FSGC: write: 208060812 KB read: 191696132 KB
+[ 1249.202675] print_WAF: FSWAF: 147 percent gc: 397732 KB write_req: 830368 KB total: 781836820 total WAF: 126
+[ 1249.202682] print_WAF: total transfer volumes by FSGC: write: 208458544 KB read: 192060568 KB
+[ 1250.206808] print_WAF: FSWAF: 150 percent gc: 381320 KB write_req: 750628 KB total: 782587448 total WAF: 126
+[ 1250.206814] print_WAF: total transfer volumes by FSGC: write: 208839864 KB read: 192394052 KB
+[ 1251.216123] print_WAF: FSWAF: 146 percent gc: 380652 KB write_req: 810332 KB total: 783397780 total WAF: 126
+[ 1251.216128] print_WAF: total transfer volumes by FSGC: write: 209220516 KB read: 192711100 KB
+[ 1252.297263] print_WAF: FSWAF: 149 percent gc: 398284 KB write_req: 809196 KB total: 784206976 total WAF: 126
+[ 1252.297268] print_WAF: total transfer volumes by FSGC: write: 209618800 KB read: 193075580 KB
+[ 1253.316221] print_WAF: FSWAF: 148 percent gc: 366516 KB write_req: 749072 KB total: 784956048 total WAF: 126
+[ 1253.316227] print_WAF: total transfer volumes by FSGC: write: 209985316 KB read: 193425236 KB
+[ 1254.390049] print_WAF: FSWAF: 147 percent gc: 396380 KB write_req: 831212 KB total: 785787260 total WAF: 126
+[ 1254.390054] print_WAF: total transfer volumes by FSGC: write: 210381696 KB read: 193789880 KB
+[ 1255.458398] print_WAF: FSWAF: 148 percent gc: 411380 KB write_req: 853108 KB total: 786640368 total WAF: 126
+[ 1255.458408] print_WAF: total transfer volumes by FSGC: write: 210793076 KB read: 194139284 KB
+[ 1256.549396] print_WAF: FSWAF: 148 percent gc: 413012 KB write_req: 857192 KB total: 787497560 total WAF: 126
+[ 1256.549403] print_WAF: total transfer volumes by FSGC: write: 211206088 KB read: 194504456 KB
+[ 1257.608695] print_WAF: FSWAF: 149 percent gc: 415088 KB write_req: 846824 KB total: 788344384 total WAF: 126
+[ 1257.608700] print_WAF: total transfer volumes by FSGC: write: 211621176 KB read: 194839316 KB
+[ 1258.650768] print_WAF: FSWAF: 149 percent gc: 383796 KB write_req: 777012 KB total: 789121396 total WAF: 126
+[ 1258.650774] print_WAF: total transfer volumes by FSGC: write: 212004972 KB read: 195190820 KB
+[ 1259.680456] print_WAF: FSWAF: 148 percent gc: 397812 KB write_req: 819556 KB total: 789940952 total WAF: 126
+[ 1259.680462] print_WAF: total transfer volumes by FSGC: write: 212402784 KB read: 195510336 KB
+[ 1260.751086] print_WAF: FSWAF: 147 percent gc: 383208 KB write_req: 806828 KB total: 790747780 total WAF: 126
+[ 1260.751092] print_WAF: total transfer volumes by FSGC: write: 212785992 KB read: 195845924 KB
+[ 1265.095416] print_WAF: FSWAF: 148 percent gc: 331528 KB write_req: 687004 KB total: 791434784 total WAF: 126
+[ 1265.095423] print_WAF: total transfer volumes by FSGC: write: 213117520 KB read: 196102524 KB
+[ 1266.114252] print_WAF: FSWAF: 148 percent gc: 398800 KB write_req: 827644 KB total: 792262428 total WAF: 126
+[ 1266.114257] print_WAF: total transfer volumes by FSGC: write: 213516320 KB read: 196434472 KB
+[ 1267.178277] print_WAF: FSWAF: 149 percent gc: 402004 KB write_req: 810960 KB total: 793073388 total WAF: 126
+[ 1267.178281] print_WAF: total transfer volumes by FSGC: write: 213918324 KB read: 196814972 KB
+[ 1268.224294] print_WAF: FSWAF: 148 percent gc: 414240 KB write_req: 859748 KB total: 793933136 total WAF: 126
+[ 1268.224300] print_WAF: total transfer volumes by FSGC: write: 214332564 KB read: 197148384 KB
+[ 1269.231985] print_WAF: FSWAF: 149 percent gc: 369424 KB write_req: 743768 KB total: 794676904 total WAF: 127
+[ 1269.231990] print_WAF: total transfer volumes by FSGC: write: 214701988 KB read: 197498932 KB
+[ 1270.656111] print_WAF: FSWAF: 149 percent gc: 191900 KB write_req: 384308 KB total: 795061212 total WAF: 127
+[ 1270.656119] print_WAF: total transfer volumes by FSGC: write: 214893888 KB read: 197658744 KB
+[ 1271.688500] print_WAF: FSWAF: 149 percent gc: 400600 KB write_req: 811236 KB total: 795872448 total WAF: 127
+[ 1271.688506] print_WAF: total transfer volumes by FSGC: write: 215294488 KB read: 198024748 KB
+[ 1272.752308] print_WAF: FSWAF: 147 percent gc: 400500 KB write_req: 838960 KB total: 796711408 total WAF: 127
+[ 1272.752314] print_WAF: total transfer volumes by FSGC: write: 215694988 KB read: 198375184 KB
+[ 1273.812718] print_WAF: FSWAF: 150 percent gc: 417668 KB write_req: 823348 KB total: 797534756 total WAF: 127
+[ 1273.812730] print_WAF: total transfer volumes by FSGC: write: 216112656 KB read: 198725604 KB
+[ 1274.817019] print_WAF: FSWAF: 147 percent gc: 354644 KB write_req: 753256 KB total: 798288012 total WAF: 127
+[ 1274.817026] print_WAF: total transfer volumes by FSGC: write: 216467300 KB read: 199060432 KB
+[ 1275.904068] print_WAF: FSWAF: 150 percent gc: 418648 KB write_req: 823952 KB total: 799111964 total WAF: 127
+[ 1275.904073] print_WAF: total transfer volumes by FSGC: write: 216885948 KB read: 199413416 KB
+[ 1276.982925] print_WAF: FSWAF: 148 percent gc: 417628 KB write_req: 853188 KB total: 799965152 total WAF: 127
+[ 1276.982931] print_WAF: total transfer volumes by FSGC: write: 217303576 KB read: 199765652 KB
+[ 1277.996742] print_WAF: FSWAF: 150 percent gc: 339164 KB write_req: 676672 KB total: 800641824 total WAF: 127
+[ 1277.996751] print_WAF: total transfer volumes by FSGC: write: 217642740 KB read: 200086280 KB
+[ 1279.087699] print_WAF: FSWAF: 147 percent gc: 386584 KB write_req: 808520 KB total: 801450344 total WAF: 127
+[ 1279.087705] print_WAF: total transfer volumes by FSGC: write: 218029324 KB read: 200452808 KB
+[ 1280.128778] print_WAF: FSWAF: 149 percent gc: 388788 KB write_req: 784756 KB total: 802235100 total WAF: 127
+[ 1280.128784] print_WAF: total transfer volumes by FSGC: write: 218418112 KB read: 200807360 KB
+[ 1281.190100] print_WAF: FSWAF: 148 percent gc: 418172 KB write_req: 853528 KB total: 803088628 total WAF: 127
+[ 1281.190105] print_WAF: total transfer volumes by FSGC: write: 218836284 KB read: 201159992 KB
+[ 1282.202000] print_WAF: FSWAF: 148 percent gc: 402404 KB write_req: 835940 KB total: 803924568 total WAF: 127
+[ 1282.202004] print_WAF: total transfer volumes by FSGC: write: 219238688 KB read: 201496792 KB
+[ 1283.272432] print_WAF: FSWAF: 150 percent gc: 403448 KB write_req: 799876 KB total: 804724444 total WAF: 127
+[ 1283.272437] print_WAF: total transfer volumes by FSGC: write: 219642136 KB read: 201867640 KB
+[ 1284.358019] print_WAF: FSWAF: 150 percent gc: 404340 KB write_req: 807568 KB total: 805532012 total WAF: 127
+[ 1284.358025] print_WAF: total transfer volumes by FSGC: write: 220046476 KB read: 202239080 KB
+[ 1285.420088] print_WAF: FSWAF: 148 percent gc: 388872 KB write_req: 801976 KB total: 806333988 total WAF: 127
+[ 1285.420094] print_WAF: total transfer volumes by FSGC: write: 220435348 KB read: 202594940 KB
+[ 1286.469789] print_WAF: FSWAF: 147 percent gc: 402328 KB write_req: 840492 KB total: 807174480 total WAF: 127
+[ 1286.469795] print_WAF: total transfer volumes by FSGC: write: 220837676 KB read: 202934516 KB
+[ 1287.535382] print_WAF: FSWAF: 150 percent gc: 402824 KB write_req: 793824 KB total: 807968304 total WAF: 127
+[ 1287.535387] print_WAF: total transfer volumes by FSGC: write: 221240500 KB read: 203290912 KB
+[ 1288.560135] print_WAF: FSWAF: 149 percent gc: 387224 KB write_req: 788800 KB total: 808757104 total WAF: 127
+[ 1288.560140] print_WAF: total transfer volumes by FSGC: write: 221627724 KB read: 203615288 KB
+[ 1289.638017] print_WAF: FSWAF: 149 percent gc: 385988 KB write_req: 774156 KB total: 809531260 total WAF: 127
+[ 1289.638023] print_WAF: total transfer volumes by FSGC: write: 222013712 KB read: 203972708 KB
+[ 1293.567238] print_WAF: FSWAF: 148 percent gc: 142728 KB write_req: 296336 KB total: 809827596 total WAF: 127
+[ 1293.567245] print_WAF: total transfer volumes by FSGC: write: 222156440 KB read: 204069480 KB
+[ 1294.592033] print_WAF: FSWAF: 149 percent gc: 386924 KB write_req: 784660 KB total: 810612256 total WAF: 127
+[ 1294.592039] print_WAF: total transfer volumes by FSGC: write: 222543364 KB read: 204422180 KB
+[ 1295.679897] print_WAF: FSWAF: 147 percent gc: 404928 KB write_req: 844328 KB total: 811456584 total WAF: 127
+[ 1295.679902] print_WAF: total transfer volumes by FSGC: write: 222948292 KB read: 204791908 KB
+[ 1296.717749] print_WAF: FSWAF: 150 percent gc: 419440 KB write_req: 829492 KB total: 812286076 total WAF: 127
+[ 1296.717757] print_WAF: total transfer volumes by FSGC: write: 223367732 KB read: 205129552 KB
+[ 1297.755667] print_WAF: FSWAF: 149 percent gc: 389292 KB write_req: 793540 KB total: 813079616 total WAF: 127
+[ 1297.755672] print_WAF: total transfer volumes by FSGC: write: 223757024 KB read: 205500696 KB
+[ 1299.130787] print_WAF: FSWAF: 149 percent gc: 193260 KB write_req: 388596 KB total: 813468212 total WAF: 127
+[ 1299.130793] print_WAF: total transfer volumes by FSGC: write: 223950284 KB read: 205661240 KB
+[ 1300.418664] print_WAF: FSWAF: 149 percent gc: 420820 KB write_req: 855740 KB total: 814323952 total WAF: 127
+[ 1300.418669] print_WAF: total transfer volumes by FSGC: write: 224371104 KB read: 206048212 KB
+[ 1301.598237] print_WAF: FSWAF: 148 percent gc: 370564 KB write_req: 769724 KB total: 815093676 total WAF: 127
+[ 1301.598243] print_WAF: total transfer volumes by FSGC: write: 224741668 KB read: 206384784 KB
+[ 1302.621765] print_WAF: FSWAF: 150 percent gc: 403680 KB write_req: 802880 KB total: 815896556 total WAF: 127
+[ 1302.621770] print_WAF: total transfer volumes by FSGC: write: 225145348 KB read: 206737768 KB
+[ 1303.668499] print_WAF: FSWAF: 148 percent gc: 306048 KB write_req: 633248 KB total: 816529804 total WAF: 127
+[ 1303.668504] print_WAF: total transfer volumes by FSGC: write: 225451396 KB read: 207026728 KB
+[ 1304.679067] print_WAF: FSWAF: 151 percent gc: 305564 KB write_req: 595596 KB total: 817125400 total WAF: 127
+[ 1304.679073] print_WAF: total transfer volumes by FSGC: write: 225756960 KB read: 207298436 KB
+[ 1305.717560] print_WAF: FSWAF: 147 percent gc: 306576 KB write_req: 644936 KB total: 817770336 total WAF: 127
+[ 1305.717566] print_WAF: total transfer volumes by FSGC: write: 226063536 KB read: 207586792 KB
+[ 1306.782848] print_WAF: FSWAF: 148 percent gc: 322608 KB write_req: 667312 KB total: 818437648 total WAF: 127
+[ 1306.782854] print_WAF: total transfer volumes by FSGC: write: 226386144 KB read: 207874588 KB
+[ 1307.838317] print_WAF: FSWAF: 150 percent gc: 421440 KB write_req: 827560 KB total: 819265208 total WAF: 127
+[ 1307.838322] print_WAF: total transfer volumes by FSGC: write: 226807584 KB read: 208228604 KB
+[ 1308.856739] print_WAF: FSWAF: 147 percent gc: 321292 KB write_req: 675896 KB total: 819941104 total WAF: 127
+[ 1308.856745] print_WAF: total transfer volumes by FSGC: write: 227128876 KB read: 208516032 KB
+[ 1309.920657] print_WAF: FSWAF: 150 percent gc: 402248 KB write_req: 803932 KB total: 820745036 total WAF: 127
+[ 1309.920663] print_WAF: total transfer volumes by FSGC: write: 227531124 KB read: 208884868 KB
+[ 1311.015170] print_WAF: FSWAF: 148 percent gc: 401752 KB write_req: 835800 KB total: 821580836 total WAF: 127
+[ 1311.015175] print_WAF: total transfer volumes by FSGC: write: 227932876 KB read: 209268464 KB
+[ 1312.020828] print_WAF: FSWAF: 150 percent gc: 420600 KB write_req: 836480 KB total: 822417316 total WAF: 127
+[ 1312.020834] print_WAF: total transfer volumes by FSGC: write: 228353476 KB read: 209588512 KB
+[ 1313.109656] print_WAF: FSWAF: 148 percent gc: 404260 KB write_req: 841212 KB total: 823258528 total WAF: 127
+[ 1313.109662] print_WAF: total transfer volumes by FSGC: write: 228757736 KB read: 209956940 KB
+[ 1314.198619] print_WAF: FSWAF: 151 percent gc: 423184 KB write_req: 829236 KB total: 824087764 total WAF: 127
+[ 1314.198624] print_WAF: total transfer volumes by FSGC: write: 229180920 KB read: 210345064 KB
+[ 1315.223409] print_WAF: FSWAF: 149 percent gc: 389120 KB write_req: 789096 KB total: 824876860 total WAF: 127
+[ 1315.223415] print_WAF: total transfer volumes by FSGC: write: 229570040 KB read: 210699820 KB
+[ 1316.299590] print_WAF: FSWAF: 148 percent gc: 419716 KB write_req: 857624 KB total: 825734484 total WAF: 127
+[ 1316.299596] print_WAF: total transfer volumes by FSGC: write: 229989756 KB read: 211053240 KB
+[ 1317.359804] print_WAF: FSWAF: 148 percent gc: 388444 KB write_req: 794844 KB total: 826529328 total WAF: 127
+[ 1317.359809] print_WAF: total transfer volumes by FSGC: write: 230378200 KB read: 211424304 KB
+[ 1318.378414] print_WAF: FSWAF: 149 percent gc: 373564 KB write_req: 749380 KB total: 827278708 total WAF: 127
+[ 1318.378420] print_WAF: total transfer volumes by FSGC: write: 230751764 KB read: 211779684 KB
+[ 1320.875907] print_WAF: FSWAF: 147 percent gc: 128128 KB write_req: 268168 KB total: 827546876 total WAF: 127
+[ 1320.875912] print_WAF: total transfer volumes by FSGC: write: 230879892 KB read: 211876016 KB
+[ 1322.095327] print_WAF: FSWAF: 149 percent gc: 402652 KB write_req: 810852 KB total: 828357728 total WAF: 127
+[ 1322.095333] print_WAF: total transfer volumes by FSGC: write: 231282544 KB read: 212229280 KB
+[ 1323.172967] print_WAF: FSWAF: 149 percent gc: 406196 KB write_req: 815188 KB total: 829172916 total WAF: 127
+[ 1323.172974] print_WAF: total transfer volumes by FSGC: write: 231688740 KB read: 212614792 KB
+[ 1324.211276] print_WAF: FSWAF: 148 percent gc: 402500 KB write_req: 830476 KB total: 830003392 total WAF: 127
+[ 1324.211282] print_WAF: total transfer volumes by FSGC: write: 232091240 KB read: 212952588 KB
+[ 1325.275553] print_WAF: FSWAF: 149 percent gc: 243660 KB write_req: 494172 KB total: 830497564 total WAF: 127
+[ 1325.275559] print_WAF: total transfer volumes by FSGC: write: 232334900 KB read: 213178828 KB
+[ 1326.347253] print_WAF: FSWAF: 150 percent gc: 339420 KB write_req: 669476 KB total: 831167040 total WAF: 127
+[ 1326.347259] print_WAF: total transfer volumes by FSGC: write: 232674320 KB read: 213468784 KB
+[ 1327.399754] print_WAF: FSWAF: 150 percent gc: 407864 KB write_req: 814656 KB total: 831981696 total WAF: 128
+[ 1327.399759] print_WAF: total transfer volumes by FSGC: write: 233082184 KB read: 213822676 KB
+[ 1328.457691] print_WAF: FSWAF: 149 percent gc: 404512 KB write_req: 811264 KB total: 832792960 total WAF: 128
+[ 1328.457697] print_WAF: total transfer volumes by FSGC: write: 233486696 KB read: 214177476 KB
+[ 1329.507701] print_WAF: FSWAF: 149 percent gc: 391268 KB write_req: 796112 KB total: 833589072 total WAF: 128
+[ 1329.507706] print_WAF: total transfer volumes by FSGC: write: 233877964 KB read: 214533452 KB
+[ 1330.533391] print_WAF: FSWAF: 149 percent gc: 390292 KB write_req: 786640 KB total: 834375712 total WAF: 128
+[ 1330.533396] print_WAF: total transfer volumes by FSGC: write: 234268256 KB read: 214873324 KB
+[ 1331.612726] print_WAF: FSWAF: 148 percent gc: 391776 KB write_req: 804308 KB total: 835180020 total WAF: 128
+[ 1331.612732] print_WAF: total transfer volumes by FSGC: write: 234660032 KB read: 215245960 KB
+[ 1332.632761] print_WAF: FSWAF: 151 percent gc: 391208 KB write_req: 757532 KB total: 835937552 total WAF: 128
+[ 1332.632766] print_WAF: total transfer volumes by FSGC: write: 235051240 KB read: 215601612 KB
+[ 1333.680100] print_WAF: FSWAF: 148 percent gc: 407220 KB write_req: 840488 KB total: 836778040 total WAF: 128
+[ 1333.680105] print_WAF: total transfer volumes by FSGC: write: 235458460 KB read: 215940856 KB
+[ 1334.733853] print_WAF: FSWAF: 148 percent gc: 391072 KB write_req: 798792 KB total: 837576832 total WAF: 128
+[ 1334.733859] print_WAF: total transfer volumes by FSGC: write: 235849532 KB read: 216298720 KB
+[ 1335.800858] print_WAF: FSWAF: 150 percent gc: 422592 KB write_req: 834416 KB total: 838411248 total WAF: 128
+[ 1335.800863] print_WAF: total transfer volumes by FSGC: write: 236272124 KB read: 216654616 KB
+[ 1336.835085] print_WAF: FSWAF: 149 percent gc: 392804 KB write_req: 801584 KB total: 839212832 total WAF: 128
+[ 1336.835090] print_WAF: total transfer volumes by FSGC: write: 236664928 KB read: 217011800 KB
+[ 1337.847663] print_WAF: FSWAF: 150 percent gc: 407640 KB write_req: 813700 KB total: 840026532 total WAF: 128
+[ 1337.847668] print_WAF: total transfer volumes by FSGC: write: 237072568 KB read: 217338048 KB
+[ 1338.872747] print_WAF: FSWAF: 151 percent gc: 391868 KB write_req: 767152 KB total: 840793684 total WAF: 128
+[ 1338.872752] print_WAF: total transfer volumes by FSGC: write: 237464436 KB read: 217696860 KB
+[ 1341.482847] print_WAF: FSWAF: 147 percent gc: 32700 KB write_req: 69308 KB total: 840862992 total WAF: 128
+[ 1341.482852] print_WAF: total transfer volumes by FSGC: write: 237497136 KB read: 217729084 KB
+[ 1342.806197] print_WAF: FSWAF: 149 percent gc: 425756 KB write_req: 865956 KB total: 841728948 total WAF: 128
+[ 1342.806203] print_WAF: total transfer volumes by FSGC: write: 237922892 KB read: 218118640 KB
+[ 1343.833940] print_WAF: FSWAF: 149 percent gc: 391924 KB write_req: 791236 KB total: 842520184 total WAF: 128
+[ 1343.833945] print_WAF: total transfer volumes by FSGC: write: 238314816 KB read: 218475976 KB
+[ 1344.883683] print_WAF: FSWAF: 149 percent gc: 328520 KB write_req: 662492 KB total: 843182676 total WAF: 128
+[ 1344.883688] print_WAF: total transfer volumes by FSGC: write: 238643336 KB read: 218766880 KB
+[ 1345.952124] print_WAF: FSWAF: 151 percent gc: 427808 KB write_req: 836524 KB total: 844019200 total WAF: 128
+[ 1345.952130] print_WAF: total transfer volumes by FSGC: write: 239071144 KB read: 219123740 KB
+[ 1346.983858] print_WAF: FSWAF: 150 percent gc: 408640 KB write_req: 807148 KB total: 844826348 total WAF: 128
+[ 1346.983864] print_WAF: total transfer volumes by FSGC: write: 239479784 KB read: 219465432 KB
+[ 1348.007185] print_WAF: FSWAF: 150 percent gc: 377956 KB write_req: 749664 KB total: 845576012 total WAF: 128

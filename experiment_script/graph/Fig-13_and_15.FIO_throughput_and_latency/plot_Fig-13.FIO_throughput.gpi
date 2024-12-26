@@ -1,0 +1,50 @@
+#kiops
+set terminal postscript eps enhanced color dashed dashlength 3 \
+	                linewidth 2 rounded font "Helvetica, 32"
+
+set output "./Fig-13.FIO_throughput.eps"
+
+set key inside right top horizontal Left font "Helvetica, 40" reverse
+#set key inside left bottom vertical Left font "Helvetica, 40" reverse
+
+set key invert
+
+#set yrange [0:605]
+set yrange [0:]
+#set yrange [0:200]
+set ytics 50 font "Helvetica, 40"
+#set logscale x
+set xlabel "Time (sec)" font "Helvetica, 40" offset 0, 0.2
+set ylabel "KIOPS" font "Helvetica, 40" offset 0.4, 0
+set xtics 200 font "Helvetica, 40"
+set xrange[0:1200]
+
+set key samplen 1.5
+
+
+set key samplen 1.5
+set key width 1
+set key width -18
+
+#set key at 102.4, 650
+#set key at 102.4, 600
+set key at 600, 235
+
+set border 3
+
+set xtics nomirror
+set ytics nomirror
+
+#set xtics add ("400"  400)
+
+set tmargin at screen 0.95
+set lmargin at screen 0.13
+set rmargin at screen 0.95
+
+set term postscript size 7.5,3.2
+#set term postscript size 7.5,4.4
+plot \
+ "f2fs_kiops_parsed" with lines axes x1y1 title 'F2FS' linecolor rgb 'black' lw 2, \
+ "zns_kiops_parsed" with lines axes x1y1 title 'zF2FS' linecolor rgb 'purple' lw 2, \
+"iplfs_kiops_parsed" with lines axes x1y1 title 'IPLFS' linecolor rgb 'red' lw 2, \
+ "d2fs_kiops_parsed" with lines axes x1y1 title 'D2FS' linecolor rgb 'blue' lw 2, \

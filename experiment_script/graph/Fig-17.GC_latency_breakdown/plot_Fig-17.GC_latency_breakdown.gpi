@@ -1,0 +1,108 @@
+#kiops
+set terminal postscript eps enhanced color dashed dashlength 3 \
+	                linewidth 2 rounded font "Helvetica, 40"
+
+set output "./Fig-17.GC_latency_breakdown.eps"
+#set key inside horizontal font "Helvetica, 14"
+#set key inside left bottom horizontal font "Helvetica, 28"
+#set key inside left bottom vertical reverse Left font "Helvetica, 28"
+
+set term postscript size 7.5,2.8+0.4+0.4
+
+fn(v) = sprintf("%.1f", v)
+
+set key at screen 0.545, 0.9+0.02-0.03 center horizontal reverse Left height 1 maxrows 1  font "Helvetica, 38"
+
+set xrange[-0.5:11.5-2]
+
+set key samplen 1.5 width -3
+set key spacing 1.0
+
+#set style data histogram
+#set style histogram cluster gap 1
+#set style fill pattern 1 border 0
+set style fill solid border -1
+#set style fill solid
+#set bars 1
+set boxwidth 0.6 absolute
+#set boxwidth 0.9
+
+#set xtic rotate by -20 scale 0 offset -1, 0.28
+
+#set size 1, 1
+
+
+set border 11
+
+set xtics nomirror
+set xtics font "Helvetica, 36" offset 0,0.5
+set ytics 10 font "Helvetica, 40" offset 0.4, 0 
+
+set xtics scale 0
+
+h = 0.05; gap = 0.03
+l = 0.07+0.03; r = 0.98; d = (r-l)/5;
+
+set tmargin at screen 0.8+0.1-0.15
+set bmargin at screen h+0.16 -0.04
+set lmargin at screen l
+set rmargin at screen r
+
+# 가로선
+set arrow from screen l, screen h to screen r, screen h nohead
+
+# 세로선
+set arrow from screen l, screen h-gap to screen l, screen h+gap nohead
+set arrow from screen l+d, screen h-gap to screen l+d, screen h+gap nohead
+set arrow from screen l+2*d, screen h-gap to screen l+2*d, screen h+gap nohead
+set arrow from screen l+3*d, screen h-gap to screen l+3*d, screen h+gap nohead
+set arrow from screen l+4*d, screen h-gap to screen l+4*d, screen h+gap nohead
+set arrow from screen l+5*d, screen h-gap to screen l+5*d, screen h+gap nohead
+
+
+set object 5 rectangle behind at screen (2*l+1*d)/2, screen h size char strlen("FIO")-0.3, \
+	 char 0.2 front fillcolor rgb "white" fillstyle solid noborder
+set label "FIO" at screen (2*l+1*d)/2, screen h center front font "Helvetica, 36"
+
+set object 2 rectangle behind at screen (2*l+3*d)/2, screen h size char strlen("TPC-C")-0.3+1, \
+	 char 0.2 front fillcolor rgb "white" fillstyle solid noborder
+set label "TPC-C" at screen (2*l+3*d)/2, screen h center front font "Helvetica, 36"
+
+set object 4 rectangle behind at screen (2*l+5*d)/2, screen h size char strlen("YCSB-A")-0.5+1, \
+	 char 0.2 front fillcolor rgb "white" fillstyle solid noborder
+set label "YCSB-A" at screen (2*l+5*d)/2, screen h center front font "Helvetica, 36"
+
+set object 1 rectangle behind at screen (2*l+7*d)/2, screen h size char strlen("YCSB-F")-0.5+1, \
+	 char 0.2 front fillcolor rgb "white" fillstyle solid noborder
+set label "YCSB-F" at screen (2*l+7*d)/2, screen h center front font "Helvetica, 36"
+
+set object 3 rectangle behind at screen (2*l+9*d)/2, screen h size char strlen("Fileserver")-3, \
+	 char 0.2 front fillcolor rgb "white" fillstyle solid noborder
+set label "Fileserver" at screen (2*l+9*d)/2, screen h center front font "Helvetica, 36"
+
+
+set arrow from 1.5, graph 0 to 1.5, graph 1 nohead dashtype 2 lw 2
+set arrow from 3.5, graph 0 to 3.5, graph 1 nohead dashtype 2 lw 2
+set arrow from 5.5, graph 0 to 5.5, graph 1 nohead dashtype 2 lw 2
+set arrow from 7.5, graph 0 to 7.5, graph 1 nohead dashtype 2 lw 2
+#set arrow from 9.5, graph 0 to 9.5, graph 1 nohead dashtype 2 lw 2
+
+# labels =====================================================
+
+set ylabel "Latency (msec)" font "Helvetica, 40" offset 2, 0
+
+set yrange [0:37]
+
+set style histogram rowstacked title offset character 0, 0, 0
+set style data histograms
+
+plot \
+     'gc_latency_breakdown_data' using ($3/1000):xtic(1) fs pattern 5 lc 'blue' t 'Dev-write', \
+	 ''	using ($2/1000) fs pattern 4 lc 'red' t 'Dev-read', \
+     '' using ($9/1000) fs pattern 2 lc 'blue' t 'FS-write', \
+     '' using ($8/1000) fs pattern 2 lc 'red' t 'FS-read', \
+     '' using ($6/1000) fs pattern 2 lc 'orange' t 'Filemap', \
+     '' using ($7/1000) fs pattern 2 lc 'yellow' t 'Page-cache', \
+     '' using ($5/1000) fs pattern 2 lc 'light-green' t 'Meta', \
+     '' using ($4/1000) fs pattern 2 lc 'dark-violet' t 'Checkpoint', \
+     '' using 0:(($2+$3+$4+$5+$6+$7+$8+$9)/1000+0.5):(fn(($2+$3+$4+$5+$6+$7+$8+$9)/1000)) with labels font "Helvetica, 40"  offset 0, 0.4 notitle

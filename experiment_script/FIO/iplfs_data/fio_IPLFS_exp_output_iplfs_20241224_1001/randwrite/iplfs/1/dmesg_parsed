@@ -1,0 +1,764 @@
+-68.4352 nvmev: loading out-of-tree module taints kernel.
+-68.4342 NVMeVirt: Storage : 4000100000 + 3ffff00000
+-68.17 NVMeVirt: Total Capacity(GiB,MiB)=64,65536 chs=2 luns=4 lines=8192 blk-size(MiB,KiB)=2,2048 line-size(MiB,KiB)=8,8192
+-67.698 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-67.226 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-67.226 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-67.226 NVMeVirt: initialize maptbl
+-66.3242 NVMeVirt: initialize rmap
+-66.2726 NVMeVirt: initialize lines
+-66.2725 NVMeVirt: initialize write pointer
+-66.2725 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-65.8004 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-65.3261 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-65.326 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-65.326 NVMeVirt: initialize maptbl
+-64.0049 NVMeVirt: initialize rmap
+-63.9267 NVMeVirt: initialize lines
+-63.9265 NVMeVirt: initialize write pointer
+-63.9265 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-63.3861 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-62.8458 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-62.8458 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-62.8458 NVMeVirt: initialize maptbl
+-61.4923 NVMeVirt: initialize rmap
+-61.4142 NVMeVirt: initialize lines
+-61.414 NVMeVirt: initialize write pointer
+-61.414 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-60.8695 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-60.3276 NVMeVirt: chmodel_init bandwidth 800 max_credits 26 tx_time 152
+-60.3275 NVMeVirt: chmodel_init bandwidth 3360 max_credits 110 tx_time 36
+-60.3275 NVMeVirt: initialize maptbl
+-58.9767 NVMeVirt: initialize rmap
+-58.8988 NVMeVirt: initialize lines
+-58.8985 NVMeVirt: initialize write pointer
+-58.8985 NVMeVirt: Init FTL Instance with 2 channels(16777216 pages)
+-50.8145 NVMeVirt: FTL physical space: 274876858368, logical space: 256894260157 (physical/logical * 100 = 107)
+-50.8145 conv_init_namespace: compaction trace range: 768 GB
+-50.8117 NVMeVirt: NVMEV_NAMESPACE_INIT ns=0 ns_addr=00000000b64920a4 ns_size=244993(MiB)
+-50.8117 ERR 801
+-50.8116 PCI host bridge to bus 0001:10
+-50.8116 pci_bus 0001:10: root bus resource io 0x0000-0xffff
+-50.8116 pci_bus 0001:10: root bus resource mem 0x00000000-0x3fffffffffff
+-50.8116 pci_bus 0001:10: root bus resource bus 00-ff
+-50.8116 pci 0001:10:00.0: 0c51:0101 type 00 class 0x010802
+-50.8116 pci 0001:10:00.0: reg 0x10: mem 0x4000000000-0x4000003fff 64bit
+-50.8116 pci 0001:10:00.0: reg 0x30: mem 0x00000000-0x000007ff pref
+-50.8116 pci 0001:10:00.0: enabling Extended Tags
+-50.8108 nvme nvme3: pci function 0001:10:00.0
+-50.8107 NVMeVirt: Successfully created virtual PCI bus (node 1)
+-50.8098 NVMeVirt: nvmev_proc_io_0 started on cpu 39 (node 1)
+-50.8097 NVMeVirt: Successfully created Virtual NVMe deivce
+-50.8097 NVMeVirt: nvmev_dispatcher started on cpu 37 (node 1)
+-50.8033 nvme nvme3: 40/0/0 default/read/poll queues
+-50.7952 nvme3n1: p1
+-1.71529 nvme3n1: p1
+-1.71497 compaction1: COMPACTION_MEM_CALC total result IM: 0 PT: 0 interval: 0 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+-1.71332 nvme3n1:
+-1.71248 nvme3n1:
+-1.70934 nvme3n1:
+-1.70351 nvme3n1: p1
+-1.54531 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.5453 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1000ffe00 len: fffffe00
+-1.5453 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.52898 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.52897 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2000ffc00 len: fffffe00
+-1.52897 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.51266 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.51265 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 3000ffa00 len: fffffe00
+-1.51265 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.49633 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.49633 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 4000ff800 len: fffffe00
+-1.49633 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.48001 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.48 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 5000ff600 len: fffffe00
+-1.48 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.46368 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.46368 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 6000ff400 len: fffffe00
+-1.46368 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.44735 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.44735 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 7000ff200 len: fffffe00
+-1.44735 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.41473 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.41472 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 9000fee00 len: fffffe00
+-1.41472 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.3984 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.3984 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: a000fec00 len: fffffe00
+-1.3984 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.38207 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.38206 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: b000fea00 len: fffffe00
+-1.38206 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.36574 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.36574 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: c000fe800 len: fffffe00
+-1.36574 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.34943 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.34942 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: d000fe600 len: fffffe00
+-1.34942 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.3331 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.3331 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: e000fe400 len: fffffe00
+-1.3331 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.31677 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.31676 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: f000fe200 len: fffffe00
+-1.31676 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.28414 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.28414 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 11000fde00 len: fffffe00
+-1.28413 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.26782 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.26781 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 12000fdc00 len: fffffe00
+-1.26781 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.25149 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.25148 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 13000fda00 len: fffffe00
+-1.25148 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.23516 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.23516 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 14000fd800 len: fffffe00
+-1.23516 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.21884 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.21883 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 15000fd600 len: fffffe00
+-1.21883 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.20251 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.2025 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 16000fd400 len: fffffe00
+-1.2025 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.18618 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.18618 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 17000fd200 len: fffffe00
+-1.18618 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.15355 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.15355 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 19000fce00 len: fffffe00
+-1.15354 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.13722 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.13722 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1a000fcc00 len: fffffe00
+-1.13722 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.12091 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.1209 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1b000fca00 len: fffffe00
+-1.1209 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.10458 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.10458 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1c000fc800 len: fffffe00
+-1.10458 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-1.08826 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-1.08825 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1d000fc600 len: fffffe00
+-1.08825 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-1.07193 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-1.07193 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1e000fc400 len: fffffe00
+-1.07193 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.05561 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.0556 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 1f000fc200 len: fffffe00
+-1.0556 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.02298 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-1.02298 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 21000fbe00 len: fffffe00
+-1.02297 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-1.00665 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-1.00665 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 22000fbc00 len: fffffe00
+-1.00664 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.990321 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.990317 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 23000fba00 len: fffffe00
+-0.990316 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.97399 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-0.973985 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 24000fb800 len: fffffe00
+-0.973984 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-0.957665 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.957661 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 25000fb600 len: fffffe00
+-0.95766 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.941346 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.941342 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 26000fb400 len: fffffe00
+-0.94134 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.925018 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.925014 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 27000fb200 len: fffffe00
+-0.925013 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.892393 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.892389 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 29000fae00 len: fffffe00
+-0.892387 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.87607 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.876066 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2a000fac00 len: fffffe00
+-0.876064 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.859748 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.859744 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2b000faa00 len: fffffe00
+-0.859742 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.843423 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-0.843418 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2c000fa800 len: fffffe00
+-0.843417 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-0.827096 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.827093 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2d000fa600 len: fffffe00
+-0.827091 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.81077 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.810766 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2e000fa400 len: fffffe00
+-0.810765 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.79444 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.794436 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 2f000fa200 len: fffffe00
+-0.794435 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.761807 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.761803 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 31000f9e00 len: fffffe00
+-0.761802 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.74548 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.745477 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 32000f9c00 len: fffffe00
+-0.745475 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.729155 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.729152 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 33000f9a00 len: fffffe00
+-0.72915 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.712832 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-0.712828 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 34000f9800 len: fffffe00
+-0.712826 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2048
+-0.696511 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.696508 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 35000f9600 len: fffffe00
+-0.696506 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.680188 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.680184 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 36000f9400 len: fffffe00
+-0.680183 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.663867 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.663863 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 37000f9200 len: fffffe00
+-0.663862 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.631246 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3584
+-0.631242 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 39000f8e00 len: fffffe00
+-0.63124 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.614923 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 3072
+-0.61492 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 3a000f8c00 len: fffffe00
+-0.614918 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1024
+-0.598602 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 2560
+-0.598598 NVMeVirt: JWDBG __do_perform_io_dsm: offset not aligned to PG. ofs: 3b000f8a00 len: d007c800
+-0.598597 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 1536
+-0.58532 NVMeVirt: JWDBG __do_perform_io_dsm: iosize is not PGSIZE. iosize: 512
+-0.484243 print_WAF: WAF: 100 percent gc: 0 KB write_req: 8 KB total: 8 KB total WAF: 100 percent
+-0.484239 compaction1: COMPACTION_MEM_CALC total result IM: 0 PT: 0 interval: 0 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+-0.268313 JWDBG f2fs_fill_super: bef read super block
+-0.268161 JWDBG f2fs_fill_super: aft read super block log_blocks_per_seg: 9
+-0.236909 f2fs_build_segment_manager: NR_CURSEG_TYPE: 8, CURSEG_HOT_DATA: 0
+-0.236905 JWDBG f2fs_build_segment_manager: seg0_blkaddr = 512 0x200 blocks_per_seg: 512
+-0.236903 JWDBG JW_set_zone: seg0 blkaddr: 0x200 blocks Per seg: 512
+-0.236902 JW_set_zone: type 0 superzone: 0 curseg_zone: 127 secno: 1048213 segno: 1048213 !!!!!
+-0.2369 type: 0, start_blkaddr: 0x20000000 startblkaddr: 0x20000000, segno: 1048213
+-0.236898 JW_set_zone: type 1 superzone: 1 curseg_zone: 255 secno: 2096789 segno: 2096789 !!!!!
+-0.236896 type: 1, start_blkaddr: 0x40000000 startblkaddr: 0x40000000, segno: 2096789
+-0.236895 JW_set_zone: type 2 superzone: 2 curseg_zone: 383 secno: 3145365 segno: 3145365 !!!!!
+-0.236893 type: 2, start_blkaddr: 0x60000000 startblkaddr: 0x60000000, segno: 3145365
+-0.236892 JW_set_zone: type 3 superzone: 3 curseg_zone: 511 secno: 4193941 segno: 4193941 !!!!!
+-0.236891 type: 3, start_blkaddr: 0x80000000 startblkaddr: 0x80000000, segno: 4193941
+-0.23689 JW_set_zone: type 4 superzone: 4 curseg_zone: 639 secno: 5242517 segno: 5242517 !!!!!
+-0.236888 type: 4, start_blkaddr: 0xa0000000 startblkaddr: 0xa0000000, segno: 5242517
+-0.236887 JW_set_zone: type 5 superzone: 5 curseg_zone: 767 secno: 6291093 segno: 6291093 !!!!!
+-0.236886 type: 5, start_blkaddr: 0xc0000000 startblkaddr: 0xc0000000, segno: 6291093
+-0.236747 F2FS-fs (nvme3n1p1): Found nat_bits in checkpoint
+-0.114192 F2FS-fs (nvme3n1p1): Mounted with checkpoint version = 1d191519
+-0.041421 run_fio_iplfs.s (3380): drop_caches: 3
+0 STARTTTTTT
+4.36888 print_WAF: WAF: 100 percent gc: 0 KB write_req: 217132 KB total: 217140 KB total WAF: 100 percent
+4.36889 compaction1: COMPACTION_MEM_CALC total result IM: 0 PT: 0 interval: 0 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+4.36889 conv_write: type: 1 start_lpn: 0x20000000
+4.37807 conv_write: type: 5 start_lpn: 0xa0000000
+4.49028 conv_write: type: 4 start_lpn: 0x80000000
+4.50239 conv_write: host write on cold partition!! type: 6 lpn: 3221225728
+4.5024 conv_write: type: 6 start_lpn: 0xc0000000
+4.67529 conv_write: type: 2 start_lpn: 0x40000000
+5.36877 print_WAF: WAF: 100 percent gc: 0 KB write_req: 827900 KB total: 1045040 KB total WAF: 100 percent
+5.37744 compaction1: COMPACTION_MEM_CALC total result IM: 20 PT: 20 interval: 80 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 2 (8192 MB) compact_ms: 0 (0 MB)
+6.36845 print_WAF: WAF: 100 percent gc: 0 KB write_req: 936880 KB total: 1981920 KB total WAF: 100 percent
+6.37277 compaction1: COMPACTION_MEM_CALC total result IM: 20 PT: 20 interval: 80 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 1 (4096 MB) compact_ms: 0 (0 MB)
+7.36859 print_WAF: WAF: 100 percent gc: 0 KB write_req: 940124 KB total: 2922044 KB total WAF: 100 percent
+7.3729 compaction1: COMPACTION_MEM_CALC total result IM: 20 PT: 20 interval: 80 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 1 (4096 MB) compact_ms: 0 (0 MB)
+8.40519 print_WAF: WAF: 100 percent gc: 0 KB write_req: 920700 KB total: 3842744 KB total WAF: 100 percent
+8.40948 compaction1: COMPACTION_MEM_CALC total result IM: 20 PT: 20 interval: 80 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 1 (4096 MB) compact_ms: 0 (0 MB)
+9.40956 print_WAF: WAF: 100 percent gc: 0 KB write_req: 930692 KB total: 4773436 KB total WAF: 100 percent
+9.41385 compaction1: COMPACTION_MEM_CALC total result IM: 24 PT: 24 interval: 96 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 1 (4096 MB) compact_ms: 0 (0 MB)
+10.4081 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1595392 KB total: 6368828 KB total WAF: 100 percent
+10.4081 compaction1: COMPACTION_MEM_CALC total result IM: 24 PT: 24 interval: 96 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+11.4961 print_WAF: WAF: 100 percent gc: 0 KB write_req: 361536 KB total: 6730364 KB total WAF: 100 percent
+11.4961 compaction1: COMPACTION_MEM_CALC total result IM: 24 PT: 24 interval: 96 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+12.4959 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1009928 KB total: 7740292 KB total WAF: 100 percent
+12.5046 compaction1: COMPACTION_MEM_CALC total result IM: 24 PT: 24 interval: 96 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 2 (8192 MB) compact_ms: 0 (0 MB)
+13.4953 print_WAF: WAF: 100 percent gc: 0 KB write_req: 823976 KB total: 8564268 KB total WAF: 100 percent
+13.5041 compaction1: COMPACTION_MEM_CALC total result IM: 24 PT: 24 interval: 96 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 2 (8192 MB) compact_ms: 0 (0 MB)
+14.652 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1035880 KB total: 9600148 KB total WAF: 100 percent
+14.661 compaction1: COMPACTION_MEM_CALC total result IM: 28 PT: 28 interval: 112 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 2 (8192 MB) compact_ms: 0 (0 MB)
+15.6554 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1899168 KB total: 11499316 KB total WAF: 100 percent
+15.6645 compaction1: COMPACTION_MEM_CALC total result IM: 28 PT: 28 interval: 112 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 2 (8192 MB) compact_ms: 0 (0 MB)
+18.3856 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1659440 KB total: 13158756 KB total WAF: 100 percent
+18.3856 compaction1: COMPACTION_MEM_CALC total result IM: 28 PT: 28 interval: 112 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+19.5652 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1091224 KB total: 14249980 KB total WAF: 100 percent
+19.5796 compaction1: COMPACTION_MEM_CALC total result IM: 32 PT: 32 interval: 128 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 3 (12288 MB) compact_ms: 0 (0 MB)
+20.5626 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1348508 KB total: 15598488 KB total WAF: 100 percent
+20.5772 compaction1: COMPACTION_MEM_CALC total result IM: 32 PT: 32 interval: 128 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 3 (12288 MB) compact_ms: 0 (0 MB)
+21.5626 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1841152 KB total: 17439640 KB total WAF: 100 percent
+21.5626 compaction1: COMPACTION_MEM_CALC total result IM: 32 PT: 32 interval: 128 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+24.1464 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1214464 KB total: 18654104 KB total WAF: 100 percent
+24.1464 compaction1: COMPACTION_MEM_CALC total result IM: 36 PT: 36 interval: 144 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+25.4227 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1181076 KB total: 19835180 KB total WAF: 100 percent
+25.4438 compaction1: COMPACTION_MEM_CALC total result IM: 36 PT: 36 interval: 144 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 4 (16384 MB) compact_ms: 0 (0 MB)
+26.4217 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1835008 KB total: 21670188 KB total WAF: 100 percent
+26.4217 compaction1: COMPACTION_MEM_CALC total result IM: 36 PT: 36 interval: 144 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+27.4217 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1848320 KB total: 23518508 KB total WAF: 100 percent
+27.4217 compaction1: COMPACTION_MEM_CALC total result IM: 40 PT: 40 interval: 160 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+29.4262 print_WAF: WAF: 100 percent gc: 0 KB write_req: 199680 KB total: 23718188 KB total WAF: 100 percent
+29.4262 compaction1: COMPACTION_MEM_CALC total result IM: 40 PT: 40 interval: 160 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+30.4298 print_WAF: WAF: 100 percent gc: 0 KB write_req: 977264 KB total: 24695452 KB total WAF: 100 percent
+30.4623 compaction1: COMPACTION_MEM_CALC total result IM: 40 PT: 40 interval: 160 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 6 (24576 MB) compact_ms: 0 (0 MB)
+31.4784 print_WAF: WAF: 100 percent gc: 0 KB write_req: 951400 KB total: 25646852 KB total WAF: 100 percent
+31.4785 compaction1: COMPACTION_MEM_CALC total result IM: 40 PT: 40 interval: 160 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+32.4823 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1143852 KB total: 26790704 KB total WAF: 100 percent
+32.5158 compaction1: COMPACTION_MEM_CALC total result IM: 44 PT: 44 interval: 176 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 6 (24576 MB) compact_ms: 0 (0 MB)
+33.5862 print_WAF: WAF: 100 percent gc: 0 KB write_req: 826572 KB total: 27617276 KB total WAF: 100 percent
+33.5863 compaction1: COMPACTION_MEM_CALC total result IM: 44 PT: 44 interval: 176 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+34.5868 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1229480 KB total: 28846756 KB total WAF: 100 percent
+34.6212 compaction1: COMPACTION_MEM_CALC total result IM: 44 PT: 44 interval: 176 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 6 (24576 MB) compact_ms: 0 (0 MB)
+35.6091 print_WAF: WAF: 100 percent gc: 0 KB write_req: 698184 KB total: 29544940 KB total WAF: 100 percent
+35.6421 compaction1: COMPACTION_MEM_CALC total result IM: 44 PT: 44 interval: 176 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 6 (24576 MB) compact_ms: 0 (0 MB)
+36.6074 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1205640 KB total: 30750580 KB total WAF: 100 percent
+36.6477 compaction1: COMPACTION_MEM_CALC total result IM: 48 PT: 48 interval: 192 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 7 (28672 MB) compact_ms: 0 (0 MB)
+37.9631 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1009788 KB total: 31760368 KB total WAF: 100 percent
+37.9631 compaction1: COMPACTION_MEM_CALC total result IM: 48 PT: 48 interval: 192 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+38.9638 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1187916 KB total: 32948284 KB total WAF: 100 percent
+38.9982 compaction1: COMPACTION_MEM_CALC total result IM: 47 PT: 48 interval: 192 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 5 (20480 MB) compact_ms: 1 (4096 MB)
+39.9683 print_WAF: WAF: 100 percent gc: 0 KB write_req: 689844 KB total: 33638128 KB total WAF: 100 percent
+40.0105 compaction1: COMPACTION_MEM_CALC total result IM: 47 PT: 48 interval: 192 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 7 (28672 MB) compact_ms: 0 (0 MB)
+40.9722 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1170556 KB total: 34808684 KB total WAF: 100 percent
+41.0204 compaction1: COMPACTION_MEM_CALC total result IM: 47 PT: 48 interval: 192 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 8 (32768 MB) compact_ms: 0 (0 MB)
+41.9768 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1390592 KB total: 36199276 KB total WAF: 100 percent
+41.9768 compaction1: COMPACTION_MEM_CALC total result IM: 51 PT: 52 interval: 208 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+42.9809 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1879040 KB total: 38078316 KB total WAF: 100 percent
+42.9809 compaction1: COMPACTION_MEM_CALC total result IM: 51 PT: 52 interval: 208 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+44.8417 print_WAF: WAF: 100 percent gc: 0 KB write_req: 192796 KB total: 38271112 KB total WAF: 100 percent
+44.8417 compaction1: COMPACTION_MEM_CALC total result IM: 51 PT: 52 interval: 208 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+45.8455 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1052180 KB total: 39323292 KB total WAF: 100 percent
+45.9004 compaction1: COMPACTION_MEM_CALC total result IM: 55 PT: 56 interval: 224 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 9 (36864 MB) compact_ms: 0 (0 MB)
+46.8495 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1040112 KB total: 40363404 KB total WAF: 100 percent
+46.9 compaction1: COMPACTION_MEM_CALC total result IM: 55 PT: 56 interval: 224 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 8 (32768 MB) compact_ms: 0 (0 MB)
+47.8537 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1623040 KB total: 41986444 KB total WAF: 100 percent
+47.8537 compaction1: COMPACTION_MEM_CALC total result IM: 55 PT: 56 interval: 224 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+50.5893 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1508352 KB total: 43494796 KB total WAF: 100 percent
+50.5893 compaction1: COMPACTION_MEM_CALC total result IM: 55 PT: 56 interval: 224 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+51.5922 print_WAF: WAF: 100 percent gc: 0 KB write_req: 849744 KB total: 44344540 KB total WAF: 100 percent
+51.6459 compaction1: COMPACTION_MEM_CALC total result IM: 59 PT: 60 interval: 240 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 8 (32768 MB) compact_ms: 0 (0 MB)
+52.5941 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1039876 KB total: 45384416 KB total WAF: 100 percent
+52.6144 compaction1: COMPACTION_MEM_CALC total result IM: 59 PT: 60 interval: 240 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 4 (16384 MB) compact_ms: 0 (0 MB)
+53.5982 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1012656 KB total: 46397072 KB total WAF: 100 percent
+53.6622 compaction1: COMPACTION_MEM_CALC total result IM: 59 PT: 60 interval: 240 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 10 (40960 MB) compact_ms: 0 (0 MB)
+54.6104 print_WAF: WAF: 100 percent gc: 0 KB write_req: 656660 KB total: 47053732 KB total WAF: 100 percent
+54.6764 compaction1: COMPACTION_MEM_CALC total result IM: 59 PT: 60 interval: 240 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 10 (40960 MB) compact_ms: 0 (0 MB)
+55.6144 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1183744 KB total: 48237476 KB total WAF: 100 percent
+55.6144 compaction1: COMPACTION_MEM_CALC total result IM: 63 PT: 64 interval: 256 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+56.6187 print_WAF: WAF: 100 percent gc: 0 KB write_req: 632592 KB total: 48870068 KB total WAF: 100 percent
+56.683 compaction1: COMPACTION_MEM_CALC total result IM: 63 PT: 64 interval: 256 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 10 (40960 MB) compact_ms: 0 (0 MB)
+57.6226 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1647616 KB total: 50517684 KB total WAF: 100 percent
+57.6226 compaction1: COMPACTION_MEM_CALC total result IM: 63 PT: 64 interval: 256 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+59.1599 print_WAF: WAF: 100 percent gc: 0 KB write_req: 651888 KB total: 51169572 KB total WAF: 100 percent
+59.1599 compaction1: COMPACTION_MEM_CALC total result IM: 63 PT: 64 interval: 256 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+60.1626 print_WAF: WAF: 100 percent gc: 0 KB write_req: 987176 KB total: 52156748 KB total WAF: 100 percent
+60.2476 compaction1: COMPACTION_MEM_CALC total result IM: 62 PT: 64 interval: 256 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 12 (49152 MB) compact_ms: 1 (4096 MB)
+61.3726 print_WAF: WAF: 100 percent gc: 0 KB write_req: 855104 KB total: 53011852 KB total WAF: 100 percent
+61.4464 compaction1: COMPACTION_MEM_CALC total result IM: 66 PT: 68 interval: 272 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 11 (45056 MB) compact_ms: 0 (0 MB)
+62.375 print_WAF: WAF: 100 percent gc: 0 KB write_req: 973316 KB total: 53985168 KB total WAF: 100 percent
+62.4507 compaction1: COMPACTION_MEM_CALC total result IM: 66 PT: 68 interval: 272 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 11 (45056 MB) compact_ms: 0 (0 MB)
+63.3792 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1582044 KB total: 55567212 KB total WAF: 100 percent
+63.3792 compaction1: COMPACTION_MEM_CALC total result IM: 66 PT: 68 interval: 272 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+64.3828 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1674240 KB total: 57241452 KB total WAF: 100 percent
+64.3828 compaction1: COMPACTION_MEM_CALC total result IM: 70 PT: 72 interval: 288 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+66.419 print_WAF: WAF: 100 percent gc: 0 KB write_req: 259072 KB total: 57500524 KB total WAF: 100 percent
+66.419 compaction1: COMPACTION_MEM_CALC total result IM: 70 PT: 72 interval: 288 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+67.4233 print_WAF: WAF: 100 percent gc: 0 KB write_req: 886344 KB total: 58386868 KB total WAF: 100 percent
+67.5136 compaction1: COMPACTION_MEM_CALC total result IM: 70 PT: 72 interval: 288 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 13 (53248 MB) compact_ms: 0 (0 MB)
+68.4234 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1547264 KB total: 59934132 KB total WAF: 100 percent
+68.4234 compaction1: COMPACTION_MEM_CALC total result IM: 70 PT: 72 interval: 288 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+69.4271 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1679360 KB total: 61613492 KB total WAF: 100 percent
+69.4271 compaction1: COMPACTION_MEM_CALC total result IM: 74 PT: 76 interval: 304 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+71.618 print_WAF: WAF: 100 percent gc: 0 KB write_req: 504832 KB total: 62118324 KB total WAF: 100 percent
+71.618 compaction1: COMPACTION_MEM_CALC total result IM: 74 PT: 76 interval: 304 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+72.6192 print_WAF: WAF: 100 percent gc: 0 KB write_req: 862724 KB total: 62981048 KB total WAF: 100 percent
+72.6577 compaction1: COMPACTION_MEM_CALC total result IM: 74 PT: 76 interval: 304 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 5 (20480 MB) compact_ms: 0 (0 MB)
+73.6235 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1004912 KB total: 63985960 KB total WAF: 100 percent
+73.6982 compaction1: COMPACTION_MEM_CALC total result IM: 74 PT: 76 interval: 304 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 11 (45056 MB) compact_ms: 0 (0 MB)
+74.6526 print_WAF: WAF: 100 percent gc: 0 KB write_req: 928092 KB total: 64914052 KB total WAF: 100 percent
+74.752 compaction1: COMPACTION_MEM_CALC total result IM: 74 PT: 76 interval: 304 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 14 (57344 MB) compact_ms: 0 (0 MB)
+75.6554 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1553408 KB total: 66467460 KB total WAF: 100 percent
+75.6554 compaction1: COMPACTION_MEM_CALC total result IM: 78 PT: 80 interval: 320 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+76.6593 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1709056 KB total: 68176516 KB total WAF: 100 percent
+76.6593 compaction1: COMPACTION_MEM_CALC total result IM: 78 PT: 80 interval: 320 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+78.7749 print_WAF: WAF: 100 percent gc: 0 KB write_req: 220160 KB total: 68396676 KB total WAF: 100 percent
+78.7749 compaction1: COMPACTION_MEM_CALC total result IM: 78 PT: 80 interval: 320 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+79.7882 print_WAF: WAF: 100 percent gc: 0 KB write_req: 902312 KB total: 69298988 KB total WAF: 100 percent
+79.7882 compaction1: COMPACTION_MEM_CALC total result IM: 78 PT: 80 interval: 320 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+80.7917 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1181020 KB total: 70480008 KB total WAF: 100 percent
+80.9132 compaction1: COMPACTION_MEM_CALC total result IM: 82 PT: 84 interval: 336 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 16 (65536 MB) compact_ms: 1 (4096 MB)
+81.7954 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1349564 KB total: 71829572 KB total WAF: 100 percent
+81.9057 compaction1: COMPACTION_MEM_CALC total result IM: 82 PT: 84 interval: 336 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 15 (61440 MB) compact_ms: 0 (0 MB)
+82.7998 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1531904 KB total: 73361476 KB total WAF: 100 percent
+82.7998 compaction1: COMPACTION_MEM_CALC total result IM: 82 PT: 84 interval: 336 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+84.9948 print_WAF: WAF: 100 percent gc: 0 KB write_req: 493568 KB total: 73855044 KB total WAF: 100 percent
+84.9948 compaction1: COMPACTION_MEM_CALC total result IM: 86 PT: 88 interval: 352 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+86.0587 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1502456 KB total: 75357500 KB total WAF: 100 percent
+86.1085 compaction1: COMPACTION_MEM_CALC total result IM: 86 PT: 88 interval: 352 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 6 (24576 MB) compact_ms: 0 (0 MB)
+87.0555 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1367040 KB total: 76724540 KB total WAF: 100 percent
+87.1462 compaction1: COMPACTION_MEM_CALC total result IM: 86 PT: 88 interval: 352 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 13 (53248 MB) compact_ms: 0 (0 MB)
+88.0555 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1538048 KB total: 78262588 KB total WAF: 100 percent
+88.0555 compaction1: COMPACTION_MEM_CALC total result IM: 90 PT: 92 interval: 368 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+90.3257 print_WAF: WAF: 100 percent gc: 0 KB write_req: 289792 KB total: 78552380 KB total WAF: 100 percent
+90.3257 compaction1: COMPACTION_MEM_CALC total result IM: 90 PT: 92 interval: 368 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+91.3238 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1314788 KB total: 79867168 KB total WAF: 100 percent
+91.3747 compaction1: COMPACTION_MEM_CALC total result IM: 90 PT: 92 interval: 368 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 6 (24576 MB) compact_ms: 0 (0 MB)
+92.7081 print_WAF: WAF: 100 percent gc: 0 KB write_req: 763064 KB total: 80630232 KB total WAF: 100 percent
+92.8094 compaction1: COMPACTION_MEM_CALC total result IM: 90 PT: 92 interval: 368 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 14 (57344 MB) compact_ms: 0 (0 MB)
+93.7721 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1356668 KB total: 81986900 KB total WAF: 100 percent
+93.9033 compaction1: COMPACTION_MEM_CALC total result IM: 90 PT: 92 interval: 368 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 17 (69632 MB) compact_ms: 0 (0 MB)
+94.7713 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1460224 KB total: 83447124 KB total WAF: 100 percent
+94.7971 compaction1: COMPACTION_MEM_CALC total result IM: 94 PT: 96 interval: 384 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 5 (20480 MB) compact_ms: 0 (0 MB)
+95.7714 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1657856 KB total: 85104980 KB total WAF: 100 percent
+95.7714 compaction1: COMPACTION_MEM_CALC total result IM: 94 PT: 96 interval: 384 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+98.7421 print_WAF: WAF: 100 percent gc: 0 KB write_req: 815208 KB total: 85920188 KB total WAF: 100 percent
+98.7422 compaction1: COMPACTION_MEM_CALC total result IM: 94 PT: 96 interval: 384 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+99.7393 print_WAF: WAF: 100 percent gc: 0 KB write_req: 849300 KB total: 86769488 KB total WAF: 100 percent
+99.8948 compaction1: COMPACTION_MEM_CALC total result IM: 94 PT: 96 interval: 384 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 20 (81920 MB) compact_ms: 0 (0 MB)
+100.74 print_WAF: WAF: 100 percent gc: 0 KB write_req: 796240 KB total: 87565728 KB total WAF: 100 percent
+100.897 compaction1: COMPACTION_MEM_CALC total result IM: 98 PT: 100 interval: 400 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 20 (81920 MB) compact_ms: 0 (0 MB)
+101.739 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1060864 KB total: 88626592 KB total WAF: 100 percent
+101.739 compaction1: COMPACTION_MEM_CALC total result IM: 98 PT: 100 interval: 400 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+102.739 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1675264 KB total: 90301856 KB total WAF: 100 percent
+102.739 compaction1: COMPACTION_MEM_CALC total result IM: 98 PT: 100 interval: 400 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+103.739 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1208096 KB total: 91509952 KB total WAF: 100 percent
+103.846 compaction1: COMPACTION_MEM_CALC total result IM: 102 PT: 104 interval: 416 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 12 (49152 MB) compact_ms: 0 (0 MB)
+105.891 print_WAF: WAF: 100 percent gc: 0 KB write_req: 513660 KB total: 92023612 KB total WAF: 100 percent
+105.963 compaction1: COMPACTION_MEM_CALC total result IM: 102 PT: 104 interval: 416 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 11 (45056 MB) compact_ms: 0 (0 MB)
+106.891 print_WAF: WAF: 100 percent gc: 0 KB write_req: 924516 KB total: 92948128 KB total WAF: 100 percent
+107.007 compaction1: COMPACTION_MEM_CALC total result IM: 102 PT: 104 interval: 416 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 15 (61440 MB) compact_ms: 0 (0 MB)
+107.891 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1503232 KB total: 94451360 KB total WAF: 100 percent
+107.891 compaction1: COMPACTION_MEM_CALC total result IM: 102 PT: 104 interval: 416 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+108.982 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1505460 KB total: 95956820 KB total WAF: 100 percent
+109.046 compaction1: COMPACTION_MEM_CALC total result IM: 106 PT: 108 interval: 432 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 7 (28672 MB) compact_ms: 0 (0 MB)
+111.333 print_WAF: WAF: 100 percent gc: 0 KB write_req: 804060 KB total: 96760880 KB total WAF: 100 percent
+111.46 compaction1: COMPACTION_MEM_CALC total result IM: 106 PT: 108 interval: 432 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 17 (69632 MB) compact_ms: 0 (0 MB)
+112.331 print_WAF: WAF: 100 percent gc: 0 KB write_req: 778596 KB total: 97539476 KB total WAF: 100 percent
+112.516 compaction1: COMPACTION_MEM_CALC total result IM: 106 PT: 108 interval: 432 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 23 (94208 MB) compact_ms: 0 (0 MB)
+113.331 print_WAF: WAF: 100 percent gc: 0 KB write_req: 893120 KB total: 98432596 KB total WAF: 100 percent
+113.457 compaction1: COMPACTION_MEM_CALC total result IM: 106 PT: 108 interval: 432 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 16 (65536 MB) compact_ms: 0 (0 MB)
+114.331 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1266876 KB total: 99699472 KB total WAF: 100 percent
+114.509 compaction1: COMPACTION_MEM_CALC total result IM: 106 PT: 108 interval: 432 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 22 (90112 MB) compact_ms: 0 (0 MB)
+115.331 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1426432 KB total: 101125904 KB total WAF: 100 percent
+115.331 compaction1: COMPACTION_MEM_CALC total result IM: 110 PT: 112 interval: 448 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+118.053 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1199104 KB total: 102325008 KB total WAF: 100 percent
+118.053 compaction1: COMPACTION_MEM_CALC total result IM: 110 PT: 112 interval: 448 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+119.051 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1003024 KB total: 103328032 KB total WAF: 100 percent
+119.249 compaction1: COMPACTION_MEM_CALC total result IM: 110 PT: 112 interval: 448 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 24 (98304 MB) compact_ms: 0 (0 MB)
+120.082 print_WAF: WAF: 100 percent gc: 0 KB write_req: 597440 KB total: 103925472 KB total WAF: 100 percent
+120.082 compaction1: COMPACTION_MEM_CALC total result IM: 110 PT: 112 interval: 448 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+121.079 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1011160 KB total: 104936632 KB total WAF: 100 percent
+121.231 compaction1: COMPACTION_MEM_CALC total result IM: 114 PT: 116 interval: 464 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 19 (77824 MB) compact_ms: 0 (0 MB)
+122.079 print_WAF: WAF: 100 percent gc: 0 KB write_req: 720100 KB total: 105656732 KB total WAF: 100 percent
+122.27 compaction1: COMPACTION_MEM_CALC total result IM: 114 PT: 116 interval: 464 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 23 (94208 MB) compact_ms: 0 (0 MB)
+123.184 print_WAF: WAF: 100 percent gc: 0 KB write_req: 703488 KB total: 106360220 KB total WAF: 100 percent
+123.184 compaction1: COMPACTION_MEM_CALC total result IM: 114 PT: 116 interval: 464 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+124.183 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1484664 KB total: 107844884 KB total WAF: 100 percent
+124.372 compaction1: COMPACTION_MEM_CALC total result IM: 114 PT: 116 interval: 464 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 23 (94208 MB) compact_ms: 0 (0 MB)
+125.182 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1415168 KB total: 109260052 KB total WAF: 100 percent
+125.183 compaction1: COMPACTION_MEM_CALC total result IM: 118 PT: 120 interval: 480 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+126.183 print_WAF: WAF: 100 percent gc: 0 KB write_req: 977404 KB total: 110237456 KB total WAF: 100 percent
+126.396 compaction1: COMPACTION_MEM_CALC total result IM: 118 PT: 120 interval: 480 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 25 (102400 MB) compact_ms: 0 (0 MB)
+127.183 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1245960 KB total: 111483416 KB total WAF: 100 percent
+127.331 compaction1: COMPACTION_MEM_CALC total result IM: 118 PT: 120 interval: 480 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 18 (73728 MB) compact_ms: 0 (0 MB)
+128.868 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1273856 KB total: 112757272 KB total WAF: 100 percent
+128.868 compaction1: COMPACTION_MEM_CALC total result IM: 118 PT: 120 interval: 480 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+129.876 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1044592 KB total: 113801864 KB total WAF: 100 percent
+130.104 compaction1: COMPACTION_MEM_CALC total result IM: 122 PT: 124 interval: 496 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 27 (110592 MB) compact_ms: 0 (0 MB)
+132.254 print_WAF: WAF: 100 percent gc: 0 KB write_req: 162636 KB total: 113964500 KB total WAF: 100 percent
+132.254 compaction1: COMPACTION_MEM_CALC total result IM: 122 PT: 124 interval: 496 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+133.254 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1116632 KB total: 115081132 KB total WAF: 100 percent
+133.428 compaction1: COMPACTION_MEM_CALC total result IM: 122 PT: 124 interval: 496 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 21 (86016 MB) compact_ms: 0 (0 MB)
+134.254 print_WAF: WAF: 100 percent gc: 0 KB write_req: 697320 KB total: 115778452 KB total WAF: 100 percent
+134.473 compaction1: COMPACTION_MEM_CALC total result IM: 122 PT: 124 interval: 496 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 26 (106496 MB) compact_ms: 0 (0 MB)
+135.254 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1117268 KB total: 116895720 KB total WAF: 100 percent
+135.466 compaction1: COMPACTION_MEM_CALC total result IM: 122 PT: 124 interval: 496 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 25 (102400 MB) compact_ms: 0 (0 MB)
+136.254 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1383428 KB total: 118279148 KB total WAF: 100 percent
+136.254 compaction1: COMPACTION_MEM_CALC total result IM: 126 PT: 128 interval: 512 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+137.254 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1338924 KB total: 119618072 KB total WAF: 100 percent
+137.354 compaction1: COMPACTION_MEM_CALC total result IM: 126 PT: 128 interval: 512 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 10 (40960 MB) compact_ms: 0 (0 MB)
+139.458 print_WAF: WAF: 100 percent gc: 0 KB write_req: 223264 KB total: 119841336 KB total WAF: 100 percent
+139.611 compaction1: COMPACTION_MEM_CALC total result IM: 126 PT: 128 interval: 512 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 20 (81920 MB) compact_ms: 0 (0 MB)
+140.458 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1063936 KB total: 120905272 KB total WAF: 100 percent
+140.458 compaction1: COMPACTION_MEM_CALC total result IM: 126 PT: 128 interval: 512 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+141.458 print_WAF: WAF: 100 percent gc: 0 KB write_req: 666304 KB total: 121571576 KB total WAF: 100 percent
+141.69 compaction1: COMPACTION_MEM_CALC total result IM: 126 PT: 128 interval: 512 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 27 (110592 MB) compact_ms: 0 (0 MB)
+142.487 print_WAF: WAF: 100 percent gc: 0 KB write_req: 679168 KB total: 122250744 KB total WAF: 100 percent
+142.712 compaction1: COMPACTION_MEM_CALC total result IM: 130 PT: 132 interval: 528 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 26 (106496 MB) compact_ms: 0 (0 MB)
+143.486 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1331204 KB total: 123581948 KB total WAF: 100 percent
+143.486 compaction1: COMPACTION_MEM_CALC total result IM: 130 PT: 132 interval: 528 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+144.497 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1664260 KB total: 125246208 KB total WAF: 100 percent
+144.497 compaction1: COMPACTION_MEM_CALC total result IM: 130 PT: 132 interval: 528 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+146.955 print_WAF: WAF: 100 percent gc: 0 KB write_req: 849152 KB total: 126095360 KB total WAF: 100 percent
+147.209 compaction1: COMPACTION_MEM_CALC total result IM: 134 PT: 136 interval: 544 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 29 (118784 MB) compact_ms: 0 (0 MB)
+148.203 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1102468 KB total: 127197828 KB total WAF: 100 percent
+148.402 compaction1: COMPACTION_MEM_CALC total result IM: 132 PT: 136 interval: 544 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 23 (94208 MB) compact_ms: 1 (4096 MB)
+149.201 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1147236 KB total: 128345064 KB total WAF: 100 percent
+149.45 compaction1: COMPACTION_MEM_CALC total result IM: 132 PT: 136 interval: 544 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 28 (114688 MB) compact_ms: 1 (4096 MB)
+150.201 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1295360 KB total: 129640424 KB total WAF: 100 percent
+150.201 compaction1: COMPACTION_MEM_CALC total result IM: 132 PT: 136 interval: 544 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+151.201 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1025804 KB total: 130666228 KB total WAF: 100 percent
+151.468 compaction1: COMPACTION_MEM_CALC total result IM: 140 PT: 144 interval: 576 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 30 (122880 MB) compact_ms: 0 (0 MB)
+152.233 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1131600 KB total: 131797828 KB total WAF: 100 percent
+152.405 compaction1: COMPACTION_MEM_CALC total result IM: 140 PT: 144 interval: 576 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 17 (69632 MB) compact_ms: 0 (0 MB)
+154.414 print_WAF: WAF: 100 percent gc: 0 KB write_req: 512852 KB total: 132310680 KB total WAF: 100 percent
+154.527 compaction1: COMPACTION_MEM_CALC total result IM: 140 PT: 144 interval: 576 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 16 (65536 MB) compact_ms: 0 (0 MB)
+155.616 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1097728 KB total: 133408408 KB total WAF: 100 percent
+155.616 compaction1: COMPACTION_MEM_CALC total result IM: 140 PT: 144 interval: 576 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+156.888 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1150128 KB total: 134558536 KB total WAF: 100 percent
+157.158 compaction1: COMPACTION_MEM_CALC total result IM: 140 PT: 144 interval: 576 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 31 (126976 MB) compact_ms: 0 (0 MB)
+157.885 print_WAF: WAF: 100 percent gc: 0 KB write_req: 971376 KB total: 135529912 KB total WAF: 100 percent
+158.147 compaction1: COMPACTION_MEM_CALC total result IM: 144 PT: 148 interval: 592 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 30 (122880 MB) compact_ms: 0 (0 MB)
+158.889 print_WAF: WAF: 100 percent gc: 0 KB write_req: 719608 KB total: 136249520 KB total WAF: 100 percent
+159.119 compaction1: COMPACTION_MEM_CALC total result IM: 144 PT: 148 interval: 592 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 26 (106496 MB) compact_ms: 0 (0 MB)
+159.893 print_WAF: WAF: 100 percent gc: 0 KB write_req: 641036 KB total: 136890556 KB total WAF: 100 percent
+160.147 compaction1: COMPACTION_MEM_CALC total result IM: 144 PT: 144 interval: 576 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 29 (118784 MB) compact_ms: 0 (0 MB)
+160.897 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1294336 KB total: 138184892 KB total WAF: 100 percent
+160.897 compaction1: COMPACTION_MEM_CALC total result IM: 144 PT: 144 interval: 576 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+162.536 print_WAF: WAF: 100 percent gc: 0 KB write_req: 953228 KB total: 139138120 KB total WAF: 100 percent
+162.536 compaction1: COMPACTION_MEM_CALC total result IM: 148 PT: 148 interval: 592 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+163.538 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1071344 KB total: 140209464 KB total WAF: 100 percent
+163.83 compaction1: COMPACTION_MEM_CALC total result IM: 148 PT: 148 interval: 592 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 32 (131072 MB) compact_ms: 0 (0 MB)
+164.542 print_WAF: WAF: 100 percent gc: 0 KB write_req: 999064 KB total: 141208528 KB total WAF: 100 percent
+164.809 compaction1: COMPACTION_MEM_CALC total result IM: 148 PT: 148 interval: 592 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 29 (118784 MB) compact_ms: 0 (0 MB)
+165.545 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1280768 KB total: 142489296 KB total WAF: 100 percent
+165.545 compaction1: COMPACTION_MEM_CALC total result IM: 148 PT: 148 interval: 592 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+166.549 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1073312 KB total: 143562608 KB total WAF: 100 percent
+166.852 compaction1: COMPACTION_MEM_CALC total result IM: 152 PT: 152 interval: 608 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 33 (135168 MB) compact_ms: 0 (0 MB)
+167.553 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1196032 KB total: 144758640 KB total WAF: 100 percent
+167.553 compaction1: COMPACTION_MEM_CALC total result IM: 152 PT: 152 interval: 608 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+169.83 print_WAF: WAF: 100 percent gc: 0 KB write_req: 457228 KB total: 145215868 KB total WAF: 100 percent
+169.83 compaction1: COMPACTION_MEM_CALC total result IM: 152 PT: 152 interval: 608 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+170.834 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1191900 KB total: 146407768 KB total WAF: 100 percent
+171.144 compaction1: COMPACTION_MEM_CALC total result IM: 152 PT: 152 interval: 608 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 34 (139264 MB) compact_ms: 0 (0 MB)
+171.838 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1196032 KB total: 147603800 KB total WAF: 100 percent
+171.838 compaction1: COMPACTION_MEM_CALC total result IM: 156 PT: 156 interval: 624 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+172.842 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1016344 KB total: 148620144 KB total WAF: 100 percent
+173.157 compaction1: COMPACTION_MEM_CALC total result IM: 156 PT: 156 interval: 624 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 34 (139264 MB) compact_ms: 0 (0 MB)
+173.846 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1173504 KB total: 149793648 KB total WAF: 100 percent
+173.846 compaction1: COMPACTION_MEM_CALC total result IM: 156 PT: 156 interval: 624 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+176.584 print_WAF: WAF: 100 percent gc: 0 KB write_req: 808116 KB total: 150601764 KB total WAF: 100 percent
+176.584 compaction1: COMPACTION_MEM_CALC total result IM: 156 PT: 156 interval: 624 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+177.586 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1033956 KB total: 151635720 KB total WAF: 100 percent
+177.909 compaction1: COMPACTION_MEM_CALC total result IM: 156 PT: 156 interval: 624 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 35 (143360 MB) compact_ms: 0 (0 MB)
+178.59 print_WAF: WAF: 100 percent gc: 0 KB write_req: 425352 KB total: 152061072 KB total WAF: 100 percent
+178.89 compaction1: COMPACTION_MEM_CALC total result IM: 160 PT: 160 interval: 640 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 32 (131072 MB) compact_ms: 0 (0 MB)
+179.594 print_WAF: WAF: 100 percent gc: 0 KB write_req: 956416 KB total: 153017488 KB total WAF: 100 percent
+179.594 compaction1: COMPACTION_MEM_CALC total result IM: 160 PT: 160 interval: 640 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+180.66 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1458492 KB total: 154475980 KB total WAF: 100 percent
+180.789 compaction1: COMPACTION_MEM_CALC total result IM: 160 PT: 160 interval: 640 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 12 (49152 MB) compact_ms: 0 (0 MB)
+181.662 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1192740 KB total: 155668720 KB total WAF: 100 percent
+181.882 compaction1: COMPACTION_MEM_CALC total result IM: 160 PT: 160 interval: 640 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 26 (106496 MB) compact_ms: 0 (0 MB)
+183.894 print_WAF: WAF: 100 percent gc: 0 KB write_req: 659456 KB total: 156328176 KB total WAF: 100 percent
+183.894 compaction1: COMPACTION_MEM_CALC total result IM: 164 PT: 164 interval: 656 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+184.898 print_WAF: WAF: 100 percent gc: 0 KB write_req: 814028 KB total: 157142204 KB total WAF: 100 percent
+185.199 compaction1: COMPACTION_MEM_CALC total result IM: 164 PT: 164 interval: 656 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 30 (122880 MB) compact_ms: 0 (0 MB)
+186.056 print_WAF: WAF: 100 percent gc: 0 KB write_req: 801800 KB total: 157944004 KB total WAF: 100 percent
+186.105 compaction1: COMPACTION_MEM_CALC total result IM: 164 PT: 164 interval: 656 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 8 (32768 MB) compact_ms: 0 (0 MB)
+187.309 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1099400 KB total: 159043404 KB total WAF: 100 percent
+187.623 compaction1: COMPACTION_MEM_CALC total result IM: 164 PT: 164 interval: 656 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 33 (135168 MB) compact_ms: 0 (0 MB)
+188.31 print_WAF: WAF: 100 percent gc: 0 KB write_req: 902632 KB total: 159946036 KB total WAF: 100 percent
+188.626 compaction1: COMPACTION_MEM_CALC total result IM: 164 PT: 164 interval: 656 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 34 (139264 MB) compact_ms: 0 (0 MB)
+189.472 print_WAF: WAF: 100 percent gc: 0 KB write_req: 745892 KB total: 160691928 KB total WAF: 100 percent
+189.758 compaction1: COMPACTION_MEM_CALC total result IM: 168 PT: 168 interval: 672 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 31 (126976 MB) compact_ms: 0 (0 MB)
+190.474 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1224704 KB total: 161916632 KB total WAF: 100 percent
+190.474 compaction1: COMPACTION_MEM_CALC total result IM: 168 PT: 168 interval: 672 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+191.483 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1088368 KB total: 163005000 KB total WAF: 100 percent
+191.829 compaction1: COMPACTION_MEM_CALC total result IM: 168 PT: 168 interval: 672 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 36 (147456 MB) compact_ms: 0 (0 MB)
+193.393 print_WAF: WAF: 100 percent gc: 0 KB write_req: 669808 KB total: 163674808 KB total WAF: 100 percent
+193.408 compaction1: COMPACTION_MEM_CALC total result IM: 168 PT: 168 interval: 672 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 3 (12288 MB) compact_ms: 0 (0 MB)
+194.608 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1042964 KB total: 164717772 KB total WAF: 100 percent
+194.9 compaction1: COMPACTION_MEM_CALC total result IM: 168 PT: 168 interval: 672 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 32 (131072 MB) compact_ms: 0 (0 MB)
+195.61 print_WAF: WAF: 100 percent gc: 0 KB write_req: 946168 KB total: 165663940 KB total WAF: 100 percent
+195.927 compaction1: COMPACTION_MEM_CALC total result IM: 172 PT: 172 interval: 688 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 33 (135168 MB) compact_ms: 0 (0 MB)
+196.614 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1185792 KB total: 166849732 KB total WAF: 100 percent
+196.614 compaction1: COMPACTION_MEM_CALC total result IM: 172 PT: 172 interval: 688 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+197.619 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1016720 KB total: 167866452 KB total WAF: 100 percent
+197.969 compaction1: COMPACTION_MEM_CALC total result IM: 172 PT: 172 interval: 688 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 37 (151552 MB) compact_ms: 0 (0 MB)
+199.014 print_WAF: WAF: 100 percent gc: 0 KB write_req: 833536 KB total: 168699988 KB total WAF: 100 percent
+199.014 compaction1: COMPACTION_MEM_CALC total result IM: 172 PT: 172 interval: 688 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+200.014 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1163484 KB total: 169863472 KB total WAF: 100 percent
+200.383 compaction1: COMPACTION_MEM_CALC total result IM: 176 PT: 176 interval: 704 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 39 (159744 MB) compact_ms: 0 (0 MB)
+201.834 print_WAF: WAF: 100 percent gc: 0 KB write_req: 394472 KB total: 170257944 KB total WAF: 100 percent
+201.834 compaction1: COMPACTION_MEM_CALC total result IM: 176 PT: 176 interval: 704 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+203.007 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1005184 KB total: 171263128 KB total WAF: 100 percent
+203.313 compaction1: COMPACTION_MEM_CALC total result IM: 176 PT: 176 interval: 704 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 33 (135168 MB) compact_ms: 0 (0 MB)
+204.01 print_WAF: WAF: 100 percent gc: 0 KB write_req: 919380 KB total: 172182508 KB total WAF: 100 percent
+204.338 compaction1: COMPACTION_MEM_CALC total result IM: 176 PT: 176 interval: 704 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 34 (139264 MB) compact_ms: 0 (0 MB)
+205.015 print_WAF: WAF: 100 percent gc: 0 KB write_req: 626464 KB total: 172808972 KB total WAF: 100 percent
+205.342 compaction1: COMPACTION_MEM_CALC total result IM: 176 PT: 176 interval: 704 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 35 (143360 MB) compact_ms: 0 (0 MB)
+206.046 print_WAF: WAF: 100 percent gc: 0 KB write_req: 547756 KB total: 173356728 KB total WAF: 100 percent
+206.365 compaction1: COMPACTION_MEM_CALC total result IM: 176 PT: 176 interval: 704 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 34 (139264 MB) compact_ms: 0 (0 MB)
+207.047 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1166336 KB total: 174523064 KB total WAF: 100 percent
+207.047 compaction1: COMPACTION_MEM_CALC total result IM: 180 PT: 180 interval: 720 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+208.051 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1281308 KB total: 175804372 KB total WAF: 100 percent
+208.317 compaction1: COMPACTION_MEM_CALC total result IM: 180 PT: 180 interval: 720 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 25 (102400 MB) compact_ms: 0 (0 MB)
+209.055 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1044212 KB total: 176848584 KB total WAF: 100 percent
+209.185 compaction1: COMPACTION_MEM_CALC total result IM: 180 PT: 180 interval: 720 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 17 (69632 MB) compact_ms: 0 (0 MB)
+210.703 print_WAF: WAF: 100 percent gc: 0 KB write_req: 156524 KB total: 177005108 KB total WAF: 100 percent
+210.703 compaction1: COMPACTION_MEM_CALC total result IM: 180 PT: 180 interval: 720 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+211.707 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1108628 KB total: 178113736 KB total WAF: 100 percent
+212.052 compaction1: COMPACTION_MEM_CALC total result IM: 184 PT: 184 interval: 736 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 37 (151552 MB) compact_ms: 0 (0 MB)
+212.71 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1136640 KB total: 179250376 KB total WAF: 100 percent
+212.71 compaction1: COMPACTION_MEM_CALC total result IM: 184 PT: 184 interval: 736 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+213.714 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1018648 KB total: 180269024 KB total WAF: 100 percent
+214.106 compaction1: COMPACTION_MEM_CALC total result IM: 184 PT: 184 interval: 736 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 41 (167936 MB) compact_ms: 0 (0 MB)
+214.718 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1024352 KB total: 181293376 KB total WAF: 100 percent
+214.718 compaction1: COMPACTION_MEM_CALC total result IM: 184 PT: 184 interval: 736 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+216.425 print_WAF: WAF: 100 percent gc: 0 KB write_req: 155904 KB total: 181449280 KB total WAF: 100 percent
+216.425 compaction1: COMPACTION_MEM_CALC total result IM: 184 PT: 184 interval: 736 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+217.423 print_WAF: WAF: 100 percent gc: 0 KB write_req: 963600 KB total: 182412880 KB total WAF: 100 percent
+217.822 compaction1: COMPACTION_MEM_CALC total result IM: 188 PT: 188 interval: 752 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 42 (172032 MB) compact_ms: 0 (0 MB)
+218.915 print_WAF: WAF: 100 percent gc: 0 KB write_req: 789104 KB total: 183201984 KB total WAF: 100 percent
+218.915 compaction1: COMPACTION_MEM_CALC total result IM: 188 PT: 188 interval: 752 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+220.045 print_WAF: WAF: 100 percent gc: 0 KB write_req: 972472 KB total: 184174456 KB total WAF: 100 percent
+220.404 compaction1: COMPACTION_MEM_CALC total result IM: 188 PT: 188 interval: 752 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 38 (155648 MB) compact_ms: 0 (0 MB)
+221.043 print_WAF: WAF: 100 percent gc: 0 KB write_req: 844100 KB total: 185018556 KB total WAF: 100 percent
+221.397 compaction1: COMPACTION_MEM_CALC total result IM: 188 PT: 188 interval: 752 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 37 (151552 MB) compact_ms: 0 (0 MB)
+222.043 print_WAF: WAF: 100 percent gc: 0 KB write_req: 825748 KB total: 185844304 KB total WAF: 100 percent
+222.386 compaction1: COMPACTION_MEM_CALC total result IM: 188 PT: 188 interval: 752 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 36 (147456 MB) compact_ms: 0 (0 MB)
+223.043 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1136644 KB total: 186980948 KB total WAF: 100 percent
+223.043 compaction1: COMPACTION_MEM_CALC total result IM: 192 PT: 192 interval: 768 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+224.042 print_WAF: WAF: 100 percent gc: 0 KB write_req: 973880 KB total: 187954828 KB total WAF: 100 percent
+224.454 compaction1: COMPACTION_MEM_CALC total result IM: 192 PT: 192 interval: 768 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 43 (176128 MB) compact_ms: 0 (0 MB)
+225.043 print_WAF: WAF: 100 percent gc: 0 KB write_req: 990440 KB total: 188945268 KB total WAF: 100 percent
+225.043 compaction1: COMPACTION_MEM_CALC total result IM: 192 PT: 192 interval: 768 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+227.334 print_WAF: WAF: 100 percent gc: 0 KB write_req: 824000 KB total: 189769268 KB total WAF: 100 percent
+227.753 compaction1: COMPACTION_MEM_CALC total result IM: 192 PT: 192 interval: 768 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 44 (180224 MB) compact_ms: 0 (0 MB)
+228.335 print_WAF: WAF: 100 percent gc: 0 KB write_req: 648192 KB total: 190417460 KB total WAF: 100 percent
+228.335 compaction1: COMPACTION_MEM_CALC total result IM: 192 PT: 192 interval: 768 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+229.335 print_WAF: WAF: 100 percent gc: 0 KB write_req: 814436 KB total: 191231896 KB total WAF: 100 percent
+229.697 compaction1: COMPACTION_MEM_CALC total result IM: 196 PT: 196 interval: 784 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 38 (155648 MB) compact_ms: 0 (0 MB)
+230.384 print_WAF: WAF: 100 percent gc: 0 KB write_req: 529800 KB total: 191761696 KB total WAF: 100 percent
+230.749 compaction1: COMPACTION_MEM_CALC total result IM: 196 PT: 196 interval: 784 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 38 (155648 MB) compact_ms: 0 (0 MB)
+231.555 print_WAF: WAF: 100 percent gc: 0 KB write_req: 805888 KB total: 192567584 KB total WAF: 100 percent
+231.555 compaction1: COMPACTION_MEM_CALC total result IM: 196 PT: 196 interval: 784 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+232.618 print_WAF: WAF: 100 percent gc: 0 KB write_req: 912248 KB total: 193479832 KB total WAF: 100 percent
+232.983 compaction1: COMPACTION_MEM_CALC total result IM: 196 PT: 196 interval: 784 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 38 (155648 MB) compact_ms: 0 (0 MB)
+233.619 print_WAF: WAF: 100 percent gc: 0 KB write_req: 811800 KB total: 194291632 KB total WAF: 100 percent
+233.986 compaction1: COMPACTION_MEM_CALC total result IM: 196 PT: 196 interval: 784 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 39 (159744 MB) compact_ms: 0 (0 MB)
+234.619 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1092608 KB total: 195384240 KB total WAF: 100 percent
+234.619 compaction1: COMPACTION_MEM_CALC total result IM: 200 PT: 200 interval: 800 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+235.619 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1018372 KB total: 196402612 KB total WAF: 100 percent
+236.029 compaction1: COMPACTION_MEM_CALC total result IM: 200 PT: 200 interval: 800 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 43 (176128 MB) compact_ms: 0 (0 MB)
+236.649 print_WAF: WAF: 100 percent gc: 0 KB write_req: 450608 KB total: 196853220 KB total WAF: 100 percent
+236.997 compaction1: COMPACTION_MEM_CALC total result IM: 198 PT: 200 interval: 800 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 36 (147456 MB) compact_ms: 1 (4096 MB)
+237.646 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1126316 KB total: 197979536 KB total WAF: 100 percent
+237.646 compaction1: COMPACTION_MEM_CALC total result IM: 198 PT: 200 interval: 800 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+238.679 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1218428 KB total: 199197964 KB total WAF: 100 percent
+239.058 compaction1: COMPACTION_MEM_CALC total result IM: 198 PT: 200 interval: 800 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 37 (151552 MB) compact_ms: 0 (0 MB)
+239.678 print_WAF: WAF: 100 percent gc: 0 KB write_req: 943492 KB total: 200141456 KB total WAF: 100 percent
+239.75 compaction1: COMPACTION_MEM_CALC total result IM: 202 PT: 204 interval: 816 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 11 (45056 MB) compact_ms: 0 (0 MB)
+240.678 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1231124 KB total: 201372580 KB total WAF: 100 percent
+240.852 compaction1: COMPACTION_MEM_CALC total result IM: 202 PT: 204 interval: 816 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 17 (69632 MB) compact_ms: 0 (0 MB)
+241.678 print_WAF: WAF: 100 percent gc: 0 KB write_req: 846176 KB total: 202218756 KB total WAF: 100 percent
+242.084 compaction1: COMPACTION_MEM_CALC total result IM: 202 PT: 204 interval: 816 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 43 (176128 MB) compact_ms: 0 (0 MB)
+242.678 print_WAF: WAF: 100 percent gc: 0 KB write_req: 986364 KB total: 203205120 KB total WAF: 100 percent
+242.678 compaction1: COMPACTION_MEM_CALC total result IM: 202 PT: 204 interval: 816 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+244.78 print_WAF: WAF: 100 percent gc: 0 KB write_req: 656132 KB total: 203861252 KB total WAF: 100 percent
+244.78 compaction1: COMPACTION_MEM_CALC total result IM: 206 PT: 208 interval: 832 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+245.779 print_WAF: WAF: 100 percent gc: 0 KB write_req: 922452 KB total: 204783704 KB total WAF: 100 percent
+246.233 compaction1: COMPACTION_MEM_CALC total result IM: 206 PT: 208 interval: 832 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 48 (196608 MB) compact_ms: 0 (0 MB)
+248.031 print_WAF: WAF: 100 percent gc: 0 KB write_req: 539732 KB total: 205323436 KB total WAF: 100 percent
+248.447 compaction1: COMPACTION_MEM_CALC total result IM: 206 PT: 208 interval: 832 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 44 (180224 MB) compact_ms: 0 (0 MB)
+249.03 print_WAF: WAF: 100 percent gc: 0 KB write_req: 841004 KB total: 206164440 KB total WAF: 100 percent
+249.38 compaction1: COMPACTION_MEM_CALC total result IM: 206 PT: 208 interval: 832 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 37 (151552 MB) compact_ms: 0 (0 MB)
+250.035 print_WAF: WAF: 100 percent gc: 0 KB write_req: 617884 KB total: 206782324 KB total WAF: 100 percent
+250.444 compaction1: COMPACTION_MEM_CALC total result IM: 206 PT: 208 interval: 832 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 43 (176128 MB) compact_ms: 0 (0 MB)
+251.067 print_WAF: WAF: 100 percent gc: 0 KB write_req: 501036 KB total: 207283360 KB total WAF: 100 percent
+251.369 compaction1: COMPACTION_MEM_CALC total result IM: 206 PT: 208 interval: 832 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 29 (118784 MB) compact_ms: 0 (0 MB)
+252.067 print_WAF: WAF: 100 percent gc: 0 KB write_req: 840704 KB total: 208124064 KB total WAF: 100 percent
+252.179 compaction1: COMPACTION_MEM_CALC total result IM: 206 PT: 208 interval: 832 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 15 (61440 MB) compact_ms: 0 (0 MB)
+253.156 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1349728 KB total: 209473792 KB total WAF: 100 percent
+253.336 compaction1: COMPACTION_MEM_CALC total result IM: 210 PT: 212 interval: 848 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 18 (73728 MB) compact_ms: 0 (0 MB)
+254.154 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1089204 KB total: 210562996 KB total WAF: 100 percent
+254.451 compaction1: COMPACTION_MEM_CALC total result IM: 210 PT: 212 interval: 848 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 33 (135168 MB) compact_ms: 0 (0 MB)
+255.284 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1097068 KB total: 211660064 KB total WAF: 100 percent
+255.463 compaction1: COMPACTION_MEM_CALC total result IM: 210 PT: 212 interval: 848 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 18 (73728 MB) compact_ms: 0 (0 MB)
+257.082 print_WAF: WAF: 100 percent gc: 0 KB write_req: 90516 KB total: 211750580 KB total WAF: 100 percent
+257.383 compaction1: COMPACTION_MEM_CALC total result IM: 210 PT: 212 interval: 848 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 33 (135168 MB) compact_ms: 0 (0 MB)
+258.082 print_WAF: WAF: 100 percent gc: 0 KB write_req: 880040 KB total: 212630620 KB total WAF: 100 percent
+258.082 compaction1: COMPACTION_MEM_CALC total result IM: 214 PT: 216 interval: 864 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+259.082 print_WAF: WAF: 100 percent gc: 0 KB write_req: 834660 KB total: 213465280 KB total WAF: 100 percent
+259.495 compaction1: COMPACTION_MEM_CALC total result IM: 214 PT: 216 interval: 864 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 43 (176128 MB) compact_ms: 0 (0 MB)
+260.114 print_WAF: WAF: 100 percent gc: 0 KB write_req: 398348 KB total: 213863628 KB total WAF: 100 percent
+260.523 compaction1: COMPACTION_MEM_CALC total result IM: 214 PT: 216 interval: 864 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 43 (176128 MB) compact_ms: 0 (0 MB)
+261.349 print_WAF: WAF: 100 percent gc: 0 KB write_req: 834560 KB total: 214698188 KB total WAF: 100 percent
+261.349 compaction1: COMPACTION_MEM_CALC total result IM: 214 PT: 216 interval: 864 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+262.401 print_WAF: WAF: 100 percent gc: 0 KB write_req: 937160 KB total: 215635348 KB total WAF: 100 percent
+262.794 compaction1: COMPACTION_MEM_CALC total result IM: 214 PT: 216 interval: 864 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 41 (167936 MB) compact_ms: 0 (0 MB)
+263.398 print_WAF: WAF: 100 percent gc: 0 KB write_req: 756324 KB total: 216391672 KB total WAF: 100 percent
+263.831 compaction1: COMPACTION_MEM_CALC total result IM: 214 PT: 216 interval: 864 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 46 (188416 MB) compact_ms: 0 (0 MB)
+264.398 print_WAF: WAF: 100 percent gc: 0 KB write_req: 964608 KB total: 217356280 KB total WAF: 100 percent
+264.398 compaction1: COMPACTION_MEM_CALC total result IM: 218 PT: 220 interval: 880 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+265.398 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1058344 KB total: 218414624 KB total WAF: 100 percent
+265.856 compaction1: COMPACTION_MEM_CALC total result IM: 218 PT: 220 interval: 880 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 48 (196608 MB) compact_ms: 0 (0 MB)
+266.844 print_WAF: WAF: 100 percent gc: 0 KB write_req: 418616 KB total: 218833240 KB total WAF: 100 percent
+266.844 compaction1: COMPACTION_MEM_CALC total result IM: 218 PT: 220 interval: 880 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+267.842 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1198044 KB total: 220031284 KB total WAF: 100 percent
+268.239 compaction1: COMPACTION_MEM_CALC total result IM: 217 PT: 220 interval: 880 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 41 (167936 MB) compact_ms: 1 (4096 MB)
+268.973 print_WAF: WAF: 100 percent gc: 0 KB write_req: 956612 KB total: 220987896 KB total WAF: 100 percent
+269.159 compaction1: COMPACTION_MEM_CALC total result IM: 217 PT: 220 interval: 880 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 19 (77824 MB) compact_ms: 0 (0 MB)
+269.97 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1114624 KB total: 222102520 KB total WAF: 100 percent
+270.273 compaction1: COMPACTION_MEM_CALC total result IM: 221 PT: 224 interval: 896 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 33 (135168 MB) compact_ms: 0 (0 MB)
+271.081 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1011908 KB total: 223114428 KB total WAF: 100 percent
+271.266 compaction1: COMPACTION_MEM_CALC total result IM: 221 PT: 224 interval: 896 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 19 (77824 MB) compact_ms: 0 (0 MB)
+272.958 print_WAF: WAF: 100 percent gc: 0 KB write_req: 192228 KB total: 223306656 KB total WAF: 100 percent
+273.275 compaction1: COMPACTION_MEM_CALC total result IM: 221 PT: 224 interval: 896 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 34 (139264 MB) compact_ms: 0 (0 MB)
+273.958 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1152000 KB total: 224458656 KB total WAF: 100 percent
+273.958 compaction1: COMPACTION_MEM_CALC total result IM: 221 PT: 224 interval: 896 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+275.231 print_WAF: WAF: 100 percent gc: 0 KB write_req: 646136 KB total: 225104792 KB total WAF: 100 percent
+275.231 compaction1: COMPACTION_MEM_CALC total result IM: 221 PT: 224 interval: 896 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+276.358 print_WAF: WAF: 100 percent gc: 0 KB write_req: 969664 KB total: 226074456 KB total WAF: 100 percent
+276.852 compaction1: COMPACTION_MEM_CALC total result IM: 225 PT: 228 interval: 912 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 52 (212992 MB) compact_ms: 0 (0 MB)
+277.357 print_WAF: WAF: 100 percent gc: 0 KB write_req: 556148 KB total: 226630604 KB total WAF: 100 percent
+277.783 compaction1: COMPACTION_MEM_CALC total result IM: 225 PT: 228 interval: 912 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 45 (184320 MB) compact_ms: 0 (0 MB)
+278.358 print_WAF: WAF: 100 percent gc: 0 KB write_req: 683336 KB total: 227313940 KB total WAF: 100 percent
+278.764 compaction1: COMPACTION_MEM_CALC total result IM: 225 PT: 228 interval: 912 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 43 (176128 MB) compact_ms: 0 (0 MB)
+279.358 print_WAF: WAF: 100 percent gc: 0 KB write_req: 787512 KB total: 228101452 KB total WAF: 100 percent
+279.786 compaction1: COMPACTION_MEM_CALC total result IM: 225 PT: 228 interval: 912 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 45 (184320 MB) compact_ms: 0 (0 MB)
+280.357 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1010688 KB total: 229112140 KB total WAF: 100 percent
+280.357 compaction1: COMPACTION_MEM_CALC total result IM: 225 PT: 228 interval: 912 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+281.358 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1173576 KB total: 230285716 KB total WAF: 100 percent
+281.783 compaction1: COMPACTION_MEM_CALC total result IM: 229 PT: 232 interval: 928 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 42 (172032 MB) compact_ms: 0 (0 MB)
+282.358 print_WAF: WAF: 100 percent gc: 0 KB write_req: 888412 KB total: 231174128 KB total WAF: 100 percent
+282.432 compaction1: COMPACTION_MEM_CALC total result IM: 229 PT: 232 interval: 928 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 11 (45056 MB) compact_ms: 0 (0 MB)
+284.405 print_WAF: WAF: 100 percent gc: 0 KB write_req: 715896 KB total: 231890024 KB total WAF: 100 percent
+284.405 compaction1: COMPACTION_MEM_CALC total result IM: 229 PT: 232 interval: 928 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+285.566 print_WAF: WAF: 100 percent gc: 0 KB write_req: 973824 KB total: 232863848 KB total WAF: 100 percent
+286.059 compaction1: COMPACTION_MEM_CALC total result IM: 229 PT: 232 interval: 928 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 52 (212992 MB) compact_ms: 0 (0 MB)
+286.565 print_WAF: WAF: 100 percent gc: 0 KB write_req: 570852 KB total: 233434700 KB total WAF: 100 percent
+286.996 compaction1: COMPACTION_MEM_CALC total result IM: 229 PT: 232 interval: 928 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 46 (188416 MB) compact_ms: 0 (0 MB)
+287.565 print_WAF: WAF: 100 percent gc: 0 KB write_req: 713240 KB total: 234147940 KB total WAF: 100 percent
+287.992 compaction1: COMPACTION_MEM_CALC total result IM: 233 PT: 236 interval: 944 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 45 (184320 MB) compact_ms: 0 (0 MB)
+288.567 print_WAF: WAF: 100 percent gc: 0 KB write_req: 729996 KB total: 234877936 KB total WAF: 100 percent
+289.017 compaction1: COMPACTION_MEM_CALC total result IM: 233 PT: 236 interval: 944 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 47 (192512 MB) compact_ms: 0 (0 MB)
+289.566 print_WAF: WAF: 100 percent gc: 0 KB write_req: 956416 KB total: 235834352 KB total WAF: 100 percent
+289.566 compaction1: COMPACTION_MEM_CALC total result IM: 233 PT: 236 interval: 944 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+290.575 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1154484 KB total: 236988836 KB total WAF: 100 percent
+291.016 compaction1: COMPACTION_MEM_CALC total result IM: 233 PT: 236 interval: 944 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 44 (180224 MB) compact_ms: 0 (0 MB)
+291.573 print_WAF: WAF: 100 percent gc: 0 KB write_req: 873296 KB total: 237862132 KB total WAF: 100 percent
+291.645 compaction1: COMPACTION_MEM_CALC total result IM: 233 PT: 236 interval: 944 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 11 (45056 MB) compact_ms: 0 (0 MB)
+293.72 print_WAF: WAF: 100 percent gc: 0 KB write_req: 682688 KB total: 238544820 KB total WAF: 100 percent
+293.72 compaction1: COMPACTION_MEM_CALC total result IM: 237 PT: 240 interval: 960 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+294.833 print_WAF: WAF: 100 percent gc: 0 KB write_req: 951360 KB total: 239496180 KB total WAF: 100 percent
+295.335 compaction1: COMPACTION_MEM_CALC total result IM: 237 PT: 240 interval: 960 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 53 (217088 MB) compact_ms: 0 (0 MB)
+295.829 print_WAF: WAF: 100 percent gc: 0 KB write_req: 555476 KB total: 240051656 KB total WAF: 100 percent
+296.269 compaction1: COMPACTION_MEM_CALC total result IM: 237 PT: 240 interval: 960 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 47 (192512 MB) compact_ms: 0 (0 MB)
+296.829 print_WAF: WAF: 100 percent gc: 0 KB write_req: 690268 KB total: 240741924 KB total WAF: 100 percent
+297.266 compaction1: COMPACTION_MEM_CALC total result IM: 237 PT: 240 interval: 960 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 46 (188416 MB) compact_ms: 0 (0 MB)
+297.91 print_WAF: WAF: 100 percent gc: 0 KB write_req: 642092 KB total: 241384016 KB total WAF: 100 percent
+298.257 compaction1: COMPACTION_MEM_CALC total result IM: 237 PT: 240 interval: 960 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 34 (139264 MB) compact_ms: 0 (0 MB)
+298.909 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1032192 KB total: 242416208 KB total WAF: 100 percent
+299.039 compaction1: COMPACTION_MEM_CALC total result IM: 237 PT: 240 interval: 960 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 17 (69632 MB) compact_ms: 0 (0 MB)
+299.919 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1070660 KB total: 243486868 KB total WAF: 100 percent
+300.272 compaction1: COMPACTION_MEM_CALC total result IM: 241 PT: 244 interval: 976 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 35 (143360 MB) compact_ms: 0 (0 MB)
+300.917 print_WAF: WAF: 100 percent gc: 0 KB write_req: 877592 KB total: 244364460 KB total WAF: 100 percent
+301.089 compaction1: COMPACTION_MEM_CALC total result IM: 241 PT: 244 interval: 976 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 21 (86016 MB) compact_ms: 0 (0 MB)
+301.917 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1111024 KB total: 245475484 KB total WAF: 100 percent
+302.12 compaction1: COMPACTION_MEM_CALC total result IM: 241 PT: 244 interval: 976 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 22 (90112 MB) compact_ms: 0 (0 MB)
+302.917 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1046528 KB total: 246522012 KB total WAF: 100 percent
+303.243 compaction1: COMPACTION_MEM_CALC total result IM: 241 PT: 244 interval: 976 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 35 (143360 MB) compact_ms: 0 (0 MB)
+303.963 print_WAF: WAF: 100 percent gc: 0 KB write_req: 902248 KB total: 247424260 KB total WAF: 100 percent
+304.167 compaction1: COMPACTION_MEM_CALC total result IM: 245 PT: 248 interval: 992 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 22 (90112 MB) compact_ms: 0 (0 MB)
+304.961 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1012976 KB total: 248437236 KB total WAF: 100 percent
+305.308 compaction1: COMPACTION_MEM_CALC total result IM: 245 PT: 248 interval: 992 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 37 (151552 MB) compact_ms: 0 (0 MB)
+305.99 print_WAF: WAF: 100 percent gc: 0 KB write_req: 1025852 KB total: 249463088 KB total WAF: 100 percent
+305.99 compaction1: COMPACTION_MEM_CALC total result IM: 245 PT: 248 interval: 992 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+308.544 print_WAF: WAF: 100 percent gc: 0 KB write_req: 10752 KB total: 249473840 KB total WAF: 100 percent
+309.086 compaction1: COMPACTION_MEM_CALC total result IM: 245 PT: 248 interval: 992 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 58 (237568 MB) compact_ms: 0 (0 MB)
+309.54 print_WAF: WAF: 100 percent gc: 0 KB write_req: 655360 KB total: 250129200 KB total WAF: 100 percent
+309.54 compaction1: COMPACTION_MEM_CALC total result IM: 245 PT: 248 interval: 992 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+310.54 print_WAF: WAF: 100 percent gc: 0 KB write_req: 940840 KB total: 251070040 KB total WAF: 100 percent
+311.026 compaction1: COMPACTION_MEM_CALC total result IM: 245 PT: 248 interval: 992 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 52 (212992 MB) compact_ms: 0 (0 MB)
+311.54 print_WAF: WAF: 100 percent gc: 0 KB write_req: 870400 KB total: 251940440 KB total WAF: 100 percent
+311.54 compaction1: COMPACTION_MEM_CALC total result IM: 249 PT: 252 interval: 1008 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 0 (0 MB) compact_ms: 0 (0 MB)
+312.54 print_WAF: WAF: 100 percent gc: 0 KB write_req: 966840 KB total: 252907280 KB total WAF: 100 percent
+313.08 compaction1: COMPACTION_MEM_CALC total result IM: 249 PT: 252 interval: 1008 MB znode: 0 KB v/i: 0 / 0 KB dealloc_ms: 0 MB dirty_ms: 58 (237568 MB) compact_ms: 0 (0 MB)

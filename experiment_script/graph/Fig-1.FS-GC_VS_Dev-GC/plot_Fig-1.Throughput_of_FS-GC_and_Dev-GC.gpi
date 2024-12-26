@@ -1,0 +1,48 @@
+#kiops
+set terminal postscript eps enhanced color dashed dashlength 3 \
+	                linewidth 2 rounded font "Helvetica, 32"
+
+set output "./Fig-1.Throughput_of_FS-GC_and_Dev-GC.eps"
+
+set key inside right top horizontal Left font "Helvetica, 40" reverse
+#set key inside left bottom vertical Left font "Helvetica, 40" reverse
+
+set key invert
+
+#set yrange [0:605]
+set yrange [0:]
+#set yrange [0:200]
+set ytics 100 font "Helvetica, 40"
+#set logscale x
+set xlabel "Time (sec)" font "Helvetica, 40" offset 0, 0.2
+set ylabel "KIOPS" font "Helvetica, 40" offset 0.4, 0
+set xtics 200 font "Helvetica, 40"
+set xrange[0:1200]
+
+set key samplen 1.5
+
+
+set key samplen 1.5
+set key width 1
+#set key width -3
+
+#set key at 102.4, 650
+#set key at 102.4, 600
+set key at 1400, 340
+
+set border 3
+
+set xtics nomirror
+set ytics nomirror
+
+#set xtics add ("400"  400)
+
+set tmargin at screen 0.91
+set lmargin at screen 0.13
+set rmargin at screen 0.95
+
+#set term postscript size 7.5,2.2
+set term postscript size 7.5,4.4
+plot \
+ "fsgc_kiops" with lines axes x1y1 title 'Filesystem GC' linecolor rgb 'blue' lw 2, \
+ "devgc_kiops" with lines axes x1y1 title 'Device GC' linecolor rgb 'red' lw 2, \

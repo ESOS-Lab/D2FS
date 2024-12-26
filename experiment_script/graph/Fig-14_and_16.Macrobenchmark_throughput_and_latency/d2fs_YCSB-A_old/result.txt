@@ -1,0 +1,70 @@
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Adding shard node URL: jdbc:mysql://127.0.0.1:3306/ycsb
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+Using shards: 1, batchSize:-1, fetchSize: -1
+[OVERALL], RunTime(ms), 1246345
+[OVERALL], Throughput(ops/sec), 8023.460598790864
+[TOTAL_GCS_G1_Young_Generation], Count, 245
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 490
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.03931495693407524
+[TOTAL_GCS_G1_Old_Generation], Count, 0
+[TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
+[TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
+[TOTAL_GCs], Count, 245
+[TOTAL_GC_TIME], Time(ms), 490
+[TOTAL_GC_TIME_%], Time(%), 0.03931495693407524
+[READ], Operations, 2001142
+[READ], AverageLatency(us), 1497.258486404263
+[READ], MinLatency(us), 113
+[READ], MaxLatency(us), 684543
+[READ], 95thPercentileLatency(us), 6659
+[READ], 99thPercentileLatency(us), 22063
+[READ], 99.9PercentileLatency(us), 71487
+[READ], 99.95PercentileLatency(us), 98303
+[READ], 99.99PercentileLatency(us), 189951
+[READ], Return=OK, 2001142
+[CLEANUP], Operations, 15
+[CLEANUP], AverageLatency(us), 1855.8666666666666
+[CLEANUP], MinLatency(us), 506
+[CLEANUP], MaxLatency(us), 18271
+[CLEANUP], 95thPercentileLatency(us), 859
+[CLEANUP], 99thPercentileLatency(us), 18271
+[CLEANUP], 99.9PercentileLatency(us), 18271
+[CLEANUP], 99.95PercentileLatency(us), 18271
+[CLEANUP], 99.99PercentileLatency(us), 18271
+[UPDATE], Operations, 7998858
+[UPDATE], AverageLatency(us), 1953.5353895518585
+[UPDATE], MinLatency(us), 176
+[UPDATE], MaxLatency(us), 1197055
+[UPDATE], 95thPercentileLatency(us), 8423
+[UPDATE], 99thPercentileLatency(us), 27247
+[UPDATE], 99.9PercentileLatency(us), 87999
+[UPDATE], 99.95PercentileLatency(us), 109759
+[UPDATE], 99.99PercentileLatency(us), 188287
+[UPDATE], Return=OK, 7998858
