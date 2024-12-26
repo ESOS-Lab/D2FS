@@ -83,8 +83,8 @@ static inline bool out_of_mtl_window(struct nvmev_ns *ns, uint64_t lba)
 	unsigned int partno = NO_PARTITION(lba);
 	uint64_t start_zoneno = ns->start_zoneno[partno];
 	uint64_t mtl_zoneno = NO_MTL_ZONE(lba);
-	uint64_t n_mtl_zones = ns->n_mtl_zones;
-	
+	uint64_t n_mtl_zones = (IS_GC_PARTITION(partno))?
+		ns->n_mtl_gc_zones : ns->n_mtl_zones;
 	bool ret = !(start_zoneno <= mtl_zoneno && mtl_zoneno < start_zoneno + n_mtl_zones);
 
 //	if (ret) 
@@ -244,54 +244,54 @@ static inline bool get_mem_addr(struct nvmev_ns *ns, uint64_t laddr, uint64_t *m
 	return allocate_mem_page(ns, laddr, mem_addr);
 }
 
-//static inline uint64_t read_translation_log(struct nvmev_ns *ns, struct list *tlist, uint64_t lba, 
-//		char * func, int goback_cnt)
-//{
-//	struct trans_entry *te;
-//	struct list_elem *le;
-//	uint64_t ret;
-//	int i;
-//	le = list_begin(tlist);
-//	te = list_entry(le, struct trans_entry, list_elem);
-//	if (!(te->log_buf[te->cur_idx].old_lpn == lba)){
-//		printk("%s: goback cnt: %d", __func__, goback_cnt);	
-//		for (i = 0; i < mg_cnt; i ++) {
-//			printk("%s: migration old_lpn: 0x%lx new_lpn: 0x%lx", __func__, 
-//					mg_old_stack[i], mg_new_stack[i]);
-//		}
-//		
-//		for (i = 0; i < glb_cnt; i ++) {
-//			printk("%s: discard slba: 0x%lx elba: 0x%lx", __func__, glb_old_stack[i], glb_new_stack[i]);
-//		}
-//
-//		printk("%s: cur_idx: %llu nr_log: %llu old_lpn: 0x%llx lba: 0x%llx func: %s", \
-//				__func__, te->cur_idx, te->nr_log, te->log_buf[te->cur_idx].old_lpn, lba, func);
-//		for(i = 0; i < te->nr_log; i ++){
-//			printk("%s: idx: %d old_lpn: 0x%llx new_lpn: 0x%llx",\
-//					__func__, i, te->log_buf[i].old_lpn, te->log_buf[i].new_lpn);
-//		}
-//	}
-//	NVMEV_ASSERT(te->log_buf[te->cur_idx].old_lpn == lba);
-//	ret = te->log_buf[te->cur_idx].new_lpn;
-//
-//	te->cur_idx ++;
-//	NVMEV_ASSERT(te->cur_idx <= te->nr_log);
-//
-//	/* remove translation entry */
-//	if (te->cur_idx == te->nr_log){
-//		list_remove(le);
-//		kmem_cache_free(ns->mtl_translation_entry_slab, te);
-//	}
-//
-//	return ret;
-//}
+static inline uint64_t read_translation_log(struct nvmev_ns *ns, struct list *tlist, uint64_t lba, 
+		char * func, int goback_cnt)
+{
+	struct trans_entry *te;
+	struct list_elem *le;
+	uint64_t ret;
+	int i;
+	le = list_begin(tlist);
+	te = list_entry(le, struct trans_entry, list_elem);
+	if (!(te->log_buf[te->cur_idx].old_lpn == lba)){
+		printk("%s: goback cnt: %d", __func__, goback_cnt);	
+		for (i = 0; i < mg_cnt; i ++) {
+			printk("%s: migration old_lpn: 0x%lx new_lpn: 0x%lx", __func__, 
+					mg_old_stack[i], mg_new_stack[i]);
+		}
+		
+		for (i = 0; i < glb_cnt; i ++) {
+			printk("%s: discard slba: 0x%lx elba: 0x%lx", __func__, glb_old_stack[i], glb_new_stack[i]);
+		}
+
+		printk("%s: cur_idx: %llu nr_log: %llu old_lpn: 0x%llx lba: 0x%llx func: %s", \
+				__func__, te->cur_idx, te->nr_log, te->log_buf[te->cur_idx].old_lpn, lba, func);
+		for(i = 0; i < te->nr_log; i ++){
+			printk("%s: idx: %d old_lpn: 0x%llx new_lpn: 0x%llx",\
+					__func__, i, te->log_buf[i].old_lpn, te->log_buf[i].new_lpn);
+		}
+	}
+	NVMEV_ASSERT(te->log_buf[te->cur_idx].old_lpn == lba);
+	ret = te->log_buf[te->cur_idx].new_lpn;
+
+	te->cur_idx ++;
+	NVMEV_ASSERT(te->cur_idx <= te->nr_log);
+
+	/* remove translation entry */
+	if (te->cur_idx == te->nr_log){
+		list_remove(le);
+		kmem_cache_free(ns->mtl_translation_entry_slab, te);
+	}
+
+	return ret;
+}
 
 static inline bool access_mem_addr(struct nvmev_ns *ns, uint64_t laddr, uint64_t *mem_addr, 
 		struct nvmev_proc_table *pe)
 {
 	MTL_ENTRY mtl_entry;
 	uint64_t lba = laddr / PAGE_SIZE;
-	//struct list *tlist = &pe->mtl_read_translation_list[lba % SSD_PARTITIONS];
+	struct list *tlist = &pe->mtl_read_translation_list[lba % SSD_PARTITIONS];
 	int goback_cnt = 0;
 
 read_mtl:
@@ -302,13 +302,13 @@ read_mtl:
 		return !is_interior(&mtl_entry->list_elem);
 	} else {
 		/* try refering to translation log */
-		//if (!list_empty_(tlist)){
-		//	
-		//	lba = read_translation_log(ns, tlist, lba, __func__, goback_cnt);
-		//	goback_cnt ++;
-		//	
-		//	goto read_mtl;
-		//}
+		if (!list_empty_(tlist)){
+			
+			lba = read_translation_log(ns, tlist, lba, __func__, goback_cnt);
+			goback_cnt ++;
+			
+			goto read_mtl;
+		}
 
 		/* corner case: for read request during booting and mounting */
 		/* f2fs forward recovery reads some pages when mounted */
@@ -322,7 +322,7 @@ read_mtl:
 }
 
 #ifdef DISCARD_ENABLED
-static bool free_mem_addr(struct nvmev_ns *ns, uint64_t laddr)//, struct list *tlist)
+static bool free_mem_addr(struct nvmev_ns *ns, uint64_t laddr, struct list *tlist)
 {
 	MTL_ENTRY mtl_entry;
 	uint64_t lba = laddr / PAGE_SIZE;
@@ -340,14 +340,14 @@ invalidate_mtl:
 		return true;
 	} else {
 		/* try refering to translation log */
-		//if (!list_empty_(tlist)){
-		//	
-		//	lba = read_translation_log(ns, tlist, lba, __func__, goback_cnt);
+		if (!list_empty_(tlist)){
+			
+			lba = read_translation_log(ns, tlist, lba, __func__, goback_cnt);
 
-		//	goback_cnt ++;
-		//	
-		//	goto invalidate_mtl;
-		//}
+			goback_cnt ++;
+			
+			goto invalidate_mtl;
+		}
 
 		/* corner case: discard f2fs namespace during mounting */
 #ifdef JWDBG_IO
@@ -771,8 +771,8 @@ static unsigned int __do_perform_io(int sqid, int sq_entry)
 	//if (sq_entry(sq_entry).rw.opcode == nvme_cmd_write)
 	//	printk("%s: pe cid: %u", __func__, pe->command_id);
 
-	if (IS_MAIN_PARTITION(NO_PARTITION(offset / PAGE_SIZE)))
-		offset -= (START_OFS_IN_MAIN_PART * PAGE_SIZE);
+	//if (IS_MAIN_PARTITION(NO_PARTITION(offset / PAGE_SIZE)))
+	//	offset -= (START_OFS_IN_MAIN_PART * PAGE_SIZE);
 	//if (sq_entry(sq_entry).rw.opcode == nvme_cmd_write) {
 	//	printk("[JWDBG] %s write: ofs: %ld len: %ld, lpn: 0x%lx ~ 0x%lx\n", __func__, offset, length, offset/PAGE_SIZE, (offset+length-1)/PAGE_SIZE);
 	//}
@@ -847,116 +847,196 @@ static unsigned int __do_perform_io(int sqid, int sq_entry)
 }
 
 #ifdef DISCARD_ENABLED
-static unsigned int __do_perform_io_dsm(struct nvmev_proc_table *pe)
-{
-	int sqid = pe->sqid;
-	int sq_entry = pe->sq_entry;
-	//struct list *tlist = &pe->mtl_translation_list;
-
-	struct nvmev_submission_queue *sq = vdev->sqes[sqid];
-	size_t offset;
-	size_t length, remaining;
-	int prp_offs = 0;
-	int prp2_offs = 0;
-	u64 paddr;
-	size_t nsid = sq_entry(sq_entry).dsm.nsid - 1; // 0-based
-	int nranges = sq_entry(sq_entry).dsm.nr + 1; /* zero-based */
-	int i;
-	paddr = sq_entry(sq_entry).dsm.prp1;
-	void *vaddr = kmap_atomic_pfn(PRP_PFN(paddr));
-	struct nvme_dsm_range *dsm_range = (struct nvme_dsm_range *) vaddr;
-	
-	//static int dsm_cnt = 0, dsm_cid_stack[BUF_CNT_];	
-	//dsm_cid_stack[dsm_cnt] = pe->command_id;
-	//dsm_cnt ++;
-	//if (dsm_cnt == BUF_CNT_) {
-	//	printk("%s \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			pe cid: 0x%llx \n \
-	//			", __func__,
-	//			dsm_cid_stack[0], 
-	//			dsm_cid_stack[1], 
-	//			dsm_cid_stack[2], 
-	//			dsm_cid_stack[3], 
-	//			dsm_cid_stack[4], 
-	//			dsm_cid_stack[5], 
-	//			dsm_cid_stack[6], 
-	//			dsm_cid_stack[7], 
-	//			dsm_cid_stack[8], 
-	//			dsm_cid_stack[9], 
-	//			dsm_cid_stack[10],
-	//			dsm_cid_stack[11],
-	//			dsm_cid_stack[12],
-	//			dsm_cid_stack[13],
-	//			dsm_cid_stack[14],
-	//			dsm_cid_stack[15],
-	//			dsm_cid_stack[16],
-	//			dsm_cid_stack[17],
-	//			dsm_cid_stack[18],
-	//			dsm_cid_stack[19]);
-	//	dsm_cnt == 0;
-	//}
-
-	/* for each discard range */
-	for (i = 0; i < nranges; i ++){
-		offset = dsm_range[i].slba << 9;
-		if (IS_MAIN_PARTITION(NO_PARTITION(offset / PAGE_SIZE)))
-			offset -= (START_OFS_IN_MAIN_PART * PAGE_SIZE);
-		//length = (dsm_range[i].nlb + 1) << 9; /* zero-based */
-		length = (dsm_range[i].nlb) << 9; /* zero-based */
-		remaining = length;
-
-
-		while (remaining) {
-			size_t io_size;
-			size_t mem_offs = 0;
-
-			io_size = min_t(size_t, remaining, PAGE_SIZE);
-
-			/* JW: change paddr to offset. need to verify. */
-			if (offset & PAGE_OFFSET_MASK) { 
-				//NVMEV_ERROR("[JWDBG] %s: offset not aligned to PG. ofs: %lx len: %lx\n", __func__, 
-				//		offset, length);
-				mem_offs = offset & PAGE_OFFSET_MASK;
-				if (io_size + mem_offs > PAGE_SIZE)
-					io_size = PAGE_SIZE - mem_offs;
-			}
-			if (io_size != PAGE_SIZE) {
-				//NVMEV_ERROR("[JWDBG] %s: iosize is not PGSIZE. iosize: %ld\n", __func__, 
-				//		io_size);
-			}
-
-#ifdef MULTI_PARTITION_MTL
-			free_mem_addr(&vdev->ns[nsid], offset);//, tlist);
-#endif
-			remaining -= io_size;
-			offset += io_size;
-		}
-	}
-
-	kunmap_atomic(vaddr);
-
-
-	return length;
-}
+//static unsigned int __do_perform_io_dsm(struct nvmev_proc_table *pe)
+//{
+//	int sqid = pe->sqid;
+//	int sq_entry = pe->sq_entry;
+//	struct list *tlist = &pe->mtl_translation_list;
+//
+//	struct nvmev_submission_queue *sq = vdev->sqes[sqid];
+//	size_t offset;
+//	size_t length, remaining;
+//	int prp_offs = 0;
+//	int prp2_offs = 0;
+//	u64 paddr;
+//	size_t nsid = sq_entry(sq_entry).dsm.nsid - 1; // 0-based
+//	int nranges = sq_entry(sq_entry).dsm.nr + 1; /* zero-based */
+//	int i;
+//	paddr = sq_entry(sq_entry).dsm.prp1;
+//	void *vaddr = kmap_atomic_pfn(PRP_PFN(paddr));
+//	struct nvme_dsm_range *dsm_range = (struct nvme_dsm_range *) vaddr;
+//	
+//	//static int dsm_cnt = 0, dsm_cid_stack[BUF_CNT_];	
+//	//dsm_cid_stack[dsm_cnt] = pe->command_id;
+//	//dsm_cnt ++;
+//	//if (dsm_cnt == BUF_CNT_) {
+//	//	printk("%s \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			pe cid: 0x%llx \n \
+//	//			", __func__,
+//	//			dsm_cid_stack[0], 
+//	//			dsm_cid_stack[1], 
+//	//			dsm_cid_stack[2], 
+//	//			dsm_cid_stack[3], 
+//	//			dsm_cid_stack[4], 
+//	//			dsm_cid_stack[5], 
+//	//			dsm_cid_stack[6], 
+//	//			dsm_cid_stack[7], 
+//	//			dsm_cid_stack[8], 
+//	//			dsm_cid_stack[9], 
+//	//			dsm_cid_stack[10],
+//	//			dsm_cid_stack[11],
+//	//			dsm_cid_stack[12],
+//	//			dsm_cid_stack[13],
+//	//			dsm_cid_stack[14],
+//	//			dsm_cid_stack[15],
+//	//			dsm_cid_stack[16],
+//	//			dsm_cid_stack[17],
+//	//			dsm_cid_stack[18],
+//	//			dsm_cid_stack[19]);
+//	//	dsm_cnt == 0;
+//	//}
+//
+//	/* for each discard range */
+//	for (i = 0; i < nranges; i ++){
+//		offset = dsm_range[i].slba << 9;
+//		if (IS_MAIN_PARTITION(NO_PARTITION(offset / PAGE_SIZE)))
+//			offset -= (START_OFS_IN_MAIN_PART * PAGE_SIZE);
+//		//length = (dsm_range[i].nlb + 1) << 9; /* zero-based */
+//		length = (dsm_range[i].nlb) << 9; /* zero-based */
+//		remaining = length;
+//		//NVMEV_INFO("[JWDBG] %s: ofs: %ld len: %ld, lpn: 0x%lx ~ 0x%lx\n", __func__, offset, length, offset/PAGE_SIZE, (offset+length-1)/PAGE_SIZE);
+//
+//
+//		//printk("%s: slpn: 0x%lx len: %lu", 
+//		//		__func__, offset/PAGE_SIZE, length/PAGE_SIZE);
+//
+////#define BUF_CNT_ 50
+//		
+////		if (1) {
+////		if	(((offset/PAGE_SIZE) >> 29) == 3) {
+////			glb_old_stack[glb_cnt] = offset/PAGE_SIZE;
+////			glb_new_stack[glb_cnt] = offset/PAGE_SIZE + length/PAGE_SIZE - 1;
+////			glb_cnt ++;
+////			if (glb_cnt == BUF_CNT_) {
+//////#ifdef PLEASE
+////				printk("%s \n \
+////						slba: 0x%llx elba: 0x%llx \n \
+////						slba: 0x%llx elba: 0x%llx \n \
+////						slba: 0x%llx elba: 0x%llx \n \
+////						slba: 0x%llx elba: 0x%llx \n \
+////						slba: 0x%llx elba: 0x%llx \n \
+////						slba: 0x%llx elba: 0x%llx \n \
+////						slba: 0x%llx elba: 0x%llx \n \
+////						slba: 0x%llx elba: 0x%llx \n \
+////						slba: 0x%llx elba: 0x%llx \n \
+////						slba: 0x%llx elba: 0x%llx \n \
+////						", __func__,
+////						glb_old_stack[0], glb_new_stack[0],
+////						glb_old_stack[1], glb_new_stack[1],
+////						glb_old_stack[2], glb_new_stack[2],
+////						glb_old_stack[3], glb_new_stack[3],
+////						glb_old_stack[4], glb_new_stack[4],
+////						glb_old_stack[5], glb_new_stack[5],
+////						glb_old_stack[6], glb_new_stack[6],
+////						glb_old_stack[7], glb_new_stack[7],
+////						glb_old_stack[8], glb_new_stack[8],
+////						glb_old_stack[9], glb_new_stack[9]
+////				//		glb_old_stack[10], glb_new_stack[10],
+////				//		glb_old_stack[11], glb_new_stack[11],
+////				//		glb_old_stack[12], glb_new_stack[12],
+////				//		glb_old_stack[13], glb_new_stack[13],
+////				//		glb_old_stack[14], glb_new_stack[14],
+////				//		glb_old_stack[15], glb_new_stack[15],
+////				//		glb_old_stack[16], glb_new_stack[16],
+////				//		glb_old_stack[17], glb_new_stack[17],
+////				//		glb_old_stack[18], glb_new_stack[18],
+////				//		glb_old_stack[19], glb_new_stack[19]
+////					//	old_stack[20], new_stack[20],
+////					//	old_stack[21], new_stack[21],
+////					//	old_stack[22], new_stack[22],
+////					//	old_stack[23], new_stack[23],
+////					//	old_stack[24], new_stack[24],
+////					//	old_stack[25], new_stack[25],
+////					//	old_stack[26], new_stack[26],
+////					//	old_stack[27], new_stack[27],
+////					//	old_stack[28], new_stack[28],
+////					//	old_stack[29], new_stack[29],
+////					//	old_stack[30], new_stack[30],
+////					//	old_stack[31], new_stack[31],
+////					//	old_stack[32], new_stack[32],
+////					//	old_stack[33], new_stack[33],
+////					//	old_stack[34], new_stack[34],
+////					//	old_stack[35], new_stack[35],
+////					//	old_stack[36], new_stack[36],
+////					//	old_stack[37], new_stack[37],
+////					//	old_stack[38], new_stack[38],
+////					//	old_stack[39], new_stack[39],
+////					//	old_stack[40], new_stack[40],
+////					//	old_stack[41], new_stack[41],
+////					//	old_stack[42], new_stack[42],
+////					//	old_stack[43], new_stack[43],
+////					//	old_stack[44], new_stack[44],
+////					//	old_stack[45], new_stack[45],
+////					//	old_stack[46], new_stack[46],
+////					//	old_stack[47], new_stack[47],
+////					//	old_stack[48], new_stack[48],
+////					//	old_stack[49], new_stack[49]
+////				);
+//////#endif
+////				glb_cnt = 0;
+////			}
+////		}
+//
+//		while (remaining) {
+//			size_t io_size;
+//			size_t mem_offs = 0;
+//
+//			io_size = min_t(size_t, remaining, PAGE_SIZE);
+//
+//			/* JW: change paddr to offset. need to verify. */
+//			if (offset & PAGE_OFFSET_MASK) { 
+//				NVMEV_ERROR("[JWDBG] %s: offset not aligned to PG. ofs: %lx len: %lx\n", __func__, 
+//						offset, length);
+//				mem_offs = offset & PAGE_OFFSET_MASK;
+//				if (io_size + mem_offs > PAGE_SIZE)
+//					io_size = PAGE_SIZE - mem_offs;
+//			}
+//			if (io_size != PAGE_SIZE)
+//				NVMEV_ERROR("[JWDBG] %s: iosize is not PGSIZE. iosize: %ld\n", __func__, 
+//						io_size);
+//
+//#ifdef MULTI_PARTITION_MTL
+//			free_mem_addr(&vdev->ns[nsid], offset, tlist);
+//#endif
+//			remaining -= io_size;
+//			offset += io_size;
+//		}
+//	}
+//
+//	kunmap_atomic(vaddr);
+//
+//
+//	return length;
+//}
 #endif
 
 #ifdef DISCARD_ENABLED
@@ -967,13 +1047,13 @@ static unsigned int __do_perform_io(struct nvmev_proc_table *pe)
 	int sq_entry = pe->sq_entry;
 	struct nvmev_submission_queue *sq = vdev->sqes[sqid];
 
-	if (sq_entry(sq_entry).common.opcode == nvme_cmd_write || 
-	    sq_entry(sq_entry).common.opcode == nvme_cmd_read) 	{
+	//if (sq_entry(sq_entry).common.opcode == nvme_cmd_write || 
+	//    sq_entry(sq_entry).common.opcode == nvme_cmd_read) 	{
 		return __do_perform_io_rw(pe);
-	} else if (sq_entry(sq_entry).common.opcode == nvme_cmd_dsm) {
-		return __do_perform_io_dsm(pe);
-	}
-	return 0;
+	//} else if (sq_entry(sq_entry).common.opcode == nvme_cmd_dsm) {
+	//	return __do_perform_io_dsm(pe);
+	//}
+	//return 0;
 }
 #endif
 
@@ -1074,7 +1154,7 @@ static unsigned int __do_perform_io_using_dma(int sqid, int sq_entry)
 #ifdef COUPLED_GC_MTL
 static void __enqueue_io_req(int sqid, int cqid, int sq_entry, unsigned long long nsecs_start, struct nvmev_result *ret)
 #else
-static void __enqueue_io_req(int sqid, int cqid, int sq_entry, unsigned long long nsecs_start, struct nvmev_result *ret)
+static void __enqueue_io_req(struct nvmev_ns *ns, int sqid, int cqid, int sq_entry, unsigned long long nsecs_start, struct nvmev_result *ret)
 #endif
 {
 	struct nvmev_submission_queue *sq = vdev->sqes[sqid];
@@ -1135,14 +1215,14 @@ static void __enqueue_io_req(int sqid, int cqid, int sq_entry, unsigned long lon
 	//	list_push_back(&pi->proc_table[entry].mtl_migration_list, le);
 	//}
 	
-	//list_init(&pi->proc_table[entry].mtl_migration_list);
+	list_init(&pi->proc_table[entry].mtl_migration_list);
 
-	//if (!list_empty_(&ret->mtl_migration_list)) 
-	//	change_list(&ret->mtl_migration_list, &pi->proc_table[entry].mtl_migration_list);
-	//
-	//list_init(&ret->mtl_migration_list);
-	//
-	//pi->proc_table[entry].migration_cnt = ret->migration_cnt;
+	if (!list_empty_(&ret->mtl_migration_list)) 
+		change_list(&ret->mtl_migration_list, &pi->proc_table[entry].mtl_migration_list);
+	
+	list_init(&ret->mtl_migration_list);
+	
+	pi->proc_table[entry].migration_cnt = ret->migration_cnt;
 	
 	/* convey mtl translation list to io kthread */
 	
@@ -1151,12 +1231,12 @@ static void __enqueue_io_req(int sqid, int cqid, int sq_entry, unsigned long lon
 	//	list_push_back(&pi->proc_table[entry].mtl_translation_list, le);
 	//}
 	
-	//list_init(&pi->proc_table[entry].mtl_translation_list);
-	//
-	//if (!list_empty_(&ret->mtl_translation_list)) 
-	//	change_list(&ret->mtl_translation_list, &pi->proc_table[entry].mtl_translation_list);
-	//
-	//list_init(&ret->mtl_translation_list);
+	list_init(&pi->proc_table[entry].mtl_translation_list);
+	
+	if (!list_empty_(&ret->mtl_translation_list)) 
+		change_list(&ret->mtl_translation_list, &pi->proc_table[entry].mtl_translation_list);
+	
+	list_init(&ret->mtl_translation_list);
 
 	int i;
 	for (i = 0; i < SSD_PARTITIONS; i ++) {
@@ -1440,7 +1520,11 @@ static size_t __nvmev_proc_io(int sqid, int sq_entry)
 	prev_clock2 = local_clock();
 #endif
 
+#ifdef COUPLED_GC_MTL
 	__enqueue_io_req(sqid, sq->cqid, sq_entry, nsecs_start, &ret);
+#else
+	__enqueue_io_req(ns, sqid, sq->cqid, sq_entry, nsecs_start, &ret);
+#endif
 
 #ifdef PERF_DEBUG
 	prev_clock3 = local_clock();
@@ -1516,7 +1600,11 @@ void nvmev_proc_io_cq(int cqid, int new_db, int old_db)
 	if (new_db == -1) cq->cq_tail = cq->queue_size - 1;
 }
 
+#ifdef MIGRATION_IO
+static void __fill_cq_result(struct nvmev_proc_table * proc_entry, int mg_cmd_submitted)
+#else
 static void __fill_cq_result(struct nvmev_proc_table * proc_entry)
+#endif
 {
 	int sqid = proc_entry -> sqid;
 	int cqid = proc_entry -> cqid;
@@ -1678,8 +1766,10 @@ static int nvmev_kthread_io(void *data)
 						
 						mg_cmd_submitted |= __fill_rev_sq_cmd(ise, pe->sqid, pe->sq_entry);
 					}
-#endif
+					__fill_cq_result(pe, mg_cmd_submitted);
+#else
 					__fill_cq_result(pe);
+#endif
 				}
 
 				NVMEV_DEBUG("%s: completed %u, %d %d %d\n",

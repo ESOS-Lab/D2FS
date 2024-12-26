@@ -661,7 +661,7 @@ retry_dn:
 			}
 retry_prev:
 			/* Check the previous node page having this index */
-			//err = check_index_in_prev_nodes(sbi, dest, &dn);
+			err = check_index_in_prev_nodes(sbi, dest, &dn);
 			if (err) {
 				if (err == -ENOMEM) {
 					congestion_wait(BLK_RW_ASYNC,
@@ -861,7 +861,6 @@ skip:
 		if (!err) {
 			struct cp_control cpc = {
 				.reason = CP_RECOVERY,
-				.excess_prefree = false,
 			};
 			err = f2fs_write_checkpoint(sbi, &cpc);
 		}

@@ -1254,7 +1254,6 @@ static void f2fs_put_super(struct super_block *sb)
 			!is_set_ckpt_flags(sbi, CP_UMOUNT_FLAG))) {
 		struct cp_control cpc = {
 			.reason = CP_UMOUNT,
-			.excess_prefree = false,
 		};
 		f2fs_write_checkpoint(sbi, &cpc);
 	}
@@ -1266,7 +1265,6 @@ static void f2fs_put_super(struct super_block *sb)
 					!sbi->discard_blks && !dropped) {
 		struct cp_control cpc = {
 			.reason = CP_UMOUNT | CP_TRIMMED,
-			.excess_prefree = false,
 		};
 		f2fs_write_checkpoint(sbi, &cpc);
 	}
@@ -1330,12 +1328,7 @@ static void f2fs_put_super(struct super_block *sb)
 	kfree(sbi);
 }
 
-int f2fs_sync_fs_op(struct super_block *sb, int sync)
-{
-	return f2fs_sync_fs(sb, sync, false);
-}
-
-int f2fs_sync_fs(struct super_block *sb, int sync, bool excess_prefree)
+int f2fs_sync_fs(struct super_block *sb, int sync)
 {
 	struct f2fs_sb_info *sbi = F2FS_SB(sb);
 	int err = 0;
@@ -1354,11 +1347,6 @@ int f2fs_sync_fs(struct super_block *sb, int sync, bool excess_prefree)
 		struct cp_control cpc;
 
 		cpc.reason = __get_cp_reason(sbi);
-
-		if (excess_prefree)
-			cpc.excess_prefree = true;
-		else
-			cpc.excess_prefree = false;
 
 		down_write(&sbi->gc_lock);
 		err = f2fs_write_checkpoint(sbi, &cpc);
@@ -1765,7 +1753,7 @@ static int f2fs_disable_checkpoint(struct f2fs_sb_info *sbi)
 
 	f2fs_update_time(sbi, DISABLE_TIME);
 
-	/*while (!f2fs_time_over(sbi, DISABLE_TIME)) {
+	while (!f2fs_time_over(sbi, DISABLE_TIME)) {
 		down_write(&sbi->gc_lock);
 		err = f2fs_gc(sbi, true, false, NULL_SEGNO);
 		if (err == -ENODATA) {
@@ -1774,7 +1762,7 @@ static int f2fs_disable_checkpoint(struct f2fs_sb_info *sbi)
 		}
 		if (err && err != -EAGAIN)
 			break;
-	}*/
+	}
 
 	ret = sync_filesystem(sbi->sb);
 	if (ret || err) {
@@ -1790,7 +1778,6 @@ static int f2fs_disable_checkpoint(struct f2fs_sb_info *sbi)
 
 	down_write(&sbi->gc_lock);
 	cpc.reason = CP_PAUSE;
-	cpc.excess_prefree = false;
 	set_sbi_flag(sbi, SBI_CP_DISABLED);
 	err = f2fs_write_checkpoint(sbi, &cpc);
 	if (err)
@@ -1810,13 +1797,13 @@ restore_flag:
 static void f2fs_enable_checkpoint(struct f2fs_sb_info *sbi)
 {
 	down_write(&sbi->gc_lock);
-	//f2fs_dirty_to_prefree(sbi);
+	f2fs_dirty_to_prefree(sbi);
 
 	clear_sbi_flag(sbi, SBI_CP_DISABLED);
 	set_sbi_flag(sbi, SBI_IS_DIRTY);
 	up_write(&sbi->gc_lock);
 
-	f2fs_sync_fs(sbi->sb, 1, false);
+	f2fs_sync_fs(sbi->sb, 1);
 }
 
 static int f2fs_remount(struct super_block *sb, int *flags, char *data)
@@ -1953,7 +1940,7 @@ static int f2fs_remount(struct super_block *sb, int *flags, char *data)
 
 		set_sbi_flag(sbi, SBI_IS_DIRTY);
 		set_sbi_flag(sbi, SBI_IS_CLOSE);
-		f2fs_sync_fs(sb, 1, false);
+		f2fs_sync_fs(sb, 1);
 		clear_sbi_flag(sbi, SBI_IS_CLOSE);
 	}
 
@@ -2521,7 +2508,7 @@ static const struct super_operations f2fs_sops = {
 #endif
 	.evict_inode	= f2fs_evict_inode,
 	.put_super	= f2fs_put_super,
-	.sync_fs	= f2fs_sync_fs_op,
+	.sync_fs	= f2fs_sync_fs,
 	.freeze_fs	= f2fs_freeze,
 	.unfreeze_fs	= f2fs_unfreeze,
 	.statfs		= f2fs_statfs,
@@ -3103,10 +3090,6 @@ static void init_sb_info(struct f2fs_sb_info *sbi)
 	sbi->blocks_per_seg = 1 << sbi->log_blocks_per_seg;
 	sbi->segs_per_sec = le32_to_cpu(raw_super->segs_per_sec);
 	sbi->secs_per_zone = le32_to_cpu(raw_super->secs_per_zone);
-	sbi->secs_per_zone = 8192;
-#if SUPERZONE == 0
-	sbi->secs_per_zone = 1;
-#endif
 	sbi->total_sections = le32_to_cpu(raw_super->section_count);
 	sbi->total_node_count =
 		(le32_to_cpu(raw_super->segment_count_nat) / 2)
@@ -3525,10 +3508,8 @@ try_onemore:
 		goto free_sbi;
 	}
 
-	printk("[JWDBG] %s: bef read super block", __func__);
 	err = read_raw_super_block(sbi, &raw_super, &valid_super_block,
 								&recovery);
-	printk("[JWDBG] %s: aft read super block log_blocks_per_seg: %d", __func__, le32_to_cpu(raw_super->log_blocks_per_seg));
 	if (err)
 		goto free_sbi;
 
@@ -3604,7 +3585,8 @@ try_onemore:
 
 	/* init iostat info */
 	spin_lock_init(&sbi->iostat_lock);
-	sbi->iostat_enable = false;
+	//sbi->iostat_enable = false;
+	sbi->iostat_enable = true;
 	sbi->iostat_period_ms = DEFAULT_IOSTAT_PERIOD_MS;
 
 	for (i = 0; i < NR_PAGE_TYPE; i++) {
@@ -3743,11 +3725,112 @@ try_onemore:
 		sbi->kbytes_written =
 			le64_to_cpu(seg_i->journal->info.kbytes_written);
 
-	//f2fs_build_gc_manager(sbi);
+	f2fs_build_gc_manager(sbi);
 
 	err = f2fs_build_stats(sbi);
 	if (err)
 		goto free_nm;
+
+#ifdef WAF
+	sbi->gc_written_blk = 0;
+	sbi->total_gc_read_blk = 0;
+	sbi->total_gc_written_blk = 0;
+	atomic_set(&sbi->host_written_blk, 0);
+	atomic_set(&sbi->total_host_written_blk, 0);
+	sbi->last_t = 0;
+#ifdef GC_LATENCY
+	sbi->gc_cnt = 0;
+	sbi->gc_vblk = 0;
+	sbi->gc_total_blk = 0;
+	sbi->gc_data_seg_cnt = 0;
+	sbi->gc_node_seg_cnt = 0;
+	sbi->gc_cp1_cnt = 0;
+	sbi->gc_victim_select_cnt = 0;
+	
+	sbi->whole_gc_cnt = 0;
+	sbi->whole_gc_total_time_sum = 0;
+	
+	sbi->gc_cp2_cnt = 0;
+	sbi->gc_total_cp2_time_sum = 0;
+
+	sbi->gc_total_time_sum = 0;
+	sbi->gc_total_write_time_sum = 0;
+	sbi->gc_total_read_time_sum = 0;
+	
+
+	sbi->gc_total_ssa_read_time_sum = 0;
+	sbi->gc_total_grab_gc_block_time_sum = 0;
+	sbi->gc_p0_total_time_sum = 0;
+	sbi->gc_p1_total_time_sum = 0;
+	sbi->gc_p2_total_time_sum = 0;
+	sbi->gc_p3_total_time_sum = 0;
+	sbi->gc_p3_iget_total_time_sum = 0;
+	sbi->gc_p3_read_total_time_sum = 0;
+	sbi->gc_p3_read_get_dnode_total_time_sum = 0;
+	sbi->gc_p3_submit_read_total_time_sum = 0;
+	sbi->gc_p3_submit_read_wait_writeback_total_time_sum = 0;
+	sbi->gc_p4_total_time_sum = 0;
+	sbi->gc_p4_wait_writeback_total_time_sum = 0;
+
+	sbi->gc_p3_read_grab_cache_total_time_sum = 0;
+	sbi->gc_p3_read_lookup_extent_cache_total_time_sum = 0;
+	sbi->gc_p3_get_page_cache_total_time_sum = 0;
+	sbi->gc_p3_wait_for_stable_page_total_time_sum = 0;
+	sbi->gc_p4_get_node_total_time_sum = 0;
+	sbi->gc_p4_real_write_total_time_sum = 0;
+	sbi->gc_p4_get_page_cache_total_time_sum = 0;
+	sbi->gc_p4_wait_for_stable_page_total_time_sum = 0;
+
+	sbi->move_data_page_cnt = 0;
+	sbi->move_data_block_cnt = 0;
+	
+	sbi->gc_node_p0_total_time_sum = 0;
+	sbi->gc_node_p1_total_time_sum = 0;
+	sbi->gc_node_p2_total_time_sum = 0;
+
+	sbi->gc_total_cp_time_sum = 0; /* cp1 time sum (pre-gc cp) */
+	sbi->gc_total_victim_select_time_sum = 0;
+
+	sbi->gc_total_read_blk_cnt_sum = 0;
+	sbi->gc_total_write_blk_cnt_sum = 0;
+
+	sbi->isalive_inode_read_trial_cnt = 0;
+	sbi->isalive_inode_read_page_hit_cnt = 0;
+	sbi->gc_isalive_grab_cache = 0;
+	sbi->gc_isalive_read_inode = 0;
+	sbi->gc_isalive_lock_inode_page = 0;
+	sbi->p2_isalive_nat_read = 0;
+
+	int i_tmp;
+	for (i_tmp = 0; i_tmp < 8; i_tmp ++) {
+		sbi->p3_get_dnode_trial_cnt[i] = 0;
+		sbi->p3_get_dnode_read_hit_cnt[i] = 0;
+		sbi->p3_get_dnode_grab_cache[i] = 0;
+		sbi->p3_get_dnode_read_node[i] = 0;
+		sbi->p3_lock_dnode_page[i] = 0;
+	}
+
+	sbi->p4_get_lock_read_page = 0; 
+	sbi->p4_get_lock_read_page_grab_cache = 0;
+	sbi->gc_p4_read_get_dnode_total_time_sum = 0;
+	for (i_tmp = 0; i_tmp < 8; i_tmp ++) {
+		sbi->p4_get_dnode_trial_cnt[i] = 0;
+		sbi->p4_get_dnode_read_hit_cnt[i] = 0;
+		sbi->p4_get_dnode_grab_cache[i] = 0;
+		sbi->p4_get_dnode_read_node[i] = 0;
+		sbi->p4_lock_dnode_page[i] = 0;
+	}
+	sbi->gc_p4_submit_read_total_time_sum = 0;
+	
+
+	sbi->p4_get_lock_lock_page = 0; 
+	
+	sbi->gc_p3_read_grab_cache_cnt = 0;
+	sbi->gc_p4_read_grab_cache_cnt = 0;
+
+#endif
+
+#endif
 
 	/* get an inode for node space */
 	sbi->node_inode = f2fs_iget(sb, F2FS_NODE_INO(sbi));
@@ -3796,9 +3879,6 @@ try_onemore:
 
 	if (unlikely(is_set_ckpt_flags(sbi, CP_DISABLED_FLAG)))
 		goto reset_checkpoint;
-
-	/*discard discard journal*/
-	f2fs_recover_discard_journals(sbi);
 
 	/* recover fsynced data */
 	if (!test_opt(sbi, DISABLE_ROLL_FORWARD) &&
@@ -3853,7 +3933,7 @@ try_onemore:
 	}
 
 reset_checkpoint:
-	//f2fs_init_inmem_curseg(sbi);
+	f2fs_init_inmem_curseg(sbi);
 
 	/* f2fs_recover_fsync_data() cleared this already */
 	clear_sbi_flag(sbi, SBI_POR_DOING);
@@ -3997,7 +4077,6 @@ static void kill_f2fs_super(struct super_block *sb)
 				!is_set_ckpt_flags(sbi, CP_UMOUNT_FLAG)) {
 			struct cp_control cpc = {
 				.reason = CP_UMOUNT,
-				.excess_prefree = false,
 			};
 			f2fs_write_checkpoint(sbi, &cpc);
 		}

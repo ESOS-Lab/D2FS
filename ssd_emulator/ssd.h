@@ -282,7 +282,12 @@ void ssd_init_pcie(struct ssd_pcie *pcie, struct ssdparams *spp);
 void ssd_init_params(struct ssdparams *spp, uint64_t capacity, uint32_t nparts);
 void ssd_init(struct ssd * ssd, struct ssdparams *spp, uint32_t cpu_nr_dispatcher);
 
+#ifdef CHIP_UTIL
+uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd, 
+		uint64_t *nand_idle_t_sum, uint64_t *nand_active_t_sum);
+#else
 uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd);
+#endif
 uint64_t ssd_advance_pcie(struct ssd *ssd, uint64_t request_time, uint64_t length);
 uint64_t ssd_advance_write_buffer(struct ssd *ssd, uint64_t request_time, uint64_t length);
 uint64_t ssd_next_idle_time(struct ssd *ssd);

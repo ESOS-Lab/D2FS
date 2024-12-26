@@ -32,9 +32,16 @@
 */
 #define DATA_PARTITION_START_OFFSET	 0x0
 #define LOCAL_DATA_PARTITION_START_OFFSET	(DATA_PARTITION_START_OFFSET / SSD_PARTITIONS)
+//#define NO_LOCAL_PARTITION(local_addr)	\
+//		((((local_addr) >> LOCAL_PARTITION_BITS) == 0)? \
+//			0 : ((local_addr - LOCAL_DATA_PARTITION_START_OFFSET) >> LOCAL_PARTITION_BITS))
+
+
+#define SADDR_ZNS	0x32000
+#define START_OFS_IN_MAIN_PART	0x100
 #define NO_LOCAL_PARTITION(local_addr)	\
-		((((local_addr) >> LOCAL_PARTITION_BITS) == 0)? \
-			0 : ((local_addr - LOCAL_DATA_PARTITION_START_OFFSET) >> LOCAL_PARTITION_BITS))
+		((((local_addr*4)) < SADDR_ZNS)? 0: 1) \
+
 
 #define LOCAL_PARTITION_START_ADDR(local_addr)	\
 		(NO_LOCAL_PARTITION(local_addr) * LOCAL_PARTITION_SIZE + LOCAL_DATA_PARTITION_START_OFFSET)
@@ -113,8 +120,6 @@ enum {
 
 #define SSD_PARTITIONS       (4)
 #define SSD_PARTITION_BITS   (2)
-//#define SSD_PARTITIONS       (8)
-//#define SSD_PARTITION_BITS   (3)
 #define NAND_CHANNELS        (8)
 #define LUNS_PER_NAND_CH     (2)
 #define PLNS_PER_LUN         (1)

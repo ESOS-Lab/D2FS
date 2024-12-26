@@ -38,6 +38,23 @@
 	} while (0)
 #endif
 
+#define AGGRESSIVE_DISCARD
+#define WAF
+#define ZNS
+#define GC_LATENCY
+
+
+#ifdef GC_LATENCY
+//unsigned long long OS_TimeGetUS__h( void )
+//{
+//    struct timespec64 lTime;
+//    ktime_get_coarse_real_ts64(&lTime);
+//    return (lTime.tv_sec * 1000000 + div_u64(lTime.tv_nsec, 1000) );
+//
+//}
+#endif
+
+
 enum {
 	FAULT_KMALLOC,
 	FAULT_KVMALLOC,
@@ -199,10 +216,14 @@ enum {
 #define CP_RESIZE 	0x00000080
 
 #define MAX_DISCARD_BLOCKS(sbi)		BLKS_PER_SEC(sbi)
+
+#ifdef AGGRESSIVE_DISCARD
 #define DEF_MAX_DISCARD_REQUEST		80000	
-//#define DEF_MAX_DISCARD_REQUEST		8	/* issue 8 discards per round */
+#else
+#define DEF_MAX_DISCARD_REQUEST		8	/* issue 8 discards per round */
+#endif
+
 #define DEF_MIN_DISCARD_ISSUE_TIME	50	/* 50 ms, if exists */
-//#define DEF_MIN_DISCARD_ISSUE_TIME	50	/* 50 ms, if exists */
 #define DEF_MID_DISCARD_ISSUE_TIME	500	/* 500 ms, if device busy */
 #define DEF_MAX_DISCARD_ISSUE_TIME	60000	/* 60 s, if no candidates */
 #define DEF_DISCARD_URGENT_UTIL		80	/* do more discard over 80% */
@@ -217,7 +238,6 @@ struct cp_control {
 	__u64 trim_start;
 	__u64 trim_end;
 	__u64 trim_minlen;
-	bool excess_prefree;
 };
 
 /*
@@ -269,13 +289,11 @@ struct fsync_node_entry {
 	unsigned int seq_id;	/* sequence id */
 };
 
-
 /* for the bitmap indicate blocks to be discarded */
 struct discard_entry {
 	struct list_head list;	/* list head */
 	block_t start_blkaddr;	/* start blockaddr of current segment */
 	unsigned char discard_map[SIT_VBLOCK_MAP_SIZE];	/* segment discard bitmap */
-	struct list_head ddm_list;
 };
 
 /* default discard granularity of inner discard thread, unit: block count */
@@ -573,80 +591,6 @@ struct extent_tree {
 	atomic_t node_cnt;		/* # of extent node in rb-tree*/
 	bool largest_updated;		/* largest extent updated */
 };
-
-
-
-/*dynamic_discard_map*/
-struct dynamic_discard_map {
-
-	/*hash*/
-	struct hlist_node hnode;
-	unsigned long long key;
-
-	/* key in rb_entry is segno*/	
-	struct rb_entry rbe;
-	unsigned char *dc_map;
-
-	struct list_head dirty_list; 	/* dirty list*/
-	atomic_t is_dirty;		/* DDM is dirty?*/
-
-	struct list_head history_list; /*existing all ddm list*/
-	struct list_head drange_journal_list; 	/* holding this ddm's discard range journal*/
-	struct list_head dmap_journal_list;	/* holding this ddm's discard bitmap journal */
-};
-
-
-struct discard_range{
-	unsigned int start_blkaddr;
-	unsigned int len;
-};
-
-struct discard_range_entry {
-	struct discard_range discard_range_array[DISCARD_RANGE_MAX_NUM];
-	struct list_head list; 			/* discard range entry list */
-	unsigned int cnt; 			/* valid number of discard range */
-#ifndef LM
-	struct list_head ddm_list; 			
-#endif
-};
-
-#define dynamic_discard_map(ptr, type, member) container_of(ptr, type, member)
-
-struct dynamic_discard_map_control {
-	/*hash table version*/
-	struct hlist_head *ht;
-	unsigned int hbits;
-	//struct mutex *per_entry_lck_list;
-	
-	unsigned int long_threshold;		/* determine to issue discard directly or not*/
-	/*rb tree version*/
-	struct rb_root_cached root;		/* root of discard map rb-tree */
-	struct mutex ddm_lock;
-	
-	atomic_t node_cnt;			/* dynamic discard map node count */
-	atomic_t cur_inv_blk_cnt;
-	atomic_t dj_seg_cnt;			/* number of segments for discard journal bitmap */
-	atomic_t dj_range_cnt;			/* number of discard journal range */
-	atomic_t history_seg_cnt;
-	unsigned int segs_per_node;		/*number of segments each node manages*/
-	//unsigned int count;
-	struct list_head dirty_head;			/* To save updated ddm. */
-	struct list_head history_head;		/* contain every ddm entry */
-	
-	/* discard range enttry */
-	atomic_t drange_entry_cnt;
-	struct list_head discard_range_head;		/* long discard journal list */
-	struct list_head discard_map_head;		/* small discard journal list */
-	struct list_head issued_discard_head;		/* issued discard cmd list */
-	/* struct rw_semaphore ddm_sema;	to protect SIT cache */
-	atomic_t total_inv_blk_cnt;
-	atomic_t total_val_blk_cnt;
-};
-
-
-
-
-
 
 /*
  * This structure is taken from ext4_map_blocks.
@@ -1032,11 +976,9 @@ struct f2fs_sm_info {
 
 	struct rw_semaphore curseg_lock;	/* for preventing curseg change */
 
-	struct rw_semaphore curseg_zone_lock;
 	block_t seg0_blkaddr;		/* block address of 0'th segment */
 	block_t main_blkaddr;		/* start block address of main area */
 	block_t ssa_blkaddr;		/* start block address of SSA area */
-	block_t start_segno;		/*IFLBA: moved from free_i to here*/
 
 	unsigned int segment_count;	/* total # of segments */
 	unsigned int main_segments;	/* # of segments in main area */
@@ -1063,9 +1005,6 @@ struct f2fs_sm_info {
 
 	/* for discard command control */
 	struct discard_cmd_control *dcc_info;
-
-	/*for dynamic discard map control*/
-	struct dynamic_discard_map_control *ddmc_info;
 };
 
 /*
@@ -1656,6 +1595,113 @@ struct f2fs_sb_info {
 	struct kmem_cache *page_array_slab;	/* page array entry */
 	unsigned int page_array_slab_size;	/* default page array slab size */
 #endif
+
+#ifdef WAF
+	unsigned int gc_written_blk;
+	unsigned int total_gc_read_blk;
+	unsigned int total_gc_written_blk;
+	atomic_t	host_written_blk;
+	atomic_t	total_host_written_blk;
+	unsigned long long last_t;
+#endif
+#ifdef GC_LATENCY
+	unsigned long long gc_cnt; /* gc "section" cnt */
+	unsigned long long gc_data_seg_cnt; /* "segment" cnt */
+	unsigned long long gc_node_seg_cnt; /* "segment" cnt */
+	unsigned long long gc_cp1_cnt;
+	unsigned long long gc_victim_select_cnt;
+	
+	unsigned long long whole_gc_cnt;
+	unsigned long long whole_gc_total_time_sum;
+	unsigned long long gc_cp2_cnt;
+	unsigned long long gc_total_cp2_time_sum;
+
+	/* following time sum are in usec */
+	unsigned long long gc_total_time_sum;
+	unsigned long long gc_total_write_time_sum;
+	unsigned long long gc_total_read_time_sum;
+	unsigned long long gc_total_cp_time_sum;
+	unsigned long long gc_total_victim_select_time_sum;
+
+
+
+	unsigned long long gc_total_ssa_read_time_sum;
+	unsigned long long gc_total_grab_gc_block_time_sum;
+	unsigned long long gc_p0_total_time_sum;
+	unsigned long long gc_p1_total_time_sum;
+	unsigned long long gc_p2_total_time_sum;
+	unsigned long long gc_p3_total_time_sum; /* read data page in gc_data_seg */
+	unsigned long long gc_p3_iget_total_time_sum; /* read data page in gc_data_seg */
+	unsigned long long gc_p3_read_total_time_sum; /* read data page in gc_data_seg */
+	unsigned long long gc_p3_read_get_dnode_total_time_sum;
+	unsigned long long gc_p3_submit_read_total_time_sum;
+	unsigned long long gc_p3_submit_read_wait_writeback_total_time_sum;
+	
+	unsigned long long gc_p3_read_grab_cache_total_time_sum;
+	unsigned long long gc_p3_read_lookup_extent_cache_total_time_sum;
+
+	unsigned long long gc_vblk;
+	unsigned long long gc_total_blk;
+
+	unsigned long long gc_p3_get_page_cache_total_time_sum;
+	unsigned long long gc_p3_wait_for_stable_page_total_time_sum;
+	
+	unsigned long long gc_p4_get_page_cache_total_time_sum;
+	unsigned long long gc_p4_wait_for_stable_page_total_time_sum;
+
+	unsigned long long gc_p4_total_time_sum; /* read data page in gc_data_seg */
+	unsigned long long gc_p4_wait_writeback_total_time_sum;
+	
+
+	unsigned long long gc_p4_get_node_total_time_sum;
+	unsigned long long gc_p4_real_write_total_time_sum;
+
+	unsigned long long move_data_page_cnt;
+	unsigned long long move_data_block_cnt;
+
+	unsigned long long gc_node_p0_total_time_sum;
+	unsigned long long gc_node_p1_total_time_sum;
+	unsigned long long gc_node_p2_total_time_sum; /* read node page in gc_node_seg */
+	
+
+	unsigned long long gc_total_read_blk_cnt_sum;
+	unsigned long long gc_total_write_blk_cnt_sum;
+
+	/* JW new added for deep analysis */ 
+	/* for P2 */
+	unsigned long long isalive_inode_read_trial_cnt;
+	unsigned long long isalive_inode_read_page_hit_cnt;
+	unsigned long long gc_isalive_grab_cache;
+	unsigned long long gc_isalive_read_inode;
+	unsigned long long gc_isalive_lock_inode_page;
+	unsigned long long p2_isalive_nat_read;
+
+	
+	/* for P3 */
+	unsigned long long p3_get_dnode_trial_cnt[8];
+	unsigned long long p3_get_dnode_read_hit_cnt[8];
+	unsigned long long p3_get_dnode_grab_cache[8];
+	unsigned long long p3_get_dnode_read_node[8];
+	unsigned long long p3_lock_dnode_page[8];
+	
+	/* for P4 */
+	unsigned long long p4_get_lock_read_page;
+	unsigned long long p4_get_lock_read_page_grab_cache;
+	unsigned long long gc_p4_read_get_dnode_total_time_sum;
+	unsigned long long p4_get_dnode_trial_cnt[8];
+	unsigned long long p4_get_dnode_read_hit_cnt[8];
+	unsigned long long p4_get_dnode_grab_cache[8];
+	unsigned long long p4_get_dnode_read_node[8];
+	unsigned long long p4_lock_dnode_page[8];
+	unsigned long long gc_p4_submit_read_total_time_sum;
+
+	unsigned long long p4_get_lock_lock_page;
+	unsigned long long gc_p3_read_grab_cache_cnt;
+	unsigned long long gc_p4_read_grab_cache_cnt;
+
+
+#endif
+
 };
 
 struct f2fs_private_dio {
@@ -2419,6 +2465,99 @@ static inline s64 valid_inode_count(struct f2fs_sb_info *sbi)
 	return percpu_counter_sum_positive(&sbi->total_valid_inode_count);
 }
 
+
+static inline struct page *jw_f2fs_grab_cache_page(struct f2fs_sb_info *sbi, 
+						struct address_space *mapping,
+						pgoff_t index, bool for_write)
+{
+	struct page *page;
+	unsigned long long lat1, lat2;
+
+	if (IS_ENABLED(CONFIG_F2FS_FAULT_INJECTION)) {
+		if (!for_write)
+			page = find_get_page_flags(mapping, index,
+							FGP_LOCK | FGP_ACCESSED);
+		else
+			page = find_lock_page(mapping, index);
+		if (page)
+			return page;
+
+		if (time_to_inject(F2FS_M_SB(mapping), FAULT_PAGE_ALLOC)) {
+			f2fs_show_injection_info(F2FS_M_SB(mapping),
+							FAULT_PAGE_ALLOC);
+			return NULL;
+		}
+	}
+
+	if (!for_write)
+		return grab_cache_page(mapping, index);
+	
+	page = jw_grab_cache_page_write_begin(mapping, index, AOP_FLAG_NOFS, &lat1, &lat2);
+	sbi->gc_p3_get_page_cache_total_time_sum += lat1;
+	sbi->gc_p3_wait_for_stable_page_total_time_sum += lat2;
+	return page;
+}
+
+static inline struct page *jw_f2fs_grab_cache_page_p4(struct f2fs_sb_info *sbi, 
+						struct address_space *mapping,
+						pgoff_t index, bool for_write)
+{
+	struct page *page;
+	unsigned long long lat1, lat2;
+
+	if (IS_ENABLED(CONFIG_F2FS_FAULT_INJECTION)) {
+		if (!for_write)
+			page = find_get_page_flags(mapping, index,
+							FGP_LOCK | FGP_ACCESSED);
+		else
+			page = find_lock_page(mapping, index);
+		if (page)
+			return page;
+
+		if (time_to_inject(F2FS_M_SB(mapping), FAULT_PAGE_ALLOC)) {
+			f2fs_show_injection_info(F2FS_M_SB(mapping),
+							FAULT_PAGE_ALLOC);
+			return NULL;
+		}
+	}
+
+	if (!for_write)
+		return grab_cache_page(mapping, index);
+	
+	page = jw_grab_cache_page_write_begin_p4(mapping, index, AOP_FLAG_NOFS, &lat1, &lat2);
+	sbi->gc_p4_get_page_cache_total_time_sum += lat1;
+	sbi->gc_p4_wait_for_stable_page_total_time_sum += lat2;
+	return page;
+}
+
+static inline struct page *f2fs_grab_cache_page_jw_gc_iget(struct address_space *mapping,
+						pgoff_t index, bool for_write)
+{
+	struct page *page;
+
+	if (IS_ENABLED(CONFIG_F2FS_FAULT_INJECTION)) {
+		if (!for_write)
+			page = find_get_page_flags(mapping, index,
+							FGP_LOCK | FGP_ACCESSED);
+		else
+			page = find_lock_page(mapping, index);
+		if (page)
+			return page;
+
+		if (time_to_inject(F2FS_M_SB(mapping), FAULT_PAGE_ALLOC)) {
+			f2fs_show_injection_info(F2FS_M_SB(mapping),
+							FAULT_PAGE_ALLOC);
+			return NULL;
+		}
+	}
+
+	if (!for_write)
+		return grab_cache_page(mapping, index);
+	
+	return grab_cache_page_write_begin(mapping, index, AOP_FLAG_NOFS);
+}
+
+#ifndef GC_LATENCY
 static inline struct page *f2fs_grab_cache_page(struct address_space *mapping,
 						pgoff_t index, bool for_write)
 {
@@ -2442,8 +2581,74 @@ static inline struct page *f2fs_grab_cache_page(struct address_space *mapping,
 
 	if (!for_write)
 		return grab_cache_page(mapping, index);
+	
 	return grab_cache_page_write_begin(mapping, index, AOP_FLAG_NOFS);
 }
+#else
+static inline struct page *f2fs_grab_cache_page(struct address_space *mapping,
+						pgoff_t index, bool for_write)
+{
+	struct page *page;
+	static int grab_for_write_cnt = 0;
+	static int grab_for_write_cnt_per_sec = 0;
+	static unsigned long long last_t = 0;
+	static unsigned long long avg_lat_per_sec = 0;
+	unsigned long long start_t, end_t;
+	struct page *ret_page;
+	
+
+    	struct timespec64 lTime;
+    	ktime_get_coarse_real_ts64(&lTime);
+    	unsigned long long cur_t = (lTime.tv_sec * 1000000 + div_u64(lTime.tv_nsec, 1000) );
+
+	//unsigned long long cur_t = OS_TimeGetUS__h();
+
+
+	if (cur_t - last_t > 1000000) {
+		//printk("%s: lat_sum_per_sec: %llu  grab_write_cnt_per_sec: %d total_grab__write_cnt: %d ", 
+		//	__func__, avg_lat_per_sec, grab_for_write_cnt_per_sec, 
+		//	grab_for_write_cnt);
+		last_t = cur_t;
+		avg_lat_per_sec = 0;
+		grab_for_write_cnt_per_sec = 0;
+	}
+
+	if (IS_ENABLED(CONFIG_F2FS_FAULT_INJECTION)) {
+		if (!for_write)
+			page = find_get_page_flags(mapping, index,
+							FGP_LOCK | FGP_ACCESSED);
+		else
+			page = find_lock_page(mapping, index);
+		if (page)
+			return page;
+
+		if (time_to_inject(F2FS_M_SB(mapping), FAULT_PAGE_ALLOC)) {
+			f2fs_show_injection_info(F2FS_M_SB(mapping),
+							FAULT_PAGE_ALLOC);
+			return NULL;
+		}
+	}
+
+	if (!for_write)
+		return grab_cache_page(mapping, index);
+
+	grab_for_write_cnt ++;
+	
+    	ktime_get_coarse_real_ts64(&lTime);
+    	start_t = (lTime.tv_sec * 1000000 + div_u64(lTime.tv_nsec, 1000) );
+	//start_t = OS_TimeGetUS__h();
+
+	ret_page = grab_cache_page_write_begin(mapping, index, AOP_FLAG_NOFS);
+
+    	ktime_get_coarse_real_ts64(&lTime);
+    	end_t = (lTime.tv_sec * 1000000 + div_u64(lTime.tv_nsec, 1000) );
+	//end_t = OS_TimeGetUS__h();
+	avg_lat_per_sec += end_t - start_t;
+	grab_for_write_cnt_per_sec ++;
+
+	return ret_page;
+}
+#endif
 
 static inline struct page *f2fs_pagecache_get_page(
 				struct address_space *mapping, pgoff_t index,
@@ -2935,8 +3140,6 @@ static inline int f2fs_is_mmap_file(struct inode *inode)
 
 static inline bool f2fs_is_pinned_file(struct inode *inode)
 {
-	if (is_inode_flag_set(inode, FI_PIN_FILE))
-		panic("f2fs_is_pinned_file: this is pinned file. not expected");
 	return is_inode_flag_set(inode, FI_PIN_FILE);
 }
 
@@ -3134,7 +3337,8 @@ static inline int get_inline_xattr_addrs(struct inode *inode)
 		sizeof((f2fs_inode)->field))			\
 		<= (F2FS_OLD_ATTRIBUTE_SIZE + (extra_isize)))	\
 
-#define DEFAULT_IOSTAT_PERIOD_MS	3000
+//#define DEFAULT_IOSTAT_PERIOD_MS	3000
+#define DEFAULT_IOSTAT_PERIOD_MS	1000
 #define MIN_IOSTAT_PERIOD_MS		100
 /* maximum period of iostat tracing is 1 day */
 #define MAX_IOSTAT_PERIOD_MS		8640000
@@ -3320,8 +3524,7 @@ int f2fs_enable_quota_files(struct f2fs_sb_info *sbi, bool rdonly);
 int f2fs_quota_sync(struct super_block *sb, int type);
 void f2fs_quota_off_umount(struct super_block *sb);
 int f2fs_commit_super(struct f2fs_sb_info *sbi, bool recover);
-int f2fs_sync_fs_op(struct super_block *sb, int sync);
-int f2fs_sync_fs(struct super_block *sb, int sync, bool excess_prefree);
+int f2fs_sync_fs(struct super_block *sb, int sync);
 int f2fs_sanity_check_ckpt(struct f2fs_sb_info *sbi);
 
 /*
@@ -3348,6 +3551,8 @@ int f2fs_get_node_info(struct f2fs_sb_info *sbi, nid_t nid,
 						struct node_info *ni);
 pgoff_t f2fs_get_next_page_offset(struct dnode_of_data *dn, pgoff_t pgofs);
 int f2fs_get_dnode_of_data(struct dnode_of_data *dn, pgoff_t index, int mode);
+int f2fs_get_dnode_of_data_jwgc_p3(struct dnode_of_data *dn, pgoff_t index, int mode);
+int f2fs_get_dnode_of_data_jwgc_p4(struct dnode_of_data *dn, pgoff_t index, int mode);
 int f2fs_truncate_inode_blocks(struct inode *inode, pgoff_t from);
 int f2fs_truncate_xattr_node(struct inode *inode);
 int f2fs_wait_on_node_pages_writeback(struct f2fs_sb_info *sbi,
@@ -3356,7 +3561,13 @@ int f2fs_remove_inode_page(struct inode *inode);
 struct page *f2fs_new_inode_page(struct inode *inode);
 struct page *f2fs_new_node_page(struct dnode_of_data *dn, unsigned int ofs);
 void f2fs_ra_node_page(struct f2fs_sb_info *sbi, nid_t nid);
+#ifdef WAF
+void f2fs_ra_gc_node_page(struct f2fs_sb_info *sbi, nid_t nid);
+#endif
+struct page *f2fs_get_node_page_jw_gc_isalive(struct f2fs_sb_info *sbi, pgoff_t nid);
 struct page *f2fs_get_node_page(struct f2fs_sb_info *sbi, pgoff_t nid);
+struct page *f2fs_get_node_page_p3_get_dnode(struct f2fs_sb_info *sbi, pgoff_t nid, int level);
+struct page *f2fs_get_node_page_p4_get_dnode(struct f2fs_sb_info *sbi, pgoff_t nid, int level);
 struct page *f2fs_get_node_page_ra(struct page *parent, int start);
 int f2fs_move_node_page(struct page *node_page, int gc_type);
 void f2fs_flush_inline_data(struct f2fs_sb_info *sbi);
@@ -3365,7 +3576,7 @@ int f2fs_fsync_node_pages(struct f2fs_sb_info *sbi, struct inode *inode,
 			unsigned int *seq_id);
 int f2fs_sync_node_pages(struct f2fs_sb_info *sbi,
 			struct writeback_control *wbc,
-			bool do_balance, enum iostat_type io_type);//, int* tmp);
+			bool do_balance, enum iostat_type io_type);
 int f2fs_build_free_nids(struct f2fs_sb_info *sbi, bool sync, bool mount);
 bool f2fs_alloc_nid(struct f2fs_sb_info *sbi, nid_t *nid);
 void f2fs_alloc_nid_done(struct f2fs_sb_info *sbi, nid_t nid);
@@ -3404,7 +3615,6 @@ void f2fs_stop_discard_thread(struct f2fs_sb_info *sbi);
 bool f2fs_issue_discard_timeout(struct f2fs_sb_info *sbi);
 void f2fs_clear_prefree_segments(struct f2fs_sb_info *sbi,
 					struct cp_control *cpc);
-
 void f2fs_dirty_to_prefree(struct f2fs_sb_info *sbi);
 block_t f2fs_get_unusable_blocks(struct f2fs_sb_info *sbi);
 int f2fs_disable_cp_again(struct f2fs_sb_info *sbi, block_t unusable);
@@ -3467,12 +3677,6 @@ unsigned int f2fs_usable_segs_in_sec(struct f2fs_sb_info *sbi,
 unsigned int f2fs_usable_blks_in_seg(struct f2fs_sb_info *sbi,
 			unsigned int segno);
 
-void issue_and_clean_all_ddm(struct f2fs_sb_info *sbi);
-void flush_dynamic_discard_maps(struct f2fs_sb_info *sbi, 
-			struct cp_control *cpc);
-
-block_t f2fs_write_discard_journals(struct f2fs_sb_info *sbi,
-	       		block_t start_blk, block_t journal_limit_addr);
 /*
  * checkpoint.c
  */
@@ -3502,7 +3706,6 @@ void f2fs_release_orphan_inode(struct f2fs_sb_info *sbi);
 void f2fs_add_orphan_inode(struct inode *inode);
 void f2fs_remove_orphan_inode(struct f2fs_sb_info *sbi, nid_t ino);
 int f2fs_recover_orphan_inodes(struct f2fs_sb_info *sbi);
-int f2fs_recover_discard_journals(struct f2fs_sb_info *sbi);
 int f2fs_get_valid_checkpoint(struct f2fs_sb_info *sbi);
 void f2fs_update_dirty_page(struct inode *inode, struct page *page);
 void f2fs_remove_dirty_inode(struct inode *inode);
@@ -3544,14 +3747,22 @@ int f2fs_reserve_new_block(struct dnode_of_data *dn);
 int f2fs_get_block(struct dnode_of_data *dn, pgoff_t index);
 int f2fs_preallocate_blocks(struct kiocb *iocb, struct iov_iter *from);
 int f2fs_reserve_block(struct dnode_of_data *dn, pgoff_t index);
+#ifdef WAF
+struct page *f2fs_get_read_gc_data_page(struct f2fs_sb_info *sbi, struct inode *inode, pgoff_t index,
+			int op_flags, bool for_write);
+#endif
 struct page *f2fs_get_read_data_page(struct inode *inode, pgoff_t index,
 			int op_flags, bool for_write);
 struct page *f2fs_find_data_page(struct inode *inode, pgoff_t index);
 struct page *f2fs_get_lock_data_page(struct inode *inode, pgoff_t index,
 			bool for_write);
+struct page *f2fs_get_lock_data_page_jw_gc(struct inode *inode, pgoff_t index,
+							bool for_write);
+
 struct page *f2fs_get_new_data_page(struct inode *inode,
 			struct page *ipage, pgoff_t index, bool new_i_size);
 int f2fs_do_write_data_page(struct f2fs_io_info *fio);
+int f2fs_do_write_data_page_gc_jw(struct f2fs_io_info *fio);
 void f2fs_do_map_lock(struct f2fs_sb_info *sbi, int flag, bool lock);
 int f2fs_map_blocks(struct inode *inode, struct f2fs_map_blocks *map,
 			int create, int flag);
@@ -3890,14 +4101,6 @@ void f2fs_leave_shrinker(struct f2fs_sb_info *sbi);
  */
 struct rb_entry *f2fs_lookup_rb_tree(struct rb_root_cached *root,
 				struct rb_entry *cached_re, unsigned int ofs);
-
-
-struct rb_node **f2fs_lookup_pos_rb_tree_ext(struct f2fs_sb_info *sbi,
-					struct rb_root_cached *root,
-					struct rb_node **parent,
-					unsigned long long key, bool *leftmost, int *height,
-					bool *exist);
-
 struct rb_node **f2fs_lookup_rb_tree_ext(struct f2fs_sb_info *sbi,
 				struct rb_root_cached *root,
 				struct rb_node **parent,

@@ -424,18 +424,12 @@ struct f2fs_configuration {
 #define NR_CURSEG_TYPE	(NR_CURSEG_DATA_TYPE + NR_CURSEG_NODE_TYPE)
 
 enum {
-//	CURSEG_HOT_DATA	= 0,	/* directory entry blocks */
-//	CURSEG_WARM_DATA,	/* data blocks */
-//	CURSEG_COLD_DATA,	/* multimedia or GCed data blocks */
-//	CURSEG_HOT_NODE,	/* direct node blocks of directory files */
-//	CURSEG_WARM_NODE,	/* direct node blocks of normal files */
-//	CURSEG_COLD_NODE,	/* indirect node blocks */
-	CURSEG_COLD_DATA=0,	/* multimedia or GCed data blocks */
-	CURSEG_COLD_NODE,	/* indirect node blocks */
+	CURSEG_HOT_DATA	= 0,	/* directory entry blocks */
+	CURSEG_WARM_DATA,	/* data blocks */
+	CURSEG_COLD_DATA,	/* multimedia or GCed data blocks */
 	CURSEG_HOT_NODE,	/* direct node blocks of directory files */
 	CURSEG_WARM_NODE,	/* direct node blocks of normal files */
-	CURSEG_HOT_DATA,	/* directory entry blocks */
-	CURSEG_WARM_DATA,	/* data blocks */
+	CURSEG_COLD_NODE,	/* indirect node blocks */
 	NO_CHECK_TYPE
 };
 
@@ -565,7 +559,6 @@ struct f2fs_checkpoint {
 	__le16 cur_data_blkoff[MAX_ACTIVE_DATA_LOGS];
 	__le32 ckpt_flags;		/* Flags : umount and journal_present */
 	__le32 cp_pack_total_block_count;	/* total # of one cp pack */
-	__le32 discard_journal_block_count;	/*IFLBA: discard journal blk cnt*/
 	__le32 cp_pack_start_sum;	/* start block number of data summary */
 	__le32 valid_node_count;	/* Total number of valid nodes */
 	__le32 valid_inode_count;	/* Total number of valid inodes */
@@ -908,56 +901,6 @@ struct f2fs_summary_block {
 	struct f2fs_journal journal;
 	struct summary_footer footer;
 } __attribute__((packed));
-
-/* discard journal for IFLBA F2FS */
-#define DISCARD_BLOCK_MAP_SIZE 64
-struct discard_journal_bitmap{
-	__le32 start_blkaddr;
-	unsigned char discard_map[DISCARD_BLOCK_MAP_SIZE];
-} __attribute__((packed));
-
-struct discard_journal_range {
-	__le32 start_blkaddr;
-	__le32 len;
-} __attribute__((packed));
-
-enum {
-	DJ_BLOCK_BITMAP,
-	DJ_BLOCK_RANGE
-};
-
-struct discard_journal_block_info {
-	unsigned char type; 	/* bitmap or range */
-	__le32 entry_cnt;	/* number of bitmap or number of range */
-} __attribute__((packed));
-
-#define DJ_BLOCK_FREE_SPACE (F2FS_BLKSIZE - sizeof(struct discard_journal_block_info)) 
-
-#define DJ_BITMAP_ENTRIES_IN_DJ_BLOCK (DJ_BLOCK_FREE_SPACE / \
-				sizeof(struct discard_journal_bitmap) )
-
-#define DJ_RANGE_ENTRIES_IN_DJ_BLOCK (DJ_BLOCK_FREE_SPACE / \
-				sizeof(struct discard_journal_range) )
-
-struct discard_journal_block{
-	struct discard_journal_block_info dj_block_info;
-	union {	
-		struct discard_journal_bitmap bitmap_entries[DJ_BITMAP_ENTRIES_IN_DJ_BLOCK];
-		struct discard_journal_range range_entries[DJ_RANGE_ENTRIES_IN_DJ_BLOCK];
-	}
-} __attribute__((packed));
-
-#define DISCARD_JOURNAL_BITMAP_BLOCKS(discard_seg_cnt)	\
-	(discard_seg_cnt % DJ_BITMAP_ENTRIES_IN_DJ_BLOCK ? \
-	 	discard_seg_cnt / DJ_BITMAP_ENTRIES_IN_DJ_BLOCK + 1  : \
-		discard_seg_cnt / DJ_BITMAP_ENTRIES_IN_DJ_BLOCK )
-
-#define DISCARD_RANGE_MAX_NUM 40
-
-#define DISCARD_JOURNAL_RANGE_BLOCKS(discard_range_cnt)	\
-	(discard_range_cnt % DJ_RANGE_ENTRIES_IN_DJ_BLOCK ? \
-	 	discard_range_cnt / DJ_RANGE_ENTRIES_IN_DJ_BLOCK + 1  : \
-		discard_range_cnt / DJ_RANGE_ENTRIES_IN_DJ_BLOCK )
 
 /*
  * For directory operations

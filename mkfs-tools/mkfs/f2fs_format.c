@@ -21,9 +21,6 @@
 #include "f2fs_fs.h"
 #include "f2fs_format_utils.h"
 
-#define LIMITED_INTERVAL
-//#undef LIMITED_INTERVAL
-
 extern struct f2fs_configuration c;
 struct f2fs_super_block raw_sb;
 struct f2fs_super_block *sb = &raw_sb;
@@ -191,9 +188,6 @@ static int f2fs_prepare_super_block(void)
 		2 * F2FS_BLKSIZE + zone_size_bytes - 1) /
 		zone_size_bytes * zone_size_bytes -
 		c.start_sector * c.sector_size;
-#ifdef LIMITED_INTERVAL
-	zone_align_start_offset = (zone_align_start_offset + 512*4096 - 1)/(512*4096)*(512*4096);
-#endif
 
 	if (c.start_sector % c.sectors_per_blk) {
 		MSG(1, "\t%s: Align start sector number to the page unit\n",
@@ -589,9 +583,8 @@ static int f2fs_write_check_point_pack(void)
 			get_cp(overprov_segment_count)) * c.blks_per_seg));
 	/* cp page (2), data summaries (1), node summaries (3) */
 	set_cp(cp_pack_total_block_count, 6 + get_sb(cp_payload));
-	set_cp(discard_journal_block_count, 0);
 	flags = CP_UMOUNT_FLAG | CP_COMPACT_SUM_FLAG;
-	if (get_cp(cp_pack_total_block_count) + get_cp(discard_journal_block_count) <=
+	if (get_cp(cp_pack_total_block_count) <=
 			(1 << get_sb(log_blocks_per_seg)) - nat_bits_blocks)
 		flags |= CP_NAT_BITS_FLAG;
 
@@ -867,7 +860,7 @@ static int discard_obsolete_dnode(struct f2fs_node *raw_node, u_int64_t offset)
 	/* only root inode was written before truncating dnodes */
 	root_inode_pos += c.cur_seg[CURSEG_HOT_NODE] * c.blks_per_seg;
 
-	if (c.zoned_mode)
+	//if (c.zoned_mode)
 		return 0;
 	do {
 		if (offset < get_sb(main_blkaddr) ||
@@ -882,6 +875,8 @@ static int discard_obsolete_dnode(struct f2fs_node *raw_node, u_int64_t offset)
 		next_blkaddr = le32_to_cpu(raw_node->footer.next_blkaddr);
 		memset(raw_node, 0, F2FS_BLKSIZE);
 
+	
+		MSG(0, "%s: offset write: 0x%llx\n", __func__, offset);
 		DBG(1, "\tDiscard dnode, at offset 0x%08"PRIx64"\n", offset);
 		if (dev_write_block(raw_node, offset)) {
 			MSG(1, "\tError: While discarding direct node!!!\n");
@@ -962,6 +957,8 @@ static int f2fs_write_root_inode(void)
 	main_area_node_seg_blk_offset = get_sb(main_blkaddr);
 	main_area_node_seg_blk_offset += c.cur_seg[CURSEG_HOT_NODE] *
 					c.blks_per_seg;
+	
+	MSG(0, "%s: root inode write: 0x%llx\n", __func__, main_area_node_seg_blk_offset);
 
 	DBG(1, "\tWriting root inode (hot node), %x %x %x at offset 0x%08"PRIu64"\n",
 			get_sb(main_blkaddr),
@@ -1015,7 +1012,7 @@ static int f2fs_update_nat_root(void)
 	nat_blk->entries[get_sb(meta_ino)].ino = sb->meta_ino;
 
 	nat_seg_blk_offset = get_sb(nat_blkaddr);
-
+	MSG(0, "nat_blkaddr: 0x%llx\n", nat_seg_blk_offset);
 	DBG(1, "\tWriting nat root, at offset 0x%08"PRIx64"\n",
 					nat_seg_blk_offset);
 	if (dev_write_block(nat_blk, nat_seg_blk_offset)) {
@@ -1057,6 +1054,8 @@ static int f2fs_add_default_dentry_root(void)
 	data_blk_offset = get_sb(main_blkaddr);
 	data_blk_offset += c.cur_seg[CURSEG_HOT_DATA] *
 				c.blks_per_seg;
+	
+	MSG(0, "%s: data_blk_offset: 0x%llx\n", __func__, data_blk_offset);
 
 	DBG(1, "\tWriting default dentry root, at offset 0x%08"PRIx64"\n",
 				data_blk_offset);

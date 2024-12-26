@@ -256,9 +256,6 @@ static int f2fs_do_sync_file(struct file *file, loff_t start, loff_t end,
 	};
 	unsigned int seq_id = 0;
 
-	//if (datasync)
-	//	panic("%s: datasync is 1, not expected\n", __func__);
-	//printk("[JW DBG]: %s: sync!!\n", __func__);
 	if (unlikely(f2fs_readonly(inode->i_sb) ||
 				is_sbi_flag_set(sbi, SBI_CP_DISABLED)))
 		return 0;
@@ -269,10 +266,10 @@ static int f2fs_do_sync_file(struct file *file, loff_t start, loff_t end,
 		goto go_write;
 
 	/* if fdatasync is triggered, let's do in-place-update */
-	//if (datasync || get_dirty_pages(inode) <= SM_I(sbi)->min_fsync_blocks)
-	//	set_inode_flag(inode, FI_NEED_IPU);
+	if (datasync || get_dirty_pages(inode) <= SM_I(sbi)->min_fsync_blocks)
+		set_inode_flag(inode, FI_NEED_IPU);
 	ret = file_write_and_wait_range(file, start, end);
-	//clear_inode_flag(inode, FI_NEED_IPU);
+	clear_inode_flag(inode, FI_NEED_IPU);
 
 	if (ret) {
 		trace_f2fs_sync_file_exit(inode, cp_reason, datasync, ret);
@@ -309,12 +306,9 @@ go_write:
 	cp_reason = need_do_checkpoint(inode);
 	up_read(&F2FS_I(inode)->i_sem);
 
-	//if (cp_reason && (cp_reason != CP_NON_REGULAR)) {
-	//if (cp_reason && (cp_reason != CP_WRONG_PINO)) {	
-	//if (cp_reason && (cp_reason != CP_NON_REGULAR) && (cp_reason != CP_WRONG_PINO)) {
 	if (cp_reason) {
 		/* all the dirty node pages should be flushed for POR */
-		ret = f2fs_sync_fs(inode->i_sb, 1, false);
+		ret = f2fs_sync_fs(inode->i_sb, 1);
 
 		/*
 		 * We've secured consistency through sync_fs. Following pino
@@ -1642,12 +1636,8 @@ static int expand_inode_data(struct inode *inode, loff_t offset,
 
 		map.m_len = sbi->blocks_per_seg;
 next_alloc:
-		//if (has_not_enough_free_secs(sbi, 0,
-		//	GET_SEC_FROM_SEG(sbi, overprovision_segments(sbi)))) {
-	        if (has_not_enough_free_physical_secs(sbi, 0,
+		if (has_not_enough_free_secs(sbi, 0,
 			GET_SEC_FROM_SEG(sbi, overprovision_segments(sbi)))) {
-			//IF_LBA gc remove
-			panic("expand_inode_data: gc not expected!!");
 			down_write(&sbi->gc_lock);
 			err = f2fs_gc(sbi, true, false, NULL_SEGNO);
 			if (err && err != -ENODATA && err != -EAGAIN)
@@ -2255,7 +2245,7 @@ static int f2fs_ioc_shutdown(struct file *filp, unsigned long arg)
 		break;
 	case F2FS_GOING_DOWN_METASYNC:
 		/* do checkpoint only */
-		ret = f2fs_sync_fs(sb, 1, false);
+		ret = f2fs_sync_fs(sb, 1);
 		if (ret)
 			goto out;
 		f2fs_stop_checkpoint(sbi, false);
@@ -2275,7 +2265,7 @@ static int f2fs_ioc_shutdown(struct file *filp, unsigned long arg)
 		set_sbi_flag(sbi, SBI_CP_DISABLED_QUICK);
 		set_sbi_flag(sbi, SBI_IS_DIRTY);
 		/* do checkpoint only */
-		ret = f2fs_sync_fs(sb, 1, false);
+		ret = f2fs_sync_fs(sb, 1);
 		goto out;
 	default:
 		ret = -EINVAL;
@@ -2472,18 +2462,14 @@ static int f2fs_ioc_gc(struct file *filp, unsigned long arg)
 		return ret;
 
 	if (!sync) {
-		printk("%s: bef down write trylock gc lock!!!!\n", __func__);
 		if (!down_write_trylock(&sbi->gc_lock)) {
 			ret = -EBUSY;
 			goto out;
 		}
 	} else {
-		printk("%s: bef down write gc lock!!!!\n", __func__);
 		down_write(&sbi->gc_lock);
-		printk("%s: aft down write gc lock!!!!\n", __func__);
 	}
-	//IF_LBA
-	panic("f2fs_ioc_gc: not expected!!");
+
 	ret = f2fs_gc(sbi, sync, true, NULL_SEGNO);
 out:
 	mnt_drop_write_file(filp);
@@ -2512,7 +2498,6 @@ static int __f2fs_ioc_gc_range(struct file *filp, struct f2fs_gc_range *range)
 
 do_more:
 	if (!range->sync) {
-		printk("%s: bef down write try gc lock!!!!\n", __func__);
 		if (!down_write_trylock(&sbi->gc_lock)) {
 			ret = -EBUSY;
 			goto out;
@@ -2521,7 +2506,6 @@ do_more:
 		down_write(&sbi->gc_lock);
 	}
 
-	panic("__f2fs_ioc_gc_range: not expected!!");
 	ret = f2fs_gc(sbi, range->sync, true, GET_SEGNO(sbi, range->start));
 	if (ret) {
 		if (ret == -EBUSY)
@@ -2567,7 +2551,7 @@ static int f2fs_ioc_write_checkpoint(struct file *filp, unsigned long arg)
 	if (ret)
 		return ret;
 
-	ret = f2fs_sync_fs(sbi->sb, 1, false);
+	ret = f2fs_sync_fs(sbi->sb, 1);
 
 	mnt_drop_write_file(filp);
 	return ret;
@@ -2963,7 +2947,6 @@ static int f2fs_ioc_flush_device(struct file *filp, unsigned long arg)
 	dev_end_segno = GET_SEGNO(sbi, FDEV(range.dev_num).end_blk);
 
 	start_segno = sm->last_victim[FLUSH_DEVICE];
-	panic("f2fs_ioc_flush_device: not expected!!");
 	if (start_segno < dev_start_segno || start_segno >= dev_end_segno)
 		start_segno = dev_start_segno;
 	end_segno = min(start_segno + range.segments, dev_end_segno);
@@ -2976,7 +2959,6 @@ static int f2fs_ioc_flush_device(struct file *filp, unsigned long arg)
 		sm->last_victim[GC_CB] = end_segno + 1;
 		sm->last_victim[GC_GREEDY] = end_segno + 1;
 		sm->last_victim[ALLOC_NEXT] = end_segno + 1;
-		panic("f2fs_ioc_flush_device: not expected!!");
 		ret = f2fs_gc(sbi, true, true, start_segno);
 		if (ret == -EAGAIN)
 			ret = 0;

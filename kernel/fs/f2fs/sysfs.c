@@ -804,6 +804,17 @@ void f2fs_record_iostat(struct f2fs_sb_info *sbi)
 		sbi->prev_rw_iostat[i] = sbi->rw_iostat[i];
 	}
 	spin_unlock(&sbi->iostat_lock);
+	//printk("%s: [WRITE] app: %llu fs: %llu gc: %llu cp: %llu", __func__,
+	//			iostat_diff[APP_WRITE_IO],
+	//			iostat_diff[FS_DATA_IO] + iostat_diff[FS_NODE_IO] + iostat_diff[FS_META_IO],
+	//			iostat_diff[FS_GC_DATA_IO] + iostat_diff[FS_GC_NODE_IO],
+	//			iostat_diff[FS_CP_DATA_IO] + iostat_diff[FS_CP_NODE_IO]
+	//			);                                                                             
+	//printk("%s: [READ] app: %llu fs: %llu", __func__,                                                
+    //            iostat_diff[APP_READ_IO],                                                        
+    //            iostat_diff[FS_DATA_READ_IO] + iostat_diff[FS_NODE_READ_IO] + iostat_diff[FS_META_READ_IO]
+	//			);
+
 
 	trace_f2fs_iostat(sbi, iostat_diff);
 }

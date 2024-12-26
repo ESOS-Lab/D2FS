@@ -37,6 +37,16 @@ static struct bio_set f2fs_bioset;
 
 #define	F2FS_BIO_POOL_SIZE	NR_CURSEG_TYPE
 
+#ifdef GC_LATENCY
+unsigned long long OS_TimeGetUS__( void )
+{
+    struct timespec64 lTime;
+    ktime_get_coarse_real_ts64(&lTime);
+    return (lTime.tv_sec * 1000000 + div_u64(lTime.tv_nsec, 1000) );
+
+}
+#endif
+
 int __init f2fs_init_bioset(void)
 {
 	if (bioset_init(&f2fs_bioset, F2FS_BIO_POOL_SIZE,
@@ -1101,6 +1111,67 @@ static int f2fs_submit_page_read(struct inode *inode, struct page *page,
 	return 0;
 }
 
+
+static int f2fs_submit_page_read_for_gc_jw(struct inode *inode, struct page *page,
+				 block_t blkaddr, int op_flags, bool for_write)
+{
+	struct f2fs_sb_info *sbi = F2FS_I_SB(inode);
+	struct bio *bio;
+#ifdef GC_LATENCY
+	unsigned long long read_start_t, read_end_t;
+#endif
+
+	bio = f2fs_grab_read_bio(inode, blkaddr, 1, op_flags,
+					page->index, for_write, true);
+	if (IS_ERR(bio))
+		return PTR_ERR(bio);
+
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+	/* wait for GCed page writeback via META_MAPPING */
+	f2fs_wait_on_block_writeback(inode, blkaddr);
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	sbi->gc_p3_submit_read_wait_writeback_total_time_sum += read_end_t - read_start_t;
+#endif
+
+	if (bio_add_page(bio, page, PAGE_SIZE, 0) < PAGE_SIZE) {
+		bio_put(bio);
+		return -EFAULT;
+	}
+	ClearPageError(page);
+	inc_page_count(sbi, F2FS_RD_DATA);
+	f2fs_update_iostat(sbi, FS_DATA_READ_IO, F2FS_BLKSIZE);
+	__submit_bio(sbi, bio, DATA);
+	return 0;
+}
+
+static int f2fs_submit_page_read_for_gc_jw_p4(struct inode *inode, struct page *page,
+				 block_t blkaddr, int op_flags, bool for_write)
+{
+	struct f2fs_sb_info *sbi = F2FS_I_SB(inode);
+	struct bio *bio;
+
+	bio = f2fs_grab_read_bio(inode, blkaddr, 1, op_flags,
+					page->index, for_write, true);
+	if (IS_ERR(bio))
+		return PTR_ERR(bio);
+
+	/* wait for GCed page writeback via META_MAPPING */
+	f2fs_wait_on_block_writeback(inode, blkaddr);
+
+	if (bio_add_page(bio, page, PAGE_SIZE, 0) < PAGE_SIZE) {
+		bio_put(bio);
+		return -EFAULT;
+	}
+	ClearPageError(page);
+	inc_page_count(sbi, F2FS_RD_DATA);
+	f2fs_update_iostat(sbi, FS_DATA_READ_IO, F2FS_BLKSIZE);
+	__submit_bio(sbi, bio, DATA);
+	return 0;
+}
+
 static void __set_data_blkaddr(struct dnode_of_data *dn)
 {
 	struct f2fs_node *rn = F2FS_NODE(dn->node_page);
@@ -1208,6 +1279,226 @@ int f2fs_get_block(struct dnode_of_data *dn, pgoff_t index)
 
 	return f2fs_reserve_block(dn, index);
 }
+
+
+struct page *f2fs_get_read_gc_data_page(struct f2fs_sb_info *sbi, struct inode *inode, pgoff_t index,
+						int op_flags, bool for_write)
+{
+	struct address_space *mapping = inode->i_mapping;
+	struct dnode_of_data dn;
+	struct page *page;
+	struct extent_info ei = {0,0,0};
+	int err;
+#ifdef GC_LATENCY
+	unsigned long long read_start_t, read_end_t;
+#endif
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+
+	page = jw_f2fs_grab_cache_page(sbi, mapping, index, for_write);
+	if (!page)
+		return ERR_PTR(-ENOMEM);
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	sbi->gc_p3_read_grab_cache_total_time_sum += read_end_t - read_start_t;
+	sbi->gc_p3_read_grab_cache_cnt ++;
+#endif
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+
+	if (f2fs_lookup_extent_cache(inode, index, &ei)) {
+		dn.data_blkaddr = ei.blk + index - ei.fofs;
+		if (!f2fs_is_valid_blkaddr(F2FS_I_SB(inode), dn.data_blkaddr,
+						DATA_GENERIC_ENHANCE_READ)) {
+			err = -EFSCORRUPTED;
+			goto put_err;
+		}
+		goto got_it;
+	}
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	sbi->gc_p3_read_lookup_extent_cache_total_time_sum += read_end_t - read_start_t;
+#endif
+
+	set_new_dnode(&dn, inode, NULL, NULL, 0);
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+	//err = f2fs_get_dnode_of_data(&dn, index, LOOKUP_NODE);
+	err = f2fs_get_dnode_of_data_jwgc_p3(&dn, index, LOOKUP_NODE);
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	sbi->gc_p3_read_get_dnode_total_time_sum += read_end_t - read_start_t;
+#endif
+	if (err)
+		goto put_err;
+	f2fs_put_dnode(&dn);
+
+	if (unlikely(dn.data_blkaddr == NULL_ADDR)) {
+		err = -ENOENT;
+		goto put_err;
+	}
+	if (dn.data_blkaddr != NEW_ADDR &&
+			!f2fs_is_valid_blkaddr(F2FS_I_SB(inode),
+						dn.data_blkaddr,
+						DATA_GENERIC_ENHANCE)) {
+		err = -EFSCORRUPTED;
+		goto put_err;
+	}
+got_it:
+	if (PageUptodate(page)) {
+		unlock_page(page);
+		return page;
+	}
+
+	/*
+	 * A new dentry page is allocated but not able to be written, since its
+	 * new inode page couldn't be allocated due to -ENOSPC.
+	 * In such the case, its blkaddr can be remained as NEW_ADDR.
+	 * see, f2fs_add_link -> f2fs_get_new_data_page ->
+	 * f2fs_init_inode_metadata.
+	 */
+	if (dn.data_blkaddr == NEW_ADDR) {
+		zero_user_segment(page, 0, PAGE_SIZE);
+		if (!PageUptodate(page))
+			SetPageUptodate(page);
+		unlock_page(page);
+		return page;
+	}
+
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+	err = f2fs_submit_page_read_for_gc_jw(inode, page, dn.data_blkaddr,
+						op_flags, for_write);
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	sbi->gc_p3_submit_read_total_time_sum += read_end_t - read_start_t;
+#endif
+
+#ifdef WAF
+	sbi->total_gc_read_blk ++;
+#endif
+	if (err)
+		goto put_err;
+	return page;
+
+put_err:
+	f2fs_put_page(page, 1);
+	return ERR_PTR(err);
+}
+
+
+
+
+struct page *f2fs_get_read_gc_data_page_p4(struct f2fs_sb_info *sbi, struct inode *inode, pgoff_t index,
+						int op_flags, bool for_write)
+{
+	struct address_space *mapping = inode->i_mapping;
+	struct dnode_of_data dn;
+	struct page *page;
+	struct extent_info ei = {0,0,0};
+	int err;
+#ifdef GC_LATENCY
+	unsigned long long read_start_t, read_end_t;
+#endif
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+
+	page = jw_f2fs_grab_cache_page_p4(sbi, mapping, index, for_write);
+	if (!page)
+		return ERR_PTR(-ENOMEM);
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	sbi->p4_get_lock_read_page_grab_cache += read_end_t - read_start_t;
+#endif
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+
+	if (f2fs_lookup_extent_cache(inode, index, &ei)) {
+		dn.data_blkaddr = ei.blk + index - ei.fofs;
+		if (!f2fs_is_valid_blkaddr(F2FS_I_SB(inode), dn.data_blkaddr,
+						DATA_GENERIC_ENHANCE_READ)) {
+			err = -EFSCORRUPTED;
+			goto put_err;
+		}
+		goto got_it;
+	}
+
+	set_new_dnode(&dn, inode, NULL, NULL, 0);
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+	//err = f2fs_get_dnode_of_data(&dn, index, LOOKUP_NODE);
+	err = f2fs_get_dnode_of_data_jwgc_p4(&dn, index, LOOKUP_NODE);
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	sbi->gc_p4_read_get_dnode_total_time_sum += read_end_t - read_start_t;
+#endif
+	if (err)
+		goto put_err;
+	f2fs_put_dnode(&dn);
+
+	if (unlikely(dn.data_blkaddr == NULL_ADDR)) {
+		err = -ENOENT;
+		goto put_err;
+	}
+	if (dn.data_blkaddr != NEW_ADDR &&
+			!f2fs_is_valid_blkaddr(F2FS_I_SB(inode),
+						dn.data_blkaddr,
+						DATA_GENERIC_ENHANCE)) {
+		err = -EFSCORRUPTED;
+		goto put_err;
+	}
+got_it:
+	if (PageUptodate(page)) {
+		unlock_page(page);
+		return page;
+	}
+
+	/*
+	 * A new dentry page is allocated but not able to be written, since its
+	 * new inode page couldn't be allocated due to -ENOSPC.
+	 * In such the case, its blkaddr can be remained as NEW_ADDR.
+	 * see, f2fs_add_link -> f2fs_get_new_data_page ->
+	 * f2fs_init_inode_metadata.
+	 */
+	if (dn.data_blkaddr == NEW_ADDR) {
+		zero_user_segment(page, 0, PAGE_SIZE);
+		if (!PageUptodate(page))
+			SetPageUptodate(page);
+		unlock_page(page);
+		return page;
+	}
+
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+	err = f2fs_submit_page_read_for_gc_jw_p4(inode, page, dn.data_blkaddr,
+						op_flags, for_write);
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	sbi->gc_p4_submit_read_total_time_sum += read_end_t - read_start_t;
+#endif
+
+//#ifdef WAF
+//	sbi->total_gc_read_blk ++;
+//#endif
+	if (err)
+		goto put_err;
+	return page;
+
+put_err:
+	f2fs_put_page(page, 1);
+	return ERR_PTR(err);
+}
+
+
+
 
 struct page *f2fs_get_read_data_page(struct inode *inode, pgoff_t index,
 						int op_flags, bool for_write)
@@ -1333,6 +1624,51 @@ repeat:
 	}
 	return page;
 }
+
+struct page *f2fs_get_lock_data_page_jw_gc(struct inode *inode, pgoff_t index,
+							bool for_write)
+{
+	struct f2fs_sb_info *sbi = F2FS_I_SB(inode);
+	struct address_space *mapping = inode->i_mapping;
+	struct page *page;
+#ifdef GC_LATENCY
+	unsigned long long read_start_t, read_end_t;
+#endif
+repeat:
+
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+	page = f2fs_get_read_gc_data_page_p4(sbi, inode, index, 0, for_write);
+	if (IS_ERR(page))
+		return page;
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	sbi->p4_get_lock_read_page += read_end_t - read_start_t;
+	read_start_t = OS_TimeGetUS__();
+	sbi->gc_p4_read_grab_cache_cnt ++;
+#endif
+
+	/* wait for read completion */
+	lock_page(page);
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	sbi->p4_get_lock_lock_page += read_end_t - read_start_t;
+#endif
+	if (unlikely(page->mapping != mapping)) {
+		f2fs_put_page(page, 1);
+		printk("%s: unexpected!!!!!!  1", __func__);
+		goto repeat;
+	}
+	if (unlikely(!PageUptodate(page))) {
+		f2fs_put_page(page, 1);
+		printk("%s: unexpected!!!!!!  2", __func__);
+		return ERR_PTR(-EIO);
+	}
+	return page;
+}
+
+
 
 /*
  * Caller ensures that this data page is never allocated.
@@ -2546,67 +2882,50 @@ static inline bool check_inplace_update_policy(struct inode *inode,
 	struct f2fs_sb_info *sbi = F2FS_I_SB(inode);
 	unsigned int policy = SM_I(sbi)->ipu_policy;
 
-	if (policy & (0x1 << F2FS_IPU_FORCE)){
-		panic("%s: 1st true, not expected\n", __func__);
+	if (policy & (0x1 << F2FS_IPU_FORCE))
 		return true;
-	}
-	if (policy & (0x1 << F2FS_IPU_SSR) && f2fs_need_SSR(sbi)){
-		panic("%s: 2nd true, not expected\n", __func__);
+	if (policy & (0x1 << F2FS_IPU_SSR) && f2fs_need_SSR(sbi))
 		return true;
-	}
 	if (policy & (0x1 << F2FS_IPU_UTIL) &&
-			utilization(sbi) > SM_I(sbi)->min_ipu_util){
-		panic("%s: 3rd true, not expected\n", __func__);
+			utilization(sbi) > SM_I(sbi)->min_ipu_util)
 		return true;
-	}
 	if (policy & (0x1 << F2FS_IPU_SSR_UTIL) && f2fs_need_SSR(sbi) &&
-			utilization(sbi) > SM_I(sbi)->min_ipu_util){
-		panic("%s: 4th true, not expected\n", __func__);
+			utilization(sbi) > SM_I(sbi)->min_ipu_util)
 		return true;
-	}
+
 	/*
 	 * IPU for rewrite async pages
 	 */
 	if (policy & (0x1 << F2FS_IPU_ASYNC) &&
 			fio && fio->op == REQ_OP_WRITE &&
 			!(fio->op_flags & REQ_SYNC) &&
-			!IS_ENCRYPTED(inode)){
-		panic("%s: async true, not expected\n", __func__);
+			!IS_ENCRYPTED(inode))
 		return true;
-	}
+
 	/* this is only set during fdatasync */
 	if (policy & (0x1 << F2FS_IPU_FSYNC) &&
-			is_inode_flag_set(inode, FI_NEED_IPU)){
-		panic("%s: fdatasync true, not expected\n", __func__);
+			is_inode_flag_set(inode, FI_NEED_IPU))
 		return true;
-	}
 
 	if (unlikely(fio && is_sbi_flag_set(sbi, SBI_CP_DISABLED) &&
-			!f2fs_is_checkpointed_data(sbi, fio->old_blkaddr))){
-		panic("%s: cp related true, not expected\n", __func__);
+			!f2fs_is_checkpointed_data(sbi, fio->old_blkaddr)))
 		return true;
-	}
 
 	return false;
 }
 
 bool f2fs_should_update_inplace(struct inode *inode, struct f2fs_io_info *fio)
 {
-	if (f2fs_is_pinned_file(inode)){
-		panic("f2fs_should_update_inplace: f2fs_is_pinned_file true, not expected");
+	if (f2fs_is_pinned_file(inode))
 		return true;
-	}
+
 	/* if this is cold file, we should overwrite to avoid fragmentation */
-	if (file_is_cold(inode)){
-		panic("f2fs_should_update_inplace: f2fs_is_cold true, not expected");
+	if (file_is_cold(inode))
 		return true;
-	}
-	if (check_inplace_update_policy(inode, fio)){
-		//panic("f2fs_should_update_inplace: check_inplace_update_policy true, not expected");
-		return true;
-	}
-	return false;
+
+	return check_inplace_update_policy(inode, fio);
 }
+
 bool f2fs_should_update_outplace(struct inode *inode, struct f2fs_io_info *fio)
 {
 	struct f2fs_sb_info *sbi = F2FS_I_SB(inode);
@@ -2634,11 +2953,155 @@ bool f2fs_should_update_outplace(struct inode *inode, struct f2fs_io_info *fio)
 static inline bool need_inplace_update(struct f2fs_io_info *fio)
 {
 	struct inode *inode = fio->page->mapping->host;
+
 	if (f2fs_should_update_outplace(inode, fio))
 		return false;
 
 	return f2fs_should_update_inplace(inode, fio);
 }
+
+
+int f2fs_do_write_data_page_gc_jw(struct f2fs_io_info *fio)
+{
+	struct page *page = fio->page;
+	struct inode *inode = page->mapping->host;
+	struct dnode_of_data dn;
+	struct extent_info ei = {0,0,0};
+	struct node_info ni;
+	bool ipu_force = false;
+	int err = 0;
+#ifdef GC_LATENCY
+	unsigned long long read_start_t, read_end_t;
+	read_start_t = OS_TimeGetUS__();
+#endif
+
+
+	set_new_dnode(&dn, inode, NULL, NULL, 0);
+	if (need_inplace_update(fio) &&
+			f2fs_lookup_extent_cache(inode, page->index, &ei)) {
+		fio->old_blkaddr = ei.blk + page->index - ei.fofs;
+
+		if (!f2fs_is_valid_blkaddr(fio->sbi, fio->old_blkaddr,
+						DATA_GENERIC_ENHANCE))
+			return -EFSCORRUPTED;
+
+		ipu_force = true;
+		fio->need_lock = LOCK_DONE;
+		goto got_it;
+	}
+
+	/* Deadlock due to between page->lock and f2fs_lock_op */
+	if (fio->need_lock == LOCK_REQ && !f2fs_trylock_op(fio->sbi))
+		return -EAGAIN;
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+
+	err = f2fs_get_dnode_of_data(&dn, page->index, LOOKUP_NODE);
+	if (err)
+		goto out;
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	fio->sbi->gc_p4_get_node_total_time_sum += read_end_t - read_start_t;
+#endif
+
+	fio->old_blkaddr = dn.data_blkaddr;
+
+	/* This page is already truncated */
+	if (fio->old_blkaddr == NULL_ADDR) {
+		ClearPageUptodate(page);
+		clear_cold_data(page);
+		goto out_writepage;
+	}
+got_it:
+	if (__is_valid_data_blkaddr(fio->old_blkaddr) &&
+		!f2fs_is_valid_blkaddr(fio->sbi, fio->old_blkaddr,
+						DATA_GENERIC_ENHANCE)) {
+		err = -EFSCORRUPTED;
+		goto out_writepage;
+	}
+	/*
+	 * If current allocation needs SSR,
+	 * it had better in-place writes for updated data.
+	 */
+	if (ipu_force ||
+		(__is_valid_data_blkaddr(fio->old_blkaddr) &&
+					need_inplace_update(fio))) {
+		err = f2fs_encrypt_one_page(fio);
+		if (err)
+			goto out_writepage;
+
+		set_page_writeback(page);
+		ClearPageError(page);
+		f2fs_put_dnode(&dn);
+		if (fio->need_lock == LOCK_REQ)
+			f2fs_unlock_op(fio->sbi);
+		err = f2fs_inplace_write_data(fio);
+		if (err) {
+			if (fscrypt_inode_uses_fs_layer_crypto(inode))
+				fscrypt_finalize_bounce_page(&fio->encrypted_page);
+			if (PageWriteback(page))
+				end_page_writeback(page);
+		} else {
+			set_inode_flag(inode, FI_UPDATE_WRITE);
+		}
+		trace_f2fs_do_write_data_page(fio->page, IPU);
+		return err;
+	}
+
+	if (fio->need_lock == LOCK_RETRY) {
+		if (!f2fs_trylock_op(fio->sbi)) {
+			err = -EAGAIN;
+			goto out_writepage;
+		}
+		fio->need_lock = LOCK_REQ;
+	}
+
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+
+	err = f2fs_get_node_info(fio->sbi, dn.nid, &ni);
+	if (err)
+		goto out_writepage;
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	fio->sbi->gc_p4_get_node_total_time_sum += read_end_t - read_start_t;
+#endif
+
+	fio->version = ni.version;
+
+	err = f2fs_encrypt_one_page(fio);
+	if (err)
+		goto out_writepage;
+
+	set_page_writeback(page);
+	ClearPageError(page);
+
+	if (fio->compr_blocks && fio->old_blkaddr == COMPRESS_ADDR)
+		f2fs_i_compr_blocks_update(inode, fio->compr_blocks - 1, false);
+
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS__();
+#endif
+	/* LFS mode write path */
+	f2fs_outplace_write_data(&dn, fio);
+	trace_f2fs_do_write_data_page(page, OPU);
+	set_inode_flag(inode, FI_APPEND_WRITE);
+	if (page->index == 0)
+		set_inode_flag(inode, FI_FIRST_BLOCK_WRITTEN);
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS__();
+	fio->sbi->gc_p4_real_write_total_time_sum += read_end_t - read_start_t;
+#endif
+out_writepage:
+	f2fs_put_dnode(&dn);
+out:
+	if (fio->need_lock == LOCK_REQ)
+		f2fs_unlock_op(fio->sbi);
+	return err;
+}
+
 
 int f2fs_do_write_data_page(struct f2fs_io_info *fio)
 {
@@ -2846,17 +3309,10 @@ write:
 
 		goto done;
 	}
-	/*if (!wbc->for_reclaim)
-		need_balance_fs = true;
-	else if (has_not_enough_free_secs(sbi, 0, 0))
-		goto redirty_out;
-	else
-		set_inode_flag(inode, FI_HOT_DATA);
-	*/
 
 	if (!wbc->for_reclaim)
 		need_balance_fs = true;
-	else if (has_not_enough_free_physical_secs(sbi, 0, 0))
+	else if (has_not_enough_free_secs(sbi, 0, 0))
 		goto redirty_out;
 	else
 		set_inode_flag(inode, FI_HOT_DATA);

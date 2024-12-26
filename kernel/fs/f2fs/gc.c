@@ -26,6 +26,16 @@ static struct kmem_cache *victim_entry_slab;
 static unsigned int count_bits(const unsigned long *addr,
 				unsigned int offset, unsigned int len);
 
+#ifdef GC_LATENCY
+unsigned long long OS_TimeGetUS_( void )
+{
+    struct timespec64 lTime;
+    ktime_get_coarse_real_ts64(&lTime);
+    return (lTime.tv_sec * 1000000 + div_u64(lTime.tv_nsec, 1000) );
+
+}
+#endif
+
 static int gc_thread_func(void *data)
 {
 	struct f2fs_sb_info *sbi = data;
@@ -50,6 +60,7 @@ static int gc_thread_func(void *data)
 
 		if (try_to_freeze()) {
 			stat_other_skip_bggc_count(sbi);
+			printk("blocked by cond 1");
 			continue;
 		}
 		if (kthread_should_stop())
@@ -58,6 +69,7 @@ static int gc_thread_func(void *data)
 		if (sbi->sb->s_writers.frozen >= SB_FREEZE_WRITE) {
 			increase_sleep_time(gc_th, &wait_ms);
 			stat_other_skip_bggc_count(sbi);
+			printk("blocked by cond 2");
 			continue;
 		}
 
@@ -68,6 +80,7 @@ static int gc_thread_func(void *data)
 
 		if (!sb_start_write_trylock(sbi->sb)) {
 			stat_other_skip_bggc_count(sbi);
+			printk("blocked by cond 3");
 			continue;
 		}
 
@@ -106,15 +119,18 @@ static int gc_thread_func(void *data)
 			decrease_sleep_time(gc_th, &wait_ms);
 		else
 			increase_sleep_time(gc_th, &wait_ms);
+		
 do_gc:
 		stat_inc_bggc_count(sbi->stat_info);
 
 		sync_mode = F2FS_OPTION(sbi).bggc_mode == BGGC_MODE_SYNC;
 
 		/* if return value is not zero, no victim was selected */
-		//if (f2fs_gc(sbi, sync_mode, true, NULL_SEGNO))
-		//	wait_ms = gc_th->no_gc_sleep_time;
-		up_write(&sbi->gc_lock);
+		//printk("[JWDBG] try bggc");
+		//wait_ms = DEF_GC_THREAD_URGENT_SLEEP_TIME; //3000;
+		if (f2fs_gc(sbi, sync_mode, true, NULL_SEGNO)){
+			wait_ms = gc_th->no_gc_sleep_time;
+		}
 
 		trace_f2fs_background_gc(sbi->sb, wait_ms,
 				prefree_segments(sbi), free_segments(sbi));
@@ -868,9 +884,18 @@ static int gc_node_segment(struct f2fs_sb_info *sbi,
 	unsigned int usable_blks_in_seg = f2fs_usable_blks_in_seg(sbi, segno);
 
 	start_addr = START_BLOCK(sbi, segno);
+#ifdef GC_LATENCY
+	unsigned long long read_start_t, read_end_t, write_start_t, write_end_t, tmp_write_time_sum = 0;
+	unsigned long long p_start_t[5], p_end_t[5], p_lat_t[5];
+	read_start_t = OS_TimeGetUS_();
+#endif
+
 
 next_step:
 	entry = sum;
+#ifdef GC_LATENCY
+	p_start_t[phase] = OS_TimeGetUS_();
+#endif
 
 	if (fggc && phase == 2)
 		atomic_inc(&sbi->wb_sync_req[NODE]);
@@ -895,7 +920,7 @@ next_step:
 		}
 
 		if (phase == 1) {
-			f2fs_ra_node_page(sbi, nid);
+			f2fs_ra_gc_node_page(sbi, nid);
 			continue;
 		}
 
@@ -920,17 +945,40 @@ next_step:
 			continue;
 		}
 
+#ifdef GC_LATENCY
+		sbi->gc_total_read_blk_cnt_sum ++;
+		write_start_t = OS_TimeGetUS_();
+#endif
 		err = f2fs_move_node_page(node_page, gc_type);
 		if (!err && gc_type == FG_GC)
 			submitted++;
+#ifdef GC_LATENCY
+		write_end_t = OS_TimeGetUS_();
+		sbi->gc_total_write_time_sum += write_end_t - write_start_t;
+		sbi->gc_total_write_blk_cnt_sum ++;
+		tmp_write_time_sum += write_end_t - write_start_t ;
+#endif
 		stat_inc_node_blk_count(sbi, 1, gc_type);
 	}
+#ifdef GC_LATENCY
+	p_end_t[phase] = OS_TimeGetUS_();
+	p_lat_t[phase] = p_end_t[phase] - p_start_t[phase];
+#endif
 
 	if (++phase < 3)
 		goto next_step;
 
 	if (fggc)
 		atomic_dec(&sbi->wb_sync_req[NODE]);
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS_();
+	sbi->gc_total_read_time_sum += read_end_t - read_start_t - tmp_write_time_sum
+					- p_lat_t[0]
+					- p_lat_t[1];
+	sbi->gc_node_p0_total_time_sum += p_lat_t[0];
+	sbi->gc_node_p1_total_time_sum += p_lat_t[1];
+	sbi->gc_node_p2_total_time_sum += p_lat_t[2];
+#endif
 	return submitted;
 }
 
@@ -960,6 +1008,67 @@ block_t f2fs_start_bidx_of_node(unsigned int node_ofs, struct inode *inode)
 	}
 	return bidx * ADDRS_PER_BLOCK(inode) + ADDRS_PER_INODE(inode);
 }
+
+static bool is_alive_jw_gc_isalive(struct f2fs_sb_info *sbi, struct f2fs_summary *sum,
+		struct node_info *dni, block_t blkaddr, unsigned int *nofs)
+{
+	struct page *node_page;
+	nid_t nid;
+	unsigned int ofs_in_node;
+	block_t source_blkaddr;
+#ifdef GC_LATENCY
+	unsigned long long read_start_t, read_end_t;
+#endif
+
+	nid = le32_to_cpu(sum->nid);
+	ofs_in_node = le16_to_cpu(sum->ofs_in_node);
+
+	node_page = f2fs_get_node_page_jw_gc_isalive(sbi, nid);
+	if (IS_ERR(node_page))
+		return false;
+	
+#ifdef GC_LATENCY
+	read_start_t = OS_TimeGetUS_();
+#endif
+
+	if (f2fs_get_node_info(sbi, nid, dni)) {
+		f2fs_put_page(node_page, 1);
+		return false;
+	}
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS_();
+	sbi->p2_isalive_nat_read += read_end_t - read_start_t;
+	sbi->move_data_block_cnt ++;
+#endif
+
+	if (sum->version != dni->version) {
+		f2fs_warn(sbi, "%s: valid data with mismatched node version.",
+			  __func__);
+		set_sbi_flag(sbi, SBI_NEED_FSCK);
+	}
+
+	*nofs = ofs_of_node(node_page);
+	source_blkaddr = data_blkaddr(NULL, node_page, ofs_in_node);
+	f2fs_put_page(node_page, 1);
+
+	if (source_blkaddr != blkaddr) {
+#ifdef CONFIG_F2FS_CHECK_FS
+		unsigned int segno = GET_SEGNO(sbi, blkaddr);
+		unsigned long offset = GET_BLKOFF_FROM_SEG0(sbi, blkaddr);
+
+		if (unlikely(check_valid_map(sbi, segno, offset))) {
+			if (!test_and_set_bit(segno, SIT_I(sbi)->invalid_segmap)) {
+				f2fs_err(sbi, "mismatched blkaddr %u (source_blkaddr %u) in seg %u\n",
+						blkaddr, source_blkaddr, segno);
+				f2fs_bug_on(sbi, 1);
+			}
+		}
+#endif
+		return false;
+	}
+	return true;
+}
+
 
 static bool is_alive(struct f2fs_sb_info *sbi, struct f2fs_summary *sum,
 		struct node_info *dni, block_t blkaddr, unsigned int *nofs)
@@ -1114,6 +1223,7 @@ static int move_data_block(struct inode *inode, block_t bidx,
 		.in_list = false,
 		.retry = false,
 	};
+	struct f2fs_sb_info *sbi = F2FS_I_SB(inode);
 	struct dnode_of_data dn;
 	struct f2fs_summary sum;
 	struct node_info ni;
@@ -1123,7 +1233,10 @@ static int move_data_block(struct inode *inode, block_t bidx,
 	bool lfs_mode = f2fs_lfs_mode(fio.sbi);
 	int type = fio.sbi->am.atgc_enabled ?
 				CURSEG_ALL_DATA_ATGC : CURSEG_COLD_DATA;
-
+#ifdef GC_LATENCY
+	unsigned long long read_start_t, read_end_t;
+	read_start_t = OS_TimeGetUS_();
+#endif
 	/* do not read out */
 	page = f2fs_grab_cache_page(inode->i_mapping, bidx, false);
 	if (!page)
@@ -1133,6 +1246,11 @@ static int move_data_block(struct inode *inode, block_t bidx,
 		err = -ENOENT;
 		goto out;
 	}
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS_();
+	sbi->gc_total_grab_gc_block_time_sum += read_end_t - read_start_t;
+	sbi->move_data_block_cnt ++;
+#endif
 
 	if (f2fs_is_atomic_file(inode)) {
 		F2FS_I(inode)->i_gc_failures[GC_FAILURE_ATOMIC]++;
@@ -1172,7 +1290,11 @@ static int move_data_block(struct inode *inode, block_t bidx,
 
 	set_summary(&sum, dn.nid, dn.ofs_in_node, ni.version);
 
+//#ifdef GC_LATENCY
+//	read_start_t = OS_TimeGetUS_();
+//#endif
 	/* read page */
+
 	fio.page = page;
 	fio.new_blkaddr = fio.old_blkaddr = dn.data_blkaddr;
 
@@ -1187,6 +1309,12 @@ static int move_data_block(struct inode *inode, block_t bidx,
 	}
 
 	fio.encrypted_page = mpage;
+
+//#ifdef GC_LATENCY
+//		read_end_t = OS_TimeGetUS_();
+//		sbi->gc_total_read_time_sum += read_end_t - read_start_t;
+//		sbi->gc_total_read_blk_cnt_sum ++;
+//#endif
 
 	/* read source block in mpage */
 	if (!PageUptodate(mpage)) {
@@ -1219,6 +1347,9 @@ static int move_data_block(struct inode *inode, block_t bidx,
 		goto recover_block;
 	}
 
+//#ifdef GC_LATENCY
+//		write_start_t = OS_TimeGetUS_();
+//#endif
 	/* write target block */
 	f2fs_wait_on_page_writeback(fio.encrypted_page, DATA, true, true);
 	memcpy(page_address(fio.encrypted_page),
@@ -1250,6 +1381,13 @@ static int move_data_block(struct inode *inode, block_t bidx,
 
 	f2fs_update_iostat(fio.sbi, FS_GC_DATA_IO, F2FS_BLKSIZE);
 
+//#ifdef GC_LATENCY
+//		write_end_t = OS_TimeGetUS_();
+//		sbi->gc_total_write_time_sum += write_end_t - write_start_t;
+//		sbi->gc_total_write_blk_cnt_sum ++;
+//#endif
+
+
 	f2fs_update_data_blkaddr(&dn, newaddr);
 	set_inode_flag(inode, FI_APPEND_WRITE);
 	if (page->index == 0)
@@ -1275,10 +1413,22 @@ static int move_data_page(struct inode *inode, block_t bidx, int gc_type,
 {
 	struct page *page;
 	int err = 0;
+	struct f2fs_sb_info *sbi = F2FS_I_SB(inode);
 
-	page = f2fs_get_lock_data_page(inode, bidx, true);
+#ifdef GC_LATENCY
+	unsigned long long read_start_t, read_end_t;
+	read_start_t = OS_TimeGetUS_();
+#endif
+
+	page = f2fs_get_lock_data_page_jw_gc(inode, bidx, true);
 	if (IS_ERR(page))
 		return PTR_ERR(page);
+
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS_();
+	sbi->gc_total_grab_gc_block_time_sum += read_end_t - read_start_t;
+	sbi->move_data_page_cnt ++;
+#endif
 
 	if (!check_valid_map(F2FS_I_SB(inode), segno, off)) {
 		err = -ENOENT;
@@ -1322,7 +1472,14 @@ static int move_data_page(struct inode *inode, block_t bidx, int gc_type,
 		bool is_dirty = PageDirty(page);
 
 retry:
+#ifdef GC_LATENCY
+		read_start_t = OS_TimeGetUS_();
+#endif
 		f2fs_wait_on_page_writeback(page, DATA, true, true);
+#ifdef GC_LATENCY
+		read_end_t = OS_TimeGetUS_();
+		sbi->gc_p4_wait_writeback_total_time_sum += read_end_t - read_start_t;
+#endif
 
 		set_page_dirty(page);
 		if (clear_page_dirty_for_io(page)) {
@@ -1332,7 +1489,11 @@ retry:
 
 		set_cold_data(page);
 
-		err = f2fs_do_write_data_page(&fio);
+//#ifdef GC_LATENCY
+//		write_start_t = OS_TimeGetUS_();
+//#endif
+
+		err = f2fs_do_write_data_page_gc_jw(&fio);
 		if (err) {
 			clear_cold_data(page);
 			if (err == -ENOMEM) {
@@ -1343,6 +1504,11 @@ retry:
 			if (is_dirty)
 				set_page_dirty(page);
 		}
+//#ifdef GC_LATENCY
+//		write_end_t = OS_TimeGetUS_();
+//		sbi->gc_total_write_time_sum += write_end_t - write_start_t;
+//		sbi->gc_total_write_blk_cnt_sum ++;
+//#endif
 	}
 out:
 	f2fs_put_page(page, 1);
@@ -1366,11 +1532,21 @@ static int gc_data_segment(struct f2fs_sb_info *sbi, struct f2fs_summary *sum,
 	int phase = 0;
 	int submitted = 0;
 	unsigned int usable_blks_in_seg = f2fs_usable_blks_in_seg(sbi, segno);
+#ifdef GC_LATENCY
+	unsigned long long read_start_t, read_end_t, write_start_t, write_end_t, tmp_write_time_sum = 0;
+	unsigned long long p_start_t[5], p_end_t[5], p_lat_t[5], 
+		p3_iget_start_t, p3_iget_end_t, p3_read_start_t, p3_read_end_t,
+		p3_iget_t, p3_data_page_read_t;
+	read_start_t = OS_TimeGetUS_();
+#endif
 
 	start_addr = START_BLOCK(sbi, segno);
 
 next_step:
 	entry = sum;
+#ifdef GC_LATENCY
+	p_start_t[phase] = OS_TimeGetUS_();
+#endif
 
 	for (off = 0; off < usable_blks_in_seg; off++, entry++) {
 		struct page *data_page;
@@ -1390,8 +1566,16 @@ next_step:
 							BLKS_PER_SEC(sbi))
 			return submitted;
 
-		if (check_valid_map(sbi, segno, off) == 0)
+
+		if (phase == 0) {
+			sbi->gc_total_blk ++;
+		}
+
+		if (check_valid_map(sbi, segno, off) == 0){
 			continue;
+		}else if (phase == 0) {
+			sbi->gc_vblk ++;
+		}
 
 		if (phase == 0) {
 			f2fs_ra_meta_pages(sbi, NAT_BLOCK_OFFSET(nid), 1,
@@ -1404,19 +1588,28 @@ next_step:
 			continue;
 		}
 
-		/* Get an inode by ino with checking validity */
-		if (!is_alive(sbi, entry, &dni, start_addr + off, &nofs))
-			continue;
-
 		if (phase == 2) {
+			if (!is_alive_jw_gc_isalive(sbi, entry, &dni, start_addr + off, &nofs))
+				continue;
 			f2fs_ra_node_page(sbi, dni.ino);
 			continue;
 		}
 
+		/* Get an inode by ino with checking validity */
+		if (!is_alive(sbi, entry, &dni, start_addr + off, &nofs))
+			continue;
+
 		ofs_in_node = le16_to_cpu(entry->ofs_in_node);
 
 		if (phase == 3) {
+#ifdef GC_LATENCY
+			p3_iget_start_t = OS_TimeGetUS_(); 
+#endif
 			inode = f2fs_iget(sb, dni.ino);
+#ifdef GC_LATENCY
+			p3_iget_end_t = OS_TimeGetUS_(); 
+			sbi->gc_p3_iget_total_time_sum += p3_iget_end_t - p3_iget_start_t;
+#endif
 			if (IS_ERR(inode) || is_bad_inode(inode)) {
 				set_sbi_flag(sbi, SBI_NEED_FSCK);
 				continue;
@@ -1443,9 +1636,16 @@ next_step:
 				add_gc_inode(gc_list, inode);
 				continue;
 			}
+#ifdef GC_LATENCY
+			p3_read_start_t = OS_TimeGetUS_(); 
+#endif
 
-			data_page = f2fs_get_read_data_page(inode,
+			data_page = f2fs_get_read_gc_data_page(sbi, inode,
 						start_bidx, REQ_RAHEAD, true);
+#ifdef GC_LATENCY
+			p3_read_end_t = OS_TimeGetUS_(); 
+			sbi->gc_p3_read_total_time_sum += p3_read_end_t - p3_read_start_t;
+#endif
 			up_write(&F2FS_I(inode)->i_gc_rwsem[WRITE]);
 			if (IS_ERR(data_page)) {
 				iput(inode);
@@ -1481,12 +1681,22 @@ next_step:
 
 			start_bidx = f2fs_start_bidx_of_node(nofs, inode)
 								+ ofs_in_node;
+#ifdef GC_LATENCY
+			sbi->gc_total_read_blk_cnt_sum ++;
+			write_start_t = OS_TimeGetUS_();
+#endif
 			if (f2fs_post_read_required(inode))
 				err = move_data_block(inode, start_bidx,
 							gc_type, segno, off);
 			else
 				err = move_data_page(inode, start_bidx, gc_type,
 								segno, off);
+#ifdef GC_LATENCY
+			write_end_t = OS_TimeGetUS_();
+			sbi->gc_total_write_time_sum += write_end_t - write_start_t;
+			sbi->gc_total_write_blk_cnt_sum ++;
+			tmp_write_time_sum += write_end_t - write_start_t ;
+#endif
 
 			if (!err && (gc_type == FG_GC ||
 					f2fs_post_read_required(inode)))
@@ -1500,9 +1710,27 @@ next_step:
 			stat_inc_data_blk_count(sbi, 1, gc_type);
 		}
 	}
+#ifdef GC_LATENCY
+	p_end_t[phase] = OS_TimeGetUS_();
+	p_lat_t[phase] = p_end_t[phase] - p_start_t[phase];
+#endif
 
 	if (++phase < 5)
 		goto next_step;
+#ifdef GC_LATENCY
+	read_end_t = OS_TimeGetUS_();
+	sbi->gc_total_read_time_sum += read_end_t - read_start_t - tmp_write_time_sum  
+					- p_lat_t[0] 
+                                        - p_lat_t[1] 
+                                        - p_lat_t[2] 
+					;
+	sbi->gc_p0_total_time_sum += p_lat_t[0];
+	sbi->gc_p1_total_time_sum += p_lat_t[1];
+	sbi->gc_p2_total_time_sum += p_lat_t[2];
+	sbi->gc_p3_total_time_sum += p_lat_t[3];
+	sbi->gc_p4_total_time_sum += p_lat_t[4];
+
+#endif
 
 	return submitted;
 }
@@ -1534,6 +1762,13 @@ static int do_garbage_collect(struct f2fs_sb_info *sbi,
 						SUM_TYPE_DATA : SUM_TYPE_NODE;
 	int submitted = 0;
 
+#ifdef GC_LATENCY
+	sbi->gc_cnt++;
+	unsigned long long start_t = OS_TimeGetUS_();
+	unsigned long long end_t;
+	unsigned long long start_t_ssa, end_t_ssa;
+#endif
+
 	if (__is_large_section(sbi))
 		end_segno = rounddown(end_segno, sbi->segs_per_sec);
 
@@ -1554,6 +1789,9 @@ static int do_garbage_collect(struct f2fs_sb_info *sbi,
 					end_segno - segno, META_SSA, true);
 
 	/* reference all summary page */
+#ifdef GC_LATENCY
+	start_t_ssa = OS_TimeGetUS_();
+#endif
 	while (segno < end_segno) {
 		sum_page = f2fs_get_sum_page(sbi, segno++);
 		if (IS_ERR(sum_page)) {
@@ -1570,15 +1808,25 @@ static int do_garbage_collect(struct f2fs_sb_info *sbi,
 		}
 		unlock_page(sum_page);
 	}
+#ifdef GC_LATENCY
+	end_t_ssa = OS_TimeGetUS_();
+	sbi->gc_total_ssa_read_time_sum += end_t_ssa - start_t_ssa;
+#endif
 
 	blk_start_plug(&plug);
 
 	for (segno = start_segno; segno < end_segno; segno++) {
-
+#ifdef GC_LATENCY
+		start_t_ssa = OS_TimeGetUS_();
+#endif
 		/* find segment summary of victim */
 		sum_page = find_get_page(META_MAPPING(sbi),
 					GET_SUM_BLOCK(sbi, segno));
 		f2fs_put_page(sum_page, 0);
+#ifdef GC_LATENCY
+		end_t_ssa = OS_TimeGetUS_();
+		sbi->gc_total_ssa_read_time_sum += end_t_ssa - start_t_ssa;
+#endif
 
 		if (get_valid_blocks(sbi, segno, false) == 0)
 			goto freed;
@@ -1604,12 +1852,20 @@ static int do_garbage_collect(struct f2fs_sb_info *sbi,
 		 *   - down_read(sentry_lock)     - change_curseg()
 		 *                                  - lock_page(sum_page)
 		 */
-		if (type == SUM_TYPE_NODE)
+		if (type == SUM_TYPE_NODE){
 			submitted += gc_node_segment(sbi, sum->entries, segno,
 								gc_type);
-		else
+#ifdef GC_LATENCY
+			sbi->gc_node_seg_cnt ++;
+#endif
+		}
+		else {
 			submitted += gc_data_segment(sbi, sum->entries, gc_list,
 							segno, gc_type);
+#ifdef GC_LATENCY
+			sbi->gc_data_seg_cnt ++;
+#endif
+		}
 
 		stat_inc_seg_count(sbi, type, gc_type);
 		migrated++;
@@ -1632,14 +1888,21 @@ skip:
 	blk_finish_plug(&plug);
 
 	stat_inc_call_count(sbi->stat_info);
+#ifdef WAF
+	sbi->gc_written_blk += submitted;
+	sbi->total_gc_written_blk += submitted;
+#endif
 
+#ifdef GC_LATENCY
+	end_t = OS_TimeGetUS_();
+	sbi->gc_total_time_sum += end_t - start_t;
+#endif
 	return seg_freed;
 }
 
 int f2fs_gc(struct f2fs_sb_info *sbi, bool sync,
 			bool background, unsigned int segno)
 {
-
 	int gc_type = sync ? FG_GC : BG_GC;
 	int sec_freed = 0, seg_freed = 0, total_freed = 0;
 	int ret = 0;
@@ -1652,7 +1915,18 @@ int f2fs_gc(struct f2fs_sb_info *sbi, bool sync,
 	unsigned long long last_skipped = sbi->skipped_atomic_files[FG_GC];
 	unsigned long long first_skipped;
 	unsigned int skipped_round = 0, round = 0;
-	//panic("[JW DBG] %s: this should not be called\n ", __func__ );
+	static bool is_first_gc = true;
+//	int gc_operate = 0;
+//	printk("%s !!!!", __func__);
+#ifdef GC_LATENCY
+	unsigned long long cp_start_t, cp_end_t;
+	unsigned long long victim_select_start_t, victim_select_end_t;
+
+	unsigned long long whole_gc_start_t, whole_gc_end_t;
+	sbi->whole_gc_cnt ++;
+	whole_gc_start_t = OS_TimeGetUS_();
+#endif
+
 	trace_f2fs_gc_begin(sbi->sb, sync, background,
 				get_pages(sbi, F2FS_DIRTY_NODES),
 				get_pages(sbi, F2FS_DIRTY_DENTS),
@@ -1683,7 +1957,15 @@ gc_more:
 		 */
 		if (prefree_segments(sbi) &&
 				!is_sbi_flag_set(sbi, SBI_CP_DISABLED)) {
+#ifdef GC_LATENCY
+			sbi->gc_cp1_cnt ++;
+			cp_start_t = OS_TimeGetUS_();
+#endif
 			ret = f2fs_write_checkpoint(sbi, &cpc);
+#ifdef GC_LATENCY
+			cp_end_t = OS_TimeGetUS_();
+			sbi->gc_total_cp_time_sum += cp_end_t - cp_start_t;
+#endif
 			if (ret)
 				goto stop;
 		}
@@ -1696,11 +1978,23 @@ gc_more:
 		ret = -EINVAL;
 		goto stop;
 	}
+#ifdef GC_LATENCY
+	victim_select_start_t = OS_TimeGetUS_();
+#endif
 	ret = __get_victim(sbi, &segno, gc_type);
+#ifdef GC_LATENCY
+	victim_select_end_t = OS_TimeGetUS_();
+	sbi->gc_victim_select_cnt ++;
+	sbi->gc_total_victim_select_time_sum += victim_select_end_t - victim_select_start_t;
+#endif
 	if (ret)
 		goto stop;
-
+	if (is_first_gc && gc_type == FG_GC){
+		printk("[JWDBG] %s: do %s!!", __func__, gc_type == FG_GC? "FG_GC" : "BG_GC");
+		is_first_gc = false;
+	}
 	seg_freed = do_garbage_collect(sbi, segno, &gc_list, gc_type);
+//	gc_operate = 1;
 	if (gc_type == FG_GC &&
 		seg_freed == f2fs_usable_segs_in_sec(sbi, segno))
 		sec_freed++;
@@ -1734,8 +2028,17 @@ gc_more:
 			segno = NULL_SEGNO;
 			goto gc_more;
 		}
-		if (gc_type == FG_GC && !is_sbi_flag_set(sbi, SBI_CP_DISABLED))
+		if (gc_type == FG_GC && !is_sbi_flag_set(sbi, SBI_CP_DISABLED)) {
+#ifdef GC_LATENCY
+			sbi->gc_cp2_cnt ++;
+			cp_start_t = OS_TimeGetUS_();
+#endif
 			ret = f2fs_write_checkpoint(sbi, &cpc);
+#ifdef GC_LATENCY
+			cp_end_t = OS_TimeGetUS_();
+			sbi->gc_total_cp2_time_sum += cp_end_t - cp_start_t;
+#endif
+		}
 	}
 stop:
 	SIT_I(sbi)->last_victim[ALLOC_NEXT] = 0;
@@ -1756,6 +2059,12 @@ stop:
 
 	if (sync && !ret)
 		ret = sec_freed ? 0 : -EAGAIN;
+	
+#ifdef GC_LATENCY
+	whole_gc_end_t = OS_TimeGetUS_();
+	sbi->whole_gc_total_time_sum += whole_gc_end_t - whole_gc_start_t;
+#endif
+//	printk("%s DONE gc operate: %d", __func__, gc_operate);
 	return ret;
 }
 
@@ -1781,8 +2090,6 @@ static void init_atgc_management(struct f2fs_sb_info *sbi)
 		SIT_I(sbi)->elapsed_time >= DEF_GC_THREAD_AGE_THRESHOLD)
 		am->atgc_enabled = true;
 
-	am->atgc_enabled = false;//for IFLBA
-
 	am->root = RB_ROOT_CACHED;
 	INIT_LIST_HEAD(&am->victim_list);
 	am->victim_count = 0;
@@ -1803,7 +2110,7 @@ void f2fs_build_gc_manager(struct f2fs_sb_info *sbi)
 		SIT_I(sbi)->last_victim[ALLOC_NEXT] =
 				GET_SEGNO(sbi, FDEV(0).end_blk) + 1;
 
-	//init_atgc_management(sbi);
+	init_atgc_management(sbi);
 }
 
 static int free_segment_range(struct f2fs_sb_info *sbi,

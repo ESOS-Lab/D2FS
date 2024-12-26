@@ -175,28 +175,21 @@ bool f2fs_is_valid_blkaddr(struct f2fs_sb_info *sbi,
 		break;
 	case META_POR:
 		if (unlikely(blkaddr >= MAX_BLKADDR(sbi) ||
-			blkaddr < MAIN_BLKADDR(sbi))){
-			//printk("{[JW DBG] (%s) %d out of range %d", __func__, blkaddr, MAX_BLKADDR(sbi) );
-			return true;
-			//return false;
-		}
+			blkaddr < MAIN_BLKADDR(sbi)))
+			return false;
 		break;
 	case DATA_GENERIC:
 	case DATA_GENERIC_ENHANCE:
 	case DATA_GENERIC_ENHANCE_READ:
 		if (unlikely(blkaddr >= MAX_BLKADDR(sbi) ||
 				blkaddr < MAIN_BLKADDR(sbi))) {
-			//printk("{[JW DBG] (%s) %d out of range %d", __func__, blkaddr, MAX_BLKADDR(sbi) );
-			return true;
-			/*f2fs_warn(sbi, "access invalid blkaddr:%u",
+			f2fs_warn(sbi, "access invalid blkaddr:%u",
 				  blkaddr);
 			set_sbi_flag(sbi, SBI_NEED_FSCK);
 			WARN_ON(1);
 			return false;
-			*/
 		} else {
-			return true;
-			//return __is_bitmap_valid(sbi, blkaddr, type);
+			return __is_bitmap_valid(sbi, blkaddr, type);
 		}
 		break;
 	case META_GENERIC:
@@ -674,7 +667,6 @@ err_out:
 	return err;
 }
 
-
 int f2fs_recover_orphan_inodes(struct f2fs_sb_info *sbi)
 {
 	block_t start_blk, orphan_blocks, i, j;
@@ -866,12 +858,10 @@ static struct page *validate_checkpoint(struct f2fs_sb_info *sbi,
 	if (err)
 		return NULL;
 
-	if (le32_to_cpu(cp_block->cp_pack_total_block_count) 
-			+ le32_to_cpu(cp_block->discard_journal_block_count) >
+	if (le32_to_cpu(cp_block->cp_pack_total_block_count) >
 					sbi->blocks_per_seg) {
 		f2fs_warn(sbi, "invalid cp_pack_total_block_count:%u",
-			  le32_to_cpu(cp_block->cp_pack_total_block_count)
-			  + le32_to_cpu(cp_block->discard_journal_block_count));
+			  le32_to_cpu(cp_block->cp_pack_total_block_count));
 		goto invalid_cp;
 	}
 	pre_version = *version;
@@ -1183,7 +1173,7 @@ static int block_operations(struct f2fs_sb_info *sbi)
 		.for_reclaim = 0,
 	};
 	int err = 0, cnt = 0;
-	//int nid7_was_synced = 0;
+
 	/*
 	 * Let's flush inline_data in dirty node pages.
 	 */
@@ -1243,8 +1233,7 @@ retry_flush_nodes:
 	if (get_pages(sbi, F2FS_DIRTY_NODES)) {
 		up_write(&sbi->node_write);
 		atomic_inc(&sbi->wb_sync_req[NODE]);
-		//printk("[JW DBG] %s: Bef f2fs_sync_node_pages()\n", __func__);
-		err = f2fs_sync_node_pages(sbi, &wbc, false, FS_CP_NODE_IO);//, &nid7_was_synced);
+		err = f2fs_sync_node_pages(sbi, &wbc, false, FS_CP_NODE_IO);
 		atomic_dec(&sbi->wb_sync_req[NODE]);
 		if (err) {
 			up_write(&sbi->node_change);
@@ -1254,13 +1243,6 @@ retry_flush_nodes:
 		cond_resched();
 		goto retry_flush_nodes;
 	}
-	/*
-	if (nid7_was_synced){
-		//printk("[JW DBG] %s: nid7_was_synced = 1\n", __func__);
-		*nid7_syn = 1;
-		nid7_was_synced = 0;
-		//f2fs_bug_on(sbi, 1);	
-	}*/
 
 	/*
 	 * sbi->node_change is used only for AIO write_begin path which produces
@@ -1309,8 +1291,7 @@ static void update_ckpt_flags(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	spin_lock_irqsave(&sbi->cp_lock, flags);
 
 	if ((cpc->reason & CP_UMOUNT) &&
-			le32_to_cpu(ckpt->cp_pack_total_block_count) 
-			+ le32_to_cpu(ckpt->discard_journal_block_count) >
+			le32_to_cpu(ckpt->cp_pack_total_block_count) >
 			sbi->blocks_per_seg - NM_I(sbi)->nat_bits_blocks)
 		disable_nat_bits(sbi, false);
 
@@ -1437,14 +1418,13 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	struct curseg_info *seg_i = CURSEG_I(sbi, CURSEG_HOT_NODE);
 	u64 kbytes_written;
 	int err;
-	struct dynamic_discard_map_control *ddmc = SM_I(sbi)->ddmc_info;
 
 	/* Flush all the NAT/SIT pages */
 	f2fs_sync_meta_pages(sbi, META, LONG_MAX, FS_CP_META_IO);
 
 	/* start to update checkpoint, cp ver is already updated previously */
 	ckpt->elapsed_time = cpu_to_le64(get_mtime(sbi, true));
-	//ckpt->free_segment_count = cpu_to_le32(free_segments(sbi));
+	ckpt->free_segment_count = cpu_to_le32(free_segments(sbi));
 	for (i = 0; i < NR_CURSEG_NODE_TYPE; i++) {
 		ckpt->cur_node_segno[i] =
 			cpu_to_le32(curseg_segno(sbi, i + CURSEG_HOT_NODE));
@@ -1461,21 +1441,14 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 		ckpt->alloc_type[i + CURSEG_HOT_DATA] =
 				curseg_alloc_type(sbi, i + CURSEG_HOT_DATA);
 	}
-	
-	/*save discard journal block count to ckpt*/
-	unsigned int discard_bitmap_segcnt = (unsigned int) atomic_read(&ddmc->dj_seg_cnt);
-	unsigned int discard_range_cnt = (unsigned int) atomic_read(&ddmc->dj_range_cnt);
-	ckpt->discard_journal_block_count = cpu_to_le32(
-			DISCARD_JOURNAL_BITMAP_BLOCKS(discard_bitmap_segcnt)
-			+ DISCARD_JOURNAL_RANGE_BLOCKS(discard_range_cnt)); 
-	
+
 	/* 2 cp + n data seg summary + orphan inode blocks */
 	data_sum_blocks = f2fs_npages_for_summary_flush(sbi, false);
 	spin_lock_irqsave(&sbi->cp_lock, flags);
-	//if (data_sum_blocks < NR_CURSEG_DATA_TYPE)
-	//	__set_ckpt_flags(ckpt, CP_COMPACT_SUM_FLAG);
-	//else
-	__clear_ckpt_flags(ckpt, CP_COMPACT_SUM_FLAG);
+	if (data_sum_blocks < NR_CURSEG_DATA_TYPE)
+		__set_ckpt_flags(ckpt, CP_COMPACT_SUM_FLAG);
+	else
+		__clear_ckpt_flags(ckpt, CP_COMPACT_SUM_FLAG);
 	spin_unlock_irqrestore(&sbi->cp_lock, flags);
 
 	orphan_blocks = GET_ORPHAN_BLOCKS(orphan_num);
@@ -1504,10 +1477,7 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 				= cpu_to_le32(crc32);
 
 	start_blk = __start_cp_next_addr(sbi);
-	
-	block_t end_of_discard_journal = 0;
-	/*end_of_disard_journal is boundary that limits discard journaling in ckpt*/
-	end_of_discard_journal = start_blk + sbi->blocks_per_seg;
+
 	/* write nat bits */
 	if (enabled_nat_bits(sbi, cpc)) {
 		__u64 cp_ver = cur_cp_version(ckpt);
@@ -1517,7 +1487,6 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 		*(__le64 *)nm_i->nat_bits = cpu_to_le64(cp_ver);
 
 		blk = start_blk + sbi->blocks_per_seg - nm_i->nat_bits_blocks;
-		end_of_discard_journal = blk;
 		for (i = 0; i < nm_i->nat_bits_blocks; i++)
 			f2fs_update_meta_page(sbi, nm_i->nat_bits +
 					(i << F2FS_BLKSIZE_BITS), blk + i);
@@ -1538,7 +1507,6 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	f2fs_write_data_summaries(sbi, start_blk);
 	start_blk += data_sum_blocks;
 
-
 	/* Record write statistics in the hot node summary */
 	kbytes_written = sbi->kbytes_written;
 	kbytes_written += (f2fs_get_sectors_written(sbi) -
@@ -1549,12 +1517,6 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 		f2fs_write_node_summaries(sbi, start_blk);
 		start_blk += NR_CURSEG_NODE_TYPE;
 	}
-
-	/* write discard journals. discard journal follows 2nd cp pack*/	
-	block_t discard_journal_start_blk = 0;
-	discard_journal_start_blk = start_blk+1; //add + 1 to for 2nd cp pack
-	//printk("[JW DBG] %s: start_blk: %u\n", __func__, start_blk);
-	f2fs_write_discard_journals(sbi, discard_journal_start_blk, end_of_discard_journal);
 
 	/* update user_block_counts */
 	sbi->last_valid_block_count = sbi->total_valid_block_count;
@@ -1610,20 +1572,176 @@ static int do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 
 	f2fs_bug_on(sbi, get_pages(sbi, F2FS_DIRTY_DENTS));
 
-
 	return unlikely(f2fs_cp_error(sbi)) ? -EIO : 0;
 }
+
+#ifdef WAF
+unsigned long long OS_TimeGetUS( void )
+{
+    struct timespec64 lTime;
+    ktime_get_coarse_real_ts64(&lTime);
+    return (lTime.tv_sec * 1000000 + div_u64(lTime.tv_nsec, 1000) );
+
+}
+
+#define SEC_IN_USEC 1000000
+#define PRINT_TIME_SEC	1
+#define WAF_TIME_INTERVAL	(PRINT_TIME_SEC * SEC_IN_USEC)
+
+static inline void print_WAF(struct f2fs_sb_info *sbi)
+{
+	uint64_t host_written_blk = atomic_read(&sbi->host_written_blk);
+	uint64_t total_host_written_blk = atomic_read(&sbi->total_host_written_blk);
+	if (host_written_blk - sbi->gc_written_blk > 0) {
+		unsigned int waf = 
+			(100* (host_written_blk)) / (host_written_blk - sbi->gc_written_blk);
+		unsigned int total_waf = 
+			(100* (total_host_written_blk)) 
+			/ (total_host_written_blk - sbi->total_gc_written_blk);
+		//printk("%s: FSWAF: %u percent gc: %llu KB write_req: %llu KB total: %llu total WAF: %u", 
+		//	__func__, waf, sbi->gc_written_blk*4, (host_written_blk - sbi->gc_written_blk)*4, 
+		//	total_host_written_blk*4, total_waf);
+		//printk("%s: total transfer volumes by FSGC: write: %llu KB read: %llu KB", __func__, 
+		//		sbi->total_gc_written_blk*4, sbi->total_gc_read_blk*4);
+	}
+}
+
+#ifdef GC_LATENCY
+static inline void print_GC_LATENCY(struct f2fs_sb_info *sbi) {
+
+	unsigned long long gc_data_sec_cnt = sbi->gc_data_seg_cnt / sbi->segs_per_sec;
+	unsigned long long gc_node_sec_cnt = sbi->gc_node_seg_cnt / sbi->segs_per_sec;
+
+	if (sbi->gc_cnt > 0 && sbi->gc_cp1_cnt > 0 && sbi->gc_victim_select_cnt > 0
+			&& sbi->whole_gc_cnt > 0 && gc_data_sec_cnt > 0 
+			&& gc_node_sec_cnt > 0) {
+		unsigned long long avg_cp_lat = sbi->gc_total_cp_time_sum / sbi->gc_cp1_cnt; 
+		unsigned long long avg_read_lat =  sbi->gc_total_read_time_sum / sbi->gc_cnt; 
+		unsigned long long avg_write_lat = sbi->gc_total_write_time_sum / sbi->gc_cnt; 
+		unsigned long long avg_gc_lat = sbi->gc_total_time_sum / sbi->gc_cnt;
+		unsigned long long avg_victim_select_lat = 
+			sbi->gc_total_victim_select_time_sum / sbi->gc_victim_select_cnt;
+
+		unsigned long long avg_meta_read_lat = (sbi->gc_total_ssa_read_time_sum + 
+						sbi->gc_p0_total_time_sum + 
+						sbi->gc_p1_total_time_sum + 
+						sbi->gc_p2_total_time_sum + 
+						sbi->gc_node_p0_total_time_sum + 
+						sbi->gc_node_p1_total_time_sum) / sbi->gc_cnt; 
+		unsigned long long avg_grab_gc_block_time = sbi->gc_total_grab_gc_block_time_sum 
+									/ sbi->gc_cnt;
+		
+		unsigned long long avg_cp_victimselect_gc_lat = 
+			avg_gc_lat +
+			avg_cp_lat +
+			avg_victim_select_lat;
+
+		unsigned long long avg_whole_gc_lat = sbi->whole_gc_total_time_sum / sbi->whole_gc_cnt;
+
+		if (sbi->gc_cp2_cnt > 0) {
+			unsigned long long avg_cp2_lat = sbi->gc_total_cp2_time_sum / sbi->gc_cp2_cnt; 
+
+		} else {
+
+
+			printk("%s: gc_latency_breakdown_detail ssa: %llu p0: %llu p1: %llu p2: %llu (grab: %llu read: %llu lock: %llu pghit: %llu trial: %llu nat: %llu ) p3: %llu ( iget: %llu read_data_page: %llu ( grab_cache: %llu ( get_page_cache: %llu ) get_dnode: %llu read_submit: %llu ) ) p4: %llu ( lockgrab: %llu ( read: %llu [ grab: %llu (get_cache: %llu wait_stable: %llu ) get_dnode: %llu read_submit: %llu ] lock: %llu ) get_node: %llu real_write: %llu ) (dsec_gc_cnt: %llu)", 
+			__func__, sbi->gc_total_ssa_read_time_sum / sbi->gc_cnt, 
+			sbi->gc_p0_total_time_sum / gc_data_sec_cnt, 
+			sbi->gc_p1_total_time_sum / gc_data_sec_cnt, 
+			sbi->gc_p2_total_time_sum / gc_data_sec_cnt, 
+			sbi->gc_isalive_grab_cache / gc_data_sec_cnt, 
+			sbi->gc_isalive_read_inode / gc_data_sec_cnt, 
+			sbi->gc_isalive_lock_inode_page / gc_data_sec_cnt, 
+			sbi->isalive_inode_read_page_hit_cnt, 
+			sbi->isalive_inode_read_trial_cnt, 
+			sbi->p2_isalive_nat_read /  gc_data_sec_cnt, 
+			
+			sbi->gc_p3_total_time_sum / gc_data_sec_cnt, 
+			sbi->gc_p3_iget_total_time_sum / gc_data_sec_cnt, 
+			sbi->gc_p3_read_total_time_sum / gc_data_sec_cnt, 
+			sbi->gc_p3_read_grab_cache_total_time_sum / gc_data_sec_cnt, 
+			sbi->gc_p3_get_page_cache_total_time_sum / gc_data_sec_cnt, 
+			sbi->gc_p3_read_get_dnode_total_time_sum / gc_data_sec_cnt,
+
+			sbi->gc_p3_submit_read_total_time_sum / gc_data_sec_cnt,
+			
+			sbi->gc_p4_total_time_sum / gc_data_sec_cnt, 
+				sbi->gc_total_grab_gc_block_time_sum / gc_data_sec_cnt,  /* lockgrab */
+					/* lock page phase in p4 */	
+					sbi->p4_get_lock_read_page / gc_data_sec_cnt,	/* read */
+						sbi->p4_get_lock_read_page_grab_cache / gc_data_sec_cnt, /* grab */
+							sbi->gc_p4_get_page_cache_total_time_sum / gc_data_sec_cnt, 
+							sbi->gc_p4_wait_for_stable_page_total_time_sum / gc_data_sec_cnt, 
+						sbi->gc_p4_read_get_dnode_total_time_sum / gc_data_sec_cnt, /* get_dnode */
+						sbi->gc_p4_submit_read_total_time_sum / gc_data_sec_cnt, /* read_submit */
+					/* end of lock page phase in p4 */	
+
+					sbi->p4_get_lock_lock_page / gc_data_sec_cnt, /* lock */
+			/* write phase in p4 */
+			sbi->gc_p4_get_node_total_time_sum / gc_data_sec_cnt, 
+			sbi->gc_p4_real_write_total_time_sum / gc_data_sec_cnt, 
+			gc_data_sec_cnt
+			);
+
+
+			unsigned long long meta_read_lat = sbi->gc_total_ssa_read_time_sum / sbi->gc_cnt
+					+ sbi->p2_isalive_nat_read / gc_data_sec_cnt
+					+ sbi->gc_p0_total_time_sum / gc_data_sec_cnt; 
+
+			unsigned long long filemap_read_lat = 
+				sbi->gc_p1_total_time_sum / gc_data_sec_cnt
+				+ (sbi->gc_p2_total_time_sum - sbi->p2_isalive_nat_read) / gc_data_sec_cnt 
+				+ sbi->gc_p3_iget_total_time_sum / gc_data_sec_cnt
+				+ sbi->gc_p3_read_get_dnode_total_time_sum / gc_data_sec_cnt
+				+ sbi->gc_p4_read_get_dnode_total_time_sum / gc_data_sec_cnt 
+				+ sbi->gc_p4_get_node_total_time_sum / gc_data_sec_cnt 
+				; 
+
+			unsigned long long cache_alloc_lat = 
+				+ sbi->gc_p3_read_grab_cache_total_time_sum / gc_data_sec_cnt
+				+ sbi->p4_get_lock_read_page_grab_cache / gc_data_sec_cnt; 
+
+			unsigned long long read_lat = sbi->gc_p3_submit_read_total_time_sum / gc_data_sec_cnt
+							+ sbi->gc_p3_submit_read_wait_writeback_total_time_sum / gc_data_sec_cnt
+							+ sbi->p4_get_lock_lock_page / gc_data_sec_cnt;
+
+			unsigned long long write_lat = sbi->gc_p4_real_write_total_time_sum / gc_data_sec_cnt
+							+ sbi->gc_p4_wait_writeback_total_time_sum / gc_data_sec_cnt;
+			unsigned long long total_lat = avg_cp_lat + meta_read_lat + filemap_read_lat + cache_alloc_lat + read_lat + write_lat;
+
+			printk("%s: gc_latency_breakdown total: %llu (cp: %llu meta: %llu filemap: %llu cache_alloc_lat: %llu read: %llu write: %llu )", 
+				__func__, total_lat, avg_cp_lat, 
+				meta_read_lat, 
+				filemap_read_lat, cache_alloc_lat, read_lat, write_lat
+			);
+
+		}
+	}
+}
+#endif
+
+static inline void try_print_WAF(struct f2fs_sb_info *sbi) {
+	unsigned long long cur_t = OS_TimeGetUS();
+	if (cur_t - sbi->last_t > WAF_TIME_INTERVAL) {
+		print_WAF(sbi);
+		
+		sbi->last_t = cur_t;
+		sbi->gc_written_blk = 0;
+		atomic_set(&sbi->host_written_blk, 0);
+#ifdef GC_LATENCY
+		print_GC_LATENCY(sbi);
+#endif
+	}
+}
+#endif
 
 int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 {
 	struct f2fs_checkpoint *ckpt = F2FS_CKPT(sbi);
 	unsigned long long ckpt_ver;
 	int err = 0;
-	struct dynamic_discard_map_control *ddmc = SM_I(sbi)->ddmc_info;
-	struct dynamic_discard_map *ddm, *tmpddm;
-	struct list_head *history_head_ddm = &ddmc->history_head;
-	//int nid7_syn = 0;
-	//static int jw_cp_cnt = 0;
+
+	//printk("[JW DBG] %s: start\n", __func__);
 	if (f2fs_readonly(sbi->sb) || f2fs_hw_is_readonly(sbi))
 		return -EROFS;
 
@@ -1632,21 +1750,6 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 			return 0;
 		f2fs_warn(sbi, "Start checkpoint disabled!");
 	}
-
-	if (cpc->excess_prefree && !excess_prefree_segs(sbi))
-		return 0;
-	
-	//mutex_lock(&ddmc->ddm_lock);	
-	////printk("f2fs CP start!! ddmc node cnt: %d\n", ddmc->node_cnt);
-	///*printk("f2fs CP start!! total_inv_blk_cnt: %d, total_val_blk_cnt: %d\n", \
-	//		ddmc->total_inv_blk_cnt, \
-	//		ddmc->total_val_blk_cnt);
-	//		*/
-	//printk("f2fs CP start!! total_inv_blk_cnt: %d MB, total_val_blk_cnt: %d MB\n", \
-	//		atomic_read(&ddmc->total_inv_blk_cnt)*4/1024, \
-	//		atomic_read(&ddmc->total_val_blk_cnt)*4/1024);
-	//mutex_unlock(&ddmc->ddm_lock);	
-
 	if (cpc->reason != CP_RESIZE)
 		down_write(&sbi->cp_global_sem);
 
@@ -1662,11 +1765,6 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	trace_f2fs_write_checkpoint(sbi->sb, cpc->reason, "start block_ops");
 
 	err = block_operations(sbi);
-	//printk("f2fs CP start!! total_inv_blk_cnt: %d MB, total_val_blk_cnt: %d MB\n", \
-	//		atomic_read(&ddmc->total_inv_blk_cnt)*4/1024, \
-	//		atomic_read(&ddmc->total_val_blk_cnt)*4/1024);
-
-
 	if (err)
 		goto out;
 
@@ -1676,8 +1774,6 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 
 	/* this is the case of multiple fstrims without any changes */
 	if (cpc->reason & CP_DISCARD) {
-		panic("f2fs_write_checkpoint: not prepared to CP_DISCARD\n");
-		/*
 		if (!f2fs_exist_trim_candidates(sbi, cpc)) {
 			unblock_operations(sbi);
 			goto out;
@@ -1690,7 +1786,7 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 			f2fs_clear_prefree_segments(sbi, cpc);
 			unblock_operations(sbi);
 			goto out;
-		}*/
+		}
 	}
 
 	/*
@@ -1706,32 +1802,20 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	if (err)
 		goto stop;
 
-	//printk("[JW DBG] %s: CP START!!\n", __func__);
-	mutex_lock(&SM_I(sbi)->ddmc_info->ddm_lock);	
-	flush_dynamic_discard_maps(sbi, cpc);
-	mutex_unlock(&SM_I(sbi)->ddmc_info->ddm_lock);	
-	
+	f2fs_flush_sit_entries(sbi, cpc);
 
-	//f2fs_flush_sit_entries(sbi, cpc);
-	//printk("f2fs flush end!! ddmc node cnt: %d\n", ddmc->node_cnt);
+	try_print_WAF(sbi);
+
 	/* save inmem log status */
-	//f2fs_save_inmem_curseg(sbi);
+	f2fs_save_inmem_curseg(sbi);
 
 	err = do_checkpoint(sbi, cpc);
-
-	/* Umount case: issue every discard journals, and remove all ddm nodes. */	
-	if (cpc->reason & CP_UMOUNT){
-		issue_and_clean_all_ddm(sbi);
-	}
-
-	if (err){
+	if (err)
 		f2fs_release_discard_addrs(sbi);
-		printk("[JW DBG] %s: do_checkpoint returns error, not expected!, also modify f2fs_release_discard_addrs\n", __func__);
-	}
 	else
 		f2fs_clear_prefree_segments(sbi, cpc);
 
-	//f2fs_restore_inmem_curseg(sbi);
+	f2fs_restore_inmem_curseg(sbi);
 stop:
 	unblock_operations(sbi);
 	stat_inc_cp_count(sbi->stat_info);
@@ -1745,16 +1829,6 @@ stop:
 out:
 	if (cpc->reason != CP_RESIZE)
 		up_write(&sbi->cp_global_sem);
-	/*if (nid7_syn){
-		printk("[JW DBG] %s: fin cp: intended bug\n", __func__);
-		f2fs_bug_on(sbi, 1);
-	}*/
-	/*jw_cp_cnt += 1;
-	printk("f2fs CP end!!"); 
-	if (jw_cp_cnt == 3){
-		printk("[JW DBG] %s: fin %ds cp: intended bug\n", __func__, jw_cp_cnt);
-		f2fs_bug_on(sbi, 1);
-	}*/
 	return err;
 }
 

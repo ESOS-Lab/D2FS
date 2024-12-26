@@ -156,7 +156,6 @@ struct f2fs_checkpoint {
 	__le16 cur_data_blkoff[MAX_ACTIVE_DATA_LOGS];
 	__le32 ckpt_flags;		/* Flags : umount and journal_present */
 	__le32 cp_pack_total_block_count;	/* total # of one cp pack */
-	__le32 discard_journal_block_count;	/*IFLBA: discard journal blk cnt*/
 	__le32 cp_pack_start_sum;	/* start block number of data summary */
 	__le32 valid_node_count;	/* Total number of valid nodes */
 	__le32 valid_inode_count;	/* Total number of valid inodes */
@@ -482,59 +481,6 @@ struct f2fs_summary_block {
 	struct f2fs_journal journal;
 	struct summary_footer footer;
 } __packed;
-
-/* discard journal for IFLBA F2FS */
-#define DISCARD_BLOCK_MAP_SIZE 64
-
-/*discard journal bitmap size: 68 byte*/
-struct discard_journal_bitmap {
-	__le32 start_blkaddr;
-	unsigned char discard_map[DISCARD_BLOCK_MAP_SIZE];
-} __packed;
-
-struct discard_journal_range {
-	__le32 start_blkaddr;
-	__le32 len;
-} __packed;
-
-enum {
-	DJ_BLOCK_BITMAP,
-	DJ_BLOCK_RANGE
-};
-
-struct discard_journal_block_info {
-	unsigned char type; 	/* bitmap or range */
-	__le32 entry_cnt;	/* number of bitmap or number of range */
-} __packed;
-
-#define DJ_BLOCK_FREE_SPACE (F2FS_BLKSIZE - sizeof(struct discard_journal_block_info)) 
-
-#define DJ_BITMAP_ENTRIES_IN_DJ_BLOCK (DJ_BLOCK_FREE_SPACE / \
-				sizeof(struct discard_journal_bitmap) )
-
-#define DJ_RANGE_ENTRIES_IN_DJ_BLOCK (DJ_BLOCK_FREE_SPACE / \
-				sizeof(struct discard_journal_range) )
-/*16 byte left. 4 bytes for entry_cnt. 12 bytes unused*/
-struct discard_journal_block{
-	struct discard_journal_block_info dj_block_info;
-	union {	
-		struct discard_journal_bitmap bitmap_entries[DJ_BITMAP_ENTRIES_IN_DJ_BLOCK];
-		struct discard_journal_range range_entries[DJ_RANGE_ENTRIES_IN_DJ_BLOCK];
-	};
-} __packed;
-
-#define DISCARD_JOURNAL_BITMAP_BLOCKS(discard_seg_cnt)	\
-	(discard_seg_cnt % DJ_BITMAP_ENTRIES_IN_DJ_BLOCK ? \
-	 	discard_seg_cnt / DJ_BITMAP_ENTRIES_IN_DJ_BLOCK + 1  : \
-		discard_seg_cnt / DJ_BITMAP_ENTRIES_IN_DJ_BLOCK )
-
-#define DISCARD_RANGE_MAX_NUM 40
-
-#define DISCARD_JOURNAL_RANGE_BLOCKS(discard_range_cnt)	\
-	(discard_range_cnt % DJ_RANGE_ENTRIES_IN_DJ_BLOCK ? \
-	 	discard_range_cnt / DJ_RANGE_ENTRIES_IN_DJ_BLOCK + 1  : \
-		discard_range_cnt / DJ_RANGE_ENTRIES_IN_DJ_BLOCK )
-
 
 /*
  * For directory operations

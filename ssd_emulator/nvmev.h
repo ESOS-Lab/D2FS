@@ -349,7 +349,7 @@ struct nvmev_result {
 	struct list mtl_translation_list;	/* to convey translated lba from aimless translator to mtl */
 
 	/* since read is not translated sequentially in nvmevirt, we need devoted translatin list for read */
-	//struct list mtl_read_translation_list[SSD_PARTITIONS];	/* translation list for read. */
+	struct list mtl_read_translation_list[SSD_PARTITIONS];	/* translation list for read. */
 #endif
 #ifdef MIGRATION_IO
 	//struct inflight_set_entry *ise;
@@ -361,9 +361,14 @@ struct nvmev_result {
 	unsigned int migration_cnt;
 };
 
-#ifdef MULTI_PARTITION_MTL
-#define NO_TYPE			7
-//#define NO_TYPE			8
+//#ifdef MULTI_PARTITION_MTL
+#ifndef MULTI_PARTITION_MTL
+#define NO_TYPE			8
+#define NO_USER_PARTITION	8	/* # of meta + data partition */
+#endif
+
+#ifndef MULTI_PARTITION_MTL
+#define NO_TYPE			8
 
 #define PARTITION_SIZE		0x20000000
 #define PARTITION_BITS		29
@@ -371,47 +376,14 @@ struct nvmev_result {
 #define LOCAL_PARTITION_BITS		(PARTITION_BITS - SSD_PARTITION_BITS)
 #define LOCAL_PARTITION_SIZE		(PARTITION_SIZE / SSD_PARTITIONS)
 
-//#define	WINDOW_EXT_RATE		25
-//#define	WINDOW_EXT_RATE		18
-#define	WINDOW_EXT_RATE		6
+#define	WINDOW_EXT_RATE		3
+#define	IM_WINDOW_EXT_RATE		6	/* interval mapping's extension rate for consuming same mem with IM */
+//#define	IM_WINDOW_EXT_RATE		18	/* for fio 600s */
 #define MEM_EXT_RATE		1
 #define INVALID_MAPPING		NULL
 #define MAX_KMALLOC_SIZE	MB(1)
 #define MTL_ZONE_SIZE		(MAX_KMALLOC_SIZE - sizeof(struct mtl_zone_info))
 
-#define NO_USER_PARTITION	7	/* # of meta + data partition */
-#define NO_GC_WP	3	/* # of meta + data partition */
-
-#define IS_GC_PARTITION(partno)	\
-	((partno == GC_PARTITION))
-
-#define META_PARTITION		0
-#define GC_PARTITION		7
-#define HOT_DATA_PARTITION		1
-#define WARM_DATA_PARTITION		2
-#define COLD_DATA_PARTITION		3
-#define HOT_NODE_PARTITION		4
-#define WARM_NODE_PARTITION		5
-#define COLD_NODE_PARTITION		6
-
-#define IS_NODE_PARTITION(n)	(COLD_DATA_PARTITION < n && n <= COLD_NODE_PARTITION)
-#define IS_DATA_PARTITION(n)	(META_PARTITION < n && n <= COLD_DATA_PARTITION)
-
-#define META_GC_WP	0
-#define DATA_GC_WP	1
-#define NODE_GC_WP	2
-
-#define IS_META_PARTITION(n)	(META_PARTITION == n)
-
-#define IS_MAIN_PARTITION(n)	(META_PARTITION < n && n < GC_PARTITION)
-
-#define START_OFS_IN_MAIN_PART	0x100
-
-#define META_PARTITION_RATE	32		/* for f2fs */
-#define NPAGES_META(sp)		(sp.tt_pgs / META_PARTITION_RATE)
-#define NPAGES_MAIN(sp)		(sp.tt_pgs * WINDOW_EXT_RATE)
-
-/////////////////////
 #ifdef ZONE_MAPPING
 
 #ifdef TWO_GC_PARTITION
@@ -420,6 +392,13 @@ struct nvmev_result {
 #define NO_USER_PARTITION	7	/* # of meta + data partition */
 #endif
 
+#define META_PARTITION		0
+#define COLD_DATA_PARTITION		3
+#define COLD_NODE_PARTITION		6
+#define HOT_DATA_PARTITION		1
+#define HOT_NODE_PARTITION		4
+//#define GC_PARTITION		(COLD_NODE_PARTITION)
+#define GC_PARTITION		(7)
 
 #define IS_GC_PARTITION(partno)	\
 	((partno == GC_PARTITION) || (partno == COLD_DATA_PARTITION))
@@ -443,21 +422,18 @@ struct nvmev_result {
 #define IS_NODE_PARTITION(n)	(COLD_DATA_PARTITION < n && n <= COLD_NODE_PARTITION)
 #endif
 
+#define META_PARTITION_RATE	32		/* for f2fs */
+#define NPAGES_META(sp)		(sp.tt_pgs / META_PARTITION_RATE)
+
+#ifdef EQUAL_IM_MEM
+#define NPAGES_MAIN(sp)		(sp.tt_pgs * IM_WINDOW_EXT_RATE)
+#define NO_TYPE_IM	7
+#endif
+
 #define NZONES_PER_PARTITION(sp)	(sp.tt_lines * WINDOW_EXT_RATE)
 //#define NZONES_PER_GC_PARTITION(sp)	(sp.tt_lines)
 #define NZONES_PER_GC_PARTITION(sp)	(sp.tt_lines * WINDOW_EXT_RATE)
-#define START_OFS_IN_MAIN_PART	0x100
 
-#endif
-#ifdef MEM_CALC
-#define MSblks (4096*16*16)
-#ifdef MEM_CALC_32BIT
-#define MAP_SZ	4
-#else
-#define MAP_SZ	8
-#endif
-#define RANGE_DIR_SZ	2
-#define default_MS_sz (10 + 4 + MAP_SZ * (1 + MSblks))
 #endif
 
 typedef struct mem_page_entry {
@@ -486,18 +462,33 @@ struct mtl_zone_entry {
 
 #endif
 
-#ifdef COUPLED_GC
+//#ifndef COUPLED_GC
+//struct gc_log {
+//	uint64_t old_lpn;		/* key */
+//	uint64_t new_lpn;
+//	//enum gc_log_status status;
+//	char status;
+//	struct list_elem list_elem;	/* buffered or inflight gc log list entry */
+//	struct hlist_node hnode;	/* aimless entry */
+//#ifdef GC_LOG_MERGE
+//	struct hlist_node hnode_merge;
+//#endif
+//};
+//#endif
+
+
+//#ifdef COUPLED_GC
 #define HBITS_AIMLESS_TRANSLATOR 18
 #define PGS_PER_FS_SEGMENT		512
 #define	NO_INIT_GC_LOG			(PGS_PER_FS_SEGMENT * 1024)
 
-#ifdef MIGRATION_IO
+//#ifdef MIGRATION_IO
 #define HBITS_INFLIGHT_GC_LOG_HTABLE	8
 //#define MIGRATION_THRESHOLD		(2 * 1024)
 //#define MIGRATION_THRESHOLD		(2*1024 * 1024)
 #define MIGRATION_THRESHOLD		(512 * 1024)
-#define RATIO_OF_GC_LOG_TO_PAGE_MAP		10	/* Percent */
-#endif
+#define RATIO_OF_GC_LOG_TO_PAGE_MAP		40	/* Percent */
+//#endif
 
 //enum gc_log_status {
 //	GC_LOG_FREE,
@@ -519,7 +510,6 @@ struct gc_log {
 	struct hlist_node hnode_merge;
 #endif
 };
-
 
 /* TODO: need to set NR_INFLIGHT_SET as rev completion queue size */
 #ifdef MIGRATION_IO
@@ -551,6 +541,9 @@ struct gc_log_mgmt {
 	
 	struct list free_gc_log_list;
 	struct list buffered_gc_log_list;
+#ifdef SEPARATE_GC_LOG
+	struct list buffered_gc_log_list_node;
+#endif
 
 	unsigned int hbits;	/* aimless translator hash bits. */
 #ifdef MIGRATION_IO
@@ -562,8 +555,11 @@ struct gc_log_mgmt {
 	uint64_t completed_command_id;	
 	struct inflight_set_entry ise_array[NR_INFLIGHT_SET];
 #endif
-};
+#ifdef MG_HANDLER_DISABLED
+	struct list unhandled_gc_log_list;
 #endif
+};
+//#endif
 
 #ifdef COUPLED_GC_MTL
 /* migration log */
@@ -604,58 +600,6 @@ struct trans_entry {
 
 #endif
 
-#ifdef MEM_CALC
-#define MNODES_PER_ZNODE	1024
-#define	ZNODE_SIZE			(1024 * MAP_SZ)
-struct ms{
-        bool is_alloc;
-        bool is_discard;
-        bool is_dirty;
-        int size;
-        int trunc_size;
-        int valid_cnt;
-
-        char *bitmap;
-};
-
-struct ms_info{
-        uint64_t global_sLBA;
-        uint64_t global_eLBA;
-        int global_sMSidx;
-        int global_eMSidx;
-        int trimmed_start_MSidx;
-#ifdef PARTIAL_COMPACTION
-        int last_compaction_sidx;
-        int last_compaction_eidx;
-#endif
-
-#ifdef COMPACTION_DIRTY_ONLY
-	int n_dirty_ms;
-	struct list	dirty_ms_list;		/* free page list */
-#endif
-
-	int compacted_memory;
-        int compacted_size;
-        int truncated_memory;
-        int dealloc_ms;
-
-        struct ms *ms;
-
-        uint16_t *znode_cnt;
-	unsigned int dealloc_znode;
-};
-
-
-#ifdef COMPACTION_DIRTY_ONLY
-struct dirty_ms_entry {
-	unsigned int ms_idx;		/* key */
-	struct list_elem list_elem;	/* buffered or inflight gc log list entry */
-};
-#endif
-
-#endif
-
-
 struct nvmev_ns {
 	uint32_t id;
 	uint32_t csi;
@@ -682,6 +626,7 @@ struct nvmev_ns {
 	struct mtl_zone_entry ** mtls[NO_TYPE];	/* ramdisk mapping table */
 	struct list	free_mem_page_list;		/* free page list */
 	uint64_t		n_mtl_zones;
+	uint64_t		n_mtl_gc_zones;
 	uint64_t start_zoneno[NO_TYPE]; /* start zone number of each partition. support sliding window */
 #endif
 #ifdef COUPLED_GC
@@ -693,24 +638,38 @@ struct nvmev_ns {
 #endif
 #ifdef WAF
 	unsigned long long last_t;
-	unsigned long long last_compaction_t;
 	unsigned long long write_volume_host; /* 4KB Blocks */
 	unsigned long long write_volume_gc; /* 4KB Blocks */
 	unsigned long long total_write_volume_host; /* 4KB Blocks */
 	unsigned long long total_write_volume_gc; /* 4KB Blocks */
+#ifdef HOST_GC_OVERHEAD_ANALYSIS                                            
+    unsigned long long last_t_host_gc_analy;                                
+    uint64_t req_cnt;       /* user request count during time interval */
+#endif                                                                      
+#endif
+#ifdef CHIP_UTIL
+    unsigned long long last_t_chip_util;                                
 #endif
 #ifdef MG_CMD_CNT
 	unsigned long long mg_cmd_cnt; 
 	unsigned long long total_mg_cmd_cnt; 
+	unsigned long long discarded_gc_log;
 #endif
-#ifdef MEM_CALC
-        struct ms_info *ms_infos;
+#ifdef CMD_CNT
+	unsigned long long total_write_blks_host; 
+	unsigned long long total_read_blks_host; 
+	unsigned long long total_discard_cmds_host; 
 #endif
-	//unsigned int n_gc_log_max; /* migration threshold */
-#ifdef MEASURE_TAIL
-	unsigned int tail_lba[NO_TYPE];
+	unsigned int n_gc_log_max; /* migration threshold */
+#ifdef EQUAL_IM_MEM
+	uint64_t mtl_redundant;
 #endif
-
+#ifdef CHIP_UTIL
+	uint64_t nand_idle_t_sum;
+	uint64_t nand_active_t_sum;
+	uint64_t avg_nand_idle_t_sum_total;
+	uint64_t avg_nand_active_t_sum_total;
+#endif
 };
 
 // VDEV Init, Final Function

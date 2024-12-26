@@ -117,6 +117,15 @@
  *   ->tasklist_lock            (memory_failure, collect_procs_ao)
  */
 
+
+unsigned long long OS_TimeGetUS_4( void )
+{
+    struct timespec64 lTime;
+    ktime_get_coarse_real_ts64(&lTime);
+    return (lTime.tv_sec * 1000000 + div_u64(lTime.tv_nsec, 1000) );
+
+}
+
 static void page_cache_delete(struct address_space *mapping,
 				   struct page *page, void *shadow)
 {
@@ -913,6 +922,194 @@ error:
 }
 ALLOW_ERROR_INJECTION(__add_to_page_cache_locked, ERRNO);
 
+
+noinline int __add_to_page_cache_locked_jw(struct page *page,
+					struct address_space *mapping,
+					pgoff_t offset, gfp_t gfp,
+					void **shadowp)
+{
+	static unsigned long long init_time = 0;
+	static unsigned long long get_page_time = 0;
+	static unsigned long long mem_cgroup_time = 0;
+	static unsigned long long xas_split_alloc_time = 0;
+	static unsigned long long xas_split_time = 0;
+	static unsigned long long xas_store_time = 0;
+	static unsigned long long xas_nomem_time = 0;
+	static unsigned long long xas_error_time = 0;
+	static unsigned long long loop_whole_time = 0;
+	static unsigned long long loop_out_whole_time = 0;
+	static unsigned long long trace_time = 0;
+	static unsigned long long xas_lock_irq_time = 0;
+	static unsigned long long inc_lruvec_time = 0;
+	static unsigned long long xas_unlock_irq_time = 0;
+	static unsigned long long whole_time_noprint = 0;
+	static unsigned long long whole_time = 0;
+	unsigned long long start_t, end_t;
+	unsigned long long start_t_2, end_t_2;
+	unsigned long long start_t_3, end_t_3;
+	unsigned long long start_t_whole, end_t_whole;
+	unsigned long long start_t_whole_noprint, end_t_whole_noprint;
+	static unsigned long long last_t = 0;
+	unsigned long long cur_t = OS_TimeGetUS_4();
+	static int call_cnt = 0;
+	static int loop_cnt = 0;
+	static int err_cnt = 0;
+	static int err_cnt2 = 0;
+	bool nomem_ret;
+	call_cnt ++;
+	
+	start_t_whole = OS_TimeGetUS_4();
+
+	if (cur_t - last_t > 1000000) {
+		//if (cache_trial_cnt > 0) 
+		//printk("%s: p3 init_time: %llu get_page_t: %llu cgroup_time: %llu loop_out_t: %llu loop_t: %llu [xas_split_alloc: %llu xas_lock_irq_time: %llu  xas_split_time: %llu xas_store_t: %llu inc_lruvec_time: %llu xas_unlock_irq_time: %llu xas_nomem_t: %llu] xas_error_t: %llu trace_t: %llu, call_cnt: %d loop_cnt: %d err_cnt: %d err_cnt2: %d whole_t: %llu whole_t_noprint: %llu", 
+		//	__func__, init_time, get_page_time, mem_cgroup_time, loop_out_whole_time, 
+		//	loop_whole_time, xas_split_alloc_time, 
+		//	xas_lock_irq_time, xas_split_time, xas_store_time, 
+		//	inc_lruvec_time, xas_unlock_irq_time, 
+		//	xas_nomem_time, xas_error_time, trace_time, call_cnt, loop_cnt, err_cnt, err_cnt2, whole_time, whole_time_noprint);
+		
+		last_t = cur_t;
+	}
+	start_t_whole_noprint = OS_TimeGetUS_4();
+
+	
+	start_t = OS_TimeGetUS_4();
+	XA_STATE(xas, &mapping->i_pages, offset);
+	int huge = PageHuge(page);
+	int error;
+	bool charged = false;
+
+	VM_BUG_ON_PAGE(!PageLocked(page), page);
+	VM_BUG_ON_PAGE(PageSwapBacked(page), page);
+	mapping_set_update(&xas, mapping);
+	end_t = OS_TimeGetUS_4();
+	init_time += end_t - start_t;
+
+	start_t = OS_TimeGetUS_4();
+	get_page(page);
+	page->mapping = mapping;
+	page->index = offset;
+	end_t = OS_TimeGetUS_4();
+	get_page_time += end_t - start_t;
+
+	if (!huge) {
+		start_t = OS_TimeGetUS_4();
+		error = mem_cgroup_charge(page, current->mm, gfp);
+		if (error){
+			err_cnt ++;
+			goto error;
+		}
+		charged = true;
+		end_t = OS_TimeGetUS_4();
+		mem_cgroup_time += end_t - start_t;
+	}
+
+	gfp &= GFP_RECLAIM_MASK;
+
+	start_t_3 = OS_TimeGetUS_4();
+	do {
+		start_t_2 = OS_TimeGetUS_4();
+		loop_cnt ++;
+		unsigned int order = xa_get_order(xas.xa, xas.xa_index);
+		void *entry, *old = NULL;
+
+		start_t = OS_TimeGetUS_4();
+		if (order > thp_order(page)) {
+			xas_split_alloc(&xas, xa_load(xas.xa, xas.xa_index),
+					order, gfp);
+		}
+		end_t = OS_TimeGetUS_4();
+		xas_split_alloc_time += end_t - start_t;
+
+		start_t = OS_TimeGetUS_4();
+		xas_lock_irq(&xas);
+		xas_for_each_conflict(&xas, entry) {
+			old = entry;
+			if (!xa_is_value(entry)) {
+				xas_set_err(&xas, -EEXIST);
+				goto unlock;
+			}
+		}
+		end_t = OS_TimeGetUS_4();
+		xas_lock_irq_time += end_t - start_t;
+
+		start_t = OS_TimeGetUS_4();
+		if (old) {
+			if (shadowp)
+				*shadowp = old;
+			/* entry may have been split before we acquired lock */
+			order = xa_get_order(xas.xa, xas.xa_index);
+			if (order > thp_order(page)) {
+				xas_split(&xas, old, order);
+				xas_reset(&xas);
+			}
+		}
+		end_t = OS_TimeGetUS_4();
+		xas_split_time += end_t - start_t;
+
+		start_t = OS_TimeGetUS_4();
+		xas_store(&xas, page);
+		end_t = OS_TimeGetUS_4();
+		xas_store_time += end_t - start_t;
+		if (xas_error(&xas))
+			goto unlock;
+
+		if (old)
+			mapping->nrexceptional--;
+		mapping->nrpages++;
+
+		start_t = OS_TimeGetUS_4();
+		/* hugetlb pages do not participate in page cache accounting */
+		if (!huge)
+			__inc_lruvec_page_state(page, NR_FILE_PAGES);
+		end_t = OS_TimeGetUS_4();
+		inc_lruvec_time += end_t - start_t;
+unlock:
+		start_t = OS_TimeGetUS_4();
+		xas_unlock_irq(&xas);
+		end_t = OS_TimeGetUS_4();
+		xas_unlock_irq_time += end_t - start_t;
+		
+		start_t = OS_TimeGetUS_4();
+		nomem_ret = xas_nomem(&xas, gfp);
+		end_t = OS_TimeGetUS_4();
+		xas_nomem_time += end_t - start_t;
+
+		end_t_2 = OS_TimeGetUS_4();
+		loop_whole_time += end_t_2 - start_t_2;
+	} while (nomem_ret);
+	end_t_3 = OS_TimeGetUS_4();
+	loop_out_whole_time += end_t_2 - start_t_2;
+
+	start_t = OS_TimeGetUS_4();
+	if (xas_error(&xas)) {
+		error = xas_error(&xas);
+		if (charged)
+			mem_cgroup_uncharge(page);
+		err_cnt2 ++;
+		goto error;
+	}
+	end_t = OS_TimeGetUS_4();
+	xas_error_time += end_t - start_t;
+
+	start_t = OS_TimeGetUS_4();
+	trace_mm_filemap_add_to_page_cache(page);
+	end_t = OS_TimeGetUS_4();
+	trace_time += end_t - start_t;
+	end_t_whole = OS_TimeGetUS_4();
+	whole_time += end_t_whole - start_t_whole;
+	whole_time_noprint += end_t_whole_noprint - start_t_whole_noprint;
+	return 0;
+error:
+	page->mapping = NULL;
+	/* Leave page->index set: truncation relies upon it */
+	put_page(page);
+	return error;
+}
+ALLOW_ERROR_INJECTION(__add_to_page_cache_locked_jw, ERRNO);
+
+
 /**
  * add_to_page_cache_locked - add a locked page to the pagecache
  * @page:	page to add
@@ -961,6 +1158,54 @@ int add_to_page_cache_lru(struct page *page, struct address_space *mapping,
 	return ret;
 }
 EXPORT_SYMBOL_GPL(add_to_page_cache_lru);
+
+int add_to_page_cache_lru_jw(struct page *page, struct address_space *mapping,
+				pgoff_t offset, gfp_t gfp_mask)
+{
+	void *shadow = NULL;
+	int ret;
+
+	static unsigned long long add_cache_time = 0;
+	unsigned long long start_t, end_t;
+	static unsigned long long last_t = 0;
+	unsigned long long cur_t = OS_TimeGetUS_4();
+	
+	if (cur_t - last_t > 1000000) {
+		//if (cache_trial_cnt > 0) 
+		//printk("%s: p3 add_to_page_cache: %llu", 
+		//	__func__, add_cache_time);
+		last_t = cur_t;
+	}
+
+	__SetPageLocked(page);
+	
+	start_t = OS_TimeGetUS_4();
+	ret = __add_to_page_cache_locked_jw(page, mapping, offset,
+					 gfp_mask, &shadow);
+	end_t = OS_TimeGetUS_4();
+	add_cache_time += end_t - start_t;
+
+	if (unlikely(ret))
+		__ClearPageLocked(page);
+	else {
+		/*
+		 * The page might have been evicted from cache only
+		 * recently, in which case it should be activated like
+		 * any other repeatedly accessed page.
+		 * The exception is pages getting rewritten; evicting other
+		 * data from the working set, only to cache data that will
+		 * get overwritten with something else, is a waste of memory.
+		 */
+		WARN_ON_ONCE(PageActive(page));
+		if (!(gfp_mask & __GFP_WRITE) && shadow)
+			workingset_refault(page, shadow);
+		lru_cache_add(page);
+	}
+	return ret;
+}
+EXPORT_SYMBOL_GPL(add_to_page_cache_lru_jw);
+
+
 
 #ifdef CONFIG_NUMA
 struct page *__page_cache_alloc(gfp_t gfp)
@@ -1868,6 +2113,245 @@ no_page:
 	return page;
 }
 EXPORT_SYMBOL(pagecache_get_page);
+
+
+struct page *pagecache_get_page_jw(struct address_space *mapping, pgoff_t index,
+		int fgp_flags, gfp_t gfp_mask)
+{
+	struct page *page;
+	
+	unsigned long long start_t, end_t;
+	static unsigned long long page_alloc_cnt = 0;
+	static unsigned long long cache_hit_cnt = 0;
+	static unsigned long long cache_trial_cnt = 0;
+	static unsigned long long func_call_cnt = 0;
+	static unsigned long long last_t = 0;
+	static unsigned long long cache_alloc_time = 0;
+	static unsigned long long get_cache_time = 0;
+	static unsigned long long add_cache_time = 0;
+	static unsigned long long lock_cache_time = 0;
+
+	func_call_cnt ++;
+	unsigned long long cur_t = OS_TimeGetUS_4();
+	if (cur_t - last_t > 1000000) {
+		//if (cache_trial_cnt > 0) 
+		//printk("%s: p3 pgcache hit: %llu trial: %llu alloc_cnt: %llu call_cnt: %llu", __func__, 
+		//cache_hit_cnt, cache_trial_cnt, page_alloc_cnt, func_call_cnt);
+		//printk("%s: p3 get_cache_t: %llu alloc_t: %llu add_t: %llu lock_cache_t: %llu", __func__, 
+		//	get_cache_time, cache_alloc_time, add_cache_time, lock_cache_time);
+		last_t = cur_t;
+	}
+
+repeat:
+	start_t = OS_TimeGetUS_4();
+	
+	page = find_get_entry(mapping, index);
+	
+	end_t = OS_TimeGetUS_4();
+	get_cache_time += end_t - start_t;
+	
+	cache_trial_cnt ++;
+	if (xa_is_value(page))
+		page = NULL;
+	if (!page)
+		goto no_page;
+
+	cache_hit_cnt ++;
+
+	if (fgp_flags & FGP_LOCK) {
+		if (fgp_flags & FGP_NOWAIT) {
+			if (!trylock_page(page)) {
+				put_page(page);
+				return NULL;
+			}
+		} else {
+			start_t = OS_TimeGetUS_4();
+			lock_page(page);
+			end_t = OS_TimeGetUS_4();
+			lock_cache_time += end_t - start_t;
+		}
+
+		/* Has the page been truncated? */
+		if (unlikely(page->mapping != mapping)) {
+			unlock_page(page);
+			put_page(page);
+			goto repeat;
+		}
+		VM_BUG_ON_PAGE(!thp_contains(page, index), page);
+	}
+
+	if (fgp_flags & FGP_ACCESSED)
+		mark_page_accessed(page);
+	else if (fgp_flags & FGP_WRITE) {
+		/* Clear idle flag for buffer write */
+		if (page_is_idle(page))
+			clear_page_idle(page);
+	}
+	if (!(fgp_flags & FGP_HEAD))
+		page = find_subpage(page, index);
+
+no_page:
+	if (!page && (fgp_flags & FGP_CREAT)) {
+		int err;
+		if ((fgp_flags & FGP_WRITE) && mapping_can_writeback(mapping))
+			gfp_mask |= __GFP_WRITE;
+		if (fgp_flags & FGP_NOFS)
+			gfp_mask &= ~__GFP_FS;
+	
+		start_t = OS_TimeGetUS_4();
+		page_alloc_cnt ++;
+
+		page = __page_cache_alloc(gfp_mask);
+		
+		end_t = OS_TimeGetUS_4();
+		cache_alloc_time += end_t - start_t;
+		
+		if (!page)
+			return NULL;
+
+		if (WARN_ON_ONCE(!(fgp_flags & (FGP_LOCK | FGP_FOR_MMAP))))
+			fgp_flags |= FGP_LOCK;
+
+		/* Init accessed so avoid atomic mark_page_accessed later */
+		if (fgp_flags & FGP_ACCESSED)
+			__SetPageReferenced(page);
+
+		start_t = OS_TimeGetUS_4();
+		//err = add_to_page_cache_lru(page, mapping, index, gfp_mask);
+		err = add_to_page_cache_lru_jw(page, mapping, index, gfp_mask);
+		
+		end_t = OS_TimeGetUS_4();
+		add_cache_time += end_t - start_t;
+
+		if (unlikely(err)) {
+			put_page(page);
+			page = NULL;
+			if (err == -EEXIST)
+				goto repeat;
+		}
+
+		/*
+		 * add_to_page_cache_lru locks the page, and for mmap we expect
+		 * an unlocked page.
+		 */
+		if (page && (fgp_flags & FGP_FOR_MMAP))
+			unlock_page(page);
+	}
+
+	return page;
+}
+EXPORT_SYMBOL(pagecache_get_page_jw);
+
+
+struct page *pagecache_get_page_jw_p4(struct address_space *mapping, pgoff_t index,
+		int fgp_flags, gfp_t gfp_mask)
+{
+	struct page *page;
+	
+	unsigned long long start_t, end_t;
+	static unsigned long long page_alloc_cnt = 0;
+	static unsigned long long cache_hit_cnt = 0;
+	static unsigned long long cache_trial_cnt = 0;
+	static unsigned long long last_t = 0;
+	static unsigned long long cache_alloc_time = 0;
+	static unsigned long long lock_page_time = 0;
+
+	unsigned long long cur_t = OS_TimeGetUS_4();
+	if (cur_t - last_t > 1000000) {
+		//if (cache_trial_cnt > 0) 
+		//	printk("%s: p4 pgcache hit: %llu trial: %llu alloc: %llu lock_page: %llu", __func__, 
+		//	cache_hit_cnt, cache_trial_cnt, page_alloc_cnt, cache_alloc_time, lock_page_time);
+		last_t = cur_t;
+	}
+
+repeat:
+	page = find_get_entry(mapping, index);
+	cache_trial_cnt ++;
+	if (xa_is_value(page))
+		page = NULL;
+	if (!page)
+		goto no_page;
+
+	cache_hit_cnt ++;
+
+	if (fgp_flags & FGP_LOCK) {
+		if (fgp_flags & FGP_NOWAIT) {
+			if (!trylock_page(page)) {
+				put_page(page);
+				return NULL;
+			}
+		} else {
+			start_t = OS_TimeGetUS_4();
+			lock_page(page);
+			end_t = OS_TimeGetUS_4();
+			lock_page_time += end_t - start_t;
+		}
+
+		/* Has the page been truncated? */
+		if (unlikely(page->mapping != mapping)) {
+			unlock_page(page);
+			put_page(page);
+			goto repeat;
+		}
+		VM_BUG_ON_PAGE(!thp_contains(page, index), page);
+	}
+
+	if (fgp_flags & FGP_ACCESSED)
+		mark_page_accessed(page);
+	else if (fgp_flags & FGP_WRITE) {
+		/* Clear idle flag for buffer write */
+		if (page_is_idle(page))
+			clear_page_idle(page);
+	}
+	if (!(fgp_flags & FGP_HEAD))
+		page = find_subpage(page, index);
+
+no_page:
+	if (!page && (fgp_flags & FGP_CREAT)) {
+		int err;
+		if ((fgp_flags & FGP_WRITE) && mapping_can_writeback(mapping))
+			gfp_mask |= __GFP_WRITE;
+		if (fgp_flags & FGP_NOFS)
+			gfp_mask &= ~__GFP_FS;
+	
+		start_t = OS_TimeGetUS_4();
+		page_alloc_cnt ++;
+
+		page = __page_cache_alloc(gfp_mask);
+		
+		end_t = OS_TimeGetUS_4();
+		cache_alloc_time += end_t - start_t;
+		
+		if (!page)
+			return NULL;
+
+		if (WARN_ON_ONCE(!(fgp_flags & (FGP_LOCK | FGP_FOR_MMAP))))
+			fgp_flags |= FGP_LOCK;
+
+		/* Init accessed so avoid atomic mark_page_accessed later */
+		if (fgp_flags & FGP_ACCESSED)
+			__SetPageReferenced(page);
+
+		err = add_to_page_cache_lru(page, mapping, index, gfp_mask);
+		if (unlikely(err)) {
+			put_page(page);
+			page = NULL;
+			if (err == -EEXIST)
+				goto repeat;
+		}
+
+		/*
+		 * add_to_page_cache_lru locks the page, and for mmap we expect
+		 * an unlocked page.
+		 */
+		if (page && (fgp_flags & FGP_FOR_MMAP))
+			unlock_page(page);
+	}
+
+	return page;
+}
+EXPORT_SYMBOL(pagecache_get_page_jw_p4);
+
 
 /**
  * find_get_entries - gang pagecache lookup
@@ -3367,6 +3851,79 @@ struct page *grab_cache_page_write_begin(struct address_space *mapping,
 	return page;
 }
 EXPORT_SYMBOL(grab_cache_page_write_begin);
+
+unsigned long long OS_TimeGetUS_( void )
+{
+    struct timespec64 lTime;
+    ktime_get_coarse_real_ts64(&lTime);
+    return (lTime.tv_sec * 1000000 + div_u64(lTime.tv_nsec, 1000) );
+
+}
+
+struct page *jw_grab_cache_page_write_begin(struct address_space *mapping,
+					pgoff_t index, unsigned flags, 
+					unsigned long long *lat1, 
+					unsigned long long *lat2
+					)
+{
+	struct page *page;
+	int fgp_flags = FGP_LOCK|FGP_WRITE|FGP_CREAT;
+	unsigned long long read_start_t, read_end_t;
+	read_start_t = OS_TimeGetUS_();
+
+	if (flags & AOP_FLAG_NOFS)
+		fgp_flags |= FGP_NOFS;
+
+	page = pagecache_get_page_jw(mapping, index, fgp_flags,
+			mapping_gfp_mask(mapping));
+	
+	read_end_t = OS_TimeGetUS_();
+	*lat1 = read_end_t - read_start_t;
+	read_start_t = OS_TimeGetUS_();
+	
+	if (page)
+		wait_for_stable_page(page);
+	
+	read_end_t = OS_TimeGetUS_();
+	*lat2 = read_end_t - read_start_t;
+
+	return page;
+}
+EXPORT_SYMBOL(jw_grab_cache_page_write_begin);
+
+struct page *jw_grab_cache_page_write_begin_p4(struct address_space *mapping,
+					pgoff_t index, unsigned flags, 
+					unsigned long long *lat1, 
+					unsigned long long *lat2
+					)
+{
+	struct page *page;
+	int fgp_flags = FGP_LOCK|FGP_WRITE|FGP_CREAT;
+	unsigned long long read_start_t, read_end_t;
+	read_start_t = OS_TimeGetUS_();
+
+	if (flags & AOP_FLAG_NOFS)
+		fgp_flags |= FGP_NOFS;
+
+	page = pagecache_get_page_jw_p4(mapping, index, fgp_flags,
+			mapping_gfp_mask(mapping));
+	
+	read_end_t = OS_TimeGetUS_();
+	*lat1 = read_end_t - read_start_t;
+	read_start_t = OS_TimeGetUS_();
+	
+	if (page)
+		wait_for_stable_page(page);
+	
+	read_end_t = OS_TimeGetUS_();
+	*lat2 = read_end_t - read_start_t;
+
+	return page;
+}
+EXPORT_SYMBOL(jw_grab_cache_page_write_begin_p4);
+
+
+
 
 ssize_t generic_perform_write(struct file *file,
 				struct iov_iter *i, loff_t pos)

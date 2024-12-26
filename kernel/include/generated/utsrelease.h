@@ -1,1 +1,1 @@
-#define UTS_RELEASE "5.11.0.iplfs"
+#define UTS_RELEASE "5.11.0.f2fs-zns"
