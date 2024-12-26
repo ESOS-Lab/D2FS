@@ -1,1 +1,1 @@
-#define UTS_RELEASE "5.11.0.f2fs-zns"
+#define UTS_RELEASE "5.11.0.vanilla-f2fs"

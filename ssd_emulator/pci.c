@@ -350,11 +350,6 @@ struct nvmev_dev *VDEV_INIT(void)
 
 	vdev->admin_q = NULL;
 
-#ifdef MIGRATION_IO
-	vdev->rev_cqe = NULL;
-	vdev->rev_sqe = NULL;
-#endif
-
 	return vdev;
 }
 

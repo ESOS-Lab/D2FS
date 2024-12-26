@@ -319,12 +319,6 @@ pgoff_t page_cache_prev_miss(struct address_space *mapping,
 struct page *pagecache_get_page(struct address_space *mapping, pgoff_t offset,
 		int fgp_flags, gfp_t cache_gfp_mask);
 
-struct page *pagecache_get_page_jw(struct address_space *mapping, pgoff_t offset,
-		int fgp_flags, gfp_t cache_gfp_mask);
-
-struct page *pagecache_get_page_jw_p4(struct address_space *mapping, pgoff_t offset,
-		int fgp_flags, gfp_t cache_gfp_mask);
-
 /**
  * find_get_page - find and get a page reference
  * @mapping: the address_space to search
@@ -483,18 +477,6 @@ static inline unsigned find_get_pages_tag(struct address_space *mapping,
 
 struct page *grab_cache_page_write_begin(struct address_space *mapping,
 			pgoff_t index, unsigned flags);
-
-struct page *jw_grab_cache_page_write_begin(struct address_space *mapping,
-			pgoff_t index, unsigned flags, 
-			unsigned long long *lat1, 
-			unsigned long long *lat2
-			);
-
-struct page *jw_grab_cache_page_write_begin_p4(struct address_space *mapping,
-			pgoff_t index, unsigned flags, 
-			unsigned long long *lat1, 
-			unsigned long long *lat2
-			);
 
 /*
  * Returns locked page at given index in given cache, creating it if needed.
@@ -773,10 +755,6 @@ int add_to_page_cache_locked(struct page *page, struct address_space *mapping,
 				pgoff_t index, gfp_t gfp_mask);
 int add_to_page_cache_lru(struct page *page, struct address_space *mapping,
 				pgoff_t index, gfp_t gfp_mask);
-
-int add_to_page_cache_lru_jw(struct page *page, struct address_space *mapping,
-				pgoff_t index, gfp_t gfp_mask);
-
 extern void delete_from_page_cache(struct page *page);
 extern void __delete_from_page_cache(struct page *page, void *shadow);
 int replace_page_cache_page(struct page *old, struct page *new, gfp_t gfp_mask);

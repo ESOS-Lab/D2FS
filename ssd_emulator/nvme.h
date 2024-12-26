@@ -16,7 +16,7 @@
 #define _LINUX_NVME_H
 
 #include <linux/types.h>
-#include "limited_interval_config.h"
+#include "jw_config.h"
 
 struct nvme_bar {
 	__u64			cap;	/* Controller Capabilities */
@@ -96,7 +96,6 @@ enum {
 	NVME_PS_FLAGS_MAX_POWER_SCALE	= 1 << 0,
 	NVME_PS_FLAGS_NON_OP_STATE	= 1 << 1,
 };
-
 
 struct nvme_id_ctrl {
 	__le16			vid;
@@ -312,9 +311,6 @@ enum nvme_opcode {
 	nvme_cmd_compare	= 0x05,
 	nvme_cmd_write_zeroes	= 0x08,
 	nvme_cmd_dsm		= 0x09,
-#ifdef MIGRATION_IO
-	nvme_cmd_rev_mg     = 0x0a,
-#endif
 	nvme_cmd_resv_register	= 0x0d,
 	nvme_cmd_resv_report	= 0x0e,
 	nvme_cmd_resv_acquire	= 0x11,
@@ -413,10 +409,6 @@ enum nvme_admin_opcode {
 	nvme_admin_set_features		= 0x09,
 	nvme_admin_get_features		= 0x0a,
 	nvme_admin_async_event		= 0x0c,
-#ifdef MIGRATION_IO
-    nvme_admin_create_rev_sq	= 0x0e,
-    nvme_admin_create_rev_cq	= 0x0f,
-#endif
 	nvme_admin_activate_fw		= 0x10,
 	nvme_admin_download_fw		= 0x11,
 	nvme_admin_format_nvm		= 0x80,
@@ -509,39 +501,6 @@ struct nvme_create_sq {
 	__u32			rsvd12[4];
 };
 
-#ifdef MIGRATION_IO
-struct nvme_create_rev_sq {
-    __u8            opcode;
-    __u8            flags;
-    __u16           command_id;
-    __u32           rsvd1;                                                  
-    __le64          dma_pool_addr;  /* dma pool addr for reverse mg pairs */
-    __le64          dma_pool_size;  /* dma pool size for reverse mg pairs */
-	__le64          prp1;
-    __u64           rsvd8;
-    __le16          sqid;
-    __le16          qsize;
-    __le16          sq_flags;
-    __le16          irq_vector;
-    __u32           rsvd12[4];
-};
-
-struct nvme_create_rev_cq {
-    __u8            opcode;
-    __u8            flags;
-    __u16           command_id;
-    __u32           rsvd1[5];
-    __le64          prp1;
-    __u64           rsvd8;
-    __le16          cqid;
-    __le16          qsize;
-    __le16          cq_flags;
-    __le16          sqid;
-    __u32           rsvd12[4];
-};
-#endif
-
-
 struct nvme_delete_queue {
 	__u8			opcode;
 	__u8			flags;
@@ -592,10 +551,6 @@ struct nvme_command {
 		struct nvme_features features;
 		struct nvme_create_cq create_cq;
 		struct nvme_create_sq create_sq;
-#ifdef MIGRATION_IO
-        struct nvme_create_rev_sq create_rev_sq;
-        struct nvme_create_rev_cq create_rev_cq;
-#endif
 		struct nvme_delete_queue delete_queue;
 		struct nvme_download_firmware dlfw;
 		struct nvme_format_cmd format;
@@ -673,48 +628,6 @@ struct nvme_completion {
 	__u16	command_id;	/* of the command which completed */
 	__le16	status;		/* did the command fail, and if so, why? */
 };
-
-#ifdef MIGRATION_IO
-
-#define NR_MG_PAIR  256
-
-struct mg_pair {
-    __le64  old_lba;
-    __le64  new_lba;
-};
-
-/* migration command from device */
-struct nvme_mg_command {
-	__u8			opcode;
-	__u8			flags;
-	__u16			command_id;
-	__le32			nsid;
-	__u16			rsvd2[7];
-	__le16			phase;
-	__le64			prp1;  /* migration batch index */
-	__le64			prp2;
-	__le32			nr;
-	__le32			attributes;
-	__u32			rsvd12[4];
-};
-
-struct nvme_rev_completion {
-    /*
-     * Used by Admin and Fabrics commands to return data:
-     */
-    union nvme_result {
-        __le16  u16;
-        __le32  u32;
-        __le64  u64;
-    } result;
-	__le32	nsid;
-//    __le16  sq_head;    /* how much of this queue may be reclaimed */
-//    __le16  sq_id;      /* submission queue that generated this entry */
-    __u16   command_id; /* of the command which completed */
-    __le16  status;     /* did the command fail, and if so, why? */
-};                                                                         
-
-#endif                                                                   
 
 enum {
 	NVME_NIDT_EUI	= 0x1, /*IEEE Extended Unique Identifier*/

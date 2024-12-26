@@ -80,15 +80,6 @@
 #include "shuffle.h"
 #include "page_reporting.h"
 
-unsigned long long OS_TimeGetUS_5( void )
-{
-    struct timespec64 lTime;
-    ktime_get_coarse_real_ts64(&lTime);
-    return (lTime.tv_sec * 1000000 + div_u64(lTime.tv_nsec, 1000) );
-
-}
-
-
 /* Free Page Internal flags: for internal, non-pcp variants of free_pages(). */
 typedef int __bitwise fpi_t;
 
@@ -4677,22 +4668,6 @@ __alloc_pages_slowpath(gfp_t gfp_mask, unsigned int order,
 	int no_progress_loops;
 	unsigned int cpuset_mems_cookie;
 	int reserve_flags;
-	static unsigned long long last_t = 0;
-	static unsigned long long duration = 0;
-	static unsigned long long duration_per_sec = 0;
-	static unsigned long long cnt = 0;
-	static unsigned long long cnt_per_sec = 0;
-	unsigned long long cur_t = OS_TimeGetUS_5();
-	unsigned long long start_t = OS_TimeGetUS_5();
-	unsigned long long end_t;
-	if (cur_t - last_t > 1000000) {
-		//dump_stack();
-		//printk("%s: duration_per_sec: %llu cnt_per_sec: %llu duration: %llu cnt: %llu", __func__, 
-		//	duration_per_sec, cnt_per_sec, duration, cnt);
-		last_t = cur_t;
-		duration_per_sec = 0;
-		cnt_per_sec = 0;
-	}
 
 	/*
 	 * We also sanity check to catch abuse of atomic reserves being used by
@@ -4935,11 +4910,6 @@ fail:
 	warn_alloc(gfp_mask, ac->nodemask,
 			"page allocation failure: order:%u", order);
 got_pg:
-	end_t = OS_TimeGetUS_5();
-	duration += end_t - start_t;
-	cnt ++;
-	duration_per_sec += end_t - start_t;
-	cnt_per_sec ++;
 	return page;
 }
 

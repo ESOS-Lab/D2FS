@@ -136,7 +136,7 @@ static void nvmev_proc_dbs(void)
 			vdev->old_dbs[dbs_idx] = nvmev_proc_io_sq(qid, new_db, old_db);
 		}
 	}
-	
+
 	// Completion queues
 	for (qid = 1; qid <= vdev->nr_cq; qid++) {
 		if (vdev->cqes[qid] == NULL) continue;
@@ -148,39 +148,6 @@ static void nvmev_proc_dbs(void)
 			vdev->old_dbs[dbs_idx] = new_db;
 		}
 	}
-
-#ifdef MIGRATION_IO	
-	// Reverse Completion queue
-	/* TODO: need to activate here */
-	if (vdev->rev_cqe != NULL) {
-		qid = vdev->rev_cqe->qid;	
-		dbs_idx = qid * 2 + 1;
-		new_db = vdev->dbs[dbs_idx];
-		old_db = vdev->old_dbs[dbs_idx];
-		//printk("%s: old db: %d new db: %d", __func__, old_db, new_db);
-		if (new_db != old_db) {
-			//printk("%s: bef old db: %d new db: %d", __func__, old_db, new_db);
-			vdev->old_dbs[dbs_idx] = nvmev_proc_io_rev_cq(qid, new_db, old_db);
-			//printk("%s: old db: %d new old db: %d", __func__, old_db, vdev->old_dbs[dbs_idx]);
-		}
-	}
-
-	/* TODO: may not need here */
-	// Reverse Submission queue
-	//if (vdev->rev_sqe != NULL) {
-	//	qid = vdev->rev_sqe->qid;	
-	//	dbs_idx = qid * 2 + 1;
-	//	new_db = vdev->dbs[dbs_idx];
-	//	old_db = vdev->old_dbs[dbs_idx];
-	//	if (new_db != old_db) {
-	//		/* TODO*/
-	//		nvmev_proc_io_sq(qid, new_db, old_db);
-	//		/* TODO doorbell? */
-	//		vdev->old_dbs[dbs_idx] = new_db;
-	//	}
-	//}
-#endif
-
 }
 
 static int nvmev_dispatcher(void *data)

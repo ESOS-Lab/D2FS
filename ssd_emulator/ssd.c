@@ -293,12 +293,7 @@ uint64_t ssd_advance_write_buffer(struct ssd *ssd, uint64_t request_time, uint64
     return nsecs_latest;
 }
 
-#ifdef CHIP_UTIL
-uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd, 
-		uint64_t *nand_idle_t_sum, uint64_t *nand_active_t_sum)
-#else
 uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd)
-#endif
 {
     int c = ncmd->cmd;
     uint64_t cmd_stime = (ncmd->stime == 0) ? __get_ioclock(ssd) : ncmd->stime;
@@ -327,11 +322,6 @@ uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd)
     switch (c) {
     case NAND_READ:
         /* read: perform NAND cmd first */
-#ifdef CHIP_UTIL
-		if (lun->next_lun_avail_time < cmd_stime) {
-			*nand_idle_t_sum += cmd_stime - lun->next_lun_avail_time;
-		}
-#endif
         nand_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : \
                     lun->next_lun_avail_time;
 
@@ -359,18 +349,10 @@ uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd)
         }
 
         lun->next_lun_avail_time = chnl_etime;
-#ifdef CHIP_UTIL
-		*nand_active_t_sum += lun->next_lun_avail_time - nand_stime;
-#endif
-		break;
+        break;
 
     case NAND_WRITE:
         /* write: transfer data through channel first */
-#ifdef CHIP_UTIL
-		if (lun->next_lun_avail_time < cmd_stime) {
-			*nand_idle_t_sum += cmd_stime - lun->next_lun_avail_time;
-		}
-#endif
         chnl_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : \
                      lun->next_lun_avail_time;
 
@@ -381,26 +363,15 @@ uint64_t ssd_advance_nand(struct ssd *ssd, struct nand_cmd *ncmd)
         nand_etime = nand_stime + spp->pg_wr_lat;
         lun->next_lun_avail_time = nand_etime;
         completed_time = nand_etime;
-#ifdef CHIP_UTIL
-		*nand_active_t_sum += lun->next_lun_avail_time - chnl_stime;
-#endif
         break;
 
     case NAND_ERASE:
         /* erase: only need to advance NAND status */
-#ifdef CHIP_UTIL
-		if (lun->next_lun_avail_time < cmd_stime) {
-			*nand_idle_t_sum += cmd_stime - lun->next_lun_avail_time;
-		}
-#endif
         nand_stime = (lun->next_lun_avail_time < cmd_stime) ? cmd_stime : \
                      lun->next_lun_avail_time;
         nand_etime = nand_stime + spp->blk_er_lat;
         lun->next_lun_avail_time = nand_etime;
         completed_time = nand_etime;
-#ifdef CHIP_UTIL
-		*nand_active_t_sum += lun->next_lun_avail_time - nand_stime;
-#endif
         break;
 
     case NAND_NOP:

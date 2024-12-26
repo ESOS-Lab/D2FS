@@ -2087,7 +2087,6 @@ next:
 	}
 	mutex_unlock(&dirty_i->seglist_lock);
 
-#ifndef ZNS
 	/* send small discards */
 	list_for_each_entry_safe(entry, this, head, list) {
 		unsigned int cur_pos = 0, next_pos, len, total_len = 0;
@@ -2120,8 +2119,6 @@ skip:
 		release_discard_addr(entry);
 		dcc->nr_discards -= total_len;
 	}
-#endif
-
 	//printk("[JW DBG] %s: end, wake up thread!\n", __func__);
 #ifdef AGGRESSIVE_DISCARD
 	wake_up_discard_thread(sbi, true);
@@ -2596,62 +2593,6 @@ got_it:
 	spin_unlock(&free_i->segmap_lock);
 }
 
-#ifdef ZNS
-/* strict hot/cold seperation on section granularity */
-static void get_new_segment_ZNS(struct f2fs_sb_info *sbi,
-			unsigned int *newseg)
-{
-	struct free_segmap_info *free_i = FREE_I(sbi);
-	unsigned int segno, secno;
-//	unsigned int ori_segno = *newseg;
-
-	unsigned int hint = GET_SEC_FROM_SEG(sbi, *newseg);
-	//static int print = 0;
-	//static int first = 1, pcnt = 0;
-
-	//if (pcnt < 50){
-	//	printk("%s: hint: %u *newseg: %u ori_segno: %u", 
-	//			__func__, hint, *newseg, ori_segno);
-	//	pcnt ++;
-	//}
-
-	spin_lock(&free_i->segmap_lock);
-
-	if ((*newseg + 1) % sbi->segs_per_sec) {
-		segno = find_next_zero_bit(free_i->free_segmap,
-			GET_SEG_FROM_SEC(sbi, hint + 1), *newseg + 1);
-		if (segno < GET_SEG_FROM_SEC(sbi, hint + 1))
-			goto got_it;
-	}
-find_other_zone:
-	secno = find_next_zero_bit(free_i->free_secmap, MAIN_SECS(sbi), hint);
-	if (secno >= MAIN_SECS(sbi)) {
-		//printk("%s: PASS!!! *newseg: %u ori_segno: %u", __func__, *newseg, ori_segno);
-		//print = 1;
-		secno = find_next_zero_bit(free_i->free_secmap,
-						MAIN_SECS(sbi), 0);
-		f2fs_bug_on(sbi, secno >= MAIN_SECS(sbi));
-	}
-	
-	segno = GET_SEG_FROM_SEC(sbi, secno);
-	//if (print || first) {
-	//	printk("%s: segno: %lu %lu print: %d first: %d", __func__, 
-	//		segno, segno+1, print, first);
-	//	//printk("%s: segno: %lu %lu last: %lu", __func__, 
-	//	//	segno, segno+1, segno + sbi->segs_per_sec - 1);
-	//	first = 0;
-	//}
-
-got_it:
-	/* set it as dirty segment in free segmap */
-	f2fs_bug_on(sbi, test_bit(segno, free_i->free_segmap));
-	
-	__set_inuse(sbi, segno);
-	*newseg = segno;
-	spin_unlock(&free_i->segmap_lock);
-}
-#endif
-
 static void reset_curseg(struct f2fs_sb_info *sbi, int type, int modified)
 {
 	struct curseg_info *curseg = CURSEG_I(sbi, type);
@@ -2719,8 +2660,6 @@ static void new_curseg(struct f2fs_sb_info *sbi, int type, bool new_sec)
 	unsigned int segno = curseg->segno;
 	int dir = ALLOC_LEFT;
 
-	static int tmp = 0;
-
 	if (curseg->inited)
 		write_sum_page(sbi, curseg->sum_blk,
 				GET_SUM_BLOCK(sbi, segno));
@@ -2731,17 +2670,8 @@ static void new_curseg(struct f2fs_sb_info *sbi, int type, bool new_sec)
 		dir = ALLOC_RIGHT;
 
 	segno = __get_next_segno(sbi, type);
-#ifdef ZNS
-	get_new_segment_ZNS(sbi, &segno);
-#else
 	get_new_segment(sbi, &segno, new_sec, dir);
-#endif
 	curseg->next_segno = segno;
-	//if (tmp < 1000) {
-	//	printk("%s: next segno: %d saddr: 0x%llx type: %d", __func__, 
-	//			segno, START_BLOCK(sbi, segno), type);
-	//	tmp ++;
-	//}
 	reset_curseg(sbi, type, 1);
 	curseg->alloc_type = LFS;
 }
@@ -3530,9 +3460,6 @@ void f2fs_allocate_data_block(struct f2fs_sb_info *sbi, struct page *page,
 	mutex_unlock(&curseg->curseg_mutex);
 
 	up_read(&SM_I(sbi)->curseg_lock);
-//	if (type == 0 || (type >= 3 && type <= 5) || *new_blkaddr<=  0x19000 ) {
-//		printk("%s: new_blkaddr: 0x%llx type: %d", __func__, *new_blkaddr, type);
-//	}
 }
 
 static void update_device_state(struct f2fs_io_info *fio)
@@ -5245,13 +5172,7 @@ int f2fs_build_segment_manager(struct f2fs_sb_info *sbi)
 	err = build_curseg(sbi);
 	if (err)
 		return err;
-	//int i;
-	//for (i = 0; i < NO_CHECK_TYPE; i++) {
-	//	printk("%s: type: %d segno: %d saddr: 0x%llx", 
-	//			__func__, i, 
-	//	SM_I(sbi)->curseg_array[i].segno,
-	//	START_BLOCK(sbi, SM_I(sbi)->curseg_array[i].segno));
-	//}
+
 	/* reinit free segmap based on SIT */
 	err = build_sit_entries(sbi);
 	if (err)

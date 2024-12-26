@@ -12,7 +12,7 @@
  *
  **********************************************************************/
 
-#include "limited_interval_config.h"
+#include "jw_config.h"
 #include "nvmev.h"
 #include "conv_ftl.h"
 #include "zns_ftl.h"
@@ -160,115 +160,6 @@ static void __nvmev_admin_delete_sq(int eid, int cq_head)
 	cq_entry(cq_head).sq_head = eid;
 	cq_entry(cq_head).status = queue->phase | NVME_SC_SUCCESS << 1;
 }
-
-#ifdef MIGRATION_IO
-static void __nvmev_admin_create_rev_sq(int eid, int cq_head)
-{
-	struct nvmev_admin_queue *queue = vdev->admin_q;
-	struct nvmev_rev_submission_queue *sq;
-	struct nvme_create_rev_sq *cmd = &sq_entry(eid).create_rev_sq;
-	unsigned int num_pages, i;
-	int dbs_idx;
-
-	sq = kzalloc(sizeof(struct nvmev_rev_submission_queue), GFP_KERNEL);
-
-	sq->qid = cmd->sqid;
-
-	sq->irq_enabled = cmd->sq_flags & NVME_CQ_IRQ_ENABLED ? true : false;
-	if (sq->irq_enabled) {
-		sq->irq_vector = cmd->irq_vector;
-	}
-	sq->interrupt_ready = false;
-
-	sq->queue_size = cmd->qsize + 1;
-	sq->phase = 1;
-
-	sq->sq_head = 0;
-	sq->sq_tail = -1;
-
-	spin_lock_init(&sq->entry_lock);
-	spin_lock_init(&sq->irq_lock);
-
-	/* TODO Physically non-contiguous prp list */
-	sq->phys_contig = cmd->sq_flags & NVME_QUEUE_PHYS_CONTIG ? true : false;
-	WARN_ON(!sq->phys_contig);
-
-	num_pages = DIV_ROUND_UP(sq->queue_size * sizeof(struct nvme_mg_command), PAGE_SIZE);
-	sq->sq = kzalloc(sizeof(struct nvme_mg_command*) * num_pages, GFP_KERNEL);
-	for (i = 0; i < num_pages; i++) {
-		sq->sq[i] = page_address(pfn_to_page(cmd->prp1 >> PAGE_SHIFT) + i);
-	}
-
-	/* setup mg pair batch pool */
-	sq->mgb_head = 0;
-	sq->mgb_tail = -1;
-
-	NVMEV_ASSERT(sizeof(struct mg_pair_batch) == PAGE_SIZE);
-	sq->nr_mg_batch = cmd->dma_pool_size / sizeof(struct mg_pair_batch);
-	NVMEV_ASSERT(sq->nr_mg_batch == NR_PGS_IN_MG_POOL);
-	NVMEV_ASSERT(MAX_CID % sq->nr_mg_batch == 0);
-	printk("%s: send rev cmd. nr_mg_batch: %d qsize: %d", __func__, sq->nr_mg_batch, sq->queue_size);
-	num_pages = DIV_ROUND_UP(sq->nr_mg_batch * sizeof(struct mg_pair_batch), PAGE_SIZE);
-	sq->mpb = kzalloc(sizeof(struct mg_pair_batch*) * num_pages, GFP_KERNEL);
-
-	for (i = 0; i < num_pages; i++) {
-		sq->mpb[i] = page_address(pfn_to_page(cmd->dma_pool_addr >> PAGE_SHIFT) + i);
-	}
-
-	vdev->rev_sqe = sq;
-
-	dbs_idx = sq->qid * 2 + 1;
-	vdev->dbs[dbs_idx] = vdev->old_dbs[dbs_idx] = 0;
-
-	cq_entry(cq_head).command_id = cmd->command_id;
-	cq_entry(cq_head).sq_id = 0;
-	cq_entry(cq_head).sq_head = eid;
-	cq_entry(cq_head).status = queue->phase | NVME_SC_SUCCESS << 1;
-}
-
-static void __nvmev_admin_create_rev_cq(int eid, int cq_head)
-{
-	struct nvmev_admin_queue *queue = vdev->admin_q;
-	struct nvmev_rev_completion_queue *cq;
-	struct nvme_create_rev_cq *cmd = &sq_entry(eid).create_rev_cq;
-	unsigned int num_pages, i;
-	int dbs_idx;
-
-	cq = kzalloc(sizeof(struct nvmev_rev_completion_queue), GFP_KERNEL);
-
-	cq->qid = cmd->cqid;
-	cq->sqid = cmd->sqid;
-
-	cq->cq_priority = cmd->cq_flags & 0xFFFE;
-	cq->queue_size = cmd->qsize + 1;
-
-	/* TODO Physically non-contiguous prp list */
-	cq->phys_contig = (cmd->cq_flags & NVME_QUEUE_PHYS_CONTIG) ? true : false;
-	WARN_ON(!cq->phys_contig);
-
-	num_pages = DIV_ROUND_UP(cq->queue_size * sizeof(struct nvme_rev_completion), PAGE_SIZE);
-	cq->cq = kzalloc(sizeof(struct nvme_rev_completion*) * num_pages, GFP_KERNEL);
-
-	for (i = 0; i < num_pages; i++) {
-		cq->cq[i] = page_address(pfn_to_page(cmd->prp1 >> PAGE_SHIFT) + i);
-	}
-	
-	cq->cq_tail = -1;
-	
-	vdev->rev_cqe = cq;
-
-	dbs_idx = cq->qid * 2;
-	vdev->dbs[dbs_idx] = 0;
-	vdev->old_dbs[dbs_idx] = 0;
-
-	NVMEV_DEBUG("%s: %d\n", __func__, sq->qid);
-
-	cq_entry(cq_head).command_id = cmd->command_id;
-	cq_entry(cq_head).sq_id = 0;
-	cq_entry(cq_head).sq_head = eid;
-	cq_entry(cq_head).status = queue->phase | NVME_SC_SUCCESS << 1;
-}
-#endif
 
 static void __nvmev_admin_identify_ctrl(int eid, int cq_head)
 {
@@ -581,14 +472,6 @@ static void __nvmev_proc_admin_req(int entry_id)
 		case nvme_admin_create_cq:
 			__nvmev_admin_create_cq(entry_id, cq_head);
 			break;
-#ifdef MIGRATION_IO
-		case nvme_admin_create_rev_sq:
-			__nvmev_admin_create_rev_sq(entry_id, cq_head);
-			break;
-		case nvme_admin_create_rev_cq:
-			__nvmev_admin_create_rev_cq(entry_id, cq_head);
-			break;
-#endif
 		case nvme_admin_identify:
 			cns = sq_entry(entry_id).identify.cns;
 			switch (cns) {

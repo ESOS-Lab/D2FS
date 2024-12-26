@@ -119,22 +119,3 @@ void bitmap_kill(void)
 {
 
 }
-
-
-//inline uint64_t find_next_zero_bit(char *bitmap, uint64_t nbits, uint64_t sidx)
-//{
-//	uint64_t idx;
-//	for (idx = sidx; idx < nbits; idx ++) {
-//		if (wftl_test_bit(idx, bitmap) == 0) {
-//			return idx;
-//		}
-//	}
-//	return idx;
-//}
-
-
-
-
-
-
-

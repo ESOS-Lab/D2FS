@@ -12,52 +12,10 @@
  *
  **********************************************************************/
 
-#include "limited_interval_config.h"
+#include "jw_config.h"
 
 #ifndef _NVMEVIRT_SSD_CONFIG_H
 #define _NVMEVIRT_SSD_CONFIG_H
-
-#if (defined MULTI_PARTITION_MTL || defined MULTI_PARTITION_FTL)
-#define NO_PARTITION(lba)		(lba >> PARTITION_BITS)
-#define PARTITION_START_ADDR(lba)	(NO_PARTITION(lba) * PARTITION_SIZE)
-#define OFFSET_PARTITION(lba)		(lba % PARTITION_SIZE)
-#define NO_MTL_ZONE(lba)			(lba % PARTITION_SIZE / PGS_PER_MTL_ZONE)
-#define NO_MTL_ZONE_IDX(ns, lba)			(lba % PARTITION_SIZE / PGS_PER_MTL_ZONE % ns->n_mtl_zones)
-#define OFFSET_MTL(lba)		(lba % PARTITION_SIZE % PGS_PER_MTL_ZONE)
-
-#define NO_ZONE(conv_ftl, lba)	(lba / conv_ftl->ssd->sp.pgs_per_line)
-
-/* For Data Partition */
-/*#define DATA_PARTITION_START_OFFSET	 0x100
-*/
-#define DATA_PARTITION_START_OFFSET	 0x0
-#define LOCAL_DATA_PARTITION_START_OFFSET	(DATA_PARTITION_START_OFFSET / SSD_PARTITIONS)
-//#define NO_LOCAL_PARTITION(local_addr)	\
-//		((((local_addr) >> LOCAL_PARTITION_BITS) == 0)? \
-//			0 : ((local_addr - LOCAL_DATA_PARTITION_START_OFFSET) >> LOCAL_PARTITION_BITS))
-
-
-#define SADDR_ZNS	0x32000
-#define START_OFS_IN_MAIN_PART	0x100
-#define NO_LOCAL_PARTITION(local_addr)	\
-		((((local_addr*4)) < SADDR_ZNS)? 0: 1) \
-
-
-#define LOCAL_PARTITION_START_ADDR(local_addr)	\
-		(NO_LOCAL_PARTITION(local_addr) * LOCAL_PARTITION_SIZE + LOCAL_DATA_PARTITION_START_OFFSET)
-#define OFFSET_LOCAL_DATA_PARTITION(local_addr)	\
-		((local_addr - LOCAL_DATA_PARTITION_START_OFFSET) % LOCAL_PARTITION_SIZE)
-#define LOCAL_PARTITION_START_ADDR_FROM_PARTITION_NO(no_local_partition)	\
-		(no_local_partition * LOCAL_PARTITION_SIZE + LOCAL_DATA_PARTITION_START_OFFSET)
-
-#define LPN_FROM_LOCAL_LPN(local_lpn, no_part, nr_parts)	(local_lpn * nr_parts + no_part)
-#define LOCAL_LPN_FROM_LPN(local_lpn, nr_parts)	(local_lpn / nr_parts)
-
-
-/* For Meta Partition */
-#define OFFSET_LOCAL_META_PARTITION(local_addr)	(local_addr % LOCAL_PARTITION_SIZE)
-
-#endif
 
 /* SSD Model */
 #define INTEL_OPTANE 0
@@ -118,6 +76,8 @@ enum {
 #define MDTS (6)
 #define CELL_MODE (CELL_MODE_MLC)
 
+//#define SSD_PARTITIONS       (8)
+//#define SSD_PARTITION_BITS   (3)
 #define SSD_PARTITIONS       (4)
 #define SSD_PARTITION_BITS   (2)
 #define NAND_CHANNELS        (8)
@@ -148,12 +108,7 @@ enum {
 #define FW_WBUF_LATENCY0      (4000)
 #define FW_WBUF_LATENCY1      (460)
 #define FW_CH_XFER_LATENCY    (0)
-
-#ifdef ZERO_OP_AREA
-#define OP_AREA_PERCENT       (0.0)
-#else
 #define OP_AREA_PERCENT       (0.07)
-#endif
 
 #define WRITE_BUFFER_SIZE   (NAND_CHANNELS * LUNS_PER_NAND_CH * ONESHOT_PAGE_SIZE * 2)
 #define WRITE_EARLY_COMPLETION   1

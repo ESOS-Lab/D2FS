@@ -1,7 +1,7 @@
 /*
  *
  * Automatically generated file; DO NOT EDIT.
- * Linux/x86 5.11.0.f2fs-zns Kernel Configuration
+ * Linux/x86 5.11.0.vanilla-f2fs Kernel Configuration
  *
  */
 #define CONFIG_IP6_NF_MATCH_AH_MODULE 1
@@ -3582,7 +3582,7 @@
 #define CONFIG_BCMA_BLOCKIO 1
 #define CONFIG_MODULE_SIG_HASH "sha512"
 #define CONFIG_TI_ADS7950_MODULE 1
-#define CONFIG_LOG_BUF_SHIFT 18
+#define CONFIG_LOG_BUF_SHIFT 22
 #define CONFIG_PATA_IT8213_MODULE 1
 #define CONFIG_MEMORY_HOTREMOVE 1
 #define CONFIG_PM_NOTIFIER_ERROR_INJECT_MODULE 1

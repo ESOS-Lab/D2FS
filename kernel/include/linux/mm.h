@@ -223,8 +223,6 @@ int overcommit_policy_handler(struct ctl_table *, int, void *, size_t *,
  */
 int __add_to_page_cache_locked(struct page *page, struct address_space *mapping,
 		pgoff_t index, gfp_t gfp, void **shadowp);
-int __add_to_page_cache_locked_jw(struct page *page, struct address_space *mapping,
-		pgoff_t index, gfp_t gfp, void **shadowp);
 
 #define nth_page(page,n) pfn_to_page(page_to_pfn((page)) + (n))
 

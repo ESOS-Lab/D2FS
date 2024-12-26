@@ -9,7 +9,7 @@ CONFIG_NVMEVIRT_SSD := y
 
 
 obj-m   := nvmev.o
-nvmev-objs := main.o pci.o admin.o io.o dma.o list.o
+nvmev-objs := main.o pci.o admin.o io.o dma.o
 
 ccflags-$(CONFIG_NVMEVIRT_NVM) += -DBASE_SSD=INTEL_OPTANE
 nvmev-$(CONFIG_NVMEVIRT_NVM) += simple_ftl.o

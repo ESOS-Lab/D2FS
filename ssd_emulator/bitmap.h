@@ -28,12 +28,4 @@ int bitmap_allocator_init(u64 size);
 size_t bitmap_allocate(u64 length, void* args);
 void bitmap_kill(void);
 
-//inline int wftl_test_bit(unsigned int nr, char *addr);
-//inline void wftl_set_bit(unsigned int nr, char *addr);
-//inline void wftl_clear_bit(unsigned int nr, char *addr);
-//inline int wftl_test_and_set_bit(unsigned int nr, char *addr);
-//inline int wftl_test_and_clear_bit(unsigned int nr, char *addr);
-//inline void wftl_change_bit(unsigned int nr, char *addr);
-//inline uint64_t find_next_zero_bit(char *bitmap, uint64_t nbits, uint64_t sidx);
-
 #endif

@@ -3585,8 +3585,7 @@ try_onemore:
 
 	/* init iostat info */
 	spin_lock_init(&sbi->iostat_lock);
-	//sbi->iostat_enable = false;
-	sbi->iostat_enable = true;
+	sbi->iostat_enable = false;
 	sbi->iostat_period_ms = DEFAULT_IOSTAT_PERIOD_MS;
 
 	for (i = 0; i < NR_PAGE_TYPE; i++) {
@@ -3733,103 +3732,10 @@ try_onemore:
 
 #ifdef WAF
 	sbi->gc_written_blk = 0;
-	sbi->total_gc_read_blk = 0;
 	sbi->total_gc_written_blk = 0;
 	atomic_set(&sbi->host_written_blk, 0);
 	atomic_set(&sbi->total_host_written_blk, 0);
 	sbi->last_t = 0;
-#ifdef GC_LATENCY
-	sbi->gc_cnt = 0;
-	sbi->gc_vblk = 0;
-	sbi->gc_total_blk = 0;
-	sbi->gc_data_seg_cnt = 0;
-	sbi->gc_node_seg_cnt = 0;
-	sbi->gc_cp1_cnt = 0;
-	sbi->gc_victim_select_cnt = 0;
-	
-	sbi->whole_gc_cnt = 0;
-	sbi->whole_gc_total_time_sum = 0;
-	
-	sbi->gc_cp2_cnt = 0;
-	sbi->gc_total_cp2_time_sum = 0;
-
-	sbi->gc_total_time_sum = 0;
-	sbi->gc_total_write_time_sum = 0;
-	sbi->gc_total_read_time_sum = 0;
-	
-
-	sbi->gc_total_ssa_read_time_sum = 0;
-	sbi->gc_total_grab_gc_block_time_sum = 0;
-	sbi->gc_p0_total_time_sum = 0;
-	sbi->gc_p1_total_time_sum = 0;
-	sbi->gc_p2_total_time_sum = 0;
-	sbi->gc_p3_total_time_sum = 0;
-	sbi->gc_p3_iget_total_time_sum = 0;
-	sbi->gc_p3_read_total_time_sum = 0;
-	sbi->gc_p3_read_get_dnode_total_time_sum = 0;
-	sbi->gc_p3_submit_read_total_time_sum = 0;
-	sbi->gc_p3_submit_read_wait_writeback_total_time_sum = 0;
-	sbi->gc_p4_total_time_sum = 0;
-	sbi->gc_p4_wait_writeback_total_time_sum = 0;
-
-	sbi->gc_p3_read_grab_cache_total_time_sum = 0;
-	sbi->gc_p3_read_lookup_extent_cache_total_time_sum = 0;
-	sbi->gc_p3_get_page_cache_total_time_sum = 0;
-	sbi->gc_p3_wait_for_stable_page_total_time_sum = 0;
-	sbi->gc_p4_get_node_total_time_sum = 0;
-	sbi->gc_p4_real_write_total_time_sum = 0;
-	sbi->gc_p4_get_page_cache_total_time_sum = 0;
-	sbi->gc_p4_wait_for_stable_page_total_time_sum = 0;
-
-	sbi->move_data_page_cnt = 0;
-	sbi->move_data_block_cnt = 0;
-	
-	sbi->gc_node_p0_total_time_sum = 0;
-	sbi->gc_node_p1_total_time_sum = 0;
-	sbi->gc_node_p2_total_time_sum = 0;
-
-	sbi->gc_total_cp_time_sum = 0; /* cp1 time sum (pre-gc cp) */
-	sbi->gc_total_victim_select_time_sum = 0;
-
-	sbi->gc_total_read_blk_cnt_sum = 0;
-	sbi->gc_total_write_blk_cnt_sum = 0;
-
-	sbi->isalive_inode_read_trial_cnt = 0;
-	sbi->isalive_inode_read_page_hit_cnt = 0;
-	sbi->gc_isalive_grab_cache = 0;
-	sbi->gc_isalive_read_inode = 0;
-	sbi->gc_isalive_lock_inode_page = 0;
-	sbi->p2_isalive_nat_read = 0;
-
-	int i_tmp;
-	for (i_tmp = 0; i_tmp < 8; i_tmp ++) {
-		sbi->p3_get_dnode_trial_cnt[i] = 0;
-		sbi->p3_get_dnode_read_hit_cnt[i] = 0;
-		sbi->p3_get_dnode_grab_cache[i] = 0;
-		sbi->p3_get_dnode_read_node[i] = 0;
-		sbi->p3_lock_dnode_page[i] = 0;
-	}
-
-	sbi->p4_get_lock_read_page = 0; 
-	sbi->p4_get_lock_read_page_grab_cache = 0;
-	sbi->gc_p4_read_get_dnode_total_time_sum = 0;
-	for (i_tmp = 0; i_tmp < 8; i_tmp ++) {
-		sbi->p4_get_dnode_trial_cnt[i] = 0;
-		sbi->p4_get_dnode_read_hit_cnt[i] = 0;
-		sbi->p4_get_dnode_grab_cache[i] = 0;
-		sbi->p4_get_dnode_read_node[i] = 0;
-		sbi->p4_lock_dnode_page[i] = 0;
-	}
-	sbi->gc_p4_submit_read_total_time_sum = 0;
-	
-
-	sbi->p4_get_lock_lock_page = 0; 
-	
-	sbi->gc_p3_read_grab_cache_cnt = 0;
-	sbi->gc_p4_read_grab_cache_cnt = 0;
-
-#endif
-
 #endif
 
 	/* get an inode for node space */

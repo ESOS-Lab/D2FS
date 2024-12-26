@@ -2,7 +2,7 @@
 VERSION = 5
 PATCHLEVEL = 11
 SUBLEVEL = 0
-EXTRAVERSION = .f2fs-zns
+EXTRAVERSION = .vanilla-f2fs
 NAME = 💕 Valentine's Day Edition 💕
 
 # *DOCUMENTATION*

@@ -1592,133 +1592,17 @@ static inline void print_WAF(struct f2fs_sb_info *sbi)
 {
 	uint64_t host_written_blk = atomic_read(&sbi->host_written_blk);
 	uint64_t total_host_written_blk = atomic_read(&sbi->total_host_written_blk);
-	if (host_written_blk - sbi->gc_written_blk > 0) {
+	if (host_written_blk > 0) {
 		unsigned int waf = 
-			(100* (host_written_blk)) / (host_written_blk - sbi->gc_written_blk);
+			(100* (sbi->gc_written_blk + host_written_blk)) / host_written_blk;
 		unsigned int total_waf = 
-			(100* (total_host_written_blk)) 
-			/ (total_host_written_blk - sbi->total_gc_written_blk);
-		//printk("%s: FSWAF: %u percent gc: %llu KB write_req: %llu KB total: %llu total WAF: %u", 
-		//	__func__, waf, sbi->gc_written_blk*4, (host_written_blk - sbi->gc_written_blk)*4, 
+			(100* (sbi->total_gc_written_blk + total_host_written_blk)) 
+			/ total_host_written_blk;
+		//printk("%s: FSWAF: %u percent gc: %llu KB write_req: %llu KB total: %llu total WAF: %u percent", 
+		//	__func__, waf, sbi->gc_written_blk*4, host_written_blk*4, 
 		//	total_host_written_blk*4, total_waf);
-		//printk("%s: total transfer volumes by FSGC: write: %llu KB read: %llu KB", __func__, 
-		//		sbi->total_gc_written_blk*4, sbi->total_gc_read_blk*4);
 	}
 }
-
-#ifdef GC_LATENCY
-static inline void print_GC_LATENCY(struct f2fs_sb_info *sbi) {
-
-	unsigned long long gc_data_sec_cnt = sbi->gc_data_seg_cnt / sbi->segs_per_sec;
-	unsigned long long gc_node_sec_cnt = sbi->gc_node_seg_cnt / sbi->segs_per_sec;
-
-	if (sbi->gc_cnt > 0 && sbi->gc_cp1_cnt > 0 && sbi->gc_victim_select_cnt > 0
-			&& sbi->whole_gc_cnt > 0 && gc_data_sec_cnt > 0 
-			&& gc_node_sec_cnt > 0) {
-		unsigned long long avg_cp_lat = sbi->gc_total_cp_time_sum / sbi->gc_cp1_cnt; 
-		unsigned long long avg_read_lat =  sbi->gc_total_read_time_sum / sbi->gc_cnt; 
-		unsigned long long avg_write_lat = sbi->gc_total_write_time_sum / sbi->gc_cnt; 
-		unsigned long long avg_gc_lat = sbi->gc_total_time_sum / sbi->gc_cnt;
-		unsigned long long avg_victim_select_lat = 
-			sbi->gc_total_victim_select_time_sum / sbi->gc_victim_select_cnt;
-
-		unsigned long long avg_meta_read_lat = (sbi->gc_total_ssa_read_time_sum + 
-						sbi->gc_p0_total_time_sum + 
-						sbi->gc_p1_total_time_sum + 
-						sbi->gc_p2_total_time_sum + 
-						sbi->gc_node_p0_total_time_sum + 
-						sbi->gc_node_p1_total_time_sum) / sbi->gc_cnt; 
-		unsigned long long avg_grab_gc_block_time = sbi->gc_total_grab_gc_block_time_sum 
-									/ sbi->gc_cnt;
-		
-		unsigned long long avg_cp_victimselect_gc_lat = 
-			avg_gc_lat +
-			avg_cp_lat +
-			avg_victim_select_lat;
-
-		unsigned long long avg_whole_gc_lat = sbi->whole_gc_total_time_sum / sbi->whole_gc_cnt;
-
-		if (sbi->gc_cp2_cnt > 0) {
-			unsigned long long avg_cp2_lat = sbi->gc_total_cp2_time_sum / sbi->gc_cp2_cnt; 
-
-		} else {
-
-
-			printk("%s: gc_latency_breakdown_detail ssa: %llu p0: %llu p1: %llu p2: %llu (grab: %llu read: %llu lock: %llu pghit: %llu trial: %llu nat: %llu ) p3: %llu ( iget: %llu read_data_page: %llu ( grab_cache: %llu ( get_page_cache: %llu ) get_dnode: %llu read_submit: %llu ) ) p4: %llu ( lockgrab: %llu ( read: %llu [ grab: %llu (get_cache: %llu wait_stable: %llu ) get_dnode: %llu read_submit: %llu ] lock: %llu ) get_node: %llu real_write: %llu ) (dsec_gc_cnt: %llu)", 
-			__func__, sbi->gc_total_ssa_read_time_sum / sbi->gc_cnt, 
-			sbi->gc_p0_total_time_sum / gc_data_sec_cnt, 
-			sbi->gc_p1_total_time_sum / gc_data_sec_cnt, 
-			sbi->gc_p2_total_time_sum / gc_data_sec_cnt, 
-			sbi->gc_isalive_grab_cache / gc_data_sec_cnt, 
-			sbi->gc_isalive_read_inode / gc_data_sec_cnt, 
-			sbi->gc_isalive_lock_inode_page / gc_data_sec_cnt, 
-			sbi->isalive_inode_read_page_hit_cnt, 
-			sbi->isalive_inode_read_trial_cnt, 
-			sbi->p2_isalive_nat_read /  gc_data_sec_cnt, 
-			
-			sbi->gc_p3_total_time_sum / gc_data_sec_cnt, 
-			sbi->gc_p3_iget_total_time_sum / gc_data_sec_cnt, 
-			sbi->gc_p3_read_total_time_sum / gc_data_sec_cnt, 
-			sbi->gc_p3_read_grab_cache_total_time_sum / gc_data_sec_cnt, 
-			sbi->gc_p3_get_page_cache_total_time_sum / gc_data_sec_cnt, 
-			sbi->gc_p3_read_get_dnode_total_time_sum / gc_data_sec_cnt,
-
-			sbi->gc_p3_submit_read_total_time_sum / gc_data_sec_cnt,
-			
-			sbi->gc_p4_total_time_sum / gc_data_sec_cnt, 
-				sbi->gc_total_grab_gc_block_time_sum / gc_data_sec_cnt,  /* lockgrab */
-					/* lock page phase in p4 */	
-					sbi->p4_get_lock_read_page / gc_data_sec_cnt,	/* read */
-						sbi->p4_get_lock_read_page_grab_cache / gc_data_sec_cnt, /* grab */
-							sbi->gc_p4_get_page_cache_total_time_sum / gc_data_sec_cnt, 
-							sbi->gc_p4_wait_for_stable_page_total_time_sum / gc_data_sec_cnt, 
-						sbi->gc_p4_read_get_dnode_total_time_sum / gc_data_sec_cnt, /* get_dnode */
-						sbi->gc_p4_submit_read_total_time_sum / gc_data_sec_cnt, /* read_submit */
-					/* end of lock page phase in p4 */	
-
-					sbi->p4_get_lock_lock_page / gc_data_sec_cnt, /* lock */
-			/* write phase in p4 */
-			sbi->gc_p4_get_node_total_time_sum / gc_data_sec_cnt, 
-			sbi->gc_p4_real_write_total_time_sum / gc_data_sec_cnt, 
-			gc_data_sec_cnt
-			);
-
-
-			unsigned long long meta_read_lat = sbi->gc_total_ssa_read_time_sum / sbi->gc_cnt
-					+ sbi->p2_isalive_nat_read / gc_data_sec_cnt
-					+ sbi->gc_p0_total_time_sum / gc_data_sec_cnt; 
-
-			unsigned long long filemap_read_lat = 
-				sbi->gc_p1_total_time_sum / gc_data_sec_cnt
-				+ (sbi->gc_p2_total_time_sum - sbi->p2_isalive_nat_read) / gc_data_sec_cnt 
-				+ sbi->gc_p3_iget_total_time_sum / gc_data_sec_cnt
-				+ sbi->gc_p3_read_get_dnode_total_time_sum / gc_data_sec_cnt
-				+ sbi->gc_p4_read_get_dnode_total_time_sum / gc_data_sec_cnt 
-				+ sbi->gc_p4_get_node_total_time_sum / gc_data_sec_cnt 
-				; 
-
-			unsigned long long cache_alloc_lat = 
-				+ sbi->gc_p3_read_grab_cache_total_time_sum / gc_data_sec_cnt
-				+ sbi->p4_get_lock_read_page_grab_cache / gc_data_sec_cnt; 
-
-			unsigned long long read_lat = sbi->gc_p3_submit_read_total_time_sum / gc_data_sec_cnt
-							+ sbi->gc_p3_submit_read_wait_writeback_total_time_sum / gc_data_sec_cnt
-							+ sbi->p4_get_lock_lock_page / gc_data_sec_cnt;
-
-			unsigned long long write_lat = sbi->gc_p4_real_write_total_time_sum / gc_data_sec_cnt
-							+ sbi->gc_p4_wait_writeback_total_time_sum / gc_data_sec_cnt;
-			unsigned long long total_lat = avg_cp_lat + meta_read_lat + filemap_read_lat + cache_alloc_lat + read_lat + write_lat;
-
-			printk("%s: gc_latency_breakdown total: %llu (cp: %llu meta: %llu filemap: %llu cache_alloc_lat: %llu read: %llu write: %llu )", 
-				__func__, total_lat, avg_cp_lat, 
-				meta_read_lat, 
-				filemap_read_lat, cache_alloc_lat, read_lat, write_lat
-			);
-
-		}
-	}
-}
-#endif
 
 static inline void try_print_WAF(struct f2fs_sb_info *sbi) {
 	unsigned long long cur_t = OS_TimeGetUS();
@@ -1728,9 +1612,6 @@ static inline void try_print_WAF(struct f2fs_sb_info *sbi) {
 		sbi->last_t = cur_t;
 		sbi->gc_written_blk = 0;
 		atomic_set(&sbi->host_written_blk, 0);
-#ifdef GC_LATENCY
-		print_GC_LATENCY(sbi);
-#endif
 	}
 }
 #endif
