@@ -14,7 +14,7 @@ hostname = oslab-PowerEdge-R740xd
 uname -m = x86_64
 uname -r = 5.11.0.d2fs
 uname -s = Linux
-uname -v = #83 SMP Tue Dec 24 22:01:05 KST 2024
+uname -v = #83 SMP Thu Dec 26 22:06:51 KST 2024
 
 /usr/bin/uname -p = x86_64
 /bin/uname -X     = unknown
