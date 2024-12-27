@@ -346,14 +346,14 @@ struct nvmev_result {
 	uint64_t wp; // only for zone append
 #ifdef COUPLED_GC_MTL
 	struct list mtl_migration_list;		/* to convey migrated lba to mtl */
-	struct list mtl_translation_list;	/* to convey translated lba from aimless translator to mtl */
+	struct list mtl_translation_list;	/* to convey translated lba from lpn redirector to mtl */
 
 	/* since read is not translated sequentially in nvmevirt, we need devoted translatin list for read */
 	struct list mtl_read_translation_list[SSD_PARTITIONS];	/* translation list for read. */
 #endif
 #ifdef MIGRATION_IO
 	//struct inflight_set_entry *ise;
-	struct list ise_list;	/* to convey translated lba from aimless translator to mtl */
+	struct list ise_list;	/* to convey translated lba from lpn redirector to mtl */
 	//struct list mg_batch_list;		/* to convey migration i/o info to io thread */
 #endif
 	unsigned int cid;
@@ -370,13 +370,13 @@ struct nvmev_result {
 #define LOCAL_PARTITION_BITS		(PARTITION_BITS - SSD_PARTITION_BITS)
 #define LOCAL_PARTITION_SIZE		(PARTITION_SIZE / SSD_PARTITIONS)
 
-#define	WINDOW_EXT_RATE		16/10
+#define	WINDOW_EXT_RATE 16/10
 #define MEM_EXT_RATE		1
 #define INVALID_MAPPING		NULL
 #define MAX_KMALLOC_SIZE	MB(1)
 #define MTL_ZONE_SIZE		(MAX_KMALLOC_SIZE - sizeof(struct mtl_zone_info))
 
-#define	IM_WINDOW_EXT_RATE		6	/* interval mapping's extension rate for consuming same mem with IM */
+#define	IM_WINDOW_EXT_RATE 6	/* interval mapping's extension rate for consuming same mem with IM */
 
 #ifdef ZONE_MAPPING
 
@@ -458,7 +458,7 @@ struct mtl_zone_entry {
 #endif
 
 #ifdef COUPLED_GC
-#define HBITS_AIMLESS_TRANSLATOR 18
+#define HBITS_LPN_REDIRECTOR 18
 #define PGS_PER_FS_SEGMENT		512
 #define	NO_INIT_GC_LOG			(PGS_PER_FS_SEGMENT * 1024)
 
@@ -486,7 +486,7 @@ struct gc_log {
 	//enum gc_log_status status;
 	char status;
 	struct list_elem list_elem;	/* buffered or inflight gc log list entry */
-	struct hlist_node hnode;	/* aimless entry */
+	struct hlist_node hnode;	/* lpn redirector entry */
 #ifdef GC_LOG_MERGE
 	struct hlist_node hnode_merge;
 #endif
@@ -526,7 +526,7 @@ struct gc_log_mgmt {
 	struct list buffered_gc_log_list_node;
 #endif
 
-	unsigned int hbits;	/* aimless translator hash bits. */
+	unsigned int hbits;	/* lpn redirector hash bits. */
 #ifdef MIGRATION_IO
 	struct kmem_cache *inflight_set_slab;
 	unsigned int n_ise;	/* number of inflight set entry */

@@ -204,15 +204,15 @@ static inline bool is_first_wp(struct write_pointer *wpp)
 
 #ifdef COUPLED_GC
 
-DEFINE_HASHTABLE(aimless_translator, HBITS_AIMLESS_TRANSLATOR);
+DEFINE_HASHTABLE(lpn_redirector, HBITS_LPN_REDIRECTOR);
 #ifdef SEPARATE_GC_LOG
-DEFINE_HASHTABLE(aimless_translator_node, HBITS_AIMLESS_TRANSLATOR);
+DEFINE_HASHTABLE(lpn_redirector_node, HBITS_LPN_REDIRECTOR);
 #endif
 
 #ifdef GC_LOG_MERGE
-DEFINE_HASHTABLE(gc_log_merger, HBITS_AIMLESS_TRANSLATOR);
+DEFINE_HASHTABLE(gc_log_merger, HBITS_LPN_REDIRECTOR);
 #ifdef SEPARATE_GC_LOG
-DEFINE_HASHTABLE(gc_log_merger_node, HBITS_AIMLESS_TRANSLATOR);
+DEFINE_HASHTABLE(gc_log_merger_node, HBITS_LPN_REDIRECTOR);
 #endif
 #endif
 
@@ -229,11 +229,11 @@ void init_gc_log_mgmt(struct gc_log_mgmt *gclm)
 	list_init(&gclm->buffered_gc_log_list_node);
 #endif
 
-	gclm->hbits = HBITS_AIMLESS_TRANSLATOR;
-	hash_init(aimless_translator);
+	gclm->hbits = HBITS_LPN_REDIRECTOR;
+	hash_init(lpn_redirector);
 	
 #ifdef SEPARATE_GC_LOG
-	hash_init(aimless_translator_node);
+	hash_init(lpn_redirector_node);
 #endif
 
 #ifdef GC_LOG_MERGE
@@ -676,7 +676,7 @@ static inline bool mapped_ppa(struct ppa *ppa);
 
 static inline struct ppa read_zone_mapping_handler(struct conv_ftl *conv_ftl, uint64_t local_lpn) 
 {
-	/* For migrated lba from coupled gc. Let aimless translator handle with it */
+	/* For migrated lba from coupled gc. Let lpn redirector handle with it */
 	if (behind_active_interval(conv_ftl, local_lpn))
 		return fake_ppa();
 
@@ -1777,7 +1777,7 @@ void conv_init_namespace(struct nvmev_ns *ns, uint32_t id, uint64_t size, void *
 #endif
 
 #ifdef EQUAL_IM_MEM
-	uint64_t htable_mem = 2 * (1<<HBITS_AIMLESS_TRANSLATOR) * sizeof(struct hlist_head);
+	uint64_t htable_mem = 2 * (1<<HBITS_LPN_REDIRECTOR) * sizeof(struct hlist_head);
 	uint64_t gc_log_mem = ns->n_gc_log_max * sizeof(struct gc_log);
 	gc_log_mem += (gc_log_mem * 4 / 100);
 	if (IM_mem > mem_consump + htable_mem + gc_log_mem) {
@@ -2123,9 +2123,9 @@ got_it:
 	return ret_zidx;
 }
 
-static inline struct gc_log *lookup_aimless_translator(struct conv_ftl *conv_ftl, uint64_t lpn);
+static inline struct gc_log *lookup_lpn_redirector(struct conv_ftl *conv_ftl, uint64_t lpn);
 
-/* map new local lpn to new ppa */
+/* determine new ppa and new lpn for the victim data page */
 static inline struct ppa append_page(struct conv_ftl *conv_ftl, int no_partition, uint64_t *new_local_lpn)
 {
 	NVMEV_ASSERT(IS_MAIN_PARTITION(no_partition));
@@ -2136,8 +2136,10 @@ static inline struct ppa append_page(struct conv_ftl *conv_ftl, int no_partition
 
 	*new_local_lpn = cur_local_lpn;
 	next_local_lpn = cur_local_lpn + 1;
-	
+
+
 	if (is_first_lpn_in_zone(conv_ftl, next_local_lpn)) {
+		/* Destination section in the GC region becomes full. So obtain the new destination section. */
 		uint64_t start_zidx = get_zone_idx(conv_ftl, next_local_lpn), new_zidx, cur_start_local_lpn, 
 				 cur_zidx;
 		new_zidx = get_next_free_zone(conv_ftl, no_partition, &conv_ftl->wm[no_partition], start_zidx);
@@ -2147,23 +2149,10 @@ static inline struct ppa append_page(struct conv_ftl *conv_ftl, int no_partition
 
 		del = new_zidx - cur_zidx;
 		next_local_lpn = cur_start_local_lpn + del * (conv_ftl->ssd->sp.pgs_per_line);
-		//printk("%s: new zidx: %u lpn: 0x%lx", 
-		//	__func__, new_zidx, 
-		//	LPN_FROM_LOCAL_LPN(next_local_lpn, conv_ftl->no_part, conv_ftl->ns->nr_parts));
 		NVMEV_ASSERT(is_first_lpn_in_zone(conv_ftl, next_local_lpn));
 		NVMEV_ASSERT(get_zone_idx(conv_ftl, next_local_lpn) == new_zidx);
-		//printk("%s: next zidx: %lu nzones: %lu del: %d", __func__, 
-		//		new_zidx, 
-		//		conv_ftl->wm[no_partition].nzones_per_partition, del);
-		//printk("%s: cur_local_lpn: 0x%lx cur_start_local_lpn: 0x%lx next_local_lpn: 0x%lx pgs_per_line: %d",
-		//		__func__, cur_local_lpn, cur_start_local_lpn, next_local_lpn, conv_ftl->ssd->sp.pgs_per_line);
-		//get_zone_idx(conv_ftl, next_local_lpn)
 	}
 
-	//printk("%s: cur_local_lpn: 0x%lx noftl: %u, lpn: 0x%lx pgs_per_line: %u", 
-	//		__func__, cur_local_lpn, conv_ftl->no_part, 
-	//		LPN_FROM_LOCAL_LPN(cur_local_lpn, conv_ftl->no_part, conv_ftl->ns->nr_parts), 
-	//		conv_ftl->ssd->sp.pgs_per_line);
 
 	conv_ftl->wm[no_partition].next_local_lpn = next_local_lpn;
 	return append_zone_mapping_handler(conv_ftl, cur_local_lpn, no_partition);
@@ -2194,10 +2183,10 @@ static inline void __buffer_gc_log(struct gc_log_mgmt *gclm, struct gc_log *gc_l
 	gclm->n_buffered ++ ;
 }
 
-static inline void insert_into_aimless_translator(struct gc_log *gc_log)
+static inline void insert_into_lpn_redirector(struct gc_log *gc_log)
 {
 #ifndef SEPARATE_GC_LOG
-	hash_add(aimless_translator, &gc_log->hnode, gc_log->old_lpn);
+	hash_add(lpn_redirector, &gc_log->hnode, gc_log->old_lpn);
 #ifdef GC_LOG_MERGE
 	hash_add(gc_log_merger, &gc_log->hnode_merge, gc_log->new_lpn);
 #endif
@@ -2206,12 +2195,12 @@ static inline void insert_into_aimless_translator(struct gc_log *gc_log)
 	unsigned int no_partition = NO_PARTITION(gc_log->old_lpn);
 	if (no_partition == COLD_DATA_PARTITION || 
 			no_partition == HOT_DATA_PARTITION) {
-		hash_add(aimless_translator, &gc_log->hnode, gc_log->old_lpn);
+		hash_add(lpn_redirector, &gc_log->hnode, gc_log->old_lpn);
 #ifdef GC_LOG_MERGE
 		hash_add(gc_log_merger, &gc_log->hnode_merge, gc_log->new_lpn);
 #endif
 	} else {
-		hash_add(aimless_translator_node, &gc_log->hnode, gc_log->old_lpn);
+		hash_add(lpn_redirector_node, &gc_log->hnode, gc_log->old_lpn);
 #ifdef GC_LOG_MERGE
 		hash_add(gc_log_merger_node, &gc_log->hnode_merge, gc_log->new_lpn);
 #endif
@@ -2339,7 +2328,7 @@ static inline void buffer_gc_log(struct gc_log_mgmt *gclm, uint64_t old_lpn, uin
 	gclm->buffering_cnt ++ ;
 
 	__buffer_gc_log(gclm, gc_log, old_lpn, new_lpn);
-	insert_into_aimless_translator(gc_log);
+	insert_into_lpn_redirector(gc_log);
 #ifdef COUPLED_GC_DEBUG
 	NVMEV_ASSERT(gclm->n_total == gclm->n_buffered + gclm->n_inflight + gclm->n_free);
 #endif
@@ -2373,7 +2362,7 @@ static inline void free_gc_log(struct gc_log_mgmt *gclm, struct gc_log *gc_log)
 	/* Push back to free list */
 	list_push_back(&gclm->free_gc_log_list, &gc_log->list_elem);
 
-	/* Remove from aimless translator */
+	/* Remove from lpn redirector */
 	hash_del(&gc_log->hnode);
 #ifdef GC_LOG_MERGE
 	
@@ -2735,19 +2724,19 @@ static uint64_t coupled_gc_write_page(struct conv_ftl *conv_ftl, struct ppa *old
 	return 0;
 }
 
-static inline struct gc_log *lookup_aimless_translator(struct conv_ftl *conv_ftl, uint64_t lpn)
+static inline struct gc_log *lookup_lpn_redirector(struct conv_ftl *conv_ftl, uint64_t lpn)
 {
 #ifdef SEPARATE_GC_LOG
 	struct hlist_head *head;
 	unsigned int no_partition = NO_PARTITION(lpn);
 	if (no_partition == COLD_DATA_PARTITION || 
 			no_partition == HOT_DATA_PARTITION) {
-		head = &aimless_translator[hash_min(lpn, HASH_BITS(aimless_translator))];
+		head = &lpn_redirector[hash_min(lpn, HASH_BITS(lpn_redirector))];
 	} else {
-		head = &aimless_translator_node[hash_min(lpn, HASH_BITS(aimless_translator_node))];
+		head = &lpn_redirector_node[hash_min(lpn, HASH_BITS(lpn_redirector_node))];
 	}
 #else
-	struct hlist_head *head = &aimless_translator[hash_min(lpn, HASH_BITS(aimless_translator))];
+	struct hlist_head *head = &lpn_redirector[hash_min(lpn, HASH_BITS(lpn_redirector))];
 #endif
 	struct gc_log *gc_log;
 	hlist_for_each_entry(gc_log, head, hnode){
@@ -2762,7 +2751,7 @@ static inline struct gc_log *lookup_aimless_translator(struct conv_ftl *conv_ftl
 
 static inline struct ppa read_zone_mapping_handler(struct conv_ftl *conv_ftl, uint64_t local_lpn);
 
-static inline struct ppa read_from_aimless_translator(struct conv_ftl *conv_ftl, uint64_t local_lpn, struct gc_log *gc_log_ret)
+static inline struct ppa read_from_lpn_redirector(struct conv_ftl *conv_ftl, uint64_t local_lpn, struct gc_log *gc_log_ret)
 {
 	struct ppa trans_ppa;
 	struct gc_log *gc_log, *first_gc_log = NULL;;
@@ -2773,8 +2762,8 @@ static inline struct ppa read_from_aimless_translator(struct conv_ftl *conv_ftl,
 
 	gc_log_ret->old_lpn = lpn;
 
-lookup_translator:
-	gc_log = lookup_aimless_translator(conv_ftl, lpn);
+lookup_redirector:
+	gc_log = lookup_lpn_redirector(conv_ftl, lpn);
 	if (gc_log != NULL){
 		/* hit gc log */
 		trans_local_lpn = LOCAL_LPN_FROM_LPN(gc_log->new_lpn, conv_ftl->ns->nr_parts);
@@ -2806,7 +2795,7 @@ lookup_translator:
 
 			}
 			
-			goto lookup_translator;
+			goto lookup_redirector;
 		}
 		
 		/* update first gc log if gc log are chained and not yet in-flight */
@@ -2889,8 +2878,8 @@ static inline bool single_gc_log_in_zone(struct conv_ftl *conv_ftl, struct gc_lo
 }
 
 
-/* read aimless translator and delete gc log */
-static inline struct ppa pop_from_aimless_translator(struct conv_ftl *conv_ftl, uint64_t local_lpn,
+/* read lpn redirector and delete gc log */
+static inline struct ppa pop_from_lpn_redirector(struct conv_ftl *conv_ftl, uint64_t local_lpn,
 														uint64_t *p_trans_local_lpn, struct gc_log *gc_log_ret)
 {
 	struct ppa trans_ppa;
@@ -2899,8 +2888,8 @@ static inline struct ppa pop_from_aimless_translator(struct conv_ftl *conv_ftl, 
 	uint64_t first_lpn = LPN_FROM_LOCAL_LPN(local_lpn, conv_ftl->no_part, conv_ftl->ns->nr_parts);
 	uint64_t lpn = first_lpn;
 
-lookup_translator:
-	gc_log = lookup_aimless_translator(conv_ftl, lpn);
+lookup_redirector:
+	gc_log = lookup_lpn_redirector(conv_ftl, lpn);
 	if (gc_log != NULL){
 		/* hit gc log */
 		trans_local_lpn = LOCAL_LPN_FROM_LPN(gc_log->new_lpn, conv_ftl->ns->nr_parts);
@@ -2926,7 +2915,7 @@ lookup_translator:
 				//free_gc_log(conv_ftl->ns->gclm, gc_log);
 			}
 			
-			goto lookup_translator;
+			goto lookup_redirector;
 		}
 		//NVMEV_ASSERT(mapped_ppa(&trans_ppa) && valid_ppa(conv_ftl, &trans_ppa));
 		*p_trans_local_lpn = trans_local_lpn;
@@ -3090,37 +3079,6 @@ static struct line *select_victim_line(struct conv_ftl *conv_ftl, bool force)
 	return victim_line;
 }
 
-/* here ppa identifies the block we want to clean */
-//#ifndef COUPLED_GC_MTL
-//static void clean_one_block(struct conv_ftl *conv_ftl, struct ppa *ppa)
-//#else
-//static void clean_one_block(struct conv_ftl *conv_ftl, struct ppa *ppa, struct nvmev_result *ret)
-//#endif
-//{
-//	struct ssdparams *spp = &conv_ftl->ssd->sp;
-//	struct nand_page *pg_iter = NULL;
-//	int cnt = 0;
-//	int pg;
-//
-//	for (pg = 0; pg < spp->pgs_per_blk; pg++) {
-//	    ppa->g.pg = pg;
-//	    pg_iter = get_pg(conv_ftl->ssd, ppa);
-//	    /* there shouldn't be any free page in victim blocks */
-//	    NVMEV_ASSERT(pg_iter->status != PG_FREE);
-//	    if (pg_iter->status == PG_VALID) {
-//	        gc_read_page(conv_ftl, ppa);
-//	        /* delay the maptbl update until "write" happens */
-//#ifndef COUPLED_GC_MTL
-//			gc_write_page(conv_ftl, ppa);
-//#else
-//			gc_write_page(conv_ftl, ppa, ret);
-//#endif
-//	        cnt++;
-//	    }
-//	}
-//
-//	NVMEV_ASSERT(get_blk(conv_ftl->ssd, ppa)->vpc == cnt);
-//}
 
 /* here ppa identifies the block we want to clean */
 #ifndef COUPLED_GC_MTL
@@ -3521,27 +3479,6 @@ static int do_gc(struct conv_ftl *conv_ftl, bool force, int no_partition)
 
 	ppa.g.blk = victim_line->id;
 
-//#ifdef GC_PRINT
-//	static int cnt = 0;
-//	cnt ++;
-//	if (cnt % 5000 == 0) {
-//		printk("GC-ing curline: line:%d,ipc=%d(%d),victim=%d,full=%d,free=%d total_vblks: %u n_gclog: %u slpn: 0x%lx line: 0x%lx", 
-//			ppa.g.blk,\
-//	         victim_line->ipc,victim_line->vpc, conv_ftl->lm.victim_line_cnt, conv_ftl->lm.full_line_cnt, \
-//	          conv_ftl->lm.free_line_cnt, total_valid_blks, 
-//			  conv_ftl->ns->gclm->n_buffered, 
-//			  LPN_FROM_LOCAL_LPN(victim_line->start_local_lpn, conv_ftl->no_part, conv_ftl->ns->nr_parts), 
-//			  victim_line);
-//		//int i__;
-//		//for (i__ = 0; i__ < NO_USER_PARTITION; i__ ++) {
-//		//	printk("GC part: %d partition: %u vzone: %d / %lu gc free zone: %lu", 
-//		//			conv_ftl->no_part, i__, conv_ftl->valid_zone_cnt[i__],
-//		//			conv_ftl->nzones_per_partition, 
-//		//			conv_ftl->gc_free_zone_cnt[i__]);
-//		//}
-//		//printk("%s: total valid zone cnt: %u", __func__, conv_ftl->total_valid_zone_cnt);
-//	}
-//#endif
 
 	NVMEV_DEBUG("GC-ing line:%d,ipc=%d(%d),victim=%d,full=%d,free=%d\n", ppa.g.blk,\
 	          victim_line->ipc,victim_line->vpc, conv_ftl->lm.victim_line_cnt, conv_ftl->lm.full_line_cnt,\
@@ -3580,7 +3517,7 @@ static int do_gc(struct conv_ftl *conv_ftl, bool force, int no_partition)
 #ifndef COUPLED_GC_MTL
 	            clean_one_flashpg(conv_ftl, &ppa);
 #else
-				clean_one_flashpg(conv_ftl, &ppa, ret, &merge_cnt, &v_cnt);
+		    clean_one_flashpg(conv_ftl, &ppa, ret, &merge_cnt, &v_cnt);
 #endif
 	            if (flashpg == (spp->flashpgs_per_blk - 1)) {
 	                mark_block_free(conv_ftl, &ppa);
@@ -3634,29 +3571,6 @@ static int do_gc(struct conv_ftl *conv_ftl, bool force, int no_partition)
 		
 		update_window_mgmt_for_discard(conv_ftl, victim_line->start_local_lpn);
 	}
-	//else if (! IS_META_PARTITION(no_partition)) {
-	//	//printk("%s: unexpected!!!!!!!! no_part: %lu", __func__, no_partition);
-	//}
-
-
-	//if (victim_line->ipc == spp->pgs_per_line && victim_line->start_local_lpn != INVALID_LPN) {
-	//	struct ppa *tmp_zone_map_ent;
-	//	tmp_zone_map_ent = get_zone_maptbl_ent(conv_ftl, victim_line->start_local_lpn);
-	//	if (mapped_ppa(tmp_zone_map_ent)) {
-	//		printk("%s: start lpn: 0x%lx segno: %lu ppa: 0x%llx", 
-	//				__func__, victim_line->start_local_lpn * 4, 
-	//				victim_line->start_local_lpn * 4 / 512, 
-	//			 tmp_zone_map_ent->ppa );
-	//	}
-	//}
-
-
-	////if (victim_line->vpc && victim_line->start_local_lpn != INVALID_LPN){
-	//if (victim_line->ipc < spp->pgs_per_line && victim_line->start_local_lpn != INVALID_LPN){
-	////if (victim_line->start_local_lpn != INVALID_LPN){
-	//	invalidate_zone_maptbl_ent_from_gc(conv_ftl, victim_line->start_local_lpn);
-	//	update_window_mgmt_for_discard(conv_ftl, victim_line->start_local_lpn);
-	//}
 #endif
 	/* update line status */
 	mark_line_free(conv_ftl, &ppa);
@@ -3826,7 +3740,7 @@ bool conv_read(struct nvmev_ns *ns, struct nvmev_request * req, struct nvmev_res
 					.new_lpn = INVALID_LPN,
 				};
 
-				cur_ppa = read_from_aimless_translator(conv_ftl, local_lpn, &gc_log_ret);
+				cur_ppa = read_from_lpn_redirector(conv_ftl, local_lpn, &gc_log_ret);
 				if (!mapped_ppa(&cur_ppa) || !valid_ppa(conv_ftl, &cur_ppa)) {
 					NVMEV_DEBUG("lpn 0x%llx not mapped to valid ppa\n", local_lpn);
 	            	NVMEV_DEBUG("Invalid ppa,ch:%d,lun:%d,blk:%d,pl:%d,pg:%d\n",
@@ -3837,7 +3751,7 @@ bool conv_read(struct nvmev_ns *ns, struct nvmev_request * req, struct nvmev_res
 						gc_log_ret.new_lpn != INVALID_LPN);
 
 				NVMEV_ASSERT(gc_log_ret.old_lpn == LPN_FROM_LOCAL_LPN(local_lpn, conv_ftl->no_part, conv_ftl->ns->nr_parts));
-				//printk("%s: get helped from aimless translator", __func__);
+				//printk("%s: get helped from lpn redirector", __func__);
 				/* add translation log for mtl */
 				add_mtl_translation_log_for_read(ns, ret, gc_log_ret.old_lpn, gc_log_ret.new_lpn); 
 #else
@@ -4547,7 +4461,7 @@ invalidate_page:
 				struct gc_log gc_log_ret;
 				if (trial_cnt > 0)
 					NVMEV_ASSERT(0);
-				trans_ppa = pop_from_aimless_translator(conv_ftl, local_lpn, &trans_local_lpn, &gc_log_ret);
+				trans_ppa = pop_from_lpn_redirector(conv_ftl, local_lpn, &trans_local_lpn, &gc_log_ret);
 				if (mapped_ppa(&trans_ppa)){
 					local_lpn = trans_local_lpn;
 					ppa = trans_ppa;
