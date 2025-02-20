@@ -1,55 +1,15 @@
 # D2FS
 
-Thank you for dedicating your time for the Artifact Evaluation!  We deeply appreciate your services. 
-
 This manual is organized as follows:  
 1. **Getting Started Instructions**
 2. **Detailed Instructions**
 3. **Source Code Overview**  
 
-If you have any questions during the evaluation, please feel free to reach out to us via **HotCRP**. Once again, we sincerely thank you for your hard work.  
-
 ---
 
 ## 1. Getting Started Instructions  
 
-We have provided access to our lab's experimental servers for the artifact evaluation. To proceed, you will need to connect to two machines:  
-(1) **Remote Access Controller**  
-(2) **Experimental Server**  
-
-### 1-1. How to Access the Remote Access Controller  
-
-The Remote Access Controller provides console access to the experimental server and allows you to power it on/off. You can view experimental graphs directly via the console without transferring data to your local machine. Additionally, there are instances where using the `sudo reboot` command on the experimental server may cause it to become stuck, which can significantly delay your work. We strongly recommend using the Remote Access Controller for rebooting the server.  
-
-To use the Remote Access Controller:  
-(1) Open the **Chrome browser** (Safari is not supported) and navigate to [misti.kaist.ac.kr](https://misti.kaist.ac.kr).  
-(2) Enter the following credentials:  
-   - **ID**: `aec`  
-   - **Password**: `thankyouaec`
-
-(3) Click the **“Start the Virtual Console”** button located at the bottom right. A Virtual Console window will open, allowing you to remotely view the experimental server’s screen.  
-
-If you encounter the error **“The max number of sessions has been exceeded,”** please close the Virtual Console window and follow these steps:  
-(1) Click **Settings** next to the Virtual Console option.  
-(2) In the **Virtual Console Configuration** window, locate the **Enabled** setting in the first row.  
-(3) Toggle **Enabled** to **Disabled**, click **Apply**, then switch it back to **Enabled** and click **Apply** again.  
-(4) Retry launching the Virtual Console by clicking the **“Start the Virtual Console”** button.  
-You should now be able to remotely view the experimental server’s screen.  
-
-
-At the top of the Virtual Console window, you’ll find buttons such as **Boot** and **Power**. To reboot the experimental server, click the **Power** button and select **Reset System (warm boot)**. The reboot process will take approximately **2 minutes and 30 seconds**.  
-
-
-### 1-2. How to Access the Experimental Server  
-
-The experimental server used for the artifact evaluation is the same server used in our paper.  
-
-To access the experimental server, use the following command (note that only **port 10022** is available):  
-```bash
-$ ssh juwon@andes.kaist.ac.kr -p10022
-```
-
-### 1-3. How to Start `D2FS`  
+### 1-1. How to Start `D2FS`  
 
 To facilitate a smooth artifact evaluation, we have pre-installed the `D2FS` source code from GitHub on the experimental server.  
 The `D2FS` source code is located in the `~/D2FS_Artifact` directory in the experimental server.  
@@ -60,7 +20,6 @@ $ cd ~/D2FS_Artifact/ssd_emulator
 $ sudo ./start_nvmevirt.sh  
 ```
 
-The `sudo` password is `1234`.  
 Once the command completes, use the `lsblk` command to verify that the emulated SSD, `/dev/nvme3n1`, has been successfully created.  
 
 If the device is not created, please reboot the server using the Remote Access Controller.  
@@ -132,7 +91,7 @@ We assume that the current branch is `D2FS`. If it is not, please refer to the �
 
 Currently, our artifact requires a system reboot when you finishes running a single benchmark. We deeply apologize for the inconvenience. Please reboot the computer using the Remote Access Controller. Click the Power button at the top of the Virtual Console window and select the “Reset System (warm boot)” option. It will take approximately 2 minutes and 30 seconds for the system to reboot.
 
-Once the system has rebooted, please connect to the experimental server. To run the SSD emulator, execute the following command. The sudo password is `1234`:
+Once the system has rebooted, please connect to the experimental server. To run the SSD emulator, execute the following command. :
 ```bash
 $ cd ~/D2FS_Artifact/ssd_emulator
 $ sudo ./start_nvmevirt.sh
@@ -515,10 +474,6 @@ Please refer to the `~/D2FS_Artifact/ssd_emulator/conv_ftl.c`
 - `conv_discard()`: This function handles the Discard command from the host.
   - **`pop_from_lpn_redirector()`**: When the L2P mapping table entry for the logical address requested by the host for discard is NULL, this function references the related migration record and redirects to the newly assigned logical address. The corresponding migration record is then deleted.
 
-
-
-
-Again, we deeply appreciate your sevices for artifact evaluation. If you have any questions, please don't hesitate to contact us via HotCRP. Thank you!!
 
 
 
