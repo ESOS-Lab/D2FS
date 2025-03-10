@@ -1,5 +1,9 @@
 # D2FS
 
+D2FS Implementation of FAST'25 Paper <D2FS: Device-Driven Filesystem Garbage Collection> (https://www.usenix.org/conference/fast25/presentation/kim-juwon). 
+
+D2FS is developed by Juwon Kim @OSLAB-KAIST (joo97508@gmail.com). 
+
 This manual is organized as follows:  
 1. **Getting Started Instructions**
 2. **Detailed Instructions**
