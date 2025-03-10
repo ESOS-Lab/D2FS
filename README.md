@@ -7,7 +7,7 @@ D2FS is developed by Juwon Kim @OSLAB-KAIST (joo97508@gmail.com).
 We encourage you to cite our paper at FAST '25 as follows:
 ```
 @inproceedings{kim2025d2fs,
-  title={$\{$D2FS$\}$:$\{$Device-Driven$\}$ Filesystem Garbage Collection},
+  title={D2FS: Device-Driven Filesystem Garbage Collection},
   author={Kim, Juwon and Lee, Seungjae and Oh, Joontaek and Shin, Dongkun and Won, Youjip},
   booktitle={23rd USENIX Conference on File and Storage Technologies (FAST 25)},
   pages={337--353},
